@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matplotlib on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/matplotlib/</link>
+    <description>Recent content in matplotlib on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Jul 2020 15:28:01 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>爬取洪灾期间长江沿岸水位并绘图</title>
+      <link>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
+      <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
+      <description>前言 最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 大佬的指引 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.
+爬取数据 首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:
+
+这是一个不设防的网站, 所有实时水位数据都能在 http://www.cjh.com.cn/sqindex.html 请求到, 如图所示:
+
+可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.
+使用requests直接请求网页, 并对网页源码进行格式化以及截取:
+import requests url = &amp;#39;http://www.cjh.com.cn/sqindex.html&amp;#39; class CjhData(object): def __init__(self): pass def get_data(self): r = requests.get(url) result = r.text.split()[66][:-1] # 去除字符串最后的分号 return result 此时我们可以得到json字符串:
+&amp;#39;[{&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;39500&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;长江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60105400&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;寸滩&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;179.06&amp;#39;}, {&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;11600&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;乌 江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60803000&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;武隆&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;191.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shadowsocks on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/shadowsocks/</link>
+    <description>Recent content in shadowsocks on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shadowsocks局域网共享</title>
+      <link>https://cgcel.github.io/p/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+      <description>开篇 好久没有更新博客, 正好熟悉了一下 ss 通过局域网共享到手机, 于是写一篇博客记录下来.
+详细步骤 打开热点 首先我们打开电脑的热点, 如果没有的话就使用 wifi 共享工具打开热点, 这里使用的是 WiFi 共享精灵(顺便吐槽一下, 我一直没有找到没广告的良心工具, 换来换去还是这个最顺手, 把各种弹窗关掉将就一下吧)
+图1
+查看网络连接信息 打开网络连接, 我们可以通过名称来找到刚开启的热点, 如图为本地连接3.
+图2
+获取本机IP地址 这是非常重要的一步, 打开 cmd 或其他工具, 输入ipconfig, 第一个本地连接的 ipv4 地址就是了.
+图3
+Shadowsocks设置 打开 ss 客户端, 右键其图标, 勾选允许其他设备连入.
+手机WiFi手动配置 进入 WiFi 设置, 连接时选择高级选项, 据观察, 如果已经连接过此热点, Android 9.0 可以直接设置, 而 8.1 需要 forget 后重新设置. 如图, proxy 选手动, 然后将本机 IP 地填写进去, 端口亲测 1080 可行, 网上说的 8123 不行 (更正: 需要以 ss 的 proxy 代理端口为准).</description>
+    </item>
+    
+  </channel>
+</rss>

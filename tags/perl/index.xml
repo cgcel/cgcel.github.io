@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>perl on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/perl/</link>
+    <description>Recent content in perl on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/perl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gcm-for-Mojo搭建总结</title>
+      <link>https://cgcel.github.io/p/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>开篇 最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 gcm-for-mojo , 这是一个获取网页端微信信息并通过 gcm 推送到客户端的 app, 同时他也支持 mipush, hwpush 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.
+服务器配置 本人常用微信, 于是就只做了微信的推送, QQ 配置方法类似, 基本上举一反三, 很容易学会. 首先我们在服务器上安装 perl, Ubuntu 16.04 操作如下:
+$ sudo apt-get install perl cpanminus git make screen libssl-dev libnet-ssleay-perl libio-socket-ssl-perl完成后
+$ cpanm Mojo::Weixin我们直接到 GitHub 上看配置步骤, 描述得很详细, 最多几分钟就可以搞定了.
+接下来我们新建一个 wx.pl 文件, 命名随意, 内容如下:
+use Mojo::Weixin; my $client = Mojo::Weixin-&amp;gt;new(log_encoding=&amp;gt;&amp;#34;utf-8&amp;#34;); $client-&amp;gt;load(&amp;#34;ShowMsg&amp;#34;); $client-&amp;gt;load(&amp;#34;GCM&amp;#34;,data=&amp;gt;{ api_url =&amp;gt; &amp;#39;https://gcm-http.</description>
+    </item>
+    
+  </channel>
+</rss>

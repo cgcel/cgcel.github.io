@@ -17,13 +17,14 @@ public class UnScrollableViewPager extends ViewPager { private boolean scrollabl
 public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动  public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右  } } 修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果.'>
 <meta property='og:url' content='https://cgcel.github.io/p/viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/'>
 <meta property='og:site_name' content='烂杯的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='android' /><meta property='article:tag' content='java' /><meta property='article:tag' content='viewpager' /><meta property='article:published_time' content='2020-02-10T16:01:35&#43;08:00'/><meta property='article:modified_time' content='2020-02-10T16:01:35&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='android' /><meta property='article:tag' content='java' /><meta property='article:tag' content='viewpager' /><meta property='article:published_time' content='2020-02-10T16:01:35&#43;08:00'/><meta property='article:modified_time' content='2020-02-10T16:01:35&#43;08:00'/><meta property='og:image' content='https://cgcel.github.io/img/defaultImage.jpg' />
 <meta name="twitter:title" content="ViewPager的嵌套滑动冲突问题解决">
 <meta name="twitter:description" content="在上一篇博客 ViewPager禁用滑动实践和总结 中我总结了禁用 ViewPager 滑动的解决方案, 这也是网上示例的主流解决方法, 但是使用这个方法后, 导致项目中 Fragment 的 RecyclerView 与 ViewPager 的滑动出现冲突, 无法实现效果, 如下图:
 
 从上图可以看到按照上一篇博客中重写子 Fragment 中的 ViewPager 的 OnInterceptTouchEvent() 和 onTouchEvent() 后, 于子 Fragment 中显示的 RecyclerView 上滑动将无法使用 Activity 的 ViewPager 切换, 只能在 RecyclerView 没有覆盖到的边框位置进行滑动, 这样的操作无疑非常不舒适, 于是我只能继续在网上搜索相关解决方案, 现总结如下.
 修改步骤 与上一篇博客思路一样, 只需要重写 ViewPager 的 canScrollHorizontally() 函数即可, 代码如下:
-public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动  public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右  } } 修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果.">
+public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动  public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右  } } 修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cgcel.github.io/img/defaultImage.jpg' />
     <link rel="shortcut icon" href="/images/avatar.png" />
 
     </head>

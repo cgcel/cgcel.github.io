@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习 on 烂杯的博客</title>
+    <link>https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 学习 on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 May 2021 21:51:24 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的 ZeroTier Network 管理 bot</title>
+      <link>https://cgcel.github.io/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</link>
+      <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</guid>
+      <description>起因 ZeroTier 我从去年开始第一次使用, 用来给家里的树莓派做内网穿透, 不过中间因为3B当做个小服务器没什么好玩的就中断了.
+去年年底双十一从闲鱼如了一台 4G RAM 的4B (有点后悔没耐心等 8G 版本), 刷了 RaspiOS 之后就拿来跑PT站的签到脚本和当做下载机使用, 顺便安装了 ZeroTier One, 加入我的 ZeroTier Network, 如此一来在外也能较为轻松地访问到我的 pi.
+但是由于 ZeroTier 的官网在国内访问较慢, 每次需要通过新加入成员或者管理成员都要花一点时间登录官网并管理, 一开始还不觉得麻烦, 后来加入成员越来越多, 也邀请朋友一起加入, 这样管理起来就比较麻烦. 恰巧此时从 ZeroTier 官网上看到他们有官方的 API 可供用户调用, 于是我申请了 API Key, 短暂测试之后决定写一个 Telegram Bot 帮助监控以及管理我的 ZeroTier Network.
+API 调用测试 根据 官方文档 说明, 使用 postman 进行 API 调用测试, 根据指示, 在 header 中按照格式加入 API Key 即可请求到数据, 如下图:
+使用postman调用API
+Bot 设计 本 bot 使用 Telegram Bot 的第三方库 pyTelegramBotAPI 来实现, 代码部分主要包括两个部分:</description>
+    </item>
+    
+    <item>
+      <title>爬取洪灾期间长江沿岸水位并绘图</title>
+      <link>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
+      <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
+      <description>前言 最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 大佬的指引 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.
+爬取数据 首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:
+
+这是一个不设防的网站, 所有实时水位数据都能在 http://www.cjh.com.cn/sqindex.html 请求到, 如图所示:
+
+可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.
+使用requests直接请求网页, 并对网页源码进行格式化以及截取:
+import requests url = &amp;#39;http://www.cjh.com.cn/sqindex.html&amp;#39; class CjhData(object): def __init__(self): pass def get_data(self): r = requests.get(url) result = r.text.split()[66][:-1] # 去除字符串最后的分号 return result 此时我们可以得到json字符串:
+&amp;#39;[{&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;39500&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;长江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60105400&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;寸滩&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;179.06&amp;#39;}, {&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;11600&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;乌 江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60803000&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;武隆&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;191.</description>
+    </item>
+    
+    <item>
+      <title>最近开的一个爬虫小坑</title>
+      <link>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</link>
+      <pubDate>Mon, 06 Jul 2020 21:43:54 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</guid>
+      <description>起因 去年年底开始, 部门里统计每月运维分队保障情况的任务就落到了我们头上, 大家都不是很愿意去做, 毕竟是重复劳动, 没有什么意义, 在信息系统里查起来还比较麻烦, 数据要一个一个地对, 然后根据当月分队的排班情况算到每个分队的统计里, 并按照规则排名以及打分, 一般都是每个月23或者24号开始统计, 正好这个月我 21-24 号放假加调休, 心想终于躲过一劫的我居然在回到公司上班的第一天被通知由我来统计! 无奈之下我只好以最快的速度做完, 但是这样下去什么时候才是个头啊, 于是就萌生了自己造轮子的想法, 正好复习一下自学的 python 爬虫.
+尝试 requests 写些小爬虫的时候, 用 requests 是最方便的. 一般来说模拟登录成功的话也就成功了一半, 后续数据可以轻松获得. 但是信息系统的一些前端渲染的数据无法通过 requests 获得, 比如下面使用 BeautifulSoup 解析后没有数据:
+&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; selenium 于是我只能用 selenium 来写, 这也是我第一次全程用 selenium 实现功能的爬虫. selenium 的使用也非常简单, 思路就是使用 find_element_by_id() 和 find_element_by_xpath() 来操作浏览器点击或者输入信息, 将响应后的网页源码通过 BeautifulSoup 解析, 得到想要的数据, 如下:
+&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;1&amp;lt;/span&amp;gt; 处理数据 有了数据之后还要解决一个问题, 也就是推出各个分队的排班, 以便将爬到的数据算到对应责任分队处, 我是用了建 dict 和 list 的方式, 将4天一周期的分队排班和时间段结合, 得出正确的排班, 同时也新建各种dict用于存放分队运行数据, 如延误行李数, 事前维修次数, 责任分区维修次数, 值班日志以及根据这些数据排序得到的分数等等.</description>
+    </item>
+    
+    <item>
+      <title>STM32的串口学习总结</title>
+      <link>https://cgcel.github.io/p/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+      <description>前言 疫情原因, 机场已经冷清很久了. 但是项目都照常缓慢进行中, 趁这次机会我好好学习了一下STM32的一些基础知识和使用方法. 教程的话看的是正点原子的官网教程, 正点原子的资料应该算是国内STM32初学者入门必学的教程了吧, 听说还有野火的也不错, 网上很多例子都有他们家代码的影子.
+实际使用过程中, 我越来越能体会到Arduino的简便之处, 但是相对的对实现原理会不太在意, 在入门STM32的过程中, 我对一些单片机功能有了更深的了解, 就比如常用的串口功能.
+之前对Arduino的串口编程有过不少实践, 还整理过 Arduino之间的串口通信demo, 本篇文章不对STM32单片机底层寄存器, 官方库文件进行过多解读, 只就Arduino与STM32的串口编程方面进行比较, 结合注释进行适当说明.
+硬件准备  STM32C8T6开发板 STM32RCT6开发板  正文 Arduino串口 首先回顾一下Arduino的串口函数, 可以看以下demo:
+String inputString = &amp;#34;&amp;#34;; // a String to hold incoming data  void setup() { // initialize serial:  Serial.begin(9600); } void loop() { while(Serial.available()){ inputString += char(Serial.read()); delay(2); } // print the string when a newline arrives:  if (inputString.</description>
+    </item>
+    
+    <item>
+      <title>我的第一个Arduino库</title>
+      <link>https://cgcel.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/</link>
+      <pubDate>Sun, 26 Apr 2020 19:37:43 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/</guid>
+      <description>前言 前一阵大佬给了块 RFID 读写模块让我们研究, 正好别人没有板子, 我就先一步拿着我的 nano 和 esp8266 去办公室玩玩了.
+什么是RFID? 简介 无线射频识别即射频识别技术（Radio Frequency Identification，RFID），是自动识别技术的一种，通过无线射频方式进行非接触双向数据通信，利用无线射频方式对记录媒体（电子标签或射频卡）进行读写，从而达到识别目标和数据交换的目的，其被认为是21世纪最具发展潜力的信息技术之一。
+无线射频识别技术通过无线电波不接触快速信息交换和存储技术，通过无线通信结合数据访问技术，然后连接数据库系统，加以实现非接触式的双向通信，从而达到了识别的目的，用于数据交换，串联起一个极其复杂的系统。在识别系统中，通过电磁波实现电子标签的读写与通信。根据通信距离，可分为近场和远场，为此读/写设备和电子标签之间的数据交换方式也对应地被分为负载调制和反向散射调制。
+工作原理 RFID技术的基本工作原理并不复杂：标签进入阅读器后，接收阅读器发出的射频信号，凭借感应电流所获得的能量发送出存储在芯片中的产品信息（Passive Tag，无源标签或被动标签），或者由标签主动发送某一频率的信号（Active Tag，有源标签或主动标签），阅读器读取信息并解码后，送至中央信息系统进行有关数据处理。
+一套完整的 RFID 系统， 是由阅读器与电子标签也就是所谓的应答器及应用软件系统三个部分所组成，其工作原理是阅读器（Reader）发射一特定频率的无线电波能量，用以驱动电路将内部的数据送出，此时 Reader 便依序接收解读数据， 送给应用程序做相应的处理。
+测试模块 手头上的模块是 JRD-100, 模块的测试非常顺利, 直接使用厂家提供的 GUI, 首先安装相应驱动, 接着通过 TTL 转 USB 将模块连接上电脑就可以进行 RFID 的读写操作了, 这里只尝试了读码功能, 测试无误后就开始软件方面的开发了. 而模块的操作方式也非常主流, 使用串口指令对其进行操作, 而返回的数据同样会通过串口与主板通信.
+开始编写Arduino库 基本结构 Arduino 的库文件其实就是 C++ 的一个类, 其中必须要引入 Arduino 核心类 Arduino.h, 否则无法在 Arduino 上使用. 其实在之前的使用过程中对 Arduino 库的结构已经有所了解, 基本上都是以下结构:
+-- JrdReader -- example -- xxx xxx.ino JrdReader.</description>
+    </item>
+    
+    <item>
+      <title>树莓派使用FRP实现内网穿透记录</title>
+      <link>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
+      <description>前言 在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
+准备 首先准备好以下物品:
+ 树莓派3B PC 一台 VPS 一台 显示器 (用于树莓派初始化, 根据自己的情况可以使用别的方式)  配置过程 1. 初始化树莓派 首先在树莓派上安装系统, 我安装的是 Raspbian Buster with desktop, 将系统镜像刷写进SD卡后, 通过接入显示器的方式控制树莓派联网, 开启 SSH 以及 VNC , 这里详细过程就不记录, 算是玩树莓派的基本操作了. 然后我们找到树莓派的 IP, 然后使用 xshell 连接树莓派, 初始化树莓派的过程到此结束.
+2. 准备VPS 这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.</description>
+    </item>
+    
+    <item>
+      <title>ViewPager的嵌套滑动冲突问题解决</title>
+      <link>https://cgcel.github.io/p/viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+      <pubDate>Mon, 10 Feb 2020 16:01:35 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+      <description>在上一篇博客 ViewPager禁用滑动实践和总结 中我总结了禁用 ViewPager 滑动的解决方案, 这也是网上示例的主流解决方法, 但是使用这个方法后, 导致项目中 Fragment 的 RecyclerView 与 ViewPager 的滑动出现冲突, 无法实现效果, 如下图:
+
+从上图可以看到按照上一篇博客中重写子 Fragment 中的 ViewPager 的 OnInterceptTouchEvent() 和 onTouchEvent() 后, 于子 Fragment 中显示的 RecyclerView 上滑动将无法使用 Activity 的 ViewPager 切换, 只能在 RecyclerView 没有覆盖到的边框位置进行滑动, 这样的操作无疑非常不舒适, 于是我只能继续在网上搜索相关解决方案, 现总结如下.
+修改步骤 与上一篇博客思路一样, 只需要重写 ViewPager 的 canScrollHorizontally() 函数即可, 代码如下:
+public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动  public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右  } } 修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果.</description>
+    </item>
+    
+    <item>
+      <title>ViewPager禁用滑动实践和总结</title>
+      <link>https://cgcel.github.io/p/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 08 Feb 2020 22:00:39 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/</guid>
+      <description>开篇 接触 Android 有一段时间了, 起因是帮同事一起做项目, 顺便自己学习, 于是项目一直断断续续进行, 很多控件和功能都是参考《第一行代码》还有网上的例子慢慢探索的, 最近一直在钻 TabLayout 的点击切换, 也就是禁用 ViewPager 的左右滑动切换的牛角尖, 具体效果如下图所示. 网上的例子实在是太千篇一律了, 导致有些地方只要其中一篇阅读量很多的博客没有, 其他转载或者借鉴的博客就都不会写🤪, 下面就记录一下我在原有 TabLayout&amp;amp;ViewPager 基础上修改的示例.
+
+实现步骤 1. 重写ViewPager 如果要实现禁用滑动的效果, 那么就需要重写 ViewPager, 因为默认是开启滑动的, 具体代码如下:
+public class NoScrollingViewPager extends ViewPager { private boolean scrollable = false; public NoScrollingViewPager(Context context) { super(context); } public NoScrollingViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写以下两个TouchEvent, 返回false以禁用滑动动作的监听  public boolean onInterceptTouchEvent(MotionEvent ev) { return scrollable; } @Override public boolean onTouchEvent(MotionEvent ev) { return scrollable; } } 以上重写代码都是千篇一律的, 只需要重写两个函数.</description>
+    </item>
+    
+    <item>
+      <title>V2RayN局域网共享</title>
+      <link>https://cgcel.github.io/p/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+      <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+      <description>开篇 最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.
+准备  电脑1台 安装好 V2RayN  详细步骤 设置V2RayN 因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.
+图1
+打开移动热点 以 win10 系统为例, 在设置中打开移动热点:
+图2
+然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:
+图3
+连接热点 首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.
+图4
+在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.
+到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样.</description>
+    </item>
+    
+    <item>
+      <title>Arduino的主从机双向通信</title>
+      <link>https://cgcel.github.io/p/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</link>
+      <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</guid>
+      <description>前言 网上有不少关于 Arduino 串口通信的教程和示例, 但大多是单向通信的或者是照搬 Arduino 官方示例的. 正好我的自动投食机第二版考虑加物联网功能, 需要对两块板子建立串口通信, 于是整理了网上例子和实践写一篇记录.
+硬件准备  Arduino UNO R1 Arduino MEGA 2560 PC一台  库文件  SoftwareSerial.h  代码部分 #include &amp;lt;SoftwareSerial.h&amp;gt; SoftwareSerial mySerial(10, 11); //Rx, Tx  String data = &amp;#34;&amp;#34;; //定义字符串  void setup() { Serial.begin(9600); mySerial.begin(4800); } void loop() { //软串口接收到字符串时, 在串口监视器打印  while (mySerial.available()) { data += char(mySerial.read()); delay(20); } if (data.length() &amp;gt; 0) { Serial.print(data); data = &amp;#34;&amp;#34;; } //硬串口接收到字符串时,通过软串口将信息发送给另一块板子  while (Serial.</description>
+    </item>
+    
+    <item>
+      <title>基于Arduino的自平衡车的调试总结</title>
+      <link>https://cgcel.github.io/p/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
+      <description>前言 翻阅网上的平衡车资料，大概有两个大方向，分别为卡尔曼滤波型和直接的 PID 调节型，前期我参照了卡尔曼滤波型平衡小车的代码，效果不是很好，小车最后连直立也无法做到，也可能是我的调试方法不对，再加上卡尔曼滤波型的代码相对比较复杂，于是我全部推倒重建，尝试后者。
+模块清单:
+ 12V 可充电锂电池 Arduino UNO R3 L298N 电机驱动模块 MPU6050 模块 小车底座 杜邦线若干  过程 相较于卡尔曼滤波型，PID 直接调节型对初次做平衡车的新手比较友好，Youtube 上教程很多，同时也有 PID 参数整定的视频教程。
+组装 首先是组装过程，相对比较简单，觉得不放心的可以直接参照视频教程来做视频，整个系统接线图如下：
+调试 进入重要环节，首先我们将代码烧进 Arduino，然后开机试运行，如果不成功，请返回上一步检查。运行成功后，我们首先需要校正 mpu6050，参照视频，我将mpu6050校正了3遍，结果如下：
+
+
+
+对应修改代码参数：
+mpu.initialize(); //初始化MPU6050 devStatus = mpu.dmpInitialize(); // supply your own gyro offsets here, scaled for min sensitivity // 校正mpu6050模块, 参考https://www.youtube.com/watch?v=ce3eA8nzInE mpu.setXGyroOffset(165); mpu.setYGyroOffset(-14); mpu.setZGyroOffset(5); mpu.setZAccelOffset(528); // 1688 factory default for my test chip 值得一提的是，这一段代码是直接照搬 mpu6050 库的示例代码的，就连备注部分都是一样的。</description>
+    </item>
+    
+    <item>
+      <title>Shadowsocks局域网共享</title>
+      <link>https://cgcel.github.io/p/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+      <description>开篇 好久没有更新博客, 正好熟悉了一下 ss 通过局域网共享到手机, 于是写一篇博客记录下来.
+详细步骤 打开热点 首先我们打开电脑的热点, 如果没有的话就使用 wifi 共享工具打开热点, 这里使用的是 WiFi 共享精灵(顺便吐槽一下, 我一直没有找到没广告的良心工具, 换来换去还是这个最顺手, 把各种弹窗关掉将就一下吧)
+图1
+查看网络连接信息 打开网络连接, 我们可以通过名称来找到刚开启的热点, 如图为本地连接3.
+图2
+获取本机IP地址 这是非常重要的一步, 打开 cmd 或其他工具, 输入ipconfig, 第一个本地连接的 ipv4 地址就是了.
+图3
+Shadowsocks设置 打开 ss 客户端, 右键其图标, 勾选允许其他设备连入.
+手机WiFi手动配置 进入 WiFi 设置, 连接时选择高级选项, 据观察, 如果已经连接过此热点, Android 9.0 可以直接设置, 而 8.1 需要 forget 后重新设置. 如图, proxy 选手动, 然后将本机 IP 地填写进去, 端口亲测 1080 可行, 网上说的 8123 不行 (更正: 需要以 ss 的 proxy 代理端口为准).</description>
+    </item>
+    
+    <item>
+      <title>树莓派系统安装以及ssh连接</title>
+      <link>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+      <description>前期准备 在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.
+系统安装 系统下载 系统安装还不算太麻烦, 直接去 官网 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 Raspbian 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:
+ Raspbian Stretch with desktop Raspbian Stretch Lite  前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.
+刷入 Raspbian 下载完毕后, 使用 SDFormatter 将 SD 卡格式化, 然后使用 Win32DiskImager 将系统写进 SD 卡, 类似工具有很多, 自己选用一个即可 (官网更新了官方工具 Raspberry Pi Imager, 使用起来更为方便), SD 卡容量方面, 很多教程都是选择了最低限度的 2GB 的 SD 卡, 然而这都已经是古董级别的卡了, 一般在街上只能买到最低 16GB 的. 使用 Win32DiskImager 写入系统成功后, 会弹窗询问是否格式化 SD 卡, 这时候点取消就行, 不然又要重新写一遍.</description>
+    </item>
+    
+    <item>
+      <title>Gcm-for-Mojo搭建总结</title>
+      <link>https://cgcel.github.io/p/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>开篇 最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 gcm-for-mojo , 这是一个获取网页端微信信息并通过 gcm 推送到客户端的 app, 同时他也支持 mipush, hwpush 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.
+服务器配置 本人常用微信, 于是就只做了微信的推送, QQ 配置方法类似, 基本上举一反三, 很容易学会. 首先我们在服务器上安装 perl, Ubuntu 16.04 操作如下:
+$ sudo apt-get install perl cpanminus git make screen libssl-dev libnet-ssleay-perl libio-socket-ssl-perl完成后
+$ cpanm Mojo::Weixin我们直接到 GitHub 上看配置步骤, 描述得很详细, 最多几分钟就可以搞定了.
+接下来我们新建一个 wx.pl 文件, 命名随意, 内容如下:
+use Mojo::Weixin; my $client = Mojo::Weixin-&amp;gt;new(log_encoding=&amp;gt;&amp;#34;utf-8&amp;#34;); $client-&amp;gt;load(&amp;#34;ShowMsg&amp;#34;); $client-&amp;gt;load(&amp;#34;GCM&amp;#34;,data=&amp;gt;{ api_url =&amp;gt; &amp;#39;https://gcm-http.</description>
+    </item>
+    
+    <item>
+      <title>六维空间自动登录脚本</title>
+      <link>https://cgcel.github.io/p/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
+      <description>开篇 5.20前后几天, 六维空间开放注册, 于是久仰大名的我也跑去注册了一个账号, 因为六维空间每日登录都会送5浮云, 因此就有了写一个模拟登录拿每日奖励的脚本的想法, 将其放在校园网登录脚本里面一起跑就美滋滋了.
+代码 # -*- coding: utf-8 -*- # author: Chan import requests from bs4 import BeautifulSoup url_start = &amp;#39;http://bt.neu6.edu.cn/member.php?mod=logging&amp;amp;action=login&amp;amp;referer=http%3A%2F%2Fbt.neu6.edu.cn%2Fforum.php&amp;#39; url_login = &amp;#39;http://bt.neu6.edu.cn/&amp;#39; url_main = &amp;#39;http://bt.neu6.edu.cn/forum.php&amp;#39; url_test = &amp;#39;http://bt.neu6.edu.cn/home.php?mod=spacecp&amp;#39; class neu6(): def __init__(self, username, password): headers = { &amp;#34;Accept&amp;#34;: &amp;#34;text/html, application/xhtml+xml, application/xml&amp;#34;, &amp;#34;Accept-Encoding&amp;#34;: &amp;#34;gzip, deflate&amp;#34;, &amp;#34;Accept-Language&amp;#34;: &amp;#34;zh-CN, zh&amp;#34;, &amp;#34;Cache-Control&amp;#34;: &amp;#34;max-age = 0&amp;#34;, &amp;#34;Connection&amp;#34;: &amp;#34;keep-alive&amp;#34;, &amp;#34;Host&amp;#34;: &amp;#34;bt.neu6.edu.cn&amp;#34;, &amp;#34;Upgrade-Insecure-Requests&amp;#34;: &amp;#34;1&amp;#34;, &amp;#34;User-Agent&amp;#34;: &amp;#34;Mozilla/5.0 (Windows NT 10.0Win64x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.</description>
+    </item>
+    
+    <item>
+      <title>使用hugo创建博客</title>
+      <link>https://cgcel.github.io/p/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+ YouTube 官方文档 函数以及变量  模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&#39;/&#39;) 本菜鸟找了快一个小时才找出来&amp;hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
++++ title= &amp;#34;使用hugo创建博客&amp;#34; date= 2018-06-22T19:34:37+08:00 categories=[&amp;#39;tech&amp;#39;] tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.</description>
+    </item>
+    
+    <item>
+      <title>flask踩坑和排坑记录</title>
+      <link>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+      <description>开篇 最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P
+项目依赖 虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp;amp; python3.6 测试通过):
+ Flask_SQLAlchemy==2.1Flask==1.0.2Markdown==2.6.11Flask_Bootstrap==3.3.7.1 数据库 数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:
+ 路径:   MySQL: mysql+pymysql://username:password@hostname/database Postgres: postgresql://username:password@hostname/database SQLite(Unix): sqlite:////absolute/path/to/database SQLite(Windows): sqlite:///c:/absolute/path/to/database
+  初始化:  app = Flask(__name__)&amp;lt;br&amp;gt; app.config[&amp;#39;SQLALCHEMY_DATABASE_URI&amp;#39;] = &amp;#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&amp;#39; app.config[&amp;#39;SQLALCHEMY_TRACK_MODIFICATIONS&amp;#39;] = False db = SQLAlchemy(app)  操作语句:  User.</description>
+    </item>
+    
+    <item>
+      <title>github.io博客搭建</title>
+      <link>https://cgcel.github.io/p/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/p/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>开篇 看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.
+创建仓库 在 github 新建项目, 命名格式为 &amp;lt;username&amp;gt;.github.io, 最好先选 private, 因为可能会有很多误操作. 然后在本机 (Windows) 安装环境: gem, jekyll 等等, 安装这些是便于在本地修改网页并且预览,这样就不用每次都 push 到 github 来试了. 不过 Windows 安装起来挺麻烦的, 一定要按照教程一步一步来设置, 跟教程有一些出入的地方要自己判断.
+选择主题 jekyll 的主题有很多,我们可以在 github 和网页上挑选, 本来我想要选一个 md 格式的主题,奈何一时间找不到,于是从 github 上选择了一个纯白的极简主题.
+自定义页面内容 选好主题之后, 通过 git 把代码 clone 到本地, 首先必须要编辑的是 _config.yml,按照个人的信息和需求进行增减改动, 如果不知道该怎么改, 建议多找几个主题对比一下文件内容, 也可以到 YouTube 找一下相关视频教程. 设置完后, 就可以去自定义个人信息和网页显示内容了.
+预览和推送测试 修改完文件后,在项目根目录打开 cmd, 输入 jekyll s, 如果没有报错就表示在本地运行成功了, 此时可以打开浏览器, 进入 127.</description>
+    </item>
+    
+  </channel>
+</rss>

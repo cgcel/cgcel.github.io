@@ -159,7 +159,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url_login</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">+</span><span class="s1">&#39;&amp;inajax=1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">formdata</span><span class="p">)</span>
             <span class="n">r1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_main</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;登录失败&#34;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;登录失败&#34;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -170,11 +170,11 @@
                 <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">level</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;class&#34;</span><span class="p">:</span> <span class="s2">&#34;xi2&#34;</span><span class="p">})[</span>
                 <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;用户名:&#34;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;用户组:&#34;</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;用户名:&#34;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;用户组:&#34;</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;获取信息失败&#34;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;获取信息失败&#34;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>

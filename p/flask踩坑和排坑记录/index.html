@@ -131,7 +131,11 @@ SQLite(Windows): sqlite:///c:/absolute/path/to/database</p>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&#39;</span>
+<<<<<<< HEAD
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+=======
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+>>>>>>> e03793cda09eadc9fa90b748019ce09ff2ce1aff
 <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </code></pre></div><ul>
 <li>操作语句:</li>
@@ -149,7 +153,11 @@ SQLite(Windows): sqlite:///c:/absolute/path/to/database</p>
 <p>我希望能将 markdown 格式的内容转化并直接显示, 这就需要用到 flask 的过滤器功能, 阅读了相关文章, 只需要自定义一个过滤器, 代码如下:</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Markup</span>
 <span class="kn">import</span> <span class="nn">markdown</span>
+<<<<<<< HEAD
 <span class="nd">@app</span><span class="o">.</span><span class="n">template_filter</span><span class="p">(</span><span class="s1">&#39;toMarkdown&#39;</span><span class="p">)</span>
+=======
+<span class="nd">@app.template_filter</span><span class="p">(</span><span class="s1">&#39;toMarkdown&#39;</span><span class="p">)</span>
+>>>>>>> e03793cda09eadc9fa90b748019ce09ff2ce1aff
 <span class="k">def</span> <span class="nf">toMarkdown</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Markup</span><span class="p">(</span><span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
 </code></pre></div><p>通过 jinja2 调用时, 只需要 <code>{ { content|toMartdown } }</code> 即可.</p>

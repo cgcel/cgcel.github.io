@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='基于Arduino的, 简单的, 读取RFID数据的库'><title>我的第一个Arduino库</title>
+
+<link rel='canonical' href='https://cgcel.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='我的第一个Arduino库'>
+<meta property='og:description' content='基于Arduino的, 简单的, 读取RFID数据的库'>
+<meta property='og:url' content='https://cgcel.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='arduino' /><meta property='article:published_time' content='2020-04-26T19:37:43&#43;08:00'/><meta property='article:modified_time' content='2020-04-26T19:37:43&#43;08:00'/><meta property='og:image' content='https://cgcel.github.io/img/defaultImage.jpg' />
+<meta name="twitter:title" content="我的第一个Arduino库">
+<meta name="twitter:description" content="基于Arduino的, 简单的, 读取RFID数据的库"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cgcel.github.io/img/defaultImage.jpg' />
+    <link rel="shortcut icon" href="/images/avatar.png" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://cgcel.github.io/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/">我的第一个Arduino库</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        基于Arduino的, 简单的, 读取RFID数据的库
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 26, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="前言">前言</h2>
+<p>前一阵大佬给了块 RFID 读写模块让我们研究, 正好别人没有板子, 我就先一步拿着我的 nano 和 esp8266 去办公室玩玩了.</p>
+<h2 id="什么是rfid">什么是RFID?</h2>
+<h3 id="简介">简介</h3>
+<p>无线射频识别即射频识别技术（Radio Frequency Identification，RFID），是自动识别技术的一种，通过无线射频方式进行非接触双向数据通信，利用无线射频方式对记录媒体（电子标签或射频卡）进行读写，从而达到识别目标和数据交换的目的，其被认为是21世纪最具发展潜力的信息技术之一。</p>
+<p>无线射频识别技术通过无线电波不接触快速信息交换和存储技术，通过无线通信结合数据访问技术，然后连接数据库系统，加以实现非接触式的双向通信，从而达到了识别的目的，用于数据交换，串联起一个极其复杂的系统。在识别系统中，通过电磁波实现电子标签的读写与通信。根据通信距离，可分为近场和远场，为此读/写设备和电子标签之间的数据交换方式也对应地被分为负载调制和反向散射调制。</p>
+<h3 id="工作原理">工作原理</h3>
+<p>RFID技术的基本工作原理并不复杂：标签进入阅读器后，接收阅读器发出的射频信号，凭借感应电流所获得的能量发送出存储在芯片中的产品信息（Passive Tag，无源标签或被动标签），或者由标签主动发送某一频率的信号（Active Tag，有源标签或主动标签），阅读器读取信息并解码后，送至中央信息系统进行有关数据处理。</p>
+<p>一套完整的 RFID 系统， 是由阅读器与电子标签也就是所谓的应答器及应用软件系统三个部分所组成，其工作原理是阅读器（Reader）发射一特定频率的无线电波能量，用以驱动电路将内部的数据送出，此时 Reader 便依序接收解读数据， 送给应用程序做相应的处理。</p>
+<h2 id="测试模块">测试模块</h2>
+<p>手头上的模块是 JRD-100, 模块的测试非常顺利, 直接使用厂家提供的 GUI, 首先安装相应驱动, 接着通过 TTL 转 USB 将模块连接上电脑就可以进行 RFID 的读写操作了, 这里只尝试了读码功能, 测试无误后就开始软件方面的开发了. 而模块的操作方式也非常主流, 使用串口指令对其进行操作, 而返回的数据同样会通过串口与主板通信.</p>
+<h2 id="开始编写arduino库">开始编写Arduino库</h2>
+<h3 id="基本结构">基本结构</h3>
+<p>Arduino 的库文件其实就是 C++ 的一个类, 其中必须要引入 Arduino 核心类 <code>Arduino.h</code>, 否则无法在 Arduino 上使用. 其实在之前的使用过程中对 Arduino 库的结构已经有所了解, 基本上都是以下结构:</p>
+<pre><code>-- JrdReader
+    -- example
+        -- xxx
+            xxx.ino
+    JrdReader.h
+    rdReader.cpp
+</code></pre><h3 id="编译环境">编译环境</h3>
+<p>在 Arduino IDE 中编写自定义库操作比较简单, 在新建好的 Arduino 项目中新建Tab并命名为 <code>.h</code> 以及 <code>.cpp</code> 文件即可, 如下图所示:</p>
+<p><figure style="flex-grow: 128; flex-basis: 308px">
+		<a href="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-25-41.png" data-size="1011x786"><img src="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-25-41.png"
+				srcset="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-25-41_hu70c369d968d21f0b3f212dda840fecef_20407_480x0_resize_box_2.png 480w, /p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-25-41_hu70c369d968d21f0b3f212dda840fecef_20407_1024x0_resize_box_2.png 1024w"
+				width="1011"
+				height="786"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>建好之后的界面如下图所示, 然后就可以开始敲代码编译了.</p>
+<p><figure style="flex-grow: 172; flex-basis: 415px">
+		<a href="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-26-26.png" data-size="275x159"><img src="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-26-26.png"
+				srcset="/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-26-26_hue938162e46778274df406114ceffc506_5537_480x0_resize_box_2.png 480w, /p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/2020-04-26-21-26-26_hue938162e46778274df406114ceffc506_5537_1024x0_resize_box_2.png 1024w"
+				width="275"
+				height="159"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<h3 id="头文件与源文件">头文件与源文件</h3>
+<p>按照 C++ 语法创建头文件:</p>
+<div class="highlight"><pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#ifndef _JRDREADER_H__
+</span><span class="cp">#define _JRDREADER_H__
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">JrdReader</span> <span class="p">{</span>
+  
+  <span class="k">private</span><span class="o">:</span>
+
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">JrdReader</span><span class="p">();</span>
+    <span class="n">String</span> <span class="nf">readOnce</span><span class="p">();</span>  
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span></code></pre></div><p>在源文件中实现头文件的自定义方法:</p>
+<div class="highlight"><pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;JrdReader.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;HardwareSerial.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cm">/**
+</span><span class="cm"> * read once HEX command
+</span><span class="cm"> */</span>
+<span class="kt">char</span> <span class="n">read_once_cmd</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x7E</span><span class="p">};</span>
+
+<span class="n">String</span> <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+
+<span class="n">JrdReader</span><span class="o">::</span><span class="n">JrdReader</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="n">String</span> <span class="n">JrdReader</span><span class="o">::</span><span class="n">readOnce</span><span class="p">()</span> <span class="p">{</span>
+  
+  <span class="n">String</span> <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+  <span class="n">String</span> <span class="n">comstr</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+  
+  <span class="c1">// send read_once command
+</span><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">read_once_cmd</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+    <span class="n">comdata</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&#34;comdata: &#34;</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">comstr</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// clear comdata in order to accept another one.
+</span><span class="c1"></span>  <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+
+  <span class="c1">// format comstr
+</span><span class="c1"></span>  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ffff&#34;</span><span class="p">,</span> <span class="s">&#34;ss&#34;</span><span class="p">);</span>
+  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ff&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
+  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ss&#34;</span><span class="p">,</span> <span class="s">&#34;ff&#34;</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;comstr: &#34;</span> <span class="o">+</span> <span class="n">comstr</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">comstr</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// read RFID code
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">baggageCode</span> <span class="o">+=</span> <span class="n">comstr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;读取错误 (Unable to read)&#34;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">baggageCode</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div><p>由于手头上还有别的任务所以先实现了最简单的单次读码功能, 原理则是将说明书中提供的十六进制串口指令通过 Arduino 的 Serial 函数发送给 JRD-100 模块, 模块处理完毕后会将数据通过串口返回给 Arduino, 此时只需要通过串口接收新信息并按照一定规律格式化, 解析就可以得到想要的数据, 其中因为导入了 <code>Arduino.h</code> 这个核心库文件, 所以我们在开发 Arduino 库文件的时候可以调用一些 Arduino 的编程方法, 比如上方代码中的 <code>Serial.write()</code>, <code>Serial.print()</code> 等函数.</p>
+<h3 id="加载库并使用">加载库并使用</h3>
+<p>按照上述 <code>基本结构</code> 中的项目结构保存文件后, 将文件夹复制到 Arduino 的 libraries 文件夹中, 或者将文件夹打包成 .zip 格式, 然后在 Arduino IDE 中它通过 <code>项目-加载库-添加.ZIP库</code> 的方法添加, 然后最好重启一下 Arduino IDE, 此时就可以直接在新建的 .ino 文件中引入自定义的库文件了.</p>
+<h2 id="后续计划">后续计划</h2>
+<p>这个库可以写的方法远不止一个, 比如读取多次, 写码等方法, 后续应该会加上, 同时已经实现的 <code>readOnce()</code> 方法的读取率还有待提高, 估计与函数延时有一定关系, 需要慢慢调试得到最佳的数据接收间隔.</p>
+<h2 id="编译环境的摸索">编译环境的摸索</h2>
+<p>Arduino 的 IDE 由于没有代码补全以及文件管理而广受诟病, 于是我们可以通过很多第三方IDE结合插件来进行 Arduino 开发, 比较常用的有 VS code, sublime, code blocks等等, 我也同样都尝试过, 但是都遇到了各种各样的问题, 最终回到了官方的 IDE 进行开发, 只能说第三方的额插件虽然支持, 但是存在很多缺陷, 比如路径常常需要导入, 只支持到一些版本的 Arduino IDE 等等, 希望官方的编译器能够支持更多功能, 让开发变得简单吧.</p>
+<h2 id="结尾">结尾</h2>
+<p>可能这是博客创建到现在最长的一篇了, 毕竟前面复制了一大段介绍🤓, 那么就先到此为止吧, 下面附上一些参考网址:</p>
+<ul>
+<li><a href="https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249">https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249</a></li>
+<li><a href="https://www.arduino.cc/en/Hacking/libraryTutorial">https://www.arduino.cc/en/Hacking/libraryTutorial</a></li>
+<li><a href="https://www.arduino.cc/en/Reference/APIStyleGuide">https://www.arduino.cc/en/Reference/APIStyleGuide</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/arduino/">arduino</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arduino的主从机双向通信</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E6%95%B0%E6%8D%AE%E6%9B%B2%E7%BA%BF_2.b891c599bce923ad7f5cd5552ed3fbc9_hu44b4d9017f1232eac915f5b6bdf6881a_8829_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-uJHFmbzpI61/XNVVLtP7yQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Arduino的自平衡车的调试总结</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/network_info.8b42757ddef0f8899057e5e5c624b447_hu4644e5fde454f95d97580ed437fda9ea_51503_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-i0J1fd7w&#43;ImQV&#43;XlxiS0Rw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">我的 ZeroTier Network 管理 bot</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/_huda0b0d612707c3c3415d84890c4f09e1_51377_e63a924b5ecea4cc1df719b65c5f1ee5.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-8F4&#43;hYAEDfC&#43;lg4XUqxCjQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">爬取洪灾期间长江沿岸水位并绘图</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">最近开的一个爬虫小坑</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2021 烂杯的博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#什么是rfid">什么是RFID?</a>
+      <ol>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#工作原理">工作原理</a></li>
+      </ol>
+    </li>
+    <li><a href="#测试模块">测试模块</a></li>
+    <li><a href="#开始编写arduino库">开始编写Arduino库</a>
+      <ol>
+        <li><a href="#基本结构">基本结构</a></li>
+        <li><a href="#编译环境">编译环境</a></li>
+        <li><a href="#头文件与源文件">头文件与源文件</a></li>
+        <li><a href="#加载库并使用">加载库并使用</a></li>
+      </ol>
+    </li>
+    <li><a href="#后续计划">后续计划</a></li>
+    <li><a href="#编译环境的摸索">编译环境的摸索</a></li>
+    <li><a href="#结尾">结尾</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

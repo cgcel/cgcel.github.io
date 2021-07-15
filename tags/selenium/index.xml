@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>selenium on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/selenium/</link>
+    <description>Recent content in selenium on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Jul 2020 21:43:54 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>最近开的一个爬虫小坑</title>
+      <link>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</link>
+      <pubDate>Mon, 06 Jul 2020 21:43:54 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</guid>
+      <description>起因 去年年底开始, 部门里统计每月运维分队保障情况的任务就落到了我们头上, 大家都不是很愿意去做, 毕竟是重复劳动, 没有什么意义, 在信息系统里查起来还比较麻烦, 数据要一个一个地对, 然后根据当月分队的排班情况算到每个分队的统计里, 并按照规则排名以及打分, 一般都是每个月23或者24号开始统计, 正好这个月我 21-24 号放假加调休, 心想终于躲过一劫的我居然在回到公司上班的第一天被通知由我来统计! 无奈之下我只好以最快的速度做完, 但是这样下去什么时候才是个头啊, 于是就萌生了自己造轮子的想法, 正好复习一下自学的 python 爬虫.
+尝试 requests 写些小爬虫的时候, 用 requests 是最方便的. 一般来说模拟登录成功的话也就成功了一半, 后续数据可以轻松获得. 但是信息系统的一些前端渲染的数据无法通过 requests 获得, 比如下面使用 BeautifulSoup 解析后没有数据:
+&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; selenium 于是我只能用 selenium 来写, 这也是我第一次全程用 selenium 实现功能的爬虫. selenium 的使用也非常简单, 思路就是使用 find_element_by_id() 和 find_element_by_xpath() 来操作浏览器点击或者输入信息, 将响应后的网页源码通过 BeautifulSoup 解析, 得到想要的数据, 如下:
+&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;1&amp;lt;/span&amp;gt; 处理数据 有了数据之后还要解决一个问题, 也就是推出各个分队的排班, 以便将爬到的数据算到对应责任分队处, 我是用了建 dict 和 list 的方式, 将4天一周期的分队排班和时间段结合, 得出正确的排班, 同时也新建各种dict用于存放分队运行数据, 如延误行李数, 事前维修次数, 责任分区维修次数, 值班日志以及根据这些数据排序得到的分数等等.</description>
+    </item>
+    
+  </channel>
+</rss>

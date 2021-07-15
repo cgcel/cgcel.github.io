@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如何在享受官方OTA升级的基础上使用root权限?'><title>一加7 OTA升级系统并保留root记录</title>
+
+<link rel='canonical' href='https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='一加7 OTA升级系统并保留root记录'>
+<meta property='og:description' content='如何在享受官方OTA升级的基础上使用root权限?'>
+<meta property='og:url' content='https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='android' /><meta property='article:tag' content='oneplus' /><meta property='article:tag' content='magisk' /><meta property='article:tag' content='root' /><meta property='article:published_time' content='2020-05-07T15:02:04&#43;08:00'/><meta property='article:modified_time' content='2020-05-07T15:02:04&#43;08:00'/><meta property='og:image' content='https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8.jpg' />
+<meta name="twitter:title" content="一加7 OTA升级系统并保留root记录">
+<meta name="twitter:description" content="如何在享受官方OTA升级的基础上使用root权限?"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8.jpg' />
+    <link rel="shortcut icon" href="/images/avatar.png" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://cgcel.github.io/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/">
+                <img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8_hu02e797a9c75ddfb1c89504a45e067415_372720_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8_hu02e797a9c75ddfb1c89504a45e067415_372720_800x0_resize_q75_box.jpg 800w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8_hu02e797a9c75ddfb1c89504a45e067415_372720_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1733" 
+                        loading="lazy"
+                        alt="Featured image of post 一加7 OTA升级系统并保留root记录" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%88%B7%E6%9C%BA/" >
+                刷机
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/">一加7 OTA升级系统并保留root记录</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        如何在享受官方OTA升级的基础上使用root权限?
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 07, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="写在前面">写在前面</h2>
+<p>手上的一加7已经 root 了一个多月, 一加的更新迟迟不来, 安全补丁还停留在3月份的, 终于在今天 Oxygen Updater 推送了 OB13 更新, 于是我赶紧下下来, 尝试一下保留 root 状态的 OTA 升级.</p>
+<h2 id="操作步骤">操作步骤</h2>
+<p>网上冲浪一下就可以找到很多教程, 不过多数是英文的, 因为一加在国内还不够主流. 总结一下基本步骤如下:</p>
+<ul>
+<li>下载全量包, 进入系统更新 - 选择本地安装, 安装完毕后不要重启</li>
+<li>在 magisk manager 中安装 <code>TWRP A/B Retention Script</code></li>
+<li>打开 magisk manager, 卸载 - 还原原厂镜像, 卸载成功后不要重启</li>
+<li>在 magisk manager 中, 点击安装 - 安装到未使用的槽位(OTA后) - 点击重启</li>
+</ul>
+<p>注意重启后手机 (可能) 会重启两次, 不用进行其他操作, 等待其重启完成即可.</p>
+<h2 id="具体操作">具体操作</h2>
+<p>为了记录得详细一点, 我截了一些图, 下面将按照步骤贴出.</p>
+<h3 id="1下载安装全量包">1.下载/安装全量包</h3>
+<p>在 Oxygen Updater 中下载全量包.</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-1.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-1.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-1_hu16cec13cc49cc8cb78d040f189ce5e92_363458_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-1_hu16cec13cc49cc8cb78d040f189ce5e92_363458_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>进入设置并选择本地安装, 一般全量包都会被下载至根目录.</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-3.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-3.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-3_hu114de760a98183858c8786b91e7d4236_94811_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-3_hu114de760a98183858c8786b91e7d4236_94811_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>安装完毕后不要重启, 直接退出升级界面即可.</p>
+<h3 id="2-安装-twrp-ab-retention-script">2. 安装 <code>TWRP A/B Retention Script</code></h3>
+<p>在magisk manager中下载安装 <code>TWRP A/B Retention Script</code>, 安装完成后返回magisk manager主界面.</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-4.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-4.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-4_huf02bca618dbcae88399134c91283056f_342883_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-4_huf02bca618dbcae88399134c91283056f_342883_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<h3 id="3-卸载magisk">3. 卸载magisk</h3>
+<p>打开 magisk manager, 卸载 - 还原原厂镜像, 卸载成功后不要重启</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-2.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-2.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-2_hu310c000b521b66e7474137dce2aa547f_185015_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-2_hu310c000b521b66e7474137dce2aa547f_185015_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<h3 id="4-安装magisk到另一个槽位">4. 安装magisk到另一个槽位</h3>
+<p>现在的安卓机都是 A/B 分区的, 系统的安装/更新是装至当前运行系统的另一个槽位中, 也就是未激活的槽位.</p>
+<p>在 magisk manager 中, 点击安装 - 安装到未使用的槽位(OTA后) - 点击重启</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-5.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-5.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-5_hu85a5c49f184ccfc8cbb4cd7792a12319_184962_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-5_hu85a5c49f184ccfc8cbb4cd7792a12319_184962_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure>
+<figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-6.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-6.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-6_hu3b18fd30adbc586efed48258b388e331_170140_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-6_hu3b18fd30adbc586efed48258b388e331_170140_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<h3 id="5-重启手机并检验">5. 重启手机并检验</h3>
+<p>在 magisk manager 中点击重启后, 手机 (可能) 会执行两次重启, 此时不用担心变砖(狗头), 等他自己重启完成就行了.</p>
+<p>重启完成后, 我们可以看到系统已经更新至 OB13.</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-7.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-7.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-7_hu1fb8acf0a730ef6ad3f0a068c8afe355_118108_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-7_hu1fb8acf0a730ef6ad3f0a068c8afe355_118108_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>然后随便下一个 app 检测一下手机是否保持了 root 状态.</p>
+<p><figure style="flex-grow: 46; flex-basis: 110px">
+		<a href="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8.jpg" data-size="1080x2340"><img src="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8.jpg"
+				srcset="/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8_hu02e797a9c75ddfb1c89504a45e067415_372720_480x0_resize_q75_box.jpg 480w, /p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/2020-05-07-8_hu02e797a9c75ddfb1c89504a45e067415_372720_1024x0_resize_q75_box.jpg 1024w"
+				width="1080"
+				height="2340"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<h2 id="总结">总结</h2>
+<p>学会这个方法之后, 以后如果还买一加就可以到手就 root 了 (如果还买的话), 真是美滋滋, 好了总结完毕.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/android/">android</a>
+        
+            <a href="/tags/oneplus/">oneplus</a>
+        
+            <a href="/tags/magisk/">magisk</a>
+        
+            <a href="/tags/root/">root</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/_hub74b535aa5aac5b8f51a9dc7c5578f51_18205_79a9178379de8d690aa11b1e953fa566.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-&#43;ZYVXoInebX9U50CiFm60A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一加8T全量包升级并保留ROOT</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/_hubf8cad812a779ef9f7ff002e9603d42d_135176_99e9b0e14959fd4e86074c5ee41fe0bf.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-S213JceXXPPEKU8SdTcVKw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">从OOS到LOS -- 一加8T的刷机记录</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">
+        
+        
+            <div class="article-image">
+                <img src="/p/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/2020-10-03-19-51-26.65495e5a188f42779050925ff5db7ac6_hu4f9033852c86e8a6836f8252fbf3d1f9_9523_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-ZUleWhiPQneQUJJf9dt6xg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Syberia OS (R) for OnePlus 6 刷机体验</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/2018-10-28-02.9791881d7fc8e391c2c75226d26ea556_hu7a03d04c4d11ae78863d09566e6c1962_49883_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-l5GIHX/I45HCx1Im0m6lVg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一加6 Pixel Experience Android Pie 刷机体验</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pixel 2XL root方案记录</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2018 - 
+        
+        2021 烂杯的博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#写在前面">写在前面</a></li>
+    <li><a href="#操作步骤">操作步骤</a></li>
+    <li><a href="#具体操作">具体操作</a>
+      <ol>
+        <li><a href="#1下载安装全量包">1.下载/安装全量包</a></li>
+        <li><a href="#2-安装-twrp-ab-retention-script">2. 安装 <code>TWRP A/B Retention Script</code></a></li>
+        <li><a href="#3-卸载magisk">3. 卸载magisk</a></li>
+        <li><a href="#4-安装magisk到另一个槽位">4. 安装magisk到另一个槽位</a></li>
+        <li><a href="#5-重启手机并检验">5. 重启手机并检验</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

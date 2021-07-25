@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>lineageos on 烂杯的博客</title>
     <link>https://cgcel.github.io/tags/lineageos/</link>
     <description>Recent content in lineageos on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <lastBuildDate>Mon, 17 May 2021 13:45:02 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/lineageos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从OOS到LOS -- 一加8T的刷机记录</title>
-      <link>https://cgcel.github.io/p/%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+      <link>https://cgcel.github.io/posts/2021/05/17/</link>
       <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
-      <description>前言 距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 xda 论坛 挺活跃的, 已经有不少的 ROM 可以刷了:
-oneplus 8t xda forum
-于是我就打算利用空闲时间刷一刷手里的 8T 解解馋, 玩累了正好回 ColorOS (如果一加不鸽的话&amp;hellip;)
-本篇将分为两大部分来记录, 分别是:
- OOS 刷 LOS 的记录 LOS 刷回 OOS 并 root 的记录  OOS 刷 LOS 准备 在准备刷机前, 我们需要 备份好数据, 并安装或下载好以下内容 (下载包以本篇博客日期为准, 如参考则需尽量下载最新包):
- adb (基本操作了, 没有adb就无法通过指令控制手机) 9008救砖包 (随时准备好救砖) lineage-18.1-20210513-nightly-kebab-signed.zip lineage-18.1-20210513-recovery-kebab.img copy-partitions-20210323_1922.zip GAPPS Magisk-v23.0.apk  具体步骤 详细刷机步骤参考 官方文档 , 下面我将按照具体指令来总结, 这样比较明了, 不用看详细的文字解释:</description>
+      <guid>https://cgcel.github.io/posts/2021/05/17/</guid>
+      <description>从 OxygenOS 到 LineageOS 的刷机记录贴</description>
     </item>
     
   </channel>

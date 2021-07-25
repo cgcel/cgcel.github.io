@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>magisk on 烂杯的博客</title>
     <link>https://cgcel.github.io/tags/magisk/</link>
     <description>Recent content in magisk on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/magisk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一加8T全量包升级并保留ROOT</title>
-      <link>https://cgcel.github.io/p/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</link>
+      <link>https://cgcel.github.io/posts/2021/05/22/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</guid>
-      <description>前言 在试用了一天多 ColorOS 之后, 鉴于其后台管理过于严格, 我又趁午休时间刷回了 OOS, 之前已经有了用 TWRP 保留 root 的全量包更新经验和文章, 本篇只想快速记录一下.
-准备工作  9008 线刷包 (OOS) payload_dumper Magisk-v23.0.apk  步骤 步骤一: 刷回 OOS  进入 开发者选项, 勾选 允许 OEM 解锁, 开启 USB 调试, 然后关机静置. 同时按住 音量+ 和 音量-, 然后用 USB 线连接电脑, 开启 9008 线刷, 刷机完毕后重启进入系统.  步骤二: 解锁 OOS 并 ROOT   进入 开发者选项, 勾选 允许 OEM 解锁, 开启 USB 调试, 然后输入以下指令:
-adb devices adb reboot bootloader fastboot devices fastboot oem unlock 使用 &amp;ldquo;音量键&amp;rdquo; 和 &amp;ldquo;电源键&amp;rdquo; 确定解锁手机, 然后完成初始化进入系统.</description>
+      <guid>https://cgcel.github.io/posts/2021/05/22/</guid>
+      <description>ColorOS 并不好用</description>
     </item>
     
     <item>
       <title>一加7 OTA升级系统并保留root记录</title>
-      <link>https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/</link>
+      <link>https://cgcel.github.io/posts/2020/05/07/</link>
       <pubDate>Thu, 07 May 2020 15:02:04 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/</guid>
-      <description>写在前面 手上的一加7已经 root 了一个多月, 一加的更新迟迟不来, 安全补丁还停留在3月份的, 终于在今天 Oxygen Updater 推送了 OB13 更新, 于是我赶紧下下来, 尝试一下保留 root 状态的 OTA 升级.
-操作步骤 网上冲浪一下就可以找到很多教程, 不过多数是英文的, 因为一加在国内还不够主流. 总结一下基本步骤如下:
- 下载全量包, 进入系统更新 - 选择本地安装, 安装完毕后不要重启 在 magisk manager 中安装 TWRP A/B Retention Script 打开 magisk manager, 卸载 - 还原原厂镜像, 卸载成功后不要重启 在 magisk manager 中, 点击安装 - 安装到未使用的槽位(OTA后) - 点击重启  注意重启后手机 (可能) 会重启两次, 不用进行其他操作, 等待其重启完成即可.
-具体操作 为了记录得详细一点, 我截了一些图, 下面将按照步骤贴出.
-1.下载/安装全量包 在 Oxygen Updater 中下载全量包.</description>
+      <guid>https://cgcel.github.io/posts/2020/05/07/</guid>
+      <description>如何在享受官方OTA升级的基础上使用root权限?</description>
     </item>
     
   </channel>

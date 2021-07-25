@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>raspberrypi on 烂杯的博客</title>
     <link>https://cgcel.github.io/tags/raspberrypi/</link>
     <description>Recent content in raspberrypi on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <lastBuildDate>Wed, 11 Mar 2020 21:00:15 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>树莓派使用FRP实现内网穿透记录</title>
-      <link>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+      <link>https://cgcel.github.io/posts/2020/03/11/</link>
       <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
-      <description>前言 在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
-准备 首先准备好以下物品:
- 树莓派3B PC 一台 VPS 一台 显示器 (用于树莓派初始化, 根据自己的情况可以使用别的方式)  配置过程 1. 初始化树莓派 首先在树莓派上安装系统, 我安装的是 Raspbian Buster with desktop, 将系统镜像刷写进SD卡后, 通过接入显示器的方式控制树莓派联网, 开启 SSH 以及 VNC , 这里详细过程就不记录, 算是玩树莓派的基本操作了. 然后我们找到树莓派的 IP, 然后使用 xshell 连接树莓派, 初始化树莓派的过程到此结束.
-2. 准备VPS 这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.</description>
+      <guid>https://cgcel.github.io/posts/2020/03/11/</guid>
+      <description>使用frp进行内网穿透</description>
     </item>
     
     <item>
       <title>树莓派系统安装以及ssh连接</title>
-      <link>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+      <link>https://cgcel.github.io/posts/2018/07/17/</link>
       <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+      <guid>https://cgcel.github.io/posts/2018/07/17/</guid>
       <description>前期准备 在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.
 系统安装 系统下载 系统安装还不算太麻烦, 直接去 官网 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 Raspbian 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:
  Raspbian Stretch with desktop Raspbian Stretch Lite  前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.

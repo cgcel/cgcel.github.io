@@ -1,76 +1,71 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>python on 烂杯的博客</title>
     <link>https://cgcel.github.io/tags/python/</link>
     <description>Recent content in python on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 13 May 2021 21:51:24 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 May 2021 09:11:56 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Inline Bot 并通过 EFB 发送微信小黄脸</title>
+      <link>https://cgcel.github.io/posts/2021/05/15/</link>
+      <pubDate>Sat, 15 May 2021 09:11:56 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2021/05/15/</guid>
+      <description>写了一个小bot解决efb无法发送小黄脸的问题</description>
+    </item>
+    
     <item>
       <title>我的 ZeroTier Network 管理 bot</title>
-      <link>https://cgcel.github.io/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</link>
+      <link>https://cgcel.github.io/posts/2021/05/13/</link>
       <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</guid>
-      <description>起因 ZeroTier 我从去年开始第一次使用, 用来给家里的树莓派做内网穿透, 不过中间因为3B当做个小服务器没什么好玩的就中断了.
-去年年底双十一从闲鱼如了一台 4G RAM 的4B (有点后悔没耐心等 8G 版本), 刷了 RaspiOS 之后就拿来跑PT站的签到脚本和当做下载机使用, 顺便安装了 ZeroTier One, 加入我的 ZeroTier Network, 如此一来在外也能较为轻松地访问到我的 pi.
-但是由于 ZeroTier 的官网在国内访问较慢, 每次需要通过新加入成员或者管理成员都要花一点时间登录官网并管理, 一开始还不觉得麻烦, 后来加入成员越来越多, 也邀请朋友一起加入, 这样管理起来就比较麻烦. 恰巧此时从 ZeroTier 官网上看到他们有官方的 API 可供用户调用, 于是我申请了 API Key, 短暂测试之后决定写一个 Telegram Bot 帮助监控以及管理我的 ZeroTier Network.
-API 调用测试 根据 官方文档 说明, 使用 postman 进行 API 调用测试, 根据指示, 在 header 中按照格式加入 API Key 即可请求到数据, 如下图:
-使用postman调用API
-Bot 设计 本 bot 使用 Telegram Bot 的第三方库 pyTelegramBotAPI 来实现, 代码部分主要包括两个部分:</description>
+      <guid>https://cgcel.github.io/posts/2021/05/13/</guid>
+      <description>一个用于管理 ZeroTier 网络的 Telegram Bot</description>
     </item>
     
     <item>
       <title>爬取洪灾期间长江沿岸水位并绘图</title>
-      <link>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
+      <link>https://cgcel.github.io/posts/2020/07/18/</link>
       <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
-      <description>前言 最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 大佬的指引 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.
-爬取数据 首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:
-
-这是一个不设防的网站, 所有实时水位数据都能在 http://www.cjh.com.cn/sqindex.html 请求到, 如图所示:
-
-可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.
-使用requests直接请求网页, 并对网页源码进行格式化以及截取:
-import requests url = &amp;#39;http://www.cjh.com.cn/sqindex.html&amp;#39; class CjhData(object): def __init__(self): pass def get_data(self): r = requests.get(url) result = r.text.split()[66][:-1] # 去除字符串最后的分号 return result 此时我们可以得到json字符串:
-&amp;#39;[{&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;39500&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;长江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60105400&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;寸滩&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;179.06&amp;#39;}, {&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;11600&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;乌 江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60803000&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;武隆&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;191.</description>
+      <guid>https://cgcel.github.io/posts/2020/07/18/</guid>
+      <description>偶然发起的小项目</description>
     </item>
     
     <item>
       <title>最近开的一个爬虫小坑</title>
-      <link>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</link>
+      <link>https://cgcel.github.io/posts/2020/07/06/</link>
       <pubDate>Mon, 06 Jul 2020 21:43:54 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</guid>
-      <description>起因 去年年底开始, 部门里统计每月运维分队保障情况的任务就落到了我们头上, 大家都不是很愿意去做, 毕竟是重复劳动, 没有什么意义, 在信息系统里查起来还比较麻烦, 数据要一个一个地对, 然后根据当月分队的排班情况算到每个分队的统计里, 并按照规则排名以及打分, 一般都是每个月23或者24号开始统计, 正好这个月我 21-24 号放假加调休, 心想终于躲过一劫的我居然在回到公司上班的第一天被通知由我来统计! 无奈之下我只好以最快的速度做完, 但是这样下去什么时候才是个头啊, 于是就萌生了自己造轮子的想法, 正好复习一下自学的 python 爬虫.
-尝试 requests 写些小爬虫的时候, 用 requests 是最方便的. 一般来说模拟登录成功的话也就成功了一半, 后续数据可以轻松获得. 但是信息系统的一些前端渲染的数据无法通过 requests 获得, 比如下面使用 BeautifulSoup 解析后没有数据:
-&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; selenium 于是我只能用 selenium 来写, 这也是我第一次全程用 selenium 实现功能的爬虫. selenium 的使用也非常简单, 思路就是使用 find_element_by_id() 和 find_element_by_xpath() 来操作浏览器点击或者输入信息, 将响应后的网页源码通过 BeautifulSoup 解析, 得到想要的数据, 如下:
-&amp;lt;span id=&amp;#34;lblCount&amp;#34; style=&amp;#34;color:#C00000;font-weight:bold;&amp;#34;&amp;gt;1&amp;lt;/span&amp;gt; 处理数据 有了数据之后还要解决一个问题, 也就是推出各个分队的排班, 以便将爬到的数据算到对应责任分队处, 我是用了建 dict 和 list 的方式, 将4天一周期的分队排班和时间段结合, 得出正确的排班, 同时也新建各种dict用于存放分队运行数据, 如延误行李数, 事前维修次数, 责任分区维修次数, 值班日志以及根据这些数据排序得到的分数等等.</description>
+      <guid>https://cgcel.github.io/posts/2020/07/06/</guid>
+      <description>第一次全程使用selenium爬数据</description>
     </item>
     
     <item>
       <title>六维空间自动登录脚本</title>
-      <link>https://cgcel.github.io/p/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+      <link>https://cgcel.github.io/posts/2018/06/23/</link>
       <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/p/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
-      <description>开篇 5.20前后几天, 六维空间开放注册, 于是久仰大名的我也跑去注册了一个账号, 因为六维空间每日登录都会送5浮云, 因此就有了写一个模拟登录拿每日奖励的脚本的想法, 将其放在校园网登录脚本里面一起跑就美滋滋了.
-代码 # -*- coding: utf-8 -*- # author: Chan import requests from bs4 import BeautifulSoup url_start = &amp;#39;http://bt.neu6.edu.cn/member.php?mod=logging&amp;amp;action=login&amp;amp;referer=http%3A%2F%2Fbt.neu6.edu.cn%2Fforum.php&amp;#39; url_login = &amp;#39;http://bt.neu6.edu.cn/&amp;#39; url_main = &amp;#39;http://bt.neu6.edu.cn/forum.php&amp;#39; url_test = &amp;#39;http://bt.neu6.edu.cn/home.php?mod=spacecp&amp;#39; class neu6(): def __init__(self, username, password): headers = { &amp;#34;Accept&amp;#34;: &amp;#34;text/html, application/xhtml+xml, application/xml&amp;#34;, &amp;#34;Accept-Encoding&amp;#34;: &amp;#34;gzip, deflate&amp;#34;, &amp;#34;Accept-Language&amp;#34;: &amp;#34;zh-CN, zh&amp;#34;, &amp;#34;Cache-Control&amp;#34;: &amp;#34;max-age = 0&amp;#34;, &amp;#34;Connection&amp;#34;: &amp;#34;keep-alive&amp;#34;, &amp;#34;Host&amp;#34;: &amp;#34;bt.neu6.edu.cn&amp;#34;, &amp;#34;Upgrade-Insecure-Requests&amp;#34;: &amp;#34;1&amp;#34;, &amp;#34;User-Agent&amp;#34;: &amp;#34;Mozilla/5.0 (Windows NT 10.0Win64x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.</description>
+      <guid>https://cgcel.github.io/posts/2018/06/23/</guid>
+      <description>每天登录一下六维, 嫖一点浮云☁</description>
     </item>
     
     <item>
       <title>flask踩坑和排坑记录</title>
-      <link>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+      <link>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
       <description>开篇 最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P
 项目依赖 虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp;amp; python3.6 测试通过):
  Flask_SQLAlchemy==2.1Flask==1.0.2Markdown==2.6.11Flask_Bootstrap==3.3.7.1 数据库 数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:
  路径:   MySQL: mysql+pymysql://username:password@hostname/database Postgres: postgresql://username:password@hostname/database SQLite(Unix): sqlite:////absolute/path/to/database SQLite(Windows): sqlite:///c:/absolute/path/to/database
-  初始化:  app = Flask(__name__)&amp;lt;br&amp;gt; app.config[&amp;#39;SQLALCHEMY_DATABASE_URI&amp;#39;] = &amp;#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&amp;#39; app.config[&amp;#39;SQLALCHEMY_TRACK_MODIFICATIONS&amp;#39;] = False db = SQLAlchemy(app)  操作语句:  User.</description>
+  初始化:  1 2 3 4  app = Flask(__name__)&amp;lt;br&amp;gt; app.</description>
     </item>
     
   </channel>

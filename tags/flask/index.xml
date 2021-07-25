@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>flask on 烂杯的博客</title>
     <link>https://cgcel.github.io/tags/flask/</link>
     <description>Recent content in flask on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <lastBuildDate>Thu, 21 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/flask/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>flask踩坑和排坑记录</title>
-      <link>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+      <link>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/p/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
       <description>开篇 最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P
 项目依赖 虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp;amp; python3.6 测试通过):
  Flask_SQLAlchemy==2.1Flask==1.0.2Markdown==2.6.11Flask_Bootstrap==3.3.7.1 数据库 数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:
  路径:   MySQL: mysql+pymysql://username:password@hostname/database Postgres: postgresql://username:password@hostname/database SQLite(Unix): sqlite:////absolute/path/to/database SQLite(Windows): sqlite:///c:/absolute/path/to/database
-  初始化:  app = Flask(__name__)&amp;lt;br&amp;gt; app.config[&amp;#39;SQLALCHEMY_DATABASE_URI&amp;#39;] = &amp;#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&amp;#39; app.config[&amp;#39;SQLALCHEMY_TRACK_MODIFICATIONS&amp;#39;] = False db = SQLAlchemy(app)  操作语句:  User.</description>
+  初始化:  1 2 3 4  app = Flask(__name__)&amp;lt;br&amp;gt; app.</description>
     </item>
     
   </channel>

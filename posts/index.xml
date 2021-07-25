@@ -9,16 +9,7 @@
       <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 25 Jul 2021 16:18:40 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>25</title>
-      <link>https://cgcel.github.io/posts/2021/07/25/</link>
-      <pubDate>Sun, 25 Jul 2021 16:18:40 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/posts/2021/07/25/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一加8T全量包升级并保留ROOT</title>
       <link>https://cgcel.github.io/posts/2021/05/22/</link>
@@ -35,15 +26,6 @@
       
       <guid>https://cgcel.github.io/posts/2021/05/17/</guid>
       <description>从 OxygenOS 到 LineageOS 的刷机记录贴</description>
-    </item>
-    
-    <item>
-      <title>使用 Inline Bot 并通过 EFB 发送微信小黄脸</title>
-      <link>https://cgcel.github.io/posts/2021/05/15/</link>
-      <pubDate>Sat, 15 May 2021 09:11:56 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/posts/2021/05/15/</guid>
-      <description>写了一个小bot解决efb无法发送小黄脸的问题</description>
     </item>
     
     <item>
@@ -181,15 +163,6 @@
       
       <guid>https://cgcel.github.io/posts/2019/12/01/</guid>
       <description>这是标题 好久没弄博客, 正好换电脑心血来潮重新配一下, 感觉新主题还挺不错的, 近期更新一下文章吧, 大概:)</description>
-    </item>
-    
-    <item>
-      <title>一加6 Havoc OS刷机体验</title>
-      <link>https://cgcel.github.io/posts/2019/01/06/</link>
-      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgcel.github.io/posts/2019/01/06/</guid>
-      <description></description>
     </item>
     
     <item>

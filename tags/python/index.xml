@@ -9,16 +9,7 @@
       <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 15 May 2021 09:11:56 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>使用 Inline Bot 并通过 EFB 发送微信小黄脸</title>
-      <link>https://cgcel.github.io/posts/2021/05/15/</link>
-      <pubDate>Sat, 15 May 2021 09:11:56 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/posts/2021/05/15/</guid>
-      <description>写了一个小bot解决efb无法发送小黄脸的问题</description>
-    </item>
-    
+    <lastBuildDate>Thu, 13 May 2021 21:51:24 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的 ZeroTier Network 管理 bot</title>
       <link>https://cgcel.github.io/posts/2021/05/13/</link>

@@ -11,6 +11,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 21 Mar 2022 21:54:49 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>mariadb</title>
+      <link>https://cgcel.github.io/tags/mariadb/</link>
+      <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mount</title>
+      <link>https://cgcel.github.io/tags/mount/</link>
+      <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/mount/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>nextcloud</title>
       <link>https://cgcel.github.io/tags/nextcloud/</link>
       <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
@@ -52,6 +70,15 @@
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/magisk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oneplus</title>
+      <link>https://cgcel.github.io/tags/oneplus/</link>
+      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/oneplus/</guid>
       <description></description>
     </item>
     
@@ -119,6 +146,15 @@
     </item>
     
     <item>
+      <title>requests</title>
+      <link>https://cgcel.github.io/tags/requests/</link>
+      <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/requests/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>telegram</title>
       <link>https://cgcel.github.io/tags/telegram/</link>
       <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
@@ -142,6 +178,15 @@
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>i2c</title>
+      <link>https://cgcel.github.io/tags/i2c/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/i2c/</guid>
       <description></description>
     </item>
     
@@ -218,11 +263,11 @@
     </item>
     
     <item>
-      <title>oneplus</title>
-      <link>https://cgcel.github.io/tags/oneplus/</link>
+      <title>oneplus7</title>
+      <link>https://cgcel.github.io/tags/oneplus7/</link>
       <pubDate>Thu, 07 May 2020 15:02:04 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/tags/oneplus/</guid>
+      <guid>https://cgcel.github.io/tags/oneplus7/</guid>
       <description></description>
     </item>
     
@@ -263,6 +308,15 @@
     </item>
     
     <item>
+      <title>proxy</title>
+      <link>https://cgcel.github.io/tags/proxy/</link>
+      <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>v2ray</title>
       <link>https://cgcel.github.io/tags/v2ray/</link>
       <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
@@ -286,6 +340,15 @@
       <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
       
       <guid>https://cgcel.github.io/tags/serial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>softwareserial</title>
+      <link>https://cgcel.github.io/tags/softwareserial/</link>
+      <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/softwareserial/</guid>
       <description></description>
     </item>
     
@@ -317,6 +380,24 @@
     </item>
     
     <item>
+      <title>twrp</title>
+      <link>https://cgcel.github.io/tags/twrp/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/twrp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pixel</title>
+      <link>https://cgcel.github.io/tags/pixel/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/pixel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>pixel2xl</title>
       <link>https://cgcel.github.io/tags/pixel2xl/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
@@ -331,6 +412,15 @@
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/shadowsocks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debian</title>
+      <link>https://cgcel.github.io/tags/debian/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/debian/</guid>
       <description></description>
     </item>
     
@@ -353,6 +443,15 @@
     </item>
     
     <item>
+      <title>fcm</title>
+      <link>https://cgcel.github.io/tags/fcm/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/fcm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>perl</title>
       <link>https://cgcel.github.io/tags/perl/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
@@ -362,11 +461,29 @@
     </item>
     
     <item>
-      <title>requests</title>
-      <link>https://cgcel.github.io/tags/requests/</link>
-      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      <title>wechat</title>
+      <link>https://cgcel.github.io/tags/wechat/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/tags/requests/</guid>
+      <guid>https://cgcel.github.io/tags/wechat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>onelplus</title>
+      <link>https://cgcel.github.io/tags/onelplus/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/onelplus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oneplus1</title>
+      <link>https://cgcel.github.io/tags/oneplus1/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/oneplus1/</guid>
       <description></description>
     </item>
     
@@ -376,6 +493,15 @@
       <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://cgcel.github.io/tags/blog/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/blog/</guid>
       <description></description>
     </item>
     

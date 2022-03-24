@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>红外测温 on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9/</link>
+    <description>Recent content in 红外测温 on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIY项目 -- 自制红外测温枪</title>
+      <link>https://cgcel.github.io/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</guid>
+      <description>在家自制一把测温枪</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -12,10 +12,10 @@
     <lastBuildDate>Thu, 06 Feb 2020 14:28:09 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>V2RayN局域网共享</title>
-      <link>https://cgcel.github.io/posts/2020/02/06/</link>
+      <link>https://cgcel.github.io/posts/2020/02/06/2020-02-06-v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
       <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2020/02/06/</guid>
+      <guid>https://cgcel.github.io/posts/2020/02/06/2020-02-06-v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
       <description>开篇 最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.
 准备  电脑1台 安装好 V2RayN  详细步骤 设置V2RayN 因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.
 打开移动热点 以 win10 系统为例, 在设置中打开移动热点:
@@ -27,10 +27,10 @@
     
     <item>
       <title>Shadowsocks局域网共享</title>
-      <link>https://cgcel.github.io/posts/2018/09/05/</link>
+      <link>https://cgcel.github.io/posts/2018/09/05/2018-09-05-shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/09/05/</guid>
+      <guid>https://cgcel.github.io/posts/2018/09/05/2018-09-05-shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
       <description>开篇 好久没有更新博客, 正好熟悉了一下 ss 通过局域网共享到手机, 于是写一篇博客记录下来.
 详细步骤 打开热点 首先我们打开电脑的热点, 如果没有的话就使用 wifi 共享工具打开热点, 这里使用的是 WiFi 共享精灵(顺便吐槽一下, 我一直没有找到没广告的良心工具, 换来换去还是这个最顺手, 把各种弹窗关掉将就一下吧)
 查看网络连接信息 打开网络连接, 我们可以通过名称来找到刚开启的热点, 如图为本地连接3.

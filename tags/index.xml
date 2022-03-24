@@ -83,11 +83,29 @@
     </item>
     
     <item>
+      <title>flashing</title>
+      <link>https://cgcel.github.io/tags/flashing/</link>
+      <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/flashing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>lineageos</title>
       <link>https://cgcel.github.io/tags/lineageos/</link>
       <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
       
       <guid>https://cgcel.github.io/tags/lineageos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bot</title>
+      <link>https://cgcel.github.io/tags/bot/</link>
+      <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/bot/</guid>
       <description></description>
     </item>
     
@@ -128,6 +146,24 @@
     </item>
     
     <item>
+      <title>oled</title>
+      <link>https://cgcel.github.io/tags/oled/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/oled/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>红外测温</title>
+      <link>https://cgcel.github.io/tags/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>oneplus6</title>
       <link>https://cgcel.github.io/tags/oneplus6/</link>
       <pubDate>Sat, 03 Oct 2020 19:38:47 +0800</pubDate>
@@ -164,15 +200,6 @@
     </item>
     
     <item>
-      <title>serial</title>
-      <link>https://cgcel.github.io/tags/serial/</link>
-      <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/serial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>stm32</title>
       <link>https://cgcel.github.io/tags/stm32/</link>
       <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
@@ -182,11 +209,29 @@
     </item>
     
     <item>
+      <title>uart</title>
+      <link>https://cgcel.github.io/tags/uart/</link>
+      <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/uart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>oneplus</title>
       <link>https://cgcel.github.io/tags/oneplus/</link>
       <pubDate>Thu, 07 May 2020 15:02:04 +0800</pubDate>
       
       <guid>https://cgcel.github.io/tags/oneplus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rfid</title>
+      <link>https://cgcel.github.io/tags/rfid/</link>
+      <pubDate>Sun, 26 Apr 2020 19:37:43 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/rfid/</guid>
       <description></description>
     </item>
     
@@ -236,6 +281,51 @@
     </item>
     
     <item>
+      <title>serial</title>
+      <link>https://cgcel.github.io/tags/serial/</link>
+      <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/serial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>balancecar</title>
+      <link>https://cgcel.github.io/tags/balancecar/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/balancecar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pid</title>
+      <link>https://cgcel.github.io/tags/pid/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/pid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pixelexperience</title>
+      <link>https://cgcel.github.io/tags/pixelexperience/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/pixelexperience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pixel2xl</title>
+      <link>https://cgcel.github.io/tags/pixel2xl/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/pixel2xl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>shadowsocks</title>
       <link>https://cgcel.github.io/tags/shadowsocks/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
@@ -245,11 +335,47 @@
     </item>
     
     <item>
+      <title>raspbian</title>
+      <link>https://cgcel.github.io/tags/raspbian/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/raspbian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://cgcel.github.io/tags/ssh/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>perl</title>
       <link>https://cgcel.github.io/tags/perl/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/perl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>requests</title>
+      <link>https://cgcel.github.io/tags/requests/</link>
+      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/requests/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>登录</title>
+      <link>https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/</guid>
       <description></description>
     </item>
     

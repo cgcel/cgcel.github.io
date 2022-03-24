@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>登录 on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/</link>
+    <description>Recent content in 登录 on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 23 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>六维空间自动登录脚本</title>
+      <link>https://cgcel.github.io/posts/2018/06/23/2018-06-23-%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2018/06/23/2018-06-23-%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
+      <description>每天登录一下六维, 嫖一点浮云☁</description>
+    </item>
+    
+  </channel>
+</rss>

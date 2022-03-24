@@ -12,10 +12,10 @@
     <lastBuildDate>Thu, 21 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github.io博客搭建</title>
-      <link>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <link>https://cgcel.github.io/posts/2018/06/21/2018-06-21-github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <guid>https://cgcel.github.io/posts/2018/06/21/2018-06-21-github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
       <description>开篇 看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.
 创建仓库 在 github 新建项目, 命名格式为 &amp;lt;username&amp;gt;.github.io, 最好先选 private, 因为可能会有很多误操作. 然后在本机 (Windows) 安装环境: gem, jekyll 等等, 安装这些是便于在本地修改网页并且预览,这样就不用每次都 push 到 github 来试了. 不过 Windows 安装起来挺麻烦的, 一定要按照教程一步一步来设置, 跟教程有一些出入的地方要自己判断.
 选择主题 jekyll 的主题有很多,我们可以在 github 和网页上挑选, 本来我想要选一个 md 格式的主题,奈何一时间找不到,于是从 github 上选择了一个纯白的极简主题.

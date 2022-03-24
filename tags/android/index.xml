@@ -12,47 +12,47 @@
     <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一加8T全量包升级并保留ROOT</title>
-      <link>https://cgcel.github.io/posts/2021/05/22/</link>
+      <link>https://cgcel.github.io/posts/2021/05/22/2021-05-22-%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2021/05/22/</guid>
+      <guid>https://cgcel.github.io/posts/2021/05/22/2021-05-22-%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</guid>
       <description>ColorOS 并不好用</description>
     </item>
     
     <item>
       <title>从OOS到LOS -- 一加8T的刷机记录</title>
-      <link>https://cgcel.github.io/posts/2021/05/17/</link>
+      <link>https://cgcel.github.io/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2021/05/17/</guid>
+      <guid>https://cgcel.github.io/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
       <description>从 OxygenOS 到 LineageOS 的刷机记录贴</description>
     </item>
     
     <item>
       <title>Syberia OS (R) for OnePlus 6 刷机体验</title>
-      <link>https://cgcel.github.io/posts/2020/10/03/</link>
+      <link>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
       <pubDate>Sat, 03 Oct 2020 19:38:47 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2020/10/03/</guid>
+      <guid>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
       <description>一加6刷机记录</description>
     </item>
     
     <item>
       <title>一加7 OTA升级系统并保留root记录</title>
-      <link>https://cgcel.github.io/posts/2020/05/07/</link>
+      <link>https://cgcel.github.io/posts/2020/05/07/2020-05-07-%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Thu, 07 May 2020 15:02:04 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2020/05/07/</guid>
+      <guid>https://cgcel.github.io/posts/2020/05/07/2020-05-07-%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/</guid>
       <description>如何在享受官方OTA升级的基础上使用root权限?</description>
     </item>
     
     <item>
       <title>ViewPager的嵌套滑动冲突问题解决</title>
-      <link>https://cgcel.github.io/posts/2020/02/10/</link>
+      <link>https://cgcel.github.io/posts/2020/02/10/2020-02-10-viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Mon, 10 Feb 2020 16:01:35 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2020/02/10/</guid>
-      <description>在上一篇博客 ViewPager禁用滑动实践和总结 中我总结了禁用 ViewPager 滑动的解决方案, 这也是网上示例的主流解决方法, 但是使用这个方法后, 导致项目中 Fragment 的 RecyclerView 与 ViewPager 的滑动出现冲突, 无法实现效果, 如下图:
+      <guid>https://cgcel.github.io/posts/2020/02/10/2020-02-10-viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+      <description>开篇 在上一篇博客 [[2020-02-08-ViewPager禁用滑动实践和总结|ViewPager禁用滑动实践和总结]] 中我总结了禁用 ViewPager 滑动的解决方案, 这也是网上示例的主流解决方法, 但是使用这个方法后, 导致项目中 Fragment 的 RecyclerView 与 ViewPager 的滑动出现冲突, 无法实现效果, 如下图:
 从上图可以看到按照上一篇博客中重写子 Fragment 中的 ViewPager 的 OnInterceptTouchEvent() 和 onTouchEvent() 后, 于子 Fragment 中显示的 RecyclerView 上滑动将无法使用 Activity 的 ViewPager 切换, 只能在 RecyclerView 没有覆盖到的边框位置进行滑动, 这样的操作无疑非常不舒适, 于是我只能继续在网上搜索相关解决方案, 现总结如下.
 修改步骤 与上一篇博客思路一样, 只需要重写 ViewPager 的 canScrollHorizontally() 函数即可, 代码如下:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动  public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右  } }   修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果.</description>
@@ -60,10 +60,10 @@
     
     <item>
       <title>ViewPager禁用滑动实践和总结</title>
-      <link>https://cgcel.github.io/posts/2020/02/08/</link>
+      <link>https://cgcel.github.io/posts/2020/02/08/2020-02-08-viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 08 Feb 2020 22:00:39 +0800</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2020/02/08/</guid>
+      <guid>https://cgcel.github.io/posts/2020/02/08/2020-02-08-viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/</guid>
       <description>开篇 接触 Android 有一段时间了, 起因是帮同事一起做项目, 顺便自己学习, 于是项目一直断断续续进行, 很多控件和功能都是参考《第一行代码》还有网上的例子慢慢探索的, 最近一直在钻 TabLayout 的点击切换, 也就是禁用 ViewPager 的左右滑动切换的牛角尖, 具体效果如下图所示. 网上的例子实在是太千篇一律了, 导致有些地方只要其中一篇阅读量很多的博客没有, 其他转载或者借鉴的博客就都不会写🤪, 下面就记录一下我在原有 TabLayout&amp;amp;ViewPager 基础上修改的示例.
 实现步骤 1. 重写ViewPager 如果要实现禁用滑动的效果, 那么就需要重写 ViewPager, 因为默认是开启滑动的, 具体代码如下:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  public class NoScrollingViewPager extends ViewPager { private boolean scrollable = false; public NoScrollingViewPager(Context context) { super(context); } public NoScrollingViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写以下两个TouchEvent, 返回false以禁用滑动动作的监听  public boolean onInterceptTouchEvent(MotionEvent ev) { return scrollable; } @Override public boolean onTouchEvent(MotionEvent ev) { return scrollable; } }   以上重写代码都是千篇一律的, 只需要重写两个函数.</description>
@@ -71,19 +71,19 @@
     
     <item>
       <title>一加6 Pixel Experience Android Pie 刷机体验</title>
-      <link>https://cgcel.github.io/posts/2018/10/28/</link>
+      <link>https://cgcel.github.io/posts/2018/10/28/2018-10-28-%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/10/28/</guid>
+      <guid>https://cgcel.github.io/posts/2018/10/28/2018-10-28-%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
       <description>一加6的刷机记录</description>
     </item>
     
     <item>
       <title>Pixel 2XL root方案记录</title>
-      <link>https://cgcel.github.io/posts/2018/09/09/</link>
+      <link>https://cgcel.github.io/posts/2018/09/09/2018-09-09-pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/09/09/</guid>
+      <guid>https://cgcel.github.io/posts/2018/09/09/2018-09-09-pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</guid>
       <description>开篇 回顾我的刷机历程, 每次都是有了想法之后就行动起来了, 经历的是一次又一次的真香警告. 而本次 root 的想法的起因是黑域越来越难用, 让我想用回绿守, 本想着等 9.1 出来之后再 root, 但是每次我都会等不及&amp;hellip; 然后果不其然的踩坑了.
 刷机环境以及刷机包准备  USB驱动 adb环境 TWRP Magisk  其中, twrp 较新版本刷入之后有 bug, 上 youtube 看过教程后, 决定采用 twrp3.2.1.2, 下载时需要下载.img以及.zip文件.
 具体步骤   进入命令行
@@ -96,19 +96,19 @@
     
     <item>
       <title>Gcm-for-Mojo搭建总结</title>
-      <link>https://cgcel.github.io/posts/2018/07/06/</link>
+      <link>https://cgcel.github.io/posts/2018/07/06/2018-07-06-gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/07/06/</guid>
+      <guid>https://cgcel.github.io/posts/2018/07/06/2018-07-06-gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
       <description>使用Gcm-for-Mojo接收微信消息</description>
     </item>
     
     <item>
       <title>一加1卡刷lineage15.1</title>
-      <link>https://cgcel.github.io/posts/2018/07/04/</link>
+      <link>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://cgcel.github.io/posts/2018/07/04/</guid>
+      <guid>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
       <description>一加1刷机记录</description>
     </item>
     

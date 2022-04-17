@@ -550,5 +550,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>android12</title>
+      <link>https://cgcel.github.io/tags/android12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/android12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fastboot</title>
+      <link>https://cgcel.github.io/tags/fastboot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/fastboot/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

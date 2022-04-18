@@ -9,7 +9,52 @@
       <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Mar 2022 21:54:49 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>android12</title>
+      <link>https://cgcel.github.io/tags/android12/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/android12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fastboot</title>
+      <link>https://cgcel.github.io/tags/fastboot/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/fastboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flashing</title>
+      <link>https://cgcel.github.io/tags/flashing/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/flashing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oneplus</title>
+      <link>https://cgcel.github.io/tags/oneplus/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/oneplus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oneplus8t</title>
+      <link>https://cgcel.github.io/tags/oneplus8t/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/oneplus8t/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>mariadb</title>
       <link>https://cgcel.github.io/tags/mariadb/</link>
@@ -74,24 +119,6 @@
     </item>
     
     <item>
-      <title>oneplus</title>
-      <link>https://cgcel.github.io/tags/oneplus/</link>
-      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/oneplus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>oneplus8t</title>
-      <link>https://cgcel.github.io/tags/oneplus8t/</link>
-      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/oneplus8t/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>oxygenos</title>
       <link>https://cgcel.github.io/tags/oxygenos/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
@@ -106,15 +133,6 @@
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/root/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>flashing</title>
-      <link>https://cgcel.github.io/tags/flashing/</link>
-      <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/flashing/</guid>
       <description></description>
     </item>
     
@@ -547,24 +565,6 @@
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/jekyll/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>android12</title>
-      <link>https://cgcel.github.io/tags/android12/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/android12/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fastboot</title>
-      <link>https://cgcel.github.io/tags/fastboot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/fastboot/</guid>
       <description></description>
     </item>
     

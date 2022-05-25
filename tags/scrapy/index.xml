@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>scrapy on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/scrapy/</link>
+    <description>Recent content in scrapy on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 17 May 2022 14:13:36 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/scrapy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scrapy初上手: 爬取小说记录</title>
+      <link>https://cgcel.github.io/posts/2022/05/17/2022-05-17-title/</link>
+      <pubDate>Tue, 17 May 2022 14:13:36 +0000</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2022/05/17/2022-05-17-title/</guid>
+      <description>开篇 由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.
+准备 安装 现在的 Scrapy 安装简单了不少, 几年前在 Windows 端还不能直接用用 pip 安装. 现在只需要一句 pip install scrapy 即可.
+编译环境 编译环境当然还是永远的 VS Code.
+实现 计划 大佬提供了一个塞满 URL 的 json 文件给我, 都是小说网站相关的, 既然要爬取小说网站, 就不可避免地要爬取同一本书的多个章节, 于是很容易联想到使用 Scrapy 来实现, 毕竟是一个成名已久的 Python 爬虫框架, 总比我简单粗暴用 requests 来爬好多了.
+那么接下来就是解决以下几个问题, 最后实现整个爬取的功能:
+ 根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 .</description>
+    </item>
+    
+  </channel>
+</rss>

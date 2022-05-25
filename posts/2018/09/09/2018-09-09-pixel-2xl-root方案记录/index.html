@@ -119,7 +119,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -140,7 +140,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -160,7 +160,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -181,7 +181,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -334,22 +334,22 @@
 <p>进入 fastboot 界面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ adb reboot bootloader
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ adb reboot bootloader
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>解 bootloader 锁</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ fastboot flashing unlock
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ fastboot flashing unlock
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用音量键和电源键进行确认, 注意解锁后手机所有数据将会被清除, 要做好备份.</p>
 </li>
@@ -357,11 +357,11 @@
 <p>刷入第三方 recovery</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ fastboot boot path/twrp.img
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ fastboot boot path/twrp.img
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>刷入成功后, 重启进入 recovery, 此时还需要进入 install, 选择 <code>twrp.zip</code> 包再进行刷入. 缺少这一步的话, 下一次重启还会回到官方recovery.</p>
 </li>
@@ -506,7 +506,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

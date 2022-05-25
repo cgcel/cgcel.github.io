@@ -104,7 +104,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -125,7 +125,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -145,7 +145,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -166,7 +166,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -295,7 +295,7 @@
     >帖子</a>, 刷入步骤挺简单, 没有什么花里胡哨的, 把包下好之后就可以直接开整, 因为我的机已经解锁了, 也省去了很多繁琐的步骤.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -315,25 +315,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Download recovery.img in download link
-Reboot phone to bootloader
-Open any terminal like cmd etc, enter &#34;fastboot flash recovery recovery.img&#34;
-Reboot phone to recovery and enter sideload mode
-Enter &#34;adb sideload xxx&#34; (xxx means the filename of rom zip you downloaded)
-Do factory reset in recovery (Mandatory for first time flash)
-Reboot
-You can also use rom installer to flash the way you did before.
-
-
-
-For root:
-
-Download Magisk apk
-Rename it to *.zip
-Reboot to recovery and enter sideload mode
-Enter &#34;adb sideload xxx.zip&#34; (xxx means magisk file name)
-You can also patch boot.img and flash via fastboot.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Download recovery.img in download link
+</span></span><span class="line"><span class="cl">Reboot phone to bootloader
+</span></span><span class="line"><span class="cl">Open any terminal like cmd etc, enter &#34;fastboot flash recovery recovery.img&#34;
+</span></span><span class="line"><span class="cl">Reboot phone to recovery and enter sideload mode
+</span></span><span class="line"><span class="cl">Enter &#34;adb sideload xxx&#34; (xxx means the filename of rom zip you downloaded)
+</span></span><span class="line"><span class="cl">Do factory reset in recovery (Mandatory for first time flash)
+</span></span><span class="line"><span class="cl">Reboot
+</span></span><span class="line"><span class="cl">You can also use rom installer to flash the way you did before.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">For root:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Download Magisk apk
+</span></span><span class="line"><span class="cl">Rename it to *.zip
+</span></span><span class="line"><span class="cl">Reboot to recovery and enter sideload mode
+</span></span><span class="line"><span class="cl">Enter &#34;adb sideload xxx.zip&#34; (xxx means magisk file name)
+</span></span><span class="line"><span class="cl">You can also patch boot.img and flash via fastboot.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="步骤">步骤</h2>
 <ol>
@@ -352,30 +352,30 @@ You can also patch boot.img and flash via fastboot.
 <p>重启至bootloader并开始刷机.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">adb devices
-adb reboot bootloader
-fastboot devices
-fastboot flash recovery recovery.img
-fastboot reboot recovery
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">adb devices
+</span></span><span class="line"><span class="cl">adb reboot bootloader
+</span></span><span class="line"><span class="cl">fastboot devices
+</span></span><span class="line"><span class="cl">fastboot flash recovery recovery.img
+</span></span><span class="line"><span class="cl">fastboot reboot recovery
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在recovery中点击adb sideload, 然后进行以下操作:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">adb devices
-adb sideload ROM.zip
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">adb devices
+</span></span><span class="line"><span class="cl">adb sideload ROM.zip
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -468,7 +468,7 @@ adb sideload ROM.zip
             
                 
 <article class="">
-    <a href="/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/">
+    <a href="/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/">
         
         
 
@@ -530,7 +530,7 @@ adb sideload ROM.zip
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

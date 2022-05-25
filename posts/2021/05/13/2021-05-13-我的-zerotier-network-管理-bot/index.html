@@ -98,7 +98,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -119,7 +119,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -139,7 +139,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -160,7 +160,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -345,7 +345,7 @@
 <p>发送指令给 @BotFather, 你可以复制以下内容发送至 @BotFather 以编辑你的 bot 指令:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -353,42 +353,42 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">help - Show commands list.
-show_network - Show your zerotier networks.
-set_member_name - Set your member&#39;s name by using this command.
-auth_member - Authorize a member.
-unauth_member - Unauthorize a member.
-delete_member - Delete a member.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">help - Show commands list.
+</span></span><span class="line"><span class="cl">show_network - Show your zerotier networks.
+</span></span><span class="line"><span class="cl">set_member_name - Set your member&#39;s name by using this command.
+</span></span><span class="line"><span class="cl">auth_member - Authorize a member.
+</span></span><span class="line"><span class="cl">unauth_member - Unauthorize a member.
+</span></span><span class="line"><span class="cl">delete_member - Delete a member.
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>拷贝仓库至本地:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ git clone https://github.com/koonchung/ZeroTierTelegramBot.git
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ git clone https://github.com/koonchung/ZeroTierTelegramBot.git
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>安装依赖:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ pip3 install -r requirements.txt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ pip3 install -r requirements.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑 <code>config.yaml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -404,34 +404,34 @@ delete_member - Delete a member.
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Fill with your telegram bot token</span><span class="w">
-</span><span class="w"></span><span class="c"># Create your bot by sending commands to @BotFather in Telegram</span><span class="w">
-</span><span class="w"></span><span class="nt">bot_token</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your_bot_token&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Fill with your zerotier token</span><span class="w">
-</span><span class="w"></span><span class="c"># Get your own API Access Token at: https://my.zerotier.com/account</span><span class="w">
-</span><span class="w"></span><span class="nt">zerotier_token</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your_zerotier_web_api_token&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Fill with telegram id which you want to set as admin</span><span class="w">
-</span><span class="w"></span><span class="nt">admin_id</span><span class="p">:</span><span class="w">
-</span><span class="w">   </span>- <span class="l">your_telegram_id</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Fill with refresh seconds, used to check new members</span><span class="w">
-</span><span class="w"></span><span class="nt">refresh_seconds</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Fill with your telegram bot token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Create your bot by sending commands to @BotFather in Telegram</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">bot_token</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your_bot_token&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Fill with your zerotier token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Get your own API Access Token at: https://my.zerotier.com/account</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">zerotier_token</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your_zerotier_web_api_token&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Fill with telegram id which you want to set as admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">admin_id</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span>- <span class="l">your_telegram_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Fill with refresh seconds, used to check new members</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">refresh_seconds</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>运行 Bot</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cd ZeroTierTelegramBot
-$ python3 zerotiertelegrambot
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ cd ZeroTierTelegramBot
+</span></span><span class="line"><span class="cl">$ python3 zerotiertelegrambot
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将 bot 邀请至自建群聊中, 发送 <code>/start@your_bot</code> 至群聊, 然后即可开始管理你的ZeroTier Networks.</p>
 </li>
@@ -628,7 +628,7 @@ $ python3 zerotiertelegrambot
             
                 
 <article class="">
-    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
         
         
 
@@ -648,7 +648,7 @@ $ python3 zerotiertelegrambot
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

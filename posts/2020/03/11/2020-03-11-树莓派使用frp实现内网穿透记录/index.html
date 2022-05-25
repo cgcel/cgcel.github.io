@@ -98,7 +98,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -119,7 +119,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -139,7 +139,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -160,7 +160,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -312,33 +312,34 @@
 <h3 id="2-准备vps">2. 准备VPS</h3>
 <p>这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.</p>
 <h3 id="3-配置frp">3. 配置frp</h3>
-<p>frp 是 GitHub 上的开源项目, 可以直接到 <a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a> 中下载, 这里, 根据 VPS 选择 frp_0.31.2_linux_amd64.tar.gz, 而树莓派则选择下载 frp_0.31.2_linux_arm.tar.gz. 根据对应的操作系统及架构, 从 Release 页面下载最新版本的程序, 将 frps 及 frps.ini 放到具有公网 IP 的机器上, 将 frpc 及 frpc.ini 放到处于内网环境的机器上. 而实际上每一个压缩包内都包含了这两个文件, 只需要根据机器的类型来进行配置并运行即可 (Server或者Client端).</p>
+<p>frp 是 GitHub 上的开源项目, 可以直接到 <a class="link" href="https://github.com/fatedier/frp/releases"  target="_blank" rel="noopener"
+    >https://github.com/fatedier/frp/releases</a> 中下载, 这里, 根据 VPS 选择 frp_0.31.2_linux_amd64.tar.gz, 而树莓派则选择下载 frp_0.31.2_linux_arm.tar.gz. 根据对应的操作系统及架构, 从 Release 页面下载最新版本的程序, 将 frps 及 frps.ini 放到具有公网 IP 的机器上, 将 frpc 及 frpc.ini 放到处于内网环境的机器上. 而实际上每一个压缩包内都包含了这两个文件, 只需要根据机器的类型来进行配置并运行即可 (Server或者Client端).</p>
 <p>在VPS中, 解压压缩包, 编辑frps.ini文件, 按照配置说明, 可以简单进行编辑:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># frps.ini
-[common]
-bind_port = 7000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># frps.ini
+</span></span><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">bind_port = 7000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>启动frps.ini:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">./frps -c ./frps.ini
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./frps -c ./frps.ini
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在树莓派中, 解压压缩包, 假设 frps 所在服务器的公网 IP 为 x.x.x.x:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -356,32 +357,32 @@ bind_port = 7000
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># frpc.ini
-[common]
-server_addr = x.x.x.x
-server_port = 7000
-
-[ssh]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 22
-remote_port = 6000
-
-[VNC]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 5900
-remote_port = 6500
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># frpc.ini
+</span></span><span class="line"><span class="cl">[common]
+</span></span><span class="line"><span class="cl">server_addr = x.x.x.x
+</span></span><span class="line"><span class="cl">server_port = 7000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ssh]
+</span></span><span class="line"><span class="cl">type = tcp
+</span></span><span class="line"><span class="cl">local_ip = 127.0.0.1
+</span></span><span class="line"><span class="cl">local_port = 22
+</span></span><span class="line"><span class="cl">remote_port = 6000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[VNC]
+</span></span><span class="line"><span class="cl">type = tcp
+</span></span><span class="line"><span class="cl">local_ip = 127.0.0.1
+</span></span><span class="line"><span class="cl">local_port = 5900
+</span></span><span class="line"><span class="cl">remote_port = 6500
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>启动frpc.ini:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">./frpc -c ./frpc.ini
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./frpc -c ./frpc.ini
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>启动后, 内网穿透已经完成, 可以看见, 在树莓派中已经配置了ssh以及VNC访问, 其中5900是树莓派VNC的端口. 至此, 配置已经完成, 我们可以在ssh客户端通过x.x.x.x:6000以及在VNC客户端通过x.x.x.x:6500访问树莓派了!</p>
 
@@ -452,7 +453,7 @@ remote_port = 6500
             
                 
 <article class="">
-    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
         
         
 
@@ -496,7 +497,7 @@ remote_port = 6500
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

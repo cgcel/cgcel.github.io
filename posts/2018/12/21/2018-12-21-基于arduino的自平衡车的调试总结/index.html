@@ -99,7 +99,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -120,7 +120,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -140,7 +140,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -161,7 +161,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -365,7 +365,7 @@
 <p>对应修改代码参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -375,27 +375,27 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span> <span class="c1">//初始化MPU6050
-</span><span class="c1"></span><span class="n">devStatus</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">dmpInitialize</span><span class="p">();</span>
-<span class="c1">// supply your own gyro offsets here, scaled for min sensitivity
-</span><span class="c1">// 校正mpu6050模块, 参考https://www.youtube.com/watch?v=ce3eA8nzInE
-</span><span class="c1"></span><span class="n">mpu</span><span class="p">.</span><span class="n">setXGyroOffset</span><span class="p">(</span><span class="mi">165</span><span class="p">);</span>
-<span class="n">mpu</span><span class="p">.</span><span class="n">setYGyroOffset</span><span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">);</span>
-<span class="n">mpu</span><span class="p">.</span><span class="n">setZGyroOffset</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">mpu</span><span class="p">.</span><span class="n">setZAccelOffset</span><span class="p">(</span><span class="mi">528</span><span class="p">);</span> <span class="c1">// 1688 factory default for my test chip
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">mpu</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span> <span class="c1">//初始化MPU6050
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">devStatus</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">dmpInitialize</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// supply your own gyro offsets here, scaled for min sensitivity
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 校正mpu6050模块, 参考https://www.youtube.com/watch?v=ce3eA8nzInE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">mpu</span><span class="p">.</span><span class="n">setXGyroOffset</span><span class="p">(</span><span class="mi">165</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">mpu</span><span class="p">.</span><span class="n">setYGyroOffset</span><span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">mpu</span><span class="p">.</span><span class="n">setZGyroOffset</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">mpu</span><span class="p">.</span><span class="n">setZAccelOffset</span><span class="p">(</span><span class="mi">528</span><span class="p">);</span> <span class="c1">// 1688 factory default for my test chip
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>值得一提的是，这一段代码是直接照搬 mpu6050 库的示例代码的，就连备注部分都是一样的。</p>
 <p>校正完毕后，我们需要调节小车的机械中值：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="kt">double</span> <span class="n">originalSetpoint</span> <span class="o">=</span> <span class="mi">183</span><span class="p">;</span>
-<span class="c1">//173, 调节小车的稳定中值, 180为默认值, 根据小车实际情况调试
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">originalSetpoint</span> <span class="o">=</span> <span class="mi">183</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//173, 调节小车的稳定中值, 180为默认值, 根据小车实际情况调试
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>到现在，小车已经能够正常做出反应，我们的调试工作准备开始，对小车进行 PID 参数整定。
 参照<a class="link" href="https://www.youtube.com/watch?v=uyHdyF0_BFo"  target="_blank" rel="noopener"
@@ -611,37 +611,48 @@
 <p>吃水不忘挖井人，下面贴上整个制作过程中帮助比较大的前辈们的教程：</p>
 <ul>
 <li>
-<p><a href="https://forum.arduino.cc/index.php?topic=519968.0">https://forum.arduino.cc/index.php?topic=519968.0</a></p>
+<p><a class="link" href="https://forum.arduino.cc/index.php?topic=519968.0"  target="_blank" rel="noopener"
+    >https://forum.arduino.cc/index.php?topic=519968.0</a></p>
 </li>
 <li>
-<p><a href="https://www.geek-workshop.com/thread-704-1-1.html">https://www.geek-workshop.com/thread-704-1-1.html</a></p>
+<p><a class="link" href="https://www.geek-workshop.com/thread-704-1-1.html"  target="_blank" rel="noopener"
+    >https://www.geek-workshop.com/thread-704-1-1.html</a></p>
 </li>
 <li>
-<p><a href="https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=14868&amp;highlight=PID">https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=14868&amp;highlight=PID</a></p>
+<p><a class="link" href="https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=14868&amp;highlight=PID"  target="_blank" rel="noopener"
+    >https://www.geek-workshop.com/forum.php?mod=viewthread&tid=14868&highlight=PID</a></p>
 </li>
 <li>
-<p><a href="https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=23&amp;highlight=PID">https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=23&amp;highlight=PID</a></p>
+<p><a class="link" href="https://www.geek-workshop.com/forum.php?mod=viewthread&amp;tid=23&amp;highlight=PID"  target="_blank" rel="noopener"
+    >https://www.geek-workshop.com/forum.php?mod=viewthread&tid=23&highlight=PID</a></p>
 </li>
 <li>
-<p><a href="http://www.51hei.com/bbs/dpj-47816-1.html">http://www.51hei.com/bbs/dpj-47816-1.html</a></p>
+<p><a class="link" href="http://www.51hei.com/bbs/dpj-47816-1.html"  target="_blank" rel="noopener"
+    >http://www.51hei.com/bbs/dpj-47816-1.html</a></p>
 </li>
 <li>
-<p><a href="https://www.geek-workshop.com/thread-9879-1-1.html">https://www.geek-workshop.com/thread-9879-1-1.html</a></p>
+<p><a class="link" href="https://www.geek-workshop.com/thread-9879-1-1.html"  target="_blank" rel="noopener"
+    >https://www.geek-workshop.com/thread-9879-1-1.html</a></p>
 </li>
 <li>
-<p><a href="https://maker.pro/arduino/projects/build-arduino-self-balancing-robot">https://maker.pro/arduino/projects/build-arduino-self-balancing-robot</a></p>
+<p><a class="link" href="https://maker.pro/arduino/projects/build-arduino-self-balancing-robot"  target="_blank" rel="noopener"
+    >https://maker.pro/arduino/projects/build-arduino-self-balancing-robot</a></p>
 </li>
 <li>
-<p><a href="https://github.com/lukagabric/Franko/blob/master/Franko">https://github.com/lukagabric/Franko/blob/master/Franko</a></p>
+<p><a class="link" href="https://github.com/lukagabric/Franko/blob/master/Franko"  target="_blank" rel="noopener"
+    >https://github.com/lukagabric/Franko/blob/master/Franko</a></p>
 </li>
 <li>
-<p><a href="https://www.youtube.com/watch?v=yL43DSVdEEQ&amp;t">https://www.youtube.com/watch?v=yL43DSVdEEQ&amp;t</a></p>
+<p><a class="link" href="https://www.youtube.com/watch?v=yL43DSVdEEQ&amp;t"  target="_blank" rel="noopener"
+    >https://www.youtube.com/watch?v=yL43DSVdEEQ&t</a></p>
 </li>
 <li>
-<p><a href="https://www.youtube.com/watch?v=ce3eA8nzInE">https://www.youtube.com/watch?v=ce3eA8nzInE</a></p>
+<p><a class="link" href="https://www.youtube.com/watch?v=ce3eA8nzInE"  target="_blank" rel="noopener"
+    >https://www.youtube.com/watch?v=ce3eA8nzInE</a></p>
 </li>
 <li>
-<p><a href="https://www.youtube.com/watch?v=uyHdyF0_BFo">https://www.youtube.com/watch?v=uyHdyF0_BFo</a></p>
+<p><a class="link" href="https://www.youtube.com/watch?v=uyHdyF0_BFo"  target="_blank" rel="noopener"
+    >https://www.youtube.com/watch?v=uyHdyF0_BFo</a></p>
 </li>
 </ul>
 
@@ -690,7 +701,7 @@
             
                 
 <article class="">
-    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
         
         
 
@@ -758,7 +769,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

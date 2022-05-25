@@ -113,7 +113,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -134,7 +134,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -154,7 +154,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -175,7 +175,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -317,11 +317,11 @@
 <p>首先, 安装完 Scrapy 后, 按照官方文档, 直接在目录启动命令行, 捅过命令行生成项目:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ scrapy startproject biquge_dl
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ scrapy startproject biquge_dl
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>生成后, 在 <code>spiders/</code> 子文件夹中新建 <code>fiction_spider.py</code>, 用于编写爬虫代码.</p>
 <p>根据官方的 QuickStart 例程, 首先新建一个 class, 继承 <code>scrapy.Spider</code>, 后续只需要结合源码和文档, 就可以继续写下去了.</p>
@@ -338,7 +338,7 @@
 <p>通过重写 <code>parse()</code>, 对小说主页 html 进行解析并抓取章节 URL.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -360,32 +360,32 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">scrapy</span>
-
-<span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">fiction_name</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;info&#34;]/h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">section_order</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">for</span> <span class="n">episode_doc</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;list&#34;]/dl/dd[*]/a&#39;</span><span class="p">):</span>
-            <span class="n">section_title</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
-            <span class="n">url</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
-            <span class="n">section_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>            
-            <span class="n">request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
-                <span class="n">url</span><span class="o">=</span><span class="n">section_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_content</span><span class="p">,</span> <span class="n">cb_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">())</span>
-                
-            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;fiction_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>            
-            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>            
-            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>            
-            <span class="n">section_order</span> <span class="o">+=</span> <span class="mi">1</span>            
-            <span class="k">yield</span> <span class="n">request</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">scrapy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fiction_name</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;info&#34;]/h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">section_order</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">episode_doc</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;list&#34;]/dl/dd[*]/a&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">section_title</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">url</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">section_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">url</span><span class="o">=</span><span class="n">section_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_content</span><span class="p">,</span> <span class="n">cb_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;fiction_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">section_order</span> <span class="o">+=</span> <span class="mi">1</span>            
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">request</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>获取成功后, 将小说名, 章节序号, 章节名作为参数传给 <code>parse_content()</code> 函数, 继而对章节进行爬取.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -406,26 +406,26 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
-<span class="kn">from</span> <span class="nn">biquge_dl.items</span> <span class="kn">import</span> <span class="n">BiqugeDlItem</span>
-
-<span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">parse_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">fiction_name</span><span class="p">,</span> <span class="n">section_order</span><span class="p">,</span> <span class="n">section_title</span><span class="p">):</span>   
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse content function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>       
-        <span class="n">contents</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;content&#34;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>       
-            <span class="n">soup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>           
-            <span class="n">contents</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;class&#34;</span><span class="p">:</span> <span class="s2">&#34;box_con&#34;</span><span class="p">})</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-            
-        <span class="n">item</span> <span class="o">=</span> <span class="n">BiqugeDlItem</span><span class="p">()</span>        
-        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>        
-        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>        
-        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>
-        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contents</span>
-        
-        <span class="k">return</span> <span class="n">item</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">biquge_dl.items</span> <span class="kn">import</span> <span class="n">BiqugeDlItem</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">fiction_name</span><span class="p">,</span> <span class="n">section_order</span><span class="p">,</span> <span class="n">section_title</span><span class="p">):</span>   
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse content function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>       
+</span></span><span class="line"><span class="cl">        <span class="n">contents</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;content&#34;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>       
+</span></span><span class="line"><span class="cl">            <span class="n">soup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>           
+</span></span><span class="line"><span class="cl">            <span class="n">contents</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;class&#34;</span><span class="p">:</span> <span class="s2">&#34;box_con&#34;</span><span class="p">})</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="n">BiqugeDlItem</span><span class="p">()</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contents</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">item</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="items-的使用">Items 的使用</h3>
 <p>写上述  <code>parse_content()</code> 时发现, 直接使用scrapy对小说进行章节爬取, 并按章节名每章下载是很简单的, 只需要直接跑爬虫就可以, 各个章节会乱序下载下来, 但如果想要只下载一份文件, 按顺序存储章节, 那么就需要使用 scrapy 的 <code>items</code> 和 <code>pipelines</code> 了, 这两个 .py 文件会随着一开始命令行创建项目时一并创建, 所以可以很轻易地在 <code>biquge_dl/</code> 文件夹内找到, 只需要对这两个文件进行重写, 并在 <code>parse_content()</code> 中将内容写进 item 中, 就能实现参数的传递.</p>
@@ -459,7 +459,7 @@
 <p>打开 items.py, 按照例子创建一个继承 <code>scrapy.Item</code> 的 <code>BiqugeDlItem</code> 类, 对类进行参数的定义:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -469,15 +469,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">BiqugeDlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
-
-    <span class="c1"># define the fields for your item here like:</span>
-    <span class="c1"># name = scrapy.Field()</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="n">order</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BiqugeDlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># define the fields for your item here like:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># name = scrapy.Field()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">order</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可见, 这里定义了几个参数, 分别是:</p>
 <ul>
@@ -497,7 +497,7 @@
 <p>结合以上特点, 我们可以在 pipielines.py 中实现对包含小说名, 章节序号, 章节标题, 章节内容的 item 的处理, 代码如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -516,35 +516,35 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">BiqugeDlPipeline</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">item</span>
-
-    <span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
-            <span class="c1"># print(item[&#39;title&#39;])</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;downloads/</span><span class="si">{}</span><span class="s1">.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]))</span>
-                <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
-                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BiqugeDlPipeline</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">item</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># print(item[&#39;title&#39;])</span>
+</span></span><span class="line"><span class="cl">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;downloads/</span><span class="si">{}</span><span class="s1">.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在 <code>open_spider()</code> 中, 先定义一个空列表, 用于存储各个 item, 在 <code>process_item()</code> 中, 将传入的 item 添加至 items 列表中, 在 <code>close_spider()</code> 中, 对 items 列表进行排序操作, 然后将列表中内容写入最终文件, 实现了小说的按序存储. 至此, 整个爬取流程结束.</p>
 <h2 id="运行爬虫">运行爬虫</h2>
 <p>调试完成后, 在命令行启动爬虫, 测试爬取效果:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ scrapy crawl fiction_spider -a <span class="nv">url</span><span class="o">=</span>https://www.biduoxs.com/biquge/79_79244/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scrapy crawl fiction_spider -a <span class="nv">url</span><span class="o">=</span>https://www.biduoxs.com/biquge/79_79244/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/Pasted_image_20220525175633.png"
 	
@@ -599,7 +599,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

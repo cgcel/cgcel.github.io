@@ -104,7 +104,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -125,7 +125,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -145,7 +145,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -166,7 +166,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -295,7 +295,7 @@
 <h3 id="安装apache2">安装apache2</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -313,45 +313,45 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 1.安装命令  
-sudo apt-get install apache2  
-  
-# 2.启动apache2  
-systemctl start apache2  
-  
-# 3.设置apache2开机自启  
-systemctl enable apache2  
-  
-# 附上其他命令  
-# 查看运行状态  
-systemctl status apache2  
-# 重启  
-systemctl restart apache2  
-# 停止  
-systemctl stop apache2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 1.安装命令  
+</span></span><span class="line"><span class="cl">sudo apt-get install apache2  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># 2.启动apache2  
+</span></span><span class="line"><span class="cl">systemctl start apache2  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># 3.设置apache2开机自启  
+</span></span><span class="line"><span class="cl">systemctl enable apache2  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># 附上其他命令  
+</span></span><span class="line"><span class="cl"># 查看运行状态  
+</span></span><span class="line"><span class="cl">systemctl status apache2  
+</span></span><span class="line"><span class="cl"># 重启  
+</span></span><span class="line"><span class="cl">systemctl restart apache2  
+</span></span><span class="line"><span class="cl"># 停止  
+</span></span><span class="line"><span class="cl">systemctl stop apache2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="安装php">安装php</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 1.安装php  
-sudo apt-get install php libapache2-mod-php -y  
-  
-# 2.安装其他组件  
-sudo apt-get -y install php-fpm php-cli php-json php-curl php-imap php-gd php-mysql php-xml php-zip php-intl php-imagick php-mbstring -y
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 1.安装php  
+</span></span><span class="line"><span class="cl">sudo apt-get install php libapache2-mod-php -y  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># 2.安装其他组件  
+</span></span><span class="line"><span class="cl">sudo apt-get -y install php-fpm php-cli php-json php-curl php-imap php-gd php-mysql php-xml php-zip php-intl php-imagick php-mbstring -y
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="安装mariadb">安装mariadb</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -365,24 +365,24 @@ sudo apt-get -y install php-fpm php-cli php-json php-curl php-imap php-gd php-my
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 1.安装  
-sudo apt-get install mariadb-server -y  
-  
-# 2.开启远程登陆权限  
-# 2.1 切换目录  
-d /etc/mysql/mariadb.conf.d  
-# 2.2 找到修改权限的文件  
-grep -rn &#34;skip-networking&#34; *  
-# 显示如下：在50-server.cnf文件的第26行  
-50-server.cnf:26:# Instead of skip-networking the default is now to listen only on  
-# 2.3 编辑文件，注释掉  bind-address = 127.0.0.1  
-sudo nano 50-server.cnf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 1.安装  
+</span></span><span class="line"><span class="cl">sudo apt-get install mariadb-server -y  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># 2.开启远程登陆权限  
+</span></span><span class="line"><span class="cl"># 2.1 切换目录  
+</span></span><span class="line"><span class="cl">d /etc/mysql/mariadb.conf.d  
+</span></span><span class="line"><span class="cl"># 2.2 找到修改权限的文件  
+</span></span><span class="line"><span class="cl">grep -rn &#34;skip-networking&#34; *  
+</span></span><span class="line"><span class="cl"># 显示如下：在50-server.cnf文件的第26行  
+</span></span><span class="line"><span class="cl">50-server.cnf:26:# Instead of skip-networking the default is now to listen only on  
+</span></span><span class="line"><span class="cl"># 2.3 编辑文件，注释掉  bind-address = 127.0.0.1  
+</span></span><span class="line"><span class="cl">sudo nano 50-server.cnf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>创建数据库用户以及添加数据库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -396,19 +396,19 @@ sudo nano 50-server.cnf
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 直接回车 不需要输入密码  
-mysql -uroot -p  
-  
-# account可替换成自定义的用户名，password可替换成自定义的密码  
-create database nextcloud;  
-CREATE USER &#39;account&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;  
-GRANT ALL PRIVILEGES ON *.* TO &#39;oc_admin&#39;@&#39;%&#39; WITH GRANT OPTION;  
-  
-flush privileges;  
-CREATE USER &#39;account&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;  
-GRANT ALL PRIVILEGES ON *.* TO &#39;account&#39;@&#39;localhost&#39; WITH GRANT OPTION;  
-flush privileges;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 直接回车 不需要输入密码  
+</span></span><span class="line"><span class="cl">mysql -uroot -p  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"># account可替换成自定义的用户名，password可替换成自定义的密码  
+</span></span><span class="line"><span class="cl">create database nextcloud;  
+</span></span><span class="line"><span class="cl">CREATE USER &#39;account&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;  
+</span></span><span class="line"><span class="cl">GRANT ALL PRIVILEGES ON *.* TO &#39;oc_admin&#39;@&#39;%&#39; WITH GRANT OPTION;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">flush privileges;  
+</span></span><span class="line"><span class="cl">CREATE USER &#39;account&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;  
+</span></span><span class="line"><span class="cl">GRANT ALL PRIVILEGES ON *.* TO &#39;account&#39;@&#39;localhost&#39; WITH GRANT OPTION;  
+</span></span><span class="line"><span class="cl">flush privileges;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="安装nextcloud">安装nextcloud</h3>
 <p>从<a class="link" href="https://nextcloud.com/install/#instructions-server"  target="_blank" rel="noopener"
@@ -424,7 +424,7 @@ flush privileges;
 <p>下载完成后, 需要上传到树莓派的 <code>/var/www/html/</code> 目录下. 然后执行以下命令.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -436,17 +436,17 @@ flush privileges;
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 1.解压文件  
-tar jxf nextcloud-21.0.0.tar.bz2  
-# 2.添加data目录和授权  
-chown -R root:root nextcloud  
-# 3.进入nextcloud文件夹  
-cd nextcloud  
-# 4.创建数据文件夹  
-mkdir data  
-# 5.添加权限和授权  
-chown -R www-data:www-data data config apps
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 1.解压文件  
+</span></span><span class="line"><span class="cl">tar jxf nextcloud-21.0.0.tar.bz2  
+</span></span><span class="line"><span class="cl"># 2.添加data目录和授权  
+</span></span><span class="line"><span class="cl">chown -R root:root nextcloud  
+</span></span><span class="line"><span class="cl"># 3.进入nextcloud文件夹  
+</span></span><span class="line"><span class="cl">cd nextcloud  
+</span></span><span class="line"><span class="cl"># 4.创建数据文件夹  
+</span></span><span class="line"><span class="cl">mkdir data  
+</span></span><span class="line"><span class="cl"># 5.添加权限和授权  
+</span></span><span class="line"><span class="cl">chown -R www-data:www-data data config apps
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>(可选) 如果是在非root权限下操作, 可以先上传至树莓派, 剪切到 <code>/var/www/html/</code> 目录后再进行解压.</p>
 <h2 id="初始化nextcloud">初始化nextcloud</h2>
@@ -454,20 +454,20 @@ chown -R www-data:www-data data config apps
 <p>初始化前, 由于我的树莓派开启了ufw, 所以先开启防火墙端口白名单:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo ufw allow 80/tcp
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo ufw allow 80/tcp
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于我的树莓派挂载一个1TB的移动硬盘, 为了充分利用以及避免后续操作, 先设置好硬盘开机自动挂载. 首先在命令行中输入:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">df -a
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">df -a
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/Snipaste_2022-03-22_14-51-29.png"
 	
@@ -481,11 +481,11 @@ chown -R www-data:www-data data config apps
 <p>接着, 命令行输入以下指令, 查看移动硬盘格式:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo fdisk -l
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo fdisk -l
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/Snipaste_2022-03-22_14-51-47.png"
 	
@@ -498,11 +498,11 @@ chown -R www-data:www-data data config apps
 <p>从上图可以看出, 我的移动硬盘为NTFS格式, 接下来寻找或者创建一个自己想要挂载的目录, 然后编辑 <code>/etc/fstab</code>, 在文件中添加以下内容:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/dev/sda1 /mnt/usb-1 ntfs defaults 0 0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/dev/sda1 /mnt/usb-1 ntfs defaults 0 0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>保存退出后, 命令行输入 <code>sudo mount -a</code>, 挂载后, 输入 <code>df -a</code> 查看是否成功挂载.</p>
 <h3 id="可选-通过域名访问">(可选) 通过域名访问</h3>
@@ -530,11 +530,11 @@ chown -R www-data:www-data data config apps
 <p>由于挂载格式是NTFS, 导致初始化完成后, 页面显示 <code>您的数据目录可被其他用户读取, 请更改权限为0770以避免其他用户查看目录</code>, 经查询, 可以修改nextcloud目录下的 <code>config/config.php</code> 来解决, 按照我的安装目录, 定位至 <code>/var/www/html/nextcloud/config</code> , 编辑 <code>config.php</code>, 在文件中添加以下内容:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#39;check_data_directory_permissions&#39; =&gt; false,
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;check_data_directory_permissions&#39; =&gt; false,
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>保存关闭后, 刷新nextcloud页面, 问题解决.</p>
 <h2 id="使用">使用</h2>
@@ -590,8 +590,10 @@ chown -R www-data:www-data data config apps
 <p>经过一番折腾, 终于比较优雅地实现了把音乐文件存到iPhone的功能, 坚持恢复这种方式来听歌的起因也很简单, 那就是网易云时不时就下架我歌单的歌, 因此戒掉网易云, QQ也是理所当然的.</p>
 <h3 id="参考内容">参考内容</h3>
 <ul>
-<li><a href="https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91">https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91</a></li>
-<li><a href="https://its401.com/article/jdyanghang/102828553">https://its401.com/article/jdyanghang/102828553</a></li>
+<li><a class="link" href="https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91"  target="_blank" rel="noopener"
+    >https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91</a></li>
+<li><a class="link" href="https://its401.com/article/jdyanghang/102828553"  target="_blank" rel="noopener"
+    >https://its401.com/article/jdyanghang/102828553</a></li>
 </ul>
 
 </section>
@@ -642,7 +644,7 @@ chown -R www-data:www-data data config apps
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

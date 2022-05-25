@@ -98,7 +98,7 @@
         
 
         <li >
-            <a href='/' >
+            <a href='/' target="_blank">
                 
                 
                 
@@ -119,7 +119,7 @@
         
 
         <li >
-            <a href='/about' >
+            <a href='/about' target="_blank">
                 
                 
                 
@@ -139,7 +139,7 @@
         
 
         <li >
-            <a href='/archives' >
+            <a href='/archives' target="_blank">
                 
                 
                 
@@ -160,7 +160,7 @@
         
 
         <li >
-            <a href='/search' >
+            <a href='/search' target="_blank">
                 
                 
                 
@@ -310,7 +310,7 @@
 <p>Arduino 的库文件其实就是 C++ 的一个类, 其中必须要引入 Arduino 核心类 <code>Arduino.h</code>, 否则无法在 Arduino 上使用. 其实在之前的使用过程中对 Arduino 库的结构已经有所了解, 基本上都是以下结构:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -318,13 +318,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">-- JrdReader
-    -- example
-        -- xxx
-            xxx.ino
-    JrdReader.h
-    rdReader.cpp
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-- JrdReader
+</span></span><span class="line"><span class="cl">    -- example
+</span></span><span class="line"><span class="cl">        -- xxx
+</span></span><span class="line"><span class="cl">            xxx.ino
+</span></span><span class="line"><span class="cl">    JrdReader.h
+</span></span><span class="line"><span class="cl">    rdReader.cpp
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="编译环境">编译环境</h3>
 <p>在 Arduino IDE 中编写自定义库操作比较简单, 在新建好的 Arduino 项目中新建Tab并命名为 <code>.h</code> 以及 <code>.cpp</code> 文件即可, 如下图所示:</p>
@@ -349,7 +349,7 @@
 <p>按照 C++ 语法创建头文件:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -366,27 +366,27 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="cp">#ifndef _JRDREADER_H__
-</span><span class="cp">#define _JRDREADER_H__
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">JrdReader</span> <span class="p">{</span>
-  
-  <span class="k">private</span><span class="o">:</span>
-
-  <span class="k">public</span><span class="o">:</span>
-    <span class="n">JrdReader</span><span class="p">();</span>
-    <span class="n">String</span> <span class="nf">readOnce</span><span class="p">();</span>  
-<span class="p">};</span>
-
-<span class="cp">#endif
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifndef _JRDREADER_H__
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define _JRDREADER_H__
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">JrdReader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JrdReader</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">readOnce</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在源文件中实现头文件的自定义方法:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -449,68 +449,68 @@
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;JrdReader.h&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;HardwareSerial.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="cm">/**
-</span><span class="cm"> * read once HEX command
-</span><span class="cm"> */</span>
-<span class="kt">char</span> <span class="n">read_once_cmd</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x7E</span><span class="p">};</span>
-
-<span class="n">String</span> <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
-
-<span class="n">JrdReader</span><span class="o">::</span><span class="n">JrdReader</span><span class="p">()</span> <span class="p">{</span>
-
-<span class="p">}</span>
-
-<span class="n">String</span> <span class="n">JrdReader</span><span class="o">::</span><span class="n">readOnce</span><span class="p">()</span> <span class="p">{</span>
-  
-  <span class="n">String</span> <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
-  <span class="n">String</span> <span class="n">comstr</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
-  
-  <span class="c1">// send read_once command
-</span><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">read_once_cmd</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
-  <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
-    <span class="n">comdata</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&#34;comdata: &#34;</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">comstr</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-    <span class="p">}</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
-  <span class="p">}</span>
-
-  <span class="c1">// clear comdata in order to accept another one.
-</span><span class="c1"></span>  <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
-
-  <span class="c1">// format comstr
-</span><span class="c1"></span>  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ffff&#34;</span><span class="p">,</span> <span class="s">&#34;ss&#34;</span><span class="p">);</span>
-  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ff&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
-  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ss&#34;</span><span class="p">,</span> <span class="s">&#34;ff&#34;</span><span class="p">);</span>
-
-  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;comstr: &#34;</span> <span class="o">+</span> <span class="n">comstr</span><span class="p">);</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="n">comstr</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// read RFID code
-</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">baggageCode</span> <span class="o">+=</span> <span class="n">comstr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;读取错误 (Unable to read)&#34;</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="n">baggageCode</span><span class="p">;</span>
-
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;JrdReader.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;HardwareSerial.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * read once HEX command
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">read_once_cmd</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x7E</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">JrdReader</span><span class="o">::</span><span class="n">JrdReader</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">JrdReader</span><span class="o">::</span><span class="n">readOnce</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">comstr</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">// send read_once command
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">read_once_cmd</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">comdata</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&#34;comdata: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">comstr</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// clear comdata in order to accept another one.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// format comstr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ffff&#34;</span><span class="p">,</span> <span class="s">&#34;ss&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ff&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ss&#34;</span><span class="p">,</span> <span class="s">&#34;ff&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;comstr: &#34;</span> <span class="o">+</span> <span class="n">comstr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">comstr</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// read RFID code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">baggageCode</span> <span class="o">+=</span> <span class="n">comstr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;读取错误 (Unable to read)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">baggageCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于手头上还有别的任务所以先实现了最简单的单次读码功能, 原理则是将说明书中提供的十六进制串口指令通过 Arduino 的 Serial 函数发送给 JRD-100 模块, 模块处理完毕后会将数据通过串口返回给 Arduino, 此时只需要通过串口接收新信息并按照一定规律格式化, 解析就可以得到想要的数据, 其中因为导入了 <code>Arduino.h</code> 这个核心库文件, 所以我们在开发 Arduino 库文件的时候可以调用一些 Arduino 的编程方法, 比如上方代码中的 <code>Serial.write()</code>, <code>Serial.print()</code> 等函数.</p>
 <h3 id="加载库并使用">加载库并使用</h3>
@@ -522,9 +522,12 @@
 <h2 id="结尾">结尾</h2>
 <p>可能这是博客创建到现在最长的一篇了, 毕竟前面复制了一大段介绍🤓, 那么就先到此为止吧, 下面附上一些参考网址:</p>
 <ul>
-<li><a href="https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249">https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249</a></li>
-<li><a href="https://www.arduino.cc/en/Hacking/libraryTutorial">https://www.arduino.cc/en/Hacking/libraryTutorial</a></li>
-<li><a href="https://www.arduino.cc/en/Reference/APIStyleGuide">https://www.arduino.cc/en/Reference/APIStyleGuide</a></li>
+<li><a class="link" href="https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249"  target="_blank" rel="noopener"
+    >https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&fromid=497249</a></li>
+<li><a class="link" href="https://www.arduino.cc/en/Hacking/libraryTutorial"  target="_blank" rel="noopener"
+    >https://www.arduino.cc/en/Hacking/libraryTutorial</a></li>
+<li><a class="link" href="https://www.arduino.cc/en/Reference/APIStyleGuide"  target="_blank" rel="noopener"
+    >https://www.arduino.cc/en/Reference/APIStyleGuide</a></li>
 </ul>
 
 </section>
@@ -570,7 +573,7 @@
             
                 
 <article class="">
-    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE-%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+    <a href="/posts/2020/11/17/2020-11-17-diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
         
         
 
@@ -644,7 +647,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

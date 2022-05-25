@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>windows on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/windows/</link>
+        <description>Recent content in windows on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 06 Feb 2020 14:28:09 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>V2RayN局域网共享</title>
+        <link>https://cgcel.github.io/posts/2020/02/06/2020-02-06-v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+        <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2020/02/06/2020-02-06-v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;电脑1台&lt;/li&gt;
+&lt;li&gt;安装好 V2RayN&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;详细步骤&#34;&gt;详细步骤&lt;/h2&gt;
+&lt;h3 id=&#34;设置v2rayn&#34;&gt;设置V2RayN&lt;/h3&gt;
+&lt;p&gt;因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-02-06-12-28-11.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;打开移动热点&#34;&gt;打开移动热点&lt;/h3&gt;
+&lt;p&gt;以 win10 系统为例, 在设置中打开移动热点:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-02-06-12-08-55.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-02-06-12-11-33.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;连接热点&#34;&gt;连接热点&lt;/h3&gt;
+&lt;p&gt;首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-02-06-12-08-20.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图4&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.&lt;/p&gt;
+&lt;p&gt;到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Shadowsocks局域网共享</title>
+        <link>https://cgcel.github.io/posts/2018/09/05/2018-09-05-shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+        <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/09/05/2018-09-05-shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;好久没有更新博客, 正好熟悉了一下 ss 通过局域网共享到手机, 于是写一篇博客记录下来.&lt;/p&gt;
+&lt;h2 id=&#34;详细步骤&#34;&gt;详细步骤&lt;/h2&gt;
+&lt;h3 id=&#34;打开热点&#34;&gt;打开热点&lt;/h3&gt;
+&lt;p&gt;首先我们打开电脑的热点, 如果没有的话就使用 wifi 共享工具打开热点, 这里使用的是 WiFi 共享精灵(顺便吐槽一下, 我一直没有找到没广告的良心工具, 换来换去还是这个最顺手, 把各种弹窗关掉将就一下吧)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-9-5-1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查看网络连接信息&#34;&gt;查看网络连接信息&lt;/h3&gt;
+&lt;p&gt;打开网络连接, 我们可以通过名称来找到刚开启的热点, 如图为&lt;code&gt;本地连接3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-9-5-2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;获取本机ip地址&#34;&gt;获取本机IP地址&lt;/h3&gt;
+&lt;p&gt;这是非常重要的一步, 打开 cmd 或其他工具, 输入&lt;code&gt;ipconfig&lt;/code&gt;, 第一个本地连接的 ipv4 地址就是了.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-9-5-3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;shadowsocks设置&#34;&gt;Shadowsocks设置&lt;/h3&gt;
+&lt;p&gt;打开 ss 客户端, 右键其图标, 勾选&lt;code&gt;允许其他设备连入&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;手机wifi手动配置&#34;&gt;手机WiFi手动配置&lt;/h3&gt;
+&lt;p&gt;进入 WiFi 设置, 连接时选择高级选项, 据观察, 如果已经连接过此热点, Android 9.0 可以直接设置, 而 8.1 需要 forget 后重新设置. 如图, proxy 选手动, 然后将本机 IP 地填写进去, 端口亲测 1080 可行, 网上说的 8123 不行 (更正: 需要以 ss 的 proxy 代理端口为准). 其他选项默认即可, 保存后即可科学上网啦.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-9-5-4.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图4&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

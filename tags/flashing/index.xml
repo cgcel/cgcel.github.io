@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>flashing on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/flashing/</link>
+        <description>Recent content in flashing on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/flashing/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>一加8T刷Nameless AOSP记录</title>
+        <link>https://cgcel.github.io/posts/2022/04/13/2022-04-13-%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2022/04/13/2022-04-13-%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;开头&#34;&gt;开头&lt;/h2&gt;
+&lt;p&gt;之前给8T刷了 Derpfest, 也是基于A12 AOSP的一个ROM, 但是开发者在群里说已经不再维护, 前几天休息在家无聊逛了一下xda, 发现这个包点击量挺高, 于是决定给8T换一个ROM.&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;翻看xda的ROM发布&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/t/rom-official-oos-12-cam-oneplus-8t-9r-12-1-0_r4-nameless-aosp-2022-04-13.4403295/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;帖子&lt;/a&gt;, 刷入步骤挺简单, 没有什么花里胡哨的, 把包下好之后就可以直接开整, 因为我的机已经解锁了, 也省去了很多繁琐的步骤.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Download recovery.img in download link
+Reboot phone to bootloader
+Open any terminal like cmd etc, enter &amp;#34;fastboot flash recovery recovery.img&amp;#34;
+Reboot phone to recovery and enter sideload mode
+Enter &amp;#34;adb sideload xxx&amp;#34; (xxx means the filename of rom zip you downloaded)
+Do factory reset in recovery (Mandatory for first time flash)
+Reboot
+You can also use rom installer to flash the way you did before.
+
+
+
+For root:
+
+Download Magisk apk
+Rename it to *.zip
+Reboot to recovery and enter sideload mode
+Enter &amp;#34;adb sideload xxx.zip&amp;#34; (xxx means magisk file name)
+You can also patch boot.img and flash via fastboot.
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;步骤&#34;&gt;步骤&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载 &lt;code&gt;ROM.zip&lt;/code&gt; 以及 &lt;code&gt;recovery.img&lt;/code&gt;, 考虑到后续的root操作, 还下载了最新的 &lt;code&gt;Magisk-v24.3&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-17_21-59-55.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;重启至bootloader并开始刷机.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb reboot bootloader
+fastboot devices
+fastboot flash recovery recovery.img
+fastboot reboot recovery
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在recovery中点击adb sideload, 然后进行以下操作:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb sideload ROM.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成后, 重启进入系统.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-11_16-51-28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+3. (Optional) Root操作: 开机状态下, 通过adb指令进入recovery并打开adb sideload, 然后进行以下操作:
+&lt;code&gt;adb devices adb sideload Magisk.img&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;刷写完毕后, 重启进入系统, 安装magisk.apk即可查看root状态.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-11_17-26-32.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;截图&#34;&gt;截图&lt;/h2&gt;
+&lt;p&gt;重启进入系统, 几天使用体验下来还比较稳定, 当然也可能是现在只能来当作游戏机的原因, Magisk模块也没有刷, app里的模块商店没有内容, 我有一段时间没刷机了, 不知道是因为什么, 从什么时候开始的.&lt;/p&gt;
+&lt;p&gt;摆弄了一下 Android 12 的小组件, 感觉还是挺好看的, 就是浪费屏幕空间.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/1b7136027d50ddfd38f3dd86427c86c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/09e9312993fd33afce9add0766efb3c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>从OOS到LOS -- 一加8T的刷机记录</title>
+        <link>https://cgcel.github.io/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2021/05/17/2021-05-17-%E4%BB%8Eoos%E5%88%B0los-%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 &lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/c/oneplus-8t.11579/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda 论坛&lt;/a&gt; 挺活跃的, 已经有不少的 ROM 可以刷了:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2021-05-17_23-02-35.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;oneplus 8t xda forum&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;于是我就打算利用空闲时间刷一刷手里的 8T 解解馋, 玩累了正好回 ColorOS (如果一加不鸽的话&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;本篇将分为两大部分来记录, 分别是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OOS 刷 LOS 的记录&lt;/li&gt;
+&lt;li&gt;LOS 刷回 OOS 并 root 的记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;oos-刷-los&#34;&gt;OOS 刷 LOS&lt;/h2&gt;
+&lt;h3 id=&#34;准备&#34;&gt;准备&lt;/h3&gt;
+&lt;p&gt;在准备刷机前, 我们需要 &lt;strong&gt;备份好数据&lt;/strong&gt;, 并安装或下载好以下内容 (下载包以本篇博客日期为准, 如参考则需尽量下载最新包):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;adb (基本操作了, 没有adb就无法通过指令控制手机)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/t/op8t-oos-kb05aa-ba-da-unbrick-tool-to-restore-your-device-to-oxygenos.4180837/unread&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;9008救砖包&lt;/a&gt; (随时准备好救砖)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.lineageos.org/kebab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lineage-18.1-20210513-nightly-kebab-signed.zip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.lineageos.org/kebab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lineage-18.1-20210513-recovery-kebab.img&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.androidfilehost.com/?fid=2188818919693768129&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;copy-partitions-20210323_1922.zip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.lineageos.org/gapps.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GAPPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/topjohnwu/Magisk/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Magisk-v23.0.apk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;具体步骤&#34;&gt;具体步骤&lt;/h3&gt;
+&lt;p&gt;详细刷机步骤参考 &lt;a class=&#34;link&#34; href=&#34;https://wiki.lineageos.org/devices/kebab/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt; , 下面我将按照具体指令来总结, 这样比较明了, 不用看详细的文字解释:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;进入 &lt;code&gt;开发者选项&lt;/code&gt; 并开启 &lt;code&gt;OEM 解锁&lt;/code&gt; 以及 &lt;code&gt;USB调试&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检测 adb 连接情况后进入 bootloader, 然后解锁手机:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb reboot bootloader
+fastboot devices
+fastboot oem unlock
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;通过音量键和电源键, 将手机解锁, 手机将清除所有数据, 完成初始化后, 继续进入 &lt;code&gt;开发者选项&lt;/code&gt; 并开启 &lt;code&gt;OEM 解锁&lt;/code&gt; 以及 &lt;code&gt;USB调试&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启至 bootloader, 刷入 recovery:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb reboot bootloader
+fastboot devices
+fastboot flash recovery lineage-18.1-20210513-recovery-kebab.img
+fastboot reboot recovery
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 recovery 中, 将 A分区数据复制到 B分区, 避免B分区固件太久导致黑砖, 点击 &amp;ldquo;Apply Update&amp;rdquo;, 然后点击 &amp;ldquo;Apply from ADB&amp;rdquo;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb sideload copy-partitions-20210323_1922.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;签名验证失败的话, 点击 &amp;ldquo;Yes&amp;rdquo; 继续刷入即可.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;点击 &amp;ldquo;Advanced&amp;rdquo;, 然后点击 &amp;ldquo;Reboot to recovery&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 recovery 主界面 &lt;strong&gt;点击 &amp;ldquo;Factory Reset&amp;rdquo;&lt;/strong&gt; 双清 (不能漏这一步, 某则脏刷将导致各种问题, 我第一次刷忘记双清, 直接 boot loop 加定位失灵), 然后点击 &amp;ldquo;Apply Update&amp;rdquo;, 点击 &amp;ldquo;Apply from ADB&amp;rdquo; 进入 adb sideload 模式刷入 LineageOS:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb sideload lineage-18.1-20210513-nightly-kebab-signed.zip 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;签名验证失败的话, 点击 &amp;ldquo;Yes&amp;rdquo; 继续刷入即可.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(可选操作): 刷入额外的包, 如 GAPPS, Magisk等:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果要刷 GAPPS, 需要在重启进入系统前将其刷入, 其他包则可以在通过系统初始化后重启至 recovery 再刷.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面将以本次刷机为例, 记录刷入 &lt;code&gt;GAPPS&lt;/code&gt; 和 &lt;code&gt;Magisk&lt;/code&gt; 的过程:&lt;/p&gt;
+&lt;p&gt;重启至 recovery, 然后进入 sideload 模式:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb sideload MindTheGapps-11.0.0-arm64-20210412_124247.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 recovery 主菜单点击 &amp;ldquo;Reboot system now&amp;rdquo;, 即可开机进入系统, 完成初始化后检查谷歌全家桶能否正常运行, 无误后继续以下步骤:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb install Magisk-v23.0.apk
+adb reboot recovery
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;重启至 recovery 后, 进入 sideload 模式, 同时将电脑中的 &lt;code&gt;Magisk-v23.0.apk&lt;/code&gt; 复制一份, 改名为 &lt;code&gt;Magisk-v23.0.zip&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb sideload Magisk-v23.0.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 recovery 主菜单点击 &amp;ldquo;Reboot system now&amp;rdquo;, 即可开机进入系统.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;发现的问题&#34;&gt;发现的问题&lt;/h3&gt;
+&lt;p&gt;刷 LOS 的过程中发现了两个问题, 问题和解决方法如下:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;定位不正常&lt;/p&gt;
+&lt;p&gt;第一次刷入时忘记双清, 开机直接 boot loop, 解决后进入系统, 第二天上班时差点钉钉打卡无法定位&amp;hellip;&lt;/p&gt;
+&lt;p&gt;解决方法: 刷入 LOS 前双清, 切忌 dirty flash.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;移动网络网速不正常&lt;/p&gt;
+&lt;p&gt;第二次刷入时一切正常, 但切换至移动网络时网速只有 200+k/s, 明显不是5G该有的网速, 后到lineage的 reddit 论坛中发现有人有 &lt;a class=&#34;link&#34; href=&#34;https://www.reddit.com/r/LineageOS/comments/nd7qpt/no_mobile_data/?utm_source=share&amp;amp;utm_medium=mweb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;同样的情况&lt;/a&gt;, 只需根据运营商修改 APN 即可.
+刷回 OOS 后, 我进入设置对默认 APN 进行了截图 (此处以联通为例).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/photo_2021-05-17_19-14-27.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;APN config&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解决方法: 刷入 LOS 后进入设置, 按照截图修改参数即可.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;截图&#34;&gt;截图&lt;/h3&gt;
+&lt;p&gt;正常使用后的一些截图如下:&lt;/p&gt;
+&lt;p&gt;修改 APN 后的 speedtest:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2021-05-18_00-31-54.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;speedtest&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;更新界面:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/photo_2021-05-17_22-27-23.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;更新界面&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Magisk 界面:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/photo_2021-05-17_22-27-24.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Magisk 界面&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;los-回-oos-并-root&#34;&gt;LOS 回 OOS 并 ROOT&lt;/h2&gt;
+&lt;h3 id=&#34;准备-1&#34;&gt;准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adb (基本操作了, 没有adb就无法通过指令控制手机)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/t/op8t-oos-kb05aa-ba-da-unbrick-tool-to-restore-your-device-to-oxygenos.4180837/unread&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;9008救砖包&lt;/a&gt; (随时准备好救砖)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/topjohnwu/Magisk/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Magisk-v23.0.apk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/t/oneplus-8t-rom-ota-oxygen-os-repo-of-oxygen-os-builds.4193183/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OOS全量包&lt;/a&gt; (这里用的是 OOS Open Beta 4)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://androidfilehost.com/?fid=818070582850510260&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Payload Dumper for Win&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;具体步骤-1&#34;&gt;具体步骤&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下步骤以 LOS 刷至 OOS 为例, 刷机前记得 &lt;strong&gt;做好备份&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考视频: &lt;a href=&#34;https://www.youtube.com/watch?v=zKd_mO7f1eM&#34;&gt;https://www.youtube.com/watch?v=zKd_mO7f1eM&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;关机, 静置手机待其完全关闭, 电脑解压并打开下载好的 救砖包, 打开 &lt;code&gt;MsmDownloadTool V4.0.exe&lt;/code&gt;, 选择 &lt;code&gt;Other&lt;/code&gt;并下一步, target 项选择 &lt;code&gt;O2&lt;/code&gt;, 表示刷入 OOS.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时按下手机的 &lt;code&gt;音量+&lt;/code&gt; 和 &lt;code&gt;音量-&lt;/code&gt;, 插入 USB 线与电脑连接, 待出现 COM 口后, 点击 &lt;code&gt;start&lt;/code&gt;, 看到开始加载进度条后方可松开音量键, 等待刷机完毕后, 手机将清除所有数据并自动重启.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成初始化后进入系统, 打开 &lt;code&gt;开发者选项&lt;/code&gt; 并勾选 &lt;code&gt;OEM 解锁&lt;/code&gt; 以及 &lt;code&gt;USB 调试&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解锁手机:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb decices
+adb reboot bootloader
+fastboot devices
+fastboot oem unlock
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;通过音量键和电源键确认解锁手机, 然后完成初始化进入系统.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将下载好的 OOS Open Beta 4 全量包放入手机根目录, 进入设置, 系统升级, 选择 &lt;code&gt;从本地更新&lt;/code&gt;, 然后选择根目录中的全量包进行 full update, 安装完毕后重启手机.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在电脑端, 将下载好的 OOS 全量包中的 &lt;code&gt;payload.bin&lt;/code&gt; 置入 &amp;ldquo;/payload_dumper-win64&amp;rdquo; 的 &amp;ldquo;/input&amp;rdquo; 文件夹中, 运行 &lt;code&gt;payload_dumper.exe&lt;/code&gt;, 运行完毕后, 在 &amp;ldquo;/output&amp;rdquo; 中找到 &lt;code&gt;boot.img&lt;/code&gt; 并复制到手机目录中, 如 &amp;ldquo;/Download&amp;rdquo; 中.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装并打开 &amp;ldquo;Magisk Manager&amp;rdquo;, 在首页点击 &amp;ldquo;安装&amp;rdquo;, 选择 &amp;ldquo;选择并修补一个文件&amp;rdquo;, 选择 &amp;ldquo;/Download/boot.img&amp;rdquo; 后点击 &amp;ldquo;开始&amp;rdquo;, Magisk Manager 将生成一个命名类似 &lt;code&gt;magisk_patch.img&lt;/code&gt; 的文件在 &amp;ldquo;/Download&amp;rdquo; 中, 将其复制进电脑.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将手机连接至电脑, 输入以下指令:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb reboot bootloader
+fastboot devices
+fastboot flash boot magisk_patch.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;刷入完毕后重启至系统, 打开 Magisk Manager 检查 root 状态.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2021-05-18_16-17-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;指令一览&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;Root 之后, 又可以玩回很多以前的东西了, 比如把字体改成 Ubuntu 格式, 启用黑域, Swift Backup, Quick Switch等等, 倒是最近的 Xposed 框架又有新的 &lt;code&gt;LSPosed&lt;/code&gt;, 简称 &amp;ldquo;LSP&amp;rdquo;, 是个轻量级的框架, 模块商店的模块还很少, 但是装个 WX 模块还是绰绰有余的.&lt;/p&gt;
+&lt;p&gt;再说到动画方面, LOS 的动画流畅度简直吊打 OOS 的, 就比如点开微信信息推送和横屏返回桌面的动画, 一经比较便高下立判, OOS 小修小补这么久, 这个导航栏手势改得真是没眼看&amp;hellip;&lt;/p&gt;
+&lt;p&gt;当然, 稳定性方面 OOS 肯定是 LOS 比不了的, 毕竟 LOS 只是一个个人维护的第三方 ROM, 没记错的话开发者 Luk1337 已经从一加6一路维护到一加8T了, 不愧是大佬👍&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Syberia OS (R) for OnePlus 6 刷机体验</title>
+        <link>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+        <pubDate>Sat, 03 Oct 2020 19:38:47 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;Android 11 正式版发布已经有一段时间, 前不久在 tg channel 上看到一加6即将适配Android 11 的消息:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-10-03-19-51-26.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;昨晚无聊刷一刷 xda, 发现一加6已经有第三方的A11包可以刷, 正好用晚上的时间试一试.&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;因为作者介绍此 ROM 时用红字表明要从Syberia OS Android 10 升级, 所以我先刷Syberia OS Android 10 后再升级 Android 11 版. (后来在文章下留言询问得知当作一个新 ROM 来刷也是 OK 的)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-10-03-20-02-40.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下载清单&#34;&gt;下载清单&lt;/h3&gt;
+&lt;h4 id=&#34;android-10-部分&#34;&gt;Android 10 部分&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://syberiaos.com/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SyberiaOS ROM Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://androidfilehost.com/?fid=4349826312261714828&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OOS 10.3.1 Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://opengapps.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenGapps Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dl.twrp.me/enchilada/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Latest TWRP Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-syberia-project-t3974351&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda 链接&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;android-11-部分&#34;&gt;Android 11 部分&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/syberiaos/files/enchilada/syberia_oneplus6-v4.0-20200925-1315-OFFICIAL.zip/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SyberiaOS ROM Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/flamegapps/files/arm64/android-11/ALPHA/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Flame Gapps Download (recommended)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-syberia-project-t4168017&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda 链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h2&gt;
+&lt;p&gt;我用作者描述的方法试了几次都刷不成功, 不是重启到rec就是卡在开机画面, 翻了一下评论区, 借用了一个网友的方法才成功, 为了看起来完整一点, 下面会一起列出所有步骤.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect to PC and boot to bootloader
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ adb reboot bootloader
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Boot recovery
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ fastboot boot twrp.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Advanced wipe data and cache&lt;/code&gt;, &lt;code&gt;format data&lt;/code&gt;, &lt;code&gt;factory reset&lt;/code&gt; and reboot to bootloader&lt;/li&gt;
+&lt;li&gt;Repeat step 1, 2, 3&lt;/li&gt;
+&lt;li&gt;Boot recovery&lt;/li&gt;
+&lt;li&gt;Flash OOS, flash twrp, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Repeat step 6&lt;/li&gt;
+&lt;li&gt;Reboot to system, enable &lt;code&gt;Developer Options&lt;/code&gt; and &lt;code&gt;USB Debugging&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash Syberia OS Android 10, flash twrp, &lt;code&gt;advanced wipe data and cache&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash gapps, reboot to system, enable &lt;code&gt;Developer Options&lt;/code&gt; and &lt;code&gt;USB Debugging&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Repeat step 9, 10&lt;/li&gt;
+&lt;li&gt;Flash Syberia OS Android 11, flash twrp, &lt;code&gt;advanced wipe data and cache&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash gapps, reboot to system&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;按照以上步骤来刷, 不出意外的话应该是可以成功的, 昨晚试了一晚上, 直到半夜十二点多才成功&amp;hellip; 这个 ROM 有毒&amp;hellip; 刷好之后对比了一下, 11 的变动看起来的确是挺少的, 只有轻微的一点点 UI 变化, 好像还有一些隐私的保护之类的.&lt;/p&gt;
+&lt;p&gt;下面分享几张截图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193104.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193307.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193503.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193513.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后, 虽然能预料到, 一加6 果然是比一加7 先有 Android 11 的包, 一加7 果然还是太弟弟了.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>一加6 Pixel Experience Android Pie 刷机体验</title>
+        <link>https://cgcel.github.io/posts/2018/10/28/2018-10-28-%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+        <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/10/28/2018-10-28-%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+        <description>&lt;img src="https://cgcel.github.io/2018-10-28-02.jpg" alt="Featured image of post 一加6 Pixel Experience Android Pie 刷机体验" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:&lt;/p&gt;
+&lt;h3 id=&#34;优点&#34;&gt;优点:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;指纹支付很方便, 这在氢氧两个 ROM 均有适配&lt;/li&gt;
+&lt;li&gt;类原生 UI 风格讨喜&lt;/li&gt;
+&lt;li&gt;后台清除方式分两种模式可调节, 方便不同用户群体&lt;/li&gt;
+&lt;li&gt;全面屏显示功能调节方便, 充分利用屏幕显示&lt;/li&gt;
+&lt;li&gt;Dash 闪充充电效率很高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缺点&#34;&gt;缺点:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式&lt;/li&gt;
+&lt;li&gt;动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片&lt;/li&gt;
+&lt;li&gt;后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用&lt;/li&gt;
+&lt;li&gt;室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.&lt;/p&gt;
+&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&amp;hellip;😂&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;查询相关评测&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM. 我分别在 &lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-pixel-experience-t3856643&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda&lt;/a&gt; 和 &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=_g36I37rP5o&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;youtube&lt;/a&gt; 上查阅, 观看了相关信息, 总结下来刷机顺序如下:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install blue_spark twrp.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clear system, cache, dalvik cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flash rom and then twrp. Use the latest blu spark recovery.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let the rom boot first. First boot might take 10-15 mins cause.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Boot into recovery and then flash magisk if you want to root, then boot into system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;环境及刷机包准备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.oneplusbbs.com/thread-4161221-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;解锁bootloader教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;adb (不懂的请自行解决)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.pixelexperience.org/enchilada/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ROM&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/redirect?q=https%3A%2F%2Fforum.xda-developers.com%2Fdevdb%2Fproject%2F%3Fid%3D27466%23downloads&amp;amp;v=_g36I37rP5o&amp;amp;redir_token=jd_HaWv_zFe6Fn8LNk9UaJxf38d8MTU0MDgyMDQzNEAxNTQwNzM0MDM0&amp;amp;event=video_description&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TWRP(img&amp;amp;zip)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Magisk (自选)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;开刷&#34;&gt;开刷&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;从开机状态开始操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ adb reboot bootloader
+$ fastboot boot name_of_twrp.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;如顺利, 将进入twrp.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刷入&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;wipe → clear system, cache, dalvik cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → name_of_rom.zip&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → name_of_twrp.zip&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → magisk.zip →reboot system&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经过以上流程, 此ROM就算刷完了, ok可以开始体验啦:)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;使用感受&#34;&gt;使用感受&lt;/h2&gt;
+&lt;p&gt;系统保留了一些一加的功能:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;一些截图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-02.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-03.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;闪充依然见效:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-04.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图4&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;PS: ingress室内秒定位, 嗯真香&amp;hellip;&lt;/p&gt;
+&lt;p&gt;以上.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Pixel 2XL root方案记录</title>
+        <link>https://cgcel.github.io/posts/2018/09/09/2018-09-09-pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/09/09/2018-09-09-pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;回顾我的刷机历程, 每次都是有了想法之后就行动起来了, 经历的是一次又一次的真香警告. 而本次 root 的想法的起因是黑域越来越难用, 让我想用回绿守, 本想着等 9.1 出来之后再 root, 但是每次我都会等不及&amp;hellip; 然后果不其然的踩坑了.&lt;/p&gt;
+&lt;h2 id=&#34;刷机环境以及刷机包准备&#34;&gt;刷机环境以及刷机包准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.android.com/studio/run/oem-usb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;USB驱动&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.android.com/studio/releases/platform-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adb环境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dl.twrp.me/taimen/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TWRP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Magisk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中, twrp 较新版本刷入之后有 bug, 上 youtube 看过教程后, 决定采用 &lt;code&gt;twrp3.2.1.2&lt;/code&gt;, 下载时需要下载&lt;code&gt;.img&lt;/code&gt;以及&lt;code&gt;.zip&lt;/code&gt;文件.&lt;/p&gt;
+&lt;h2 id=&#34;具体步骤&#34;&gt;具体步骤&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;进入命令行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入 fastboot 界面&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ adb reboot bootloader
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解 bootloader 锁&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ fastboot flashing unlock
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;使用音量键和电源键进行确认, 注意解锁后手机所有数据将会被清除, 要做好备份.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刷入第三方 recovery&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ fastboot boot path/twrp.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;刷入成功后, 重启进入 recovery, 此时还需要进入 install, 选择 &lt;code&gt;twrp.zip&lt;/code&gt; 包再进行刷入. 缺少这一步的话, 下一次重启还会回到官方recovery.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刷入 magisk
+在 twrp 的 install 页面选择事先存入手机的 magisk.zip 进行刷入, 刷入后重启即可.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;整个过程下来就刷 twrp 出了些问题, 最新版本不能用是什么鬼&amp;hellip;? (勘误: 事实上只是 twrp 的加密, 输入锁屏 PIN 码即可) 好在最后还是解决了问题, 顺便写篇博客记录一下这个坑.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>一加1卡刷lineage15.1</title>
+        <link>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+        <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
+        <description>&lt;img src="https://cgcel.github.io/2018-07-04-01.jpg" alt="Featured image of post 一加1卡刷lineage15.1" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.&lt;/p&gt;
+&lt;h2 id=&#34;突如其来的更新&#34;&gt;突如其来的更新&lt;/h2&gt;
+&lt;p&gt;之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.&lt;/p&gt;
+&lt;h2 id=&#34;踩坑&#34;&gt;踩坑&lt;/h2&gt;
+&lt;p&gt;备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;This package is for &amp;quot;OnePlus&amp;quot; devices: this is a &amp;quot;A0001&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.&lt;/p&gt;
+&lt;h2 id=&#34;开机&#34;&gt;开机&lt;/h2&gt;
+&lt;p&gt;开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&amp;hellip;&lt;!-- raw HTML omitted --&gt;
+下面附上一些截图:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-07-04-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-04-02.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-04-03.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;升级&#34;&gt;升级&lt;/h2&gt;
+&lt;p&gt;今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果. 顺带一提, 更新之后舍友拿去吃鸡不闪退了 (印度人很喜欢吃鸡, 很多ROM更新之后如果玩不了都会有人在评论反馈😂)&lt;/p&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;终于如愿以偿让备机吃上了 oreo, 体验也很好, 不过这应该是一加1能刷到的最新的版本了吧, 感觉 9.0 希望不大, 不过也很难得了, 毕竟这么老的机型了, 到现在还是很流畅, 刺激战场什么的也压力不大. 改天试一试 rr 好了, 其实 rr 给一加1适配 andoid 8.1 比 lineage 要早, 之前下下来一直刷不上就放弃了. 最后贴一下链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.lineageos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lineageos下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://adbshell.com/downloads/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adb下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://opengapps.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;gapps下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://twrp.me/Devices/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;twrp下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

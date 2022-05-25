@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>fastboot on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/fastboot/</link>
+        <description>Recent content in fastboot on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/fastboot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>一加8T刷Nameless AOSP记录</title>
+        <link>https://cgcel.github.io/posts/2022/04/13/2022-04-13-%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2022/04/13/2022-04-13-%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;开头&#34;&gt;开头&lt;/h2&gt;
+&lt;p&gt;之前给8T刷了 Derpfest, 也是基于A12 AOSP的一个ROM, 但是开发者在群里说已经不再维护, 前几天休息在家无聊逛了一下xda, 发现这个包点击量挺高, 于是决定给8T换一个ROM.&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;翻看xda的ROM发布&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/t/rom-official-oos-12-cam-oneplus-8t-9r-12-1-0_r4-nameless-aosp-2022-04-13.4403295/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;帖子&lt;/a&gt;, 刷入步骤挺简单, 没有什么花里胡哨的, 把包下好之后就可以直接开整, 因为我的机已经解锁了, 也省去了很多繁琐的步骤.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Download recovery.img in download link
+Reboot phone to bootloader
+Open any terminal like cmd etc, enter &amp;#34;fastboot flash recovery recovery.img&amp;#34;
+Reboot phone to recovery and enter sideload mode
+Enter &amp;#34;adb sideload xxx&amp;#34; (xxx means the filename of rom zip you downloaded)
+Do factory reset in recovery (Mandatory for first time flash)
+Reboot
+You can also use rom installer to flash the way you did before.
+
+
+
+For root:
+
+Download Magisk apk
+Rename it to *.zip
+Reboot to recovery and enter sideload mode
+Enter &amp;#34;adb sideload xxx.zip&amp;#34; (xxx means magisk file name)
+You can also patch boot.img and flash via fastboot.
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;步骤&#34;&gt;步骤&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载 &lt;code&gt;ROM.zip&lt;/code&gt; 以及 &lt;code&gt;recovery.img&lt;/code&gt;, 考虑到后续的root操作, 还下载了最新的 &lt;code&gt;Magisk-v24.3&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-17_21-59-55.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;重启至bootloader并开始刷机.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb reboot bootloader
+fastboot devices
+fastboot flash recovery recovery.img
+fastboot reboot recovery
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在recovery中点击adb sideload, 然后进行以下操作:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;adb devices
+adb sideload ROM.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成后, 重启进入系统.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-11_16-51-28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+3. (Optional) Root操作: 开机状态下, 通过adb指令进入recovery并打开adb sideload, 然后进行以下操作:
+&lt;code&gt;adb devices adb sideload Magisk.img&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;刷写完毕后, 重启进入系统, 安装magisk.apk即可查看root状态.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-04-11_17-26-32.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;截图&#34;&gt;截图&lt;/h2&gt;
+&lt;p&gt;重启进入系统, 几天使用体验下来还比较稳定, 当然也可能是现在只能来当作游戏机的原因, Magisk模块也没有刷, app里的模块商店没有内容, 我有一段时间没刷机了, 不知道是因为什么, 从什么时候开始的.&lt;/p&gt;
+&lt;p&gt;摆弄了一下 Android 12 的小组件, 感觉还是挺好看的, 就是浪费屏幕空间.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/1b7136027d50ddfd38f3dd86427c86c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/09e9312993fd33afce9add0766efb3c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

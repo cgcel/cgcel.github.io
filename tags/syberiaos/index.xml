@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>syberiaos on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/syberiaos/</link>
+        <description>Recent content in syberiaos on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 03 Oct 2020 19:38:47 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/syberiaos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Syberia OS (R) for OnePlus 6 刷机体验</title>
+        <link>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+        <pubDate>Sat, 03 Oct 2020 19:38:47 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2020/10/03/2020-10-03-syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;Android 11 正式版发布已经有一段时间, 前不久在 tg channel 上看到一加6即将适配Android 11 的消息:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-10-03-19-51-26.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;昨晚无聊刷一刷 xda, 发现一加6已经有第三方的A11包可以刷, 正好用晚上的时间试一试.&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;因为作者介绍此 ROM 时用红字表明要从Syberia OS Android 10 升级, 所以我先刷Syberia OS Android 10 后再升级 Android 11 版. (后来在文章下留言询问得知当作一个新 ROM 来刷也是 OK 的)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-10-03-20-02-40.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下载清单&#34;&gt;下载清单&lt;/h3&gt;
+&lt;h4 id=&#34;android-10-部分&#34;&gt;Android 10 部分&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://syberiaos.com/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SyberiaOS ROM Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://androidfilehost.com/?fid=4349826312261714828&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OOS 10.3.1 Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://opengapps.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenGapps Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dl.twrp.me/enchilada/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Latest TWRP Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-syberia-project-t3974351&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda 链接&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;android-11-部分&#34;&gt;Android 11 部分&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/syberiaos/files/enchilada/syberia_oneplus6-v4.0-20200925-1315-OFFICIAL.zip/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SyberiaOS ROM Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/flamegapps/files/arm64/android-11/ALPHA/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Flame Gapps Download (recommended)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-syberia-project-t4168017&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda 链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h2&gt;
+&lt;p&gt;我用作者描述的方法试了几次都刷不成功, 不是重启到rec就是卡在开机画面, 翻了一下评论区, 借用了一个网友的方法才成功, 为了看起来完整一点, 下面会一起列出所有步骤.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect to PC and boot to bootloader
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ adb reboot bootloader
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Boot recovery
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ fastboot boot twrp.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Advanced wipe data and cache&lt;/code&gt;, &lt;code&gt;format data&lt;/code&gt;, &lt;code&gt;factory reset&lt;/code&gt; and reboot to bootloader&lt;/li&gt;
+&lt;li&gt;Repeat step 1, 2, 3&lt;/li&gt;
+&lt;li&gt;Boot recovery&lt;/li&gt;
+&lt;li&gt;Flash OOS, flash twrp, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Repeat step 6&lt;/li&gt;
+&lt;li&gt;Reboot to system, enable &lt;code&gt;Developer Options&lt;/code&gt; and &lt;code&gt;USB Debugging&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash Syberia OS Android 10, flash twrp, &lt;code&gt;advanced wipe data and cache&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash gapps, reboot to system, enable &lt;code&gt;Developer Options&lt;/code&gt; and &lt;code&gt;USB Debugging&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Repeat step 9, 10&lt;/li&gt;
+&lt;li&gt;Flash Syberia OS Android 11, flash twrp, &lt;code&gt;advanced wipe data and cache&lt;/code&gt;, reboot to recovery&lt;/li&gt;
+&lt;li&gt;Flash gapps, reboot to system&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;按照以上步骤来刷, 不出意外的话应该是可以成功的, 昨晚试了一晚上, 直到半夜十二点多才成功&amp;hellip; 这个 ROM 有毒&amp;hellip; 刷好之后对比了一下, 11 的变动看起来的确是挺少的, 只有轻微的一点点 UI 变化, 好像还有一些隐私的保护之类的.&lt;/p&gt;
+&lt;p&gt;下面分享几张截图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193104.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193307.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193503.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/Screenshot_20201003-193513.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后, 虽然能预料到, 一加6 果然是比一加7 先有 Android 11 的包, 一加7 果然还是太弟弟了.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

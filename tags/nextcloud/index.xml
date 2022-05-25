@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>nextcloud on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/nextcloud/</link>
+        <description>Recent content in nextcloud on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 21 Mar 2022 21:54:49 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>树莓派4安装nextcloud记录 (非docker安装法)</title>
+        <link>https://cgcel.github.io/posts/2022/03/21/2022-03-21-%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2022/03/21/2022-03-21-%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;由于前一段时间换了iPhone, 导致原本把音乐文件存在本地听歌的白嫖习惯中断了, 使用iTunes实在是不方便 (需要固定一台pc管理本地音乐文件), 加之不想用iCloud服务, 因此我在tg上用缓存听了一个多月的歌&amp;hellip;&lt;/p&gt;
+&lt;p&gt;树莓派放在东莞家里, 一直跑着qbittorrent-nox以及frps服务, 这两个都是日常使用很频繁的服务, 树莓派跑起来也是绰绰有余. 最近由于东莞疫情, 已经很久没有回去, 于是正好在休息日折腾一下很久没管的树莓派, 给树莓派装上nextcloud, 用来当作自己的网盘, 把音乐文件存入, 方便手机同步.&lt;/p&gt;
+&lt;h2 id=&#34;安装过程&#34;&gt;安装过程&lt;/h2&gt;
+&lt;h3 id=&#34;安装apache2&#34;&gt;安装apache2&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 1.安装命令  
+sudo apt-get install apache2  
+  
+# 2.启动apache2  
+systemctl start apache2  
+  
+# 3.设置apache2开机自启  
+systemctl enable apache2  
+  
+# 附上其他命令  
+# 查看运行状态  
+systemctl status apache2  
+# 重启  
+systemctl restart apache2  
+# 停止  
+systemctl stop apache2
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;安装php&#34;&gt;安装php&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 1.安装php  
+sudo apt-get install php libapache2-mod-php -y  
+  
+# 2.安装其他组件  
+sudo apt-get -y install php-fpm php-cli php-json php-curl php-imap php-gd php-mysql php-xml php-zip php-intl php-imagick php-mbstring -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;安装mariadb&#34;&gt;安装mariadb&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 1.安装  
+sudo apt-get install mariadb-server -y  
+  
+# 2.开启远程登陆权限  
+# 2.1 切换目录  
+d /etc/mysql/mariadb.conf.d  
+# 2.2 找到修改权限的文件  
+grep -rn &amp;#34;skip-networking&amp;#34; *  
+# 显示如下：在50-server.cnf文件的第26行  
+50-server.cnf:26:# Instead of skip-networking the default is now to listen only on  
+# 2.3 编辑文件，注释掉  bind-address = 127.0.0.1  
+sudo nano 50-server.cnf
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;创建数据库用户以及添加数据库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 直接回车 不需要输入密码  
+mysql -uroot -p  
+  
+# account可替换成自定义的用户名，password可替换成自定义的密码  
+create database nextcloud;  
+CREATE USER &amp;#39;account&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;  
+GRANT ALL PRIVILEGES ON *.* TO &amp;#39;oc_admin&amp;#39;@&amp;#39;%&amp;#39; WITH GRANT OPTION;  
+  
+flush privileges;  
+CREATE USER &amp;#39;account&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;  
+GRANT ALL PRIVILEGES ON *.* TO &amp;#39;account&amp;#39;@&amp;#39;localhost&amp;#39; WITH GRANT OPTION;  
+flush privileges;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;安装nextcloud&#34;&gt;安装nextcloud&lt;/h3&gt;
+&lt;p&gt;从&lt;a class=&#34;link&#34; href=&#34;https://nextcloud.com/install/#instructions-server&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;下载.tar.bz2的压缩包&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_12-55-24.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下载完成后, 需要上传到树莓派的 &lt;code&gt;/var/www/html/&lt;/code&gt; 目录下. 然后执行以下命令.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 1.解压文件  
+tar jxf nextcloud-21.0.0.tar.bz2  
+# 2.添加data目录和授权  
+chown -R root:root nextcloud  
+# 3.进入nextcloud文件夹  
+cd nextcloud  
+# 4.创建数据文件夹  
+mkdir data  
+# 5.添加权限和授权  
+chown -R www-data:www-data data config apps
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;(可选) 如果是在非root权限下操作, 可以先上传至树莓派, 剪切到 &lt;code&gt;/var/www/html/&lt;/code&gt; 目录后再进行解压.&lt;/p&gt;
+&lt;h2 id=&#34;初始化nextcloud&#34;&gt;初始化nextcloud&lt;/h2&gt;
+&lt;h3 id=&#34;准备&#34;&gt;准备&lt;/h3&gt;
+&lt;p&gt;初始化前, 由于我的树莓派开启了ufw, 所以先开启防火墙端口白名单:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo ufw allow 80/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;由于我的树莓派挂载一个1TB的移动硬盘, 为了充分利用以及避免后续操作, 先设置好硬盘开机自动挂载. 首先在命令行中输入:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;df -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_14-51-29.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到, 图中我已经对1TB的移动硬盘 &lt;code&gt;/dev/sda1&lt;/code&gt; 进行了挂载, 挂载目录为事先创建好的目录 &lt;code&gt;/mnt/usb-1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;接着, 命令行输入以下指令, 查看移动硬盘格式:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo fdisk -l
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_14-51-47.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从上图可以看出, 我的移动硬盘为NTFS格式, 接下来寻找或者创建一个自己想要挂载的目录, 然后编辑 &lt;code&gt;/etc/fstab&lt;/code&gt;, 在文件中添加以下内容:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/dev/sda1 /mnt/usb-1 ntfs defaults 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存退出后, 命令行输入 &lt;code&gt;sudo mount -a&lt;/code&gt;, 挂载后, 输入 &lt;code&gt;df -a&lt;/code&gt; 查看是否成功挂载.&lt;/p&gt;
+&lt;h3 id=&#34;可选-通过域名访问&#34;&gt;(可选) 通过域名访问&lt;/h3&gt;
+&lt;p&gt;由于之前找电信要了公网ip, 树莓派动态绑定了阿里云域名, 这里通过添加路由器虚拟服务器, 如下图所示, 外部端口选择自己想要映射的端口, 内部服务器IP填写树莓派在家中局域网的IP, 启用后便可在公网通过 &lt;code&gt;域名:外部端口/nextcloud&lt;/code&gt; 的方式访问nextcloud页面.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_15-23-02.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;初始化&#34;&gt;初始化&lt;/h3&gt;
+&lt;p&gt;在完成了上述准备后, 便可以进行nextcloud的初始化. 在局域网中访问 &lt;code&gt;树莓派IP:80/nextcloud&lt;/code&gt; 或在公网中访问 &lt;code&gt;域名:外部端口/nextcloud&lt;/code&gt; 即可.&lt;/p&gt;
+&lt;p&gt;在初始化页面中, 根据实际情况填写相关输入框:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_15-29-28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ntfs挂载的一些问题&#34;&gt;NTFS挂载的一些问题&lt;/h3&gt;
+&lt;p&gt;由于挂载格式是NTFS, 导致初始化完成后, 页面显示 &lt;code&gt;您的数据目录可被其他用户读取, 请更改权限为0770以避免其他用户查看目录&lt;/code&gt;, 经查询, 可以修改nextcloud目录下的 &lt;code&gt;config/config.php&lt;/code&gt; 来解决, 按照我的安装目录, 定位至 &lt;code&gt;/var/www/html/nextcloud/config&lt;/code&gt; , 编辑 &lt;code&gt;config.php&lt;/code&gt;, 在文件中添加以下内容:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;#39;check_data_directory_permissions&amp;#39; =&amp;gt; false,
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存关闭后, 刷新nextcloud页面, 问题解决.&lt;/p&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;h3 id=&#34;上传音乐文件&#34;&gt;上传音乐文件&lt;/h3&gt;
+&lt;p&gt;在PC端, 将本地音乐文件上传至nextcloud.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-21_22-22-41.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;并将存放音乐的nextcloud文件夹添加至本地.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2022-03-22_15-45-43.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;移动端使用&#34;&gt;移动端使用&lt;/h3&gt;
+&lt;p&gt;在手机端下载evermusic, 通过webdev连接nextcloud, 注意url一栏填写: &lt;code&gt;xxx:port/nextcloud/remote.php/webdev&lt;/code&gt;, 其他的按照个人设置填写.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/30ae133bc95aa691857e78e96f69e0a.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;连接上nextcloud后, 即可随心所欲听歌, 也可以选择将歌曲下载至本机.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/e565066562eb0719ab02d2caa4e10c6.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pc端&#34;&gt;PC端&lt;/h3&gt;
+&lt;p&gt;在设置同步的文件夹中, 使用 &lt;code&gt;PotPlayer&lt;/code&gt; 打开所有文件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20220328211033.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;经过一番折腾, 终于比较优雅地实现了把音乐文件存到iPhone的功能, 坚持恢复这种方式来听歌的起因也很简单, 那就是网易云时不时就下架我歌单的歌, 因此戒掉网易云, QQ也是理所当然的.&lt;/p&gt;
+&lt;h3 id=&#34;参考内容&#34;&gt;参考内容&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91&#34;&gt;https://cynosure.online/2021/08/16/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BANextcloud%E7%A7%81%E6%9C%89%E4%BA%91&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://its401.com/article/jdyanghang/102828553&#34;&gt;https://its401.com/article/jdyanghang/102828553&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

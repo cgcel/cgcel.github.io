@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>onelplus on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/onelplus/</link>
+        <description>Recent content in onelplus on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 04 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/onelplus/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>一加1卡刷lineage15.1</title>
+        <link>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+        <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/07/04/2018-07-04-%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
+        <description>&lt;img src="https://cgcel.github.io/2018-07-04-01.jpg" alt="Featured image of post 一加1卡刷lineage15.1" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.&lt;/p&gt;
+&lt;h2 id=&#34;突如其来的更新&#34;&gt;突如其来的更新&lt;/h2&gt;
+&lt;p&gt;之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.&lt;/p&gt;
+&lt;h2 id=&#34;踩坑&#34;&gt;踩坑&lt;/h2&gt;
+&lt;p&gt;备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;This package is for &amp;quot;OnePlus&amp;quot; devices: this is a &amp;quot;A0001&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.&lt;/p&gt;
+&lt;h2 id=&#34;开机&#34;&gt;开机&lt;/h2&gt;
+&lt;p&gt;开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&amp;hellip;&lt;!-- raw HTML omitted --&gt;
+下面附上一些截图:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-07-04-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-04-02.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-04-03.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;升级&#34;&gt;升级&lt;/h2&gt;
+&lt;p&gt;今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果. 顺带一提, 更新之后舍友拿去吃鸡不闪退了 (印度人很喜欢吃鸡, 很多ROM更新之后如果玩不了都会有人在评论反馈😂)&lt;/p&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;终于如愿以偿让备机吃上了 oreo, 体验也很好, 不过这应该是一加1能刷到的最新的版本了吧, 感觉 9.0 希望不大, 不过也很难得了, 毕竟这么老的机型了, 到现在还是很流畅, 刺激战场什么的也压力不大. 改天试一试 rr 好了, 其实 rr 给一加1适配 andoid 8.1 比 lineage 要早, 之前下下来一直刷不上就放弃了. 最后贴一下链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.lineageos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;lineageos下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://adbshell.com/downloads/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adb下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://opengapps.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;gapps下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://twrp.me/Devices/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;twrp下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

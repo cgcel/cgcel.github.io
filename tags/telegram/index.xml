@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>telegram on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/telegram/</link>
+        <description>Recent content in telegram on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 13 May 2021 21:51:24 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/telegram/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>我的 ZeroTier Network 管理 bot</title>
+        <link>https://cgcel.github.io/posts/2021/05/13/2021-05-13-%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</link>
+        <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2021/05/13/2021-05-13-%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/</guid>
+        <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;ZeroTier 我从去年开始第一次使用, 用来给家里的树莓派做内网穿透, 不过中间因为3B当做个小服务器没什么好玩的就中断了.&lt;/p&gt;
+&lt;p&gt;去年年底双十一从闲鱼如了一台 4G RAM 的4B (有点后悔没耐心等 8G 版本), 刷了 RaspiOS 之后就拿来跑PT站的签到脚本和当做下载机使用, 顺便安装了 ZeroTier One, 加入我的 ZeroTier Network, 如此一来在外也能较为轻松地访问到我的 pi.&lt;/p&gt;
+&lt;p&gt;但是由于 ZeroTier 的官网在国内访问较慢, 每次需要通过新加入成员或者管理成员都要花一点时间登录官网并管理, 一开始还不觉得麻烦, 后来加入成员越来越多, 也邀请朋友一起加入, 这样管理起来就比较麻烦. 恰巧此时从 ZeroTier 官网上看到他们有官方的 API 可供用户调用, 于是我申请了 API Key, 短暂测试之后决定写一个 Telegram Bot 帮助监控以及管理我的 ZeroTier Network.&lt;/p&gt;
+&lt;h2 id=&#34;api-调用测试&#34;&gt;API 调用测试&lt;/h2&gt;
+&lt;p&gt;根据 &lt;a class=&#34;link&#34; href=&#34;https://apidocs.zerotier.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt; 说明, 使用 postman 进行 API 调用测试, 根据指示, 在 header 中按照格式加入 API Key 即可请求到数据, 如下图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Snipaste_2021-05-13_23-45-40.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;使用postman调用API&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bot-设计&#34;&gt;Bot 设计&lt;/h2&gt;
+&lt;p&gt;本 bot 使用 Telegram Bot 的第三方库 &lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;pyTelegramBotAPI&lt;/a&gt; 来实现, 代码部分主要包括两个部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bot 命令以及定时任务&lt;/li&gt;
+&lt;li&gt;ZeroTier API 调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;初期版本&#34;&gt;初期版本&lt;/h3&gt;
+&lt;p&gt;初期的版本通过在 &lt;code&gt;config.yaml&lt;/code&gt; 文件中添加用户 ID 来添加管理员, 并通过私聊 bot 的方式来对 Network 进行管理. 这种交互方式在 只有一个管理员的时候还是挺方便的, 只需要直接与 bot 私聊发送指令, 开发到一大半的时候发现一个比较难实现的功能: 当有多个管理员管理的时候, bot 显示管理信息会比较困难 (需要在所有管理员对话框同步修改信息, 以显示是哪位管理员进行了此项操作).&lt;/p&gt;
+&lt;h3 id=&#34;改进版本&#34;&gt;改进版本&lt;/h3&gt;
+&lt;p&gt;与其说初期版本功能的实现比较绕, 不如说是设计之初就考虑的不周到, 本 bot 想要设计成一个允许多人管理的 bot, 就不能以私聊的方式交互, 而是应该将 bot 添加至群聊中, 让群管理员有权限进行管理, 如此一来逻辑便清晰许多了.&lt;/p&gt;
+&lt;h2 id=&#34;bot-功能&#34;&gt;Bot 功能&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Show networks info&lt;/li&gt;
+&lt;li&gt;Show network members info&lt;/li&gt;
+&lt;li&gt;Set member name (Admin only)&lt;/li&gt;
+&lt;li&gt;Authorize new member (Admin only)&lt;/li&gt;
+&lt;li&gt;Unauthorize member (Admin only)&lt;/li&gt;
+&lt;li&gt;Delete member (Admin only)&lt;/li&gt;
+&lt;li&gt;Set sub admin (Invite your friends to group chat, set as admin and manage the network with you)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建私人-zerotier-network-管理-bot-具体步骤&#34;&gt;创建私人 ZeroTier Network 管理 Bot 具体步骤&lt;/h2&gt;
+&lt;h3 id=&#34;开始&#34;&gt;开始&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建你的 ZeroTier Web API Token:&lt;/p&gt;
+&lt;p&gt;点击&lt;a class=&#34;link&#34; href=&#34;https://my.zerotier.com/account&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;链接&lt;/a&gt;创建 API Access Token.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建你的 Telegram Bot:&lt;/p&gt;
+&lt;p&gt;发送指令给 @BotFather, 你可以复制以下内容发送至 @BotFather 以编辑你的 bot 指令:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;help - Show commands list.
+show_network - Show your zerotier networks.
+set_member_name - Set your member&amp;#39;s name by using this command.
+auth_member - Authorize a member.
+unauth_member - Unauthorize a member.
+delete_member - Delete a member.
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拷贝仓库至本地:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ git clone https://github.com/koonchung/ZeroTierTelegramBot.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装依赖:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ pip3 install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编辑 &lt;code&gt;config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Fill with your telegram bot token&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Create your bot by sending commands to @BotFather in Telegram&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;bot_token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;your_bot_token&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Fill with your zerotier token&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Get your own API Access Token at: https://my.zerotier.com/account&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;zerotier_token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;your_zerotier_web_api_token&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Fill with telegram id which you want to set as admin&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;admin_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;your_telegram_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Fill with refresh seconds, used to check new members&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;refresh_seconds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行 Bot&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cd ZeroTierTelegramBot
+$ python3 zerotiertelegrambot
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将 bot 邀请至自建群聊中, 发送 &lt;code&gt;/start@your_bot&lt;/code&gt; 至群聊, 然后即可开始管理你的ZeroTier Networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后台运行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本菜鸟使用tmux在后台挂起bot服务.&lt;/p&gt;
+&lt;h3 id=&#34;运行截图&#34;&gt;运行截图&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;start&amp;amp;help&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/start&amp;amp;help.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;start&amp;help&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;show_network&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/show_network.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;show_network&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;network_info&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/network_info.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;network_info&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;accept&amp;amp;setname&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/accept&amp;amp;setname.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;accept&amp;setname&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;auth&amp;amp;setname&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/auth&amp;amp;setname.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;auth&amp;setname&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;new_member&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/new_member.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;new_member&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/koonchung/ZeroTierTelegramBot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;项目&lt;/a&gt;已发布在 GitHub, 欢迎提意见🤗&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

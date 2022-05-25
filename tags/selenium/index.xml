@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>selenium on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/selenium/</link>
+    <description>Recent content in selenium on 烂杯的博客</description>
+    <image>
+      <url>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 06 Jul 2020 21:43:54 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>最近开的一个爬虫小坑</title>
+      <link>https://cgcel.github.io/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</link>
+      <pubDate>Mon, 06 Jul 2020 21:43:54 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/</guid>
+      <description>第一次全程使用selenium爬数据</description>
+    </item>
+    
+  </channel>
+</rss>

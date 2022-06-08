@@ -9,7 +9,24 @@
       <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Mar 2022 21:54:49 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jun 2022 20:27:35 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi4TNTCase -- 我的树莓派机箱</title>
+      <link>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
+      <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
+      <description>写在开头 我的树莓派作为服务器使用已经有一段时间了, 之前安装了一个铝壳被动散热, 在还没进入夏天的5月份, 轻负载时可以突破50度, 这时候用手直接摸散热壳已经是很烫的了.
+由于pi放在了我房间的木桌上, 让我不太敢用力压榨它, 给它更换更好的散热已经是很早就有的想法.
+正巧最近618将至, 我在浏览散热器的时候发现了树莓派机箱的推荐, 大概是下面这种形状:
+其实这种样子的机箱我在咸鱼看过很多次, 不过我觉得外观上比较一般, 让我没有购买的欲望, 于是便萌生了自己设计一个机箱并打印的想法, 正好自己对3D打印建模挺感兴趣, 可以利用这次机会入坑一下, 顺便学习建模.
+网上冲浪之后, 我了解到3D打印主要使用 .stl 格式的模型, 而可以生成这种格式模型的软件也有很多, 比如 Solid Works, Zbrush, Sketchup 等等, 我很快就决定使用 Sketchup 进行建模, 因为我女友可以指导我, 让我更容易上手. 至于模型的打印, 则可以交给有3D打印机的朋友或者网店代工.
+ 建模部分 灵感来源 在做上述的功课时, 我了解到一个主流的3D打印模型分享站, 国内称之为 T站, 在上面我看到了一个比较感兴趣的 模型:
+看到这个正方体我马上联想到 MC 中 TNT 方块的样子:
+根据T站的马里奥问号箱, 我可以稍作修改, 将模型改成我想要的 TNT 形状, 对于入门学习 Sketchup 建模的我来说是比较好的一个方案.
+建模  在 Sketchup 中新建模型, 然后导入 .stl 文件  抹平原模型中的四边图案  推拉中间白条区域, 准备实现参照模型的凸起部分  连接突起白条, 并根据3D文字进行修改, 将 N 改成像素风格, 然后使用推拉, 在白条上刻字  初步上色看看效果  在上半部分加入凹槽, 使模型更贴近原 TNT 的样子  改造盖子, 还是一样操作先把原模型图案去除然后推拉成平面, 由于树莓派将会安装卧式散热, 盖子设计成了镂空形状, 方便透气   模型打印与加工 打印模型 在找店家打印的同时, 我了解到3D打印机主要分 SLA 和 FDM 这两种.</description>
+    </item>
+    
     <item>
       <title>树莓派4安装nextcloud记录 (非docker安装法)</title>
       <link>https://cgcel.github.io/posts/2022/03/21/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</link>

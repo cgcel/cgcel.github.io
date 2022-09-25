@@ -9,7 +9,52 @@
       <link>https://cgcel.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 07 Jun 2022 20:27:35 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Sep 2022 11:24:55 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>adb</title>
+      <link>https://cgcel.github.io/tags/adb/</link>
+      <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/adb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android12</title>
+      <link>https://cgcel.github.io/tags/android12/</link>
+      <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/android12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scrcpy</title>
+      <link>https://cgcel.github.io/tags/scrcpy/</link>
+      <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/scrcpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wireless_debugging</title>
+      <link>https://cgcel.github.io/tags/wireless_debugging/</link>
+      <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/wireless_debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zerotier</title>
+      <link>https://cgcel.github.io/tags/zerotier/</link>
+      <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
+      
+      <guid>https://cgcel.github.io/tags/zerotier/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>3d printing</title>
       <link>https://cgcel.github.io/tags/3d-printing/</link>
@@ -61,15 +106,6 @@
       <pubDate>Tue, 17 May 2022 14:13:36 +0000</pubDate>
       
       <guid>https://cgcel.github.io/tags/scrapy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>android12</title>
-      <link>https://cgcel.github.io/tags/android12/</link>
-      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/android12/</guid>
       <description></description>
     </item>
     
@@ -214,15 +250,6 @@
       <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
       
       <guid>https://cgcel.github.io/tags/telegram/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>zerotier</title>
-      <link>https://cgcel.github.io/tags/zerotier/</link>
-      <pubDate>Thu, 13 May 2021 21:51:24 +0800</pubDate>
-      
-      <guid>https://cgcel.github.io/tags/zerotier/</guid>
       <description></description>
     </item>
     

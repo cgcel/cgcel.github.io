@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oled on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/oled/</link>
+    <description>Recent content in oled on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/oled/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIY项目 -- 自制红外测温枪</title>
+      <link>https://cgcel.github.io/posts/2020/11/17/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2020/11/17/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</guid>
+      <description>开头 年初新冠疫情在武汉爆发, 感染者随着春运人流迅速扩散到全国各地, 彼时人人抢口罩, 甚至连药店的水银体温计都被洗劫一空. 那时每天都很关注自己的身体状况, 每天都需要健康上报以确保能正常回到工作岗位, 因此在淘宝下单了一个红外测温模块 MLX90614ESF-BAA, 用来自制一把测温枪, 及时量出体温. 但由于当时口罩, 测温枪等物资紧缺, 下单后过了很久客服通知说没货并给我退款, 这件事就不了了之.
+直到最近双十一没想到要买些什么东西的时候想起了这个未完成的小项目, 我在淘宝下单并顺利拿到了模块, 经过一番测试后将体温枪组装完毕.
+模块选型 整个项目用到的模块有:
+Arduino Nano * 1 面包板 * 1 MLX90614ESF-BAA 红外测温传感器模块 * 1 按键模块 * 1 OLED 屏模块 * 1 这里面只有测温模块是第一次使用, 该模块可以测量 环境温度 以及 物体温度, 从店家介绍页面摘抄一些型号对照表:
+我选购的最便宜的型号 BAA 测量距离只有 2cm, 而 BCC 为 10cm, DCI 为 1m, 因此在实际测量中超出 2cm 测得的数据将会有明显误差.
+功能实现 按照以上选用的模块, 我按照下图将线路连接完毕:
+代码使用到的库文件如下:
+Wire.h SPI.h Adafruit_GFX.h Adafruit_SSD1306.h Adafruit_MLX90614.h 其中 OLED 和测温模块都是通过 I2C 通信获取数据的, 而按键模块则只需通过检测引脚高低电平来判断是否按下并在代码中添加消抖语句即可.</description>
+    </item>
+  </channel>
+</rss>

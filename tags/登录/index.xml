@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>登录 on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/</link>
+    <description>Recent content in 登录 on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sat, 23 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>六维空间自动登录脚本</title>
+      <link>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
+      <description>开篇 5.20前后几天, 六维空间开放注册, 于是久仰大名的我也跑去注册了一个账号, 因为六维空间每日登录都会送5浮云, 因此就有了写一个模拟登录拿每日奖励的脚本的想法, 将其放在校园网登录脚本里面一起跑就美滋滋了.
+代码 # -*- coding: utf-8 -*- # author: Chan import requests from bs4 import BeautifulSoup url_start = &amp;#39;http://bt.neu6.edu.cn/member.php?mod=logging&amp;amp;action=login&amp;amp;referer=http%3A%2F%2Fbt.neu6.edu.cn%2Fforum.php&amp;#39; url_login = &amp;#39;http://bt.neu6.edu.cn/&amp;#39; url_main = &amp;#39;http://bt.neu6.edu.cn/forum.php&amp;#39; url_test = &amp;#39;http://bt.neu6.edu.cn/home.php?mod=spacecp&amp;#39; class neu6(): def __init__(self, username, password): headers = { &amp;#34;Accept&amp;#34;: &amp;#34;text/html, application/xhtml+xml, application/xml&amp;#34;, &amp;#34;Accept-Encoding&amp;#34;: &amp;#34;gzip, deflate&amp;#34;, &amp;#34;Accept-Language&amp;#34;: &amp;#34;zh-CN, zh&amp;#34;, &amp;#34;Cache-Control&amp;#34;: &amp;#34;max-age = 0&amp;#34;, &amp;#34;Connection&amp;#34;: &amp;#34;keep-alive&amp;#34;, &amp;#34;Host&amp;#34;: &amp;#34;bt.neu6.edu.cn&amp;#34;, &amp;#34;Upgrade-Insecure-Requests&amp;#34;: &amp;#34;1&amp;#34;, &amp;#34;User-Agent&amp;#34;: &amp;#34;Mozilla/5.0 (Windows NT 10.0Win64x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.</description>
+    </item>
+  </channel>
+</rss>

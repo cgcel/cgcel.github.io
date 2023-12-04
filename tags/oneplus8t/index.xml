@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oneplus8t on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/oneplus8t/</link>
+    <description>Recent content in oneplus8t on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/oneplus8t/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一加8T刷Nameless AOSP记录</title>
+      <link>https://cgcel.github.io/posts/2022/04/13/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2022/04/13/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
+      <description>开头 之前给8T刷了 Derpfest, 也是基于A12 AOSP的一个ROM, 但是开发者在群里说已经不再维护, 前几天休息在家无聊逛了一下xda, 发现这个包点击量挺高, 于是决定给8T换一个ROM.
+准备 翻看 xda 的 ROM 发布帖子, 刷入步骤挺简单, 没有什么花里胡哨的, 把包下好之后就可以直接开整, 因为我的机已经解锁了, 也省去了很多繁琐的步骤.
+Download recovery.img in download link Reboot phone to bootloader Open any terminal like cmd etc, enter &amp;ldquo;fastboot flash recovery recovery.img&amp;rdquo; Reboot phone to recovery and enter sideload mode Enter &amp;ldquo;adb sideload xxx&amp;rdquo; (xxx means the filename of rom zip you downloaded) Do factory reset in recovery (Mandatory for first time flash) Reboot You can also use rom installer to flash the way you did before.</description>
+    </item>
+    <item>
+      <title>一加8T全量包升级并保留ROOT</title>
+      <link>https://cgcel.github.io/posts/2021/05/22/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</link>
+      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2021/05/22/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</guid>
+      <description>前言 在试用了一天多 ColorOS 之后, 鉴于其后台管理过于严格, 我又趁午休时间刷回了 OOS, 之前已经有了用 TWRP 保留 root 的全量包更新经验和文章, 本篇只想快速记录一下.
+准备工作 9008 线刷包 (OOS) payload_dumper Magisk-v23.0.apk 步骤 步骤一: 刷回 OOS 进入 开发者选项, 勾选 允许 OEM 解锁, 开启 USB 调试, 然后关机静置. 同时按住 音量+ 和 音量-, 然后用 USB 线连接电脑, 开启 9008 线刷, 刷机完毕后重启进入系统. 步骤二: 解锁 OOS 并 ROOT 进入 开发者选项, 勾选 允许 OEM 解锁, 开启 USB 调试, 然后输入以下指令:
+adb devices adb reboot bootloader fastboot devices fastboot oem unlock 使用 &amp;ldquo;音量键&amp;rdquo; 和 &amp;ldquo;电源键&amp;rdquo; 确定解锁手机, 然后完成初始化进入系统.</description>
+    </item>
+    <item>
+      <title>从OOS到LOS -- 一加8T的刷机记录</title>
+      <link>https://cgcel.github.io/posts/2021/05/17/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2021/05/17/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
+      <description>前言 距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 xda 论坛 挺活跃的, 已经有不少的 ROM 可以刷了:
+于是我就打算利用空闲时间刷一刷手里的 8T 解解馋, 玩累了正好回 ColorOS (如果一加不鸽的话&amp;hellip;)
+本篇将分为两大部分来记录, 分别是:
+OOS 刷 LOS 的记录 LOS 刷回 OOS 并 root 的记录 OOS 刷 LOS 准备 在准备刷机前, 我们需要 备份好数据, 并安装或下载好以下内容 (下载包以本篇博客日期为准, 如参考则需尽量下载最新包):
+adb (基本操作了, 没有adb就无法通过指令控制手机) 9008救砖包 (随时准备好救砖) lineage-18.1-20210513-nightly-kebab-signed.zip lineage-18.1-20210513-recovery-kebab.img copy-partitions-20210323_1922.zip GAPPS Magisk-v23.0.apk 具体步骤 详细刷机步骤参考 官方文档 , 下面我将按照具体指令来总结, 这样比较明了, 不用看详细的文字解释:
+进入 开发者选项 并开启 OEM 解锁 以及 USB调试</description>
+    </item>
+  </channel>
+</rss>

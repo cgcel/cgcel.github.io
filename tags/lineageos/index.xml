@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lineageos on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/lineageos/</link>
+    <description>Recent content in lineageos on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Mon, 17 May 2021 13:45:02 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/lineageos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从OOS到LOS -- 一加8T的刷机记录</title>
+      <link>https://cgcel.github.io/posts/2021/05/17/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2021/05/17/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
+      <description>前言 距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 xda 论坛 挺活跃的, 已经有不少的 ROM 可以刷了:
+于是我就打算利用空闲时间刷一刷手里的 8T 解解馋, 玩累了正好回 ColorOS (如果一加不鸽的话&amp;hellip;)
+本篇将分为两大部分来记录, 分别是:
+OOS 刷 LOS 的记录 LOS 刷回 OOS 并 root 的记录 OOS 刷 LOS 准备 在准备刷机前, 我们需要 备份好数据, 并安装或下载好以下内容 (下载包以本篇博客日期为准, 如参考则需尽量下载最新包):
+adb (基本操作了, 没有adb就无法通过指令控制手机) 9008救砖包 (随时准备好救砖) lineage-18.1-20210513-nightly-kebab-signed.zip lineage-18.1-20210513-recovery-kebab.img copy-partitions-20210323_1922.zip GAPPS Magisk-v23.0.apk 具体步骤 详细刷机步骤参考 官方文档 , 下面我将按照具体指令来总结, 这样比较明了, 不用看详细的文字解释:
+进入 开发者选项 并开启 OEM 解锁 以及 USB调试</description>
+    </item>
+    <item>
+      <title>一加1卡刷lineage15.1</title>
+      <link>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
+      <description>开篇 终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.
+突如其来的更新 之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.
+踩坑 备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:
+This package is for &amp;quot;OnePlus&amp;quot; devices: this is a &amp;quot;A0001&amp;quot;
+经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.
+开机 开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&amp;hellip; 下面附上一些截图:
+升级 今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果.</description>
+    </item>
+  </channel>
+</rss>

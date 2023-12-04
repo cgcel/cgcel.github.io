@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html><head>
+<title>V2RayN局域网共享</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="V2RayN局域网共享" />
+<meta property="og:description" content="开篇 最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.
+准备 电脑1台 安装好 V2RayN 详细步骤 设置V2RayN 因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.
+打开移动热点 以 win10 系统为例, 在设置中打开移动热点:
+然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:
+连接热点 首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.
+在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.
+到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2020/02/06/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-06T14:28:09+08:00" />
+<meta property="article:modified_time" content="2020-02-06T14:28:09+08:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="V2RayN局域网共享"/>
+<meta name="twitter:description" content="开篇 最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.
+准备 电脑1台 安装好 V2RayN 详细步骤 设置V2RayN 因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.
+打开移动热点 以 win10 系统为例, 在设置中打开移动热点:
+然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:
+连接热点 首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.
+在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.
+到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样."/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%87%86%e5%a4%87" class="nav-准备">
+									准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%af%a6%e7%bb%86%e6%ad%a5%e9%aa%a4" class="nav-详细步骤">
+									详细步骤
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%aev2rayn" class="nav-设置v2rayn">
+									设置V2RayN
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%93%e5%bc%80%e7%a7%bb%e5%8a%a8%e7%83%ad%e7%82%b9" class="nav-打开移动热点">
+									打开移动热点
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%9e%e6%8e%a5%e7%83%ad%e7%82%b9" class="nav-连接热点">
+									连接热点
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    V2RayN局域网共享
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2020-02-06 14:28
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[学习]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/v2ray">v2ray</a>
+                                &nbsp;
+                            
+                                <a href="/tags/windows">windows</a>
+                                &nbsp;
+                            
+                                <a href="/tags/proxy">proxy</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="开篇">开篇</h2>
+<p>最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.</p>
+<h2 id="准备">准备</h2>
+<ol>
+<li>电脑1台</li>
+<li>安装好 V2RayN</li>
+</ol>
+<h2 id="详细步骤">详细步骤</h2>
+<h3 id="设置v2rayn">设置V2RayN</h3>
+<p>因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.</p>
+<p><img src="2020-02-06-12-28-11.png" alt="图1"></p>
+<h3 id="打开移动热点">打开移动热点</h3>
+<p>以 win10 系统为例, 在设置中打开移动热点:</p>
+<p><img src="2020-02-06-12-08-55.png" alt="图2"></p>
+<p>然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:</p>
+<p><img src="2020-02-06-12-11-33.png" alt="图3"></p>
+<h3 id="连接热点">连接热点</h3>
+<p>首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.</p>
+<p><img src="2020-02-06-12-08-20.png" alt="图4"></p>
+<p>在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.</p>
+<p>到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2020-02-06</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2020/02/08/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/">
+			Next<br>ViewPager禁用滑动实践和总结
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2019/12/03/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/">
+			Previous<br>Arduino的主从机双向通信
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%87%86%e5%a4%87" class="nav-准备">
+									准备
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%af%a6%e7%bb%86%e6%ad%a5%e9%aa%a4" class="nav-详细步骤">
+									详细步骤
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%ae%be%e7%bd%aev2rayn" class="nav-设置v2rayn">
+									设置V2RayN
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%89%93%e5%bc%80%e7%a7%bb%e5%8a%a8%e7%83%ad%e7%82%b9" class="nav-打开移动热点">
+									打开移动热点
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bf%9e%e6%8e%a5%e7%83%ad%e7%82%b9" class="nav-连接热点">
+									连接热点
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

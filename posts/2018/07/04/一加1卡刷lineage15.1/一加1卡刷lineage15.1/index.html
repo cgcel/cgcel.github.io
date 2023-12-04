@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html><head>
+<title>一加1卡刷lineage15.1</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="一加1刷机记录">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="一加1卡刷lineage15.1" />
+<meta property="og:description" content="一加1刷机记录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-04T00:00:00+00:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一加1卡刷lineage15.1"/>
+<meta name="twitter:description" content="一加1刷机记录"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%aa%81%e5%a6%82%e5%85%b6%e6%9d%a5%e7%9a%84%e6%9b%b4%e6%96%b0" class="nav-突如其来的更新">
+									突如其来的更新
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%b8%a9%e5%9d%91" class="nav-踩坑">
+									踩坑
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e6%9c%ba" class="nav-开机">
+									开机
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8d%87%e7%ba%a7" class="nav-升级">
+									升级
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bb%93%e5%b0%be" class="nav-结尾">
+									结尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    一加1卡刷lineage15.1
+                    
+                    <div class="post-subtitle">
+                        一加1刷机记录
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-07-04 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[刷机]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/android8.1">android8.1</a>
+                                &nbsp;
+                            
+                                <a href="/tags/lineageos">lineageos</a>
+                                &nbsp;
+                            
+                                <a href="/tags/flashing">flashing</a>
+                                &nbsp;
+                            
+                                <a href="/tags/onelplus">onelplus</a>
+                                &nbsp;
+                            
+                                <a href="/tags/oneplus1">oneplus1</a>
+                                &nbsp;
+                            
+                                <a href="/tags/twrp">twrp</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="开篇">开篇</h2>
+<p>终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.</p>
+<h2 id="突如其来的更新">突如其来的更新</h2>
+<p>之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.</p>
+<h2 id="踩坑">踩坑</h2>
+<p>备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:</p>
+<p><code>This package is for &quot;OnePlus&quot; devices: this is a &quot;A0001&quot;</code></p>
+<p>经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.</p>
+<h2 id="开机">开机</h2>
+<p>开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&hellip;<!-- raw HTML omitted -->
+下面附上一些截图:<!-- raw HTML omitted --></p>
+<p><img src="2018-07-04-01.jpg" alt="图1">
+<img src="2018-07-04-02.jpg" alt="图2">
+<img src="2018-07-04-03.jpg" alt="图3"></p>
+<h2 id="升级">升级</h2>
+<p>今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果. 顺带一提, 更新之后舍友拿去吃鸡不闪退了 (印度人很喜欢吃鸡, 很多ROM更新之后如果玩不了都会有人在评论反馈😂)</p>
+<h2 id="结尾">结尾</h2>
+<p>终于如愿以偿让备机吃上了 oreo, 体验也很好, 不过这应该是一加1能刷到的最新的版本了吧, 感觉 9.0 希望不大, 不过也很难得了, 毕竟这么老的机型了, 到现在还是很流畅, 刺激战场什么的也压力不大. 改天试一试 rr 好了, 其实 rr 给一加1适配 andoid 8.1 比 lineage 要早, 之前下下来一直刷不上就放弃了. 最后贴一下链接:</p>
+<ul>
+<li><a href="https://download.lineageos.org/">lineageos下载</a></li>
+<li><a href="http://adbshell.com/downloads/">adb下载</a></li>
+<li><a href="https://opengapps.org/">gapps下载</a></li>
+<li><a href="https://twrp.me/Devices/">twrp下载</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2018-07-04</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/">
+			Next<br>Gcm-for-Mojo搭建总结
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/">
+			Previous<br>六维空间自动登录脚本
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%aa%81%e5%a6%82%e5%85%b6%e6%9d%a5%e7%9a%84%e6%9b%b4%e6%96%b0" class="nav-突如其来的更新">
+									突如其来的更新
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%b8%a9%e5%9d%91" class="nav-踩坑">
+									踩坑
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e6%9c%ba" class="nav-开机">
+									开机
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8d%87%e7%ba%a7" class="nav-升级">
+									升级
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bb%93%e5%b0%be" class="nav-结尾">
+									结尾
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

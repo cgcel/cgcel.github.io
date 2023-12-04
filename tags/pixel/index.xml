@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pixel on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/pixel/</link>
+    <description>Recent content in pixel on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/pixel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pixel 2XL root方案记录</title>
+      <link>https://cgcel.github.io/posts/2018/09/09/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/09/09/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</guid>
+      <description>开篇 回顾我的刷机历程, 每次都是有了想法之后就行动起来了, 经历的是一次又一次的真香警告. 而本次 root 的想法的起因是黑域越来越难用, 让我想用回绿守, 本想着等 9.1 出来之后再 root, 但是每次我都会等不及&amp;hellip; 然后果不其然的踩坑了.
+刷机环境以及刷机包准备 USB驱动 adb环境 TWRP Magisk 其中, twrp 较新版本刷入之后有 bug, 上 youtube 看过教程后, 决定采用 twrp3.2.1.2, 下载时需要下载.img以及.zip文件.
+具体步骤 进入命令行
+进入 fastboot 界面
+$ adb reboot bootloader 解 bootloader 锁
+$ fastboot flashing unlock 使用音量键和电源键进行确认, 注意解锁后手机所有数据将会被清除, 要做好备份.
+刷入第三方 recovery
+$ fastboot boot path/twrp.img 刷入成功后, 重启进入 recovery, 此时还需要进入 install, 选择 twrp.zip 包再进行刷入. 缺少这一步的话, 下一次重启还会回到官方recovery.
+刷入 magisk 在 twrp 的 install 页面选择事先存入手机的 magisk.</description>
+    </item>
+  </channel>
+</rss>

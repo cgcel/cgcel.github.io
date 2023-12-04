@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/ssh/</link>
+    <description>Recent content in ssh on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Termux 安装并使用 Frpc</title>
+      <link>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
+      <description>Android 12 的 Termux 安装并使用 Frpc 记录</description>
+    </item>
+    <item>
+      <title>树莓派系统安装以及ssh连接</title>
+      <link>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+      <description>前期准备 在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.
+系统安装 系统下载 系统安装还不算太麻烦, 直接去 官网 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 Raspbian 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:
+Raspbian Stretch with desktop Raspbian Stretch Lite 前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.
+刷入 Raspbian 下载完毕后, 使用 SDFormatter 将 SD 卡格式化, 然后使用 Win32DiskImager 将系统写进 SD 卡, 类似工具有很多, 自己选用一个即可 (官网更新了官方工具 Raspberry Pi Imager, 使用起来更为方便), SD 卡容量方面, 很多教程都是选择了最低限度的 2GB 的 SD 卡, 然而这都已经是古董级别的卡了, 一般在街上只能买到最低 16GB 的. 使用 Win32DiskImager 写入系统成功后, 会弹窗询问是否格式化 SD 卡, 这时候点取消就行, 不然又要重新写一遍.</description>
+    </item>
+  </channel>
+</rss>

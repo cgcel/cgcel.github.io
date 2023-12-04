@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raspberrypi on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/raspberrypi/</link>
+    <description>Recent content in raspberrypi on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sun, 16 Oct 2022 00:16:55 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PhotoPrism的部署以及GooglePhotos图片搬运</title>
+      <link>https://cgcel.github.io/posts/2022/10/16/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</link>
+      <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2022/10/16/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</guid>
+      <description>PhotoPrism的Docker部署以及rclone的使用</description>
+    </item>
+    <item>
+      <title>Pi4TNTCase -- 我的树莓派机箱</title>
+      <link>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
+      <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
+      <description>写在开头 我的树莓派作为服务器使用已经有一段时间了, 之前安装了一个铝壳被动散热, 在还没进入夏天的5月份, 轻负载时可以突破50度, 这时候用手直接摸散热壳已经是很烫的了.
+由于pi放在了我房间的木桌上, 让我不太敢用力压榨它, 给它更换更好的散热已经是很早就有的想法.
+正巧最近618将至, 我在浏览散热器的时候发现了树莓派机箱的推荐, 大概是下面这种形状:
+其实这种样子的机箱我在咸鱼看过很多次, 不过我觉得外观上比较一般, 让我没有购买的欲望, 于是便萌生了自己设计一个机箱并打印的想法, 正好自己对3D打印建模挺感兴趣, 可以利用这次机会入坑一下, 顺便学习建模.
+网上冲浪之后, 我了解到3D打印主要使用 .stl 格式的模型, 而可以生成这种格式模型的软件也有很多, 比如 Solid Works, Zbrush, Sketchup 等等, 我很快就决定使用 Sketchup 进行建模, 因为我女友可以指导我, 让我更容易上手. 至于模型的打印, 则可以交给有3D打印机的朋友或者网店代工.
+建模部分 灵感来源 在做上述的功课时, 我了解到一个主流的3D打印模型分享站, 国内称之为 T站, 在上面我看到了一个比较感兴趣的 模型:
+看到这个正方体我马上联想到 MC 中 TNT 方块的样子:
+根据T站的马里奥问号箱, 我可以稍作修改, 将模型改成我想要的 TNT 形状, 对于入门学习 Sketchup 建模的我来说是比较好的一个方案.
+建模 在 Sketchup 中新建模型, 然后导入 .stl 文件 抹平原模型中的四边图案 推拉中间白条区域, 准备实现参照模型的凸起部分 连接突起白条, 并根据3D文字进行修改, 将 N 改成像素风格, 然后使用推拉, 在白条上刻字 初步上色看看效果 在上半部分加入凹槽, 使模型更贴近原 TNT 的样子 改造盖子, 还是一样操作先把原模型图案去除然后推拉成平面, 由于树莓派将会安装卧式散热, 盖子设计成了镂空形状, 方便透气 模型打印与加工 打印模型 在找店家打印的同时, 我了解到3D打印机主要分 SLA 和 FDM 这两种.</description>
+    </item>
+    <item>
+      <title>树莓派4安装nextcloud记录 (非docker安装法)</title>
+      <link>https://cgcel.github.io/posts/2022/03/21/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2022/03/21/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</guid>
+      <description>起因 由于前一段时间换了 iPhone, 导致原本把音乐文件存在本地听歌的白嫖习惯中断了, 使用 iTunes 实在是不方便 (需要固定一台 pc 管理本地音乐文件), 加之不想用 iCloud 服务, 因此我在 tg 上用缓存听了一个多月的歌&amp;hellip;
+树莓派放在东莞家里, 一直跑着 qbittorrent-nox 以及 frps 服务, 这两个都是日常使用很频繁的服务, 树莓派跑起来也是绰绰有余. 最近由于东莞疫情, 已经很久没有回去, 于是正好在休息日折腾一下很久没管的树莓派, 给树莓派装上 nextcloud, 用来当作自己的网盘, 把音乐文件存入, 方便手机同步.
+安装过程 安装apache2 # 1.安装命令 sudo apt-get install apache2 # 2.启动apache2 systemctl start apache2 # 3.设置apache2开机自启 systemctl enable apache2 # 附上其他命令 # 查看运行状态 systemctl status apache2 # 重启 systemctl restart apache2 # 停止 systemctl stop apache2 安装php # 1.安装php sudo apt-get install php libapache2-mod-php -y # 2.</description>
+    </item>
+    <item>
+      <title>树莓派使用Frp实现内网穿透记录</title>
+      <link>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
+      <description>前言 在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
+准备 首先准备好以下物品:
+树莓派3B PC 一台 VPS 一台 显示器 (用于树莓派初始化, 根据自己的情况可以使用别的方式) 配置过程 1. 初始化树莓派 首先在树莓派上安装系统, 我安装的是 Raspbian Buster with desktop, 将系统镜像刷写进SD卡后, 通过接入显示器的方式控制树莓派联网, 开启 SSH 以及 VNC , 这里详细过程就不记录, 算是玩树莓派的基本操作了. 然后我们找到树莓派的 IP, 然后使用 xshell 连接树莓派, 初始化树莓派的过程到此结束.
+2. 准备VPS 这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.</description>
+    </item>
+    <item>
+      <title>树莓派系统安装以及ssh连接</title>
+      <link>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+      <description>前期准备 在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.
+系统安装 系统下载 系统安装还不算太麻烦, 直接去 官网 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 Raspbian 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:
+Raspbian Stretch with desktop Raspbian Stretch Lite 前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.
+刷入 Raspbian 下载完毕后, 使用 SDFormatter 将 SD 卡格式化, 然后使用 Win32DiskImager 将系统写进 SD 卡, 类似工具有很多, 自己选用一个即可 (官网更新了官方工具 Raspberry Pi Imager, 使用起来更为方便), SD 卡容量方面, 很多教程都是选择了最低限度的 2GB 的 SD 卡, 然而这都已经是古董级别的卡了, 一般在街上只能买到最低 16GB 的. 使用 Win32DiskImager 写入系统成功后, 会弹窗询问是否格式化 SD 卡, 这时候点取消就行, 不然又要重新写一遍.</description>
+    </item>
+  </channel>
+</rss>

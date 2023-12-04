@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html><head>
+<title>Posts</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="我是小白, 随便写写." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cgcel.github.io/posts/" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="我是小白, 随便写写."/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        
+            <a class="a-block">
+                <div class="post-item-wrapper post-item-wrapper-no-hover">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title post-item-title-small year">
+                                2020
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/11/17/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                DIY项目 -- 自制红外测温枪
+                            </div>
+                            <div class="post-item-meta">
+    2020-11-17
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/10/03/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                Syberia OS (R) for OnePlus 6 刷机体验
+                            </div>
+                            <div class="post-item-meta">
+    2020-10-03
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                爬取洪灾期间长江沿岸水位并绘图
+                            </div>
+                            <div class="post-item-meta">
+    2020-07-18
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                最近开的一个爬虫小坑
+                            </div>
+                            <div class="post-item-meta">
+    2020-07-06
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                STM32的串口学习总结
+                            </div>
+                            <div class="post-item-meta">
+    2020-06-03
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/05/07/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                一加7 OTA升级系统并保留root记录
+                            </div>
+                            <div class="post-item-meta">
+    2020-05-07
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                我的第一个Arduino库
+                            </div>
+                            <div class="post-item-meta">
+    2020-04-26
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                树莓派使用Frp实现内网穿透记录
+                            </div>
+                            <div class="post-item-meta">
+    2020-03-11
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/02/10/viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/viewpager%E7%9A%84%E5%B5%8C%E5%A5%97%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                ViewPager的嵌套滑动冲突问题解决
+                            </div>
+                            <div class="post-item-meta">
+    2020-02-10
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/posts/2020/02/08/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/viewpager%E7%A6%81%E7%94%A8%E6%BB%91%E5%8A%A8%E5%AE%9E%E8%B7%B5%E5%92%8C%E6%80%BB%E7%BB%93/" class="a-block">
+                <div class="post-item-wrapper">
+                    <div class="post-item post-item-no-gaps">
+                        <div class="post-item-info-wrapper">
+                            <div class="post-item-title">
+                                ViewPager禁用滑动实践和总结
+                            </div>
+                            <div class="post-item-meta">
+    2020-02-08
+    &emsp;
+    
+    
+    
+    &emsp;
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+        
+    </div>
+
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+        
+
+        <a class="pagination-action"  href="/posts/">
+            
+            <i class="material-icons pagination-action-icon">
+                chevron_left
+            </i>
+        </a>
+
+        <div class="pagination-indicator">
+            <span style="text-align: center">
+                2<br>
+                <div style="display: inline-block; transform: rotate(-28deg)">-</div><br>4
+            </span>
+        </div>
+
+
+        <a class="pagination-action"  href="/posts/page/3/">
+            
+            <i class="material-icons pagination-action-icon">
+                chevron_right
+            </i>
+        </a>
+        
+        
+    </div>
+</div>
+
+<div class="pagination">
+    
+    <a class="pagination-action" href="/posts/" style="opacity:1">
+    
+        <i class="material-icons pagination-action-icon">
+            chevron_left
+        </i>
+    </a>
+
+        <div class="pagination-indicator">
+            <span>2/4</span>
+        </div>
+
+        
+        <a class="pagination-action" href="/posts/page/3/"
+           style="opacity:1">
+        
+                <i class="material-icons pagination-action-icon">
+                    chevron_right
+                </i>
+            </a>
+</div>
+
+
+<div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

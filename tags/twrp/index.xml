@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>twrp on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/twrp/</link>
+    <description>Recent content in twrp on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sun, 28 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/twrp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一加6 Pixel Experience Android Pie 刷机体验</title>
+      <link>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+      <description>开篇 前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:
+优点: 指纹支付很方便, 这在氢氧两个 ROM 均有适配 类原生 UI 风格讨喜 后台清除方式分两种模式可调节, 方便不同用户群体 全面屏显示功能调节方便, 充分利用屏幕显示 Dash 闪充充电效率很高 缺点: 系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式 动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片 后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用 室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花) 总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.
+前期准备 这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&amp;hellip;😂
+查询相关评测
+这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM.</description>
+    </item>
+    <item>
+      <title>Pixel 2XL root方案记录</title>
+      <link>https://cgcel.github.io/posts/2018/09/09/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/09/09/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/</guid>
+      <description>开篇 回顾我的刷机历程, 每次都是有了想法之后就行动起来了, 经历的是一次又一次的真香警告. 而本次 root 的想法的起因是黑域越来越难用, 让我想用回绿守, 本想着等 9.1 出来之后再 root, 但是每次我都会等不及&amp;hellip; 然后果不其然的踩坑了.
+刷机环境以及刷机包准备 USB驱动 adb环境 TWRP Magisk 其中, twrp 较新版本刷入之后有 bug, 上 youtube 看过教程后, 决定采用 twrp3.2.1.2, 下载时需要下载.img以及.zip文件.
+具体步骤 进入命令行
+进入 fastboot 界面
+$ adb reboot bootloader 解 bootloader 锁
+$ fastboot flashing unlock 使用音量键和电源键进行确认, 注意解锁后手机所有数据将会被清除, 要做好备份.
+刷入第三方 recovery
+$ fastboot boot path/twrp.img 刷入成功后, 重启进入 recovery, 此时还需要进入 install, 选择 twrp.zip 包再进行刷入. 缺少这一步的话, 下一次重启还会回到官方recovery.
+刷入 magisk 在 twrp 的 install 页面选择事先存入手机的 magisk.</description>
+    </item>
+    <item>
+      <title>一加1卡刷lineage15.1</title>
+      <link>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
+      <description>开篇 终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.
+突如其来的更新 之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.
+踩坑 备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:
+This package is for &amp;quot;OnePlus&amp;quot; devices: this is a &amp;quot;A0001&amp;quot;
+经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.
+开机 开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&amp;hellip; 下面附上一些截图:
+升级 今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果.</description>
+    </item>
+  </channel>
+</rss>

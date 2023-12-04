@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oneplus6 on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/oneplus6/</link>
+    <description>Recent content in oneplus6 on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sat, 03 Oct 2020 19:38:47 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/oneplus6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Syberia OS (R) for OnePlus 6 刷机体验</title>
+      <link>https://cgcel.github.io/posts/2020/10/03/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Sat, 03 Oct 2020 19:38:47 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2020/10/03/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+      <description>前言 Android 11 正式版发布已经有一段时间, 前不久在 tg channel 上看到一加6即将适配Android 11 的消息:
+昨晚无聊刷一刷 xda, 发现一加6已经有第三方的A11包可以刷, 正好用晚上的时间试一试.
+准备 因为作者介绍此 ROM 时用红字表明要从Syberia OS Android 10 升级, 所以我先刷Syberia OS Android 10 后再升级 Android 11 版. (后来在文章下留言询问得知当作一个新 ROM 来刷也是 OK 的)
+下载清单 Android 10 部分 SyberiaOS ROM Downloads OOS 10.3.1 Downloads OpenGapps Downloads Latest TWRP Downloads xda 链接
+Android 11 部分 SyberiaOS ROM Download Flame Gapps Download (recommended) xda 链接
+操作步骤 我用作者描述的方法试了几次都刷不成功, 不是重启到rec就是卡在开机画面, 翻了一下评论区, 借用了一个网友的方法才成功, 为了看起来完整一点, 下面会一起列出所有步骤.</description>
+    </item>
+    <item>
+      <title>一加6 Pixel Experience Android Pie 刷机体验</title>
+      <link>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+      <description>开篇 前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:
+优点: 指纹支付很方便, 这在氢氧两个 ROM 均有适配 类原生 UI 风格讨喜 后台清除方式分两种模式可调节, 方便不同用户群体 全面屏显示功能调节方便, 充分利用屏幕显示 Dash 闪充充电效率很高 缺点: 系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式 动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片 后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用 室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花) 总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.
+前期准备 这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&amp;hellip;😂
+查询相关评测
+这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM.</description>
+    </item>
+  </channel>
+</rss>

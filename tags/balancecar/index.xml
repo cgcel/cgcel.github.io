@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>balancecar on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/balancecar/</link>
+    <description>Recent content in balancecar on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/balancecar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于Arduino的自平衡车的调试总结</title>
+      <link>https://cgcel.github.io/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://cgcel.github.io/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
+      <description>前言 翻阅网上的平衡车资料，大概有两个大方向，分别为卡尔曼滤波型和直接的 PID 调节型，前期我参照了卡尔曼滤波型平衡小车的代码，效果不是很好，小车最后连直立也无法做到，也可能是我的调试方法不对，再加上卡尔曼滤波型的代码相对比较复杂，于是我全部推倒重建，尝试后者。
+模块清单:
+12V 可充电锂电池 Arduino UNO R3 L298N 电机驱动模块 MPU6050 模块 小车底座 杜邦线若干 过程 相较于卡尔曼滤波型，PID 直接调节型对初次做平衡车的新手比较友好，Youtube 上教程很多，同时也有 PID 参数整定的视频教程。
+组装 首先是组装过程，相对比较简单，觉得不放心的可以直接参照视频教程来做视频，整个系统接线图如下：
+调试 进入重要环节，首先我们将代码烧进 Arduino，然后开机试运行，如果不成功，请返回上一步检查。运行成功后，我们首先需要校正 mpu6050，参照视频，我将mpu6050校正了3遍，结果如下：
+对应修改代码参数：
+mpu.initialize(); //初始化MPU6050 devStatus = mpu.dmpInitialize(); // supply your own gyro offsets here, scaled for min sensitivity // 校正mpu6050模块, 参考https://www.youtube.com/watch?v=ce3eA8nzInE mpu.setXGyroOffset(165); mpu.setYGyroOffset(-14); mpu.setZGyroOffset(5); mpu.setZAccelOffset(528); // 1688 factory default for my test chip 值得一提的是，这一段代码是直接照搬 mpu6050 库的示例代码的，就连备注部分都是一样的。
+校正完毕后，我们需要调节小车的机械中值：
+double originalSetpoint = 183; //173, 调节小车的稳定中值, 180为默认值, 根据小车实际情况调试 到现在，小车已经能够正常做出反应，我们的调试工作准备开始，对小车进行 PID 参数整定。 参照视频，我们可以大概总结为以下流程：</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>v2ray on 烂杯的博客</title>
+    <link>https://cgcel.github.io/tags/v2ray/</link>
+    <description>Recent content in v2ray on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Thu, 06 Feb 2020 14:28:09 +0800</lastBuildDate>
+    <atom:link href="https://cgcel.github.io/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>V2RayN局域网共享</title>
+      <link>https://cgcel.github.io/posts/2020/02/06/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+      <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
+      <guid>https://cgcel.github.io/posts/2020/02/06/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+      <description>开篇 最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.
+准备 电脑1台 安装好 V2RayN 详细步骤 设置V2RayN 因为现在懒得自己弄, 所以随便找个机场, 拿到订阅链接后在 V2RayN 中更新节点并在设置中允许局域网连接, 同时留意一下本地监听端口, 如图显示是 10808 端口.
+打开移动热点 以 win10 系统为例, 在设置中打开移动热点:
+然后在网络适配器选项中, 查看已经开启的热点并获取ip地址:
+连接热点 首先在设置中查看已开启的代理的手动设置项, 可以看到端口为 10809.
+在手机上连接热点, 并手动设置代理服务器 IP 以及端口, 从上面步骤可知分别为: 192.168.137.1 和 10809.
+到这里就大功告成了, 其他类似的共享到局域网的热点都是差不多的步骤, ssr 的设置也一样.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,37 +1,133 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>github.io on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/github.io/</link>
-    <description>Recent content in github.io on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Fri, 22 Jun 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>使用hugo创建博客</title>
-      <link>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
-搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
-配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
-基础知识学习(Go templates) 列一下适合初学者学习的链接:
-YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;
-编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
-+++ title= &amp;#34;使用hugo创建博客&amp;#34; date= 2018-06-22T19:34:37+08:00 categories=[&amp;#39;tech&amp;#39;] tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.</description>
-    </item>
-    <item>
-      <title>github.io博客搭建</title>
-      <link>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-      <description>开篇 看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.
-创建仓库 在 github 新建项目, 命名格式为 &amp;lt;username&amp;gt;.github.io, 最好先选 private, 因为可能会有很多误操作. 然后在本机 (Windows) 安装环境: gem, jekyll 等等, 安装这些是便于在本地修改网页并且预览,这样就不用每次都 push 到 github 来试了. 不过 Windows 安装起来挺麻烦的, 一定要按照教程一步一步来设置, 跟教程有一些出入的地方要自己判断.
-选择主题 jekyll 的主题有很多,我们可以在 github 和网页上挑选, 本来我想要选一个 md 格式的主题,奈何一时间找不到,于是从 github 上选择了一个纯白的极简主题.
-自定义页面内容 选好主题之后, 通过 git 把代码 clone 到本地, 首先必须要编辑的是 _config.yml,按照个人的信息和需求进行增减改动, 如果不知道该怎么改, 建议多找几个主题对比一下文件内容, 也可以到 YouTube 找一下相关视频教程. 设置完后, 就可以去自定义个人信息和网页显示内容了.
-预览和推送测试 修改完文件后,在项目根目录打开 cmd, 输入 jekyll s, 如果没有报错就表示在本地运行成功了, 此时可以打开浏览器, 进入 127.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>github.io on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/github.io/</link>
+        <description>Recent content in github.io on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Fri, 22 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>使用hugo创建博客</title>
+        <link>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+        <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.&lt;/p&gt;
+&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;
+&lt;p&gt;到 &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载页面&lt;/a&gt; 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.&lt;/p&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, &lt;strong&gt;要先下载好主题&lt;/strong&gt;再在根目录使用 &lt;code&gt;hugo server -D&lt;/code&gt; 指令, 否则页面会一片空白.&lt;/p&gt;
+&lt;h2 id=&#34;基础知识学习go-templates&#34;&gt;基础知识学习(Go templates)&lt;/h2&gt;
+&lt;p&gt;列一下适合初学者学习的链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=ZYQ5k0RQzmo&amp;amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.gohugo.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;函数以及变量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;模板选择&#34;&gt;模板选择&lt;/h2&gt;
+&lt;p&gt;不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;编写博客&#34;&gt;编写博客&lt;/h2&gt;
+&lt;p&gt;只需要在根目录命令行输入 &lt;code&gt;hugo new ***/***.md&lt;/code&gt; 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title= &amp;#34;使用hugo创建博客&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date= 2018-06-22T19:34:37+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories=[&amp;#39;tech&amp;#39;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.io&amp;#39;]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;填好以上格式, 就可以开始在下面写博客了, 和 jekyll 非常相似.&lt;/p&gt;
+&lt;p&gt;新版本的 hugo 自动生成的 &lt;code&gt;.md&lt;/code&gt; 文件格式有点变化, 如下所示:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: &amp;#34;换个主题&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date: 2019-12-01T23:50:09+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories: [&amp;#34;daily&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;部署到githubpage&#34;&gt;部署到github.page&lt;/h2&gt;
+&lt;p&gt;和 jekyll 相比, hugo 的部署/文章推送略微麻烦一点, 前者只需要修改并预览检查完毕后直接全部 push 即可, 而 hugo 按照官方文档的方法是先在根目录运行一道指令 &lt;code&gt;hugo --baseUrl=&amp;quot;https://username.github.io&amp;quot;&lt;/code&gt; , 在根目录生成 public 文件夹, 然后将 public 文件夹中的所有内容 push 至仓库中. 我查阅了一些其他的自动化方法, 如Travis. 最后嫌配置麻烦, 直接在根目录创建了一个 &lt;code&gt;.bat&lt;/code&gt; 文件,将几个指令写进去依次运行, 也算是实现了一键推送的功能, 也算是提供了另一种思路吧.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --theme=pure --baseUrl=&lt;span class=&#34;s2&#34;&gt;&amp;#34;https://koonchung.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; public
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;auto-uploaded files&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;暂告一段落&#34;&gt;暂告一段落&lt;/h3&gt;
+&lt;p&gt;emm&amp;hellip;写到这里已经半夜一点半了, 那就先告一段落吧, 最后总结一下, 不得不说 hugo 加载的速度比 jekyll 快了不少, 模板配置完成后体验很不错.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>github.io博客搭建</title>
+        <link>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.&lt;/p&gt;
+&lt;h2 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h2&gt;
+&lt;p&gt;在 github 新建项目, 命名格式为 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;, 最好先选 private, 因为可能会有很多误操作. 然后在本机 (Windows) 安装环境: &lt;code&gt;gem&lt;/code&gt;, &lt;code&gt;jekyll&lt;/code&gt; 等等, 安装这些是便于在本地修改网页并且预览,这样就不用每次都 push 到 github 来试了. 不过 Windows 安装起来挺麻烦的, 一定要按照教程一步一步来设置, 跟教程有一些出入的地方要自己判断.&lt;/p&gt;
+&lt;h2 id=&#34;选择主题&#34;&gt;选择主题&lt;/h2&gt;
+&lt;p&gt;jekyll 的主题有很多,我们可以在 github 和网页上挑选, 本来我想要选一个 md 格式的主题,奈何一时间找不到,于是从 github 上选择了一个纯白的极简主题.&lt;/p&gt;
+&lt;h2 id=&#34;自定义页面内容&#34;&gt;自定义页面内容&lt;/h2&gt;
+&lt;p&gt;选好主题之后, 通过 git 把代码 clone 到本地, 首先必须要编辑的是 &lt;code&gt;_config.yml&lt;/code&gt;,按照个人的信息和需求进行增减改动, 如果不知道该怎么改, 建议多找几个主题对比一下文件内容, 也可以到 YouTube 找一下相关视频教程. 设置完后, 就可以去自定义个人信息和网页显示内容了.&lt;/p&gt;
+&lt;h2 id=&#34;预览和推送测试&#34;&gt;预览和推送测试&lt;/h2&gt;
+&lt;p&gt;修改完文件后,在项目根目录打开 cmd, 输入 &lt;code&gt;jekyll s&lt;/code&gt;, 如果没有报错就表示在本地运行成功了, 此时可以打开浏览器, 进入 &lt;code&gt;127.0.0.1:4000&lt;/code&gt; 就可以预览页面. 按照格式命名文章, 如: &lt;code&gt;2018-6-21-title.md&lt;/code&gt;, 在文章开头加上以下内容就可以被识别并更新在主页上了, 非常方便:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;layout: post
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: &amp;#34;your title&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date: 2018-06-21
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
 </rss>

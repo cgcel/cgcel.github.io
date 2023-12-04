@@ -1,414 +1,349 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='初学STM32的串口输出'>
 <title>STM32的串口学习总结</title>
 
+<link rel='canonical' href='https://cgcel.github.io/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/'>
 
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='STM32的串口学习总结'>
+<meta property='og:description' content='初学STM32的串口输出'>
+<meta property='og:url' content='https://cgcel.github.io/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='stm32' /><meta property='article:tag' content='uart' /><meta property='article:tag' content='arduino' /><meta property='article:published_time' content='2020-06-03T16:47:33&#43;08:00'/><meta property='article:modified_time' content='2020-06-03T16:47:33&#43;08:00'/>
+<meta name="twitter:title" content="STM32的串口学习总结">
+<meta name="twitter:description" content="初学STM32的串口输出">
+    <link rel="shortcut icon" href="/img/avatar.png" />
 
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<meta content="telephone=no" name="format-detection">
-<meta name="description" content="初学STM32的串口输出">
-<meta name="renderer" content="webkit">
-<meta name="theme-color" content="#ffffff">
-
-
-
-<meta property="og:title" content="STM32的串口学习总结" />
-<meta property="og:description" content="初学STM32的串口输出" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://cgcel.github.io/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-06-03T16:47:33+08:00" />
-<meta property="article:modified_time" content="2020-06-03T16:47:33+08:00" /><meta property="og:site_name" content="烂杯的博客" />
-
-
-
-
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="STM32的串口学习总结"/>
-<meta name="twitter:description" content="初学STM32的串口输出"/>
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
-
-
-
-      <script src="/js/toc.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
-
-
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Material+Icons">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<body>
-    	<div id="app"><div class="single-column-drawer-container" id="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-    <div class="drawer-content">
-        <div class="drawer-menu">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
             
-            
-                
-                
+            <figure class="site-avatar">
+                <a href="/">
                 
                     
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                
-                
-                <a class="a-block drawer-menu-item active" href="/posts">
-                    Archive
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
+            </figure>
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    Categories
-                </a>
-                
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/tags">
-                    Tags
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/index.xml">
-                    RSS Feed
-                </a>
-                
-            
-            
-            <div class="toc">
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%a1%ac%e4%bb%b6%e5%87%86%e5%a4%87" class="nav-硬件准备">
-									硬件准备
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%ad%a3%e6%96%87" class="nav-正文">
-									正文
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#arduino%e4%b8%b2%e5%8f%a3" class="nav-arduino串口">
-									Arduino串口
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#stm32%e4%b8%b2%e5%8f%a3" class="nav-stm32串口">
-									STM32串口
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e4%b8%b2%e5%8f%a3%e5%88%9d%e5%a7%8b%e5%8c%96" class="nav-串口初始化">
-									串口初始化
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%b8%b2%e5%8f%a3%e4%b8%ad%e6%96%ad%e5%87%bd%e6%95%b0" class="nav-串口中断函数">
-									串口中断函数
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
-									总结
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
 
-</div>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
             
         </div>
-    </div>
-</div>
-<transition name="fade">
-    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
-</transition>
-<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
-    <div id="navBackground" class="nav-background"></div>
-    <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
-            <i class="material-icons">
-                menu
-            </i>
-        </button>
-        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
-            烂杯的博客
-        </a>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
         
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
-            <i class="material-icons" id="darkModeToggleIcon2">
-                dark_mode
-            </i>
-        </button>
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
         
-    </div>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#硬件准备">硬件准备</a></li>
+    <li><a href="#正文">正文</a>
+      <ol>
+        <li><a href="#arduino串口">Arduino串口</a></li>
+        <li><a href="#stm32串口">STM32串口</a>
+          <ol>
+            <li><a href="#串口初始化">串口初始化</a></li>
+            <li><a href="#串口中断函数">串口中断函数</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
 </nav>
-<div class="single-column-header-container" id="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://cgcel.github.io/">
-        <div class="single-column-header-title">烂杯的博客</div>
+        </div>
+    </section>
+
+            
         
-        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">STM32的串口学习总结</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            初学STM32的串口输出
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 03, 2020</time>
+            </div>
         
 
-    </a>
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
 
-            <div id="content">
-                <div id="streamContainer" class="stream-container">
+</header>
 
-    <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            
-            
-            
-
-            <div class="post-head-wrapper-text-only"
-                
-            >
-                <div class="post-title">
-                    STM32的串口学习总结
-                    
-                    <div class="post-subtitle">
-                        初学STM32的串口输出
-                    </div>
-                    
-                    <div class="post-meta">
-                        
-                        <time itemprop="datePublished">
-                            2020-06-03 16:47
-                        </time>
-                        
-
-                        
-                            <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[学习]</a>
-                                &nbsp;
-                        
-
-                        
-                            <i class="material-icons" style="">label</i>
-                            
-                                <a href="/tags/stm32">stm32</a>
-                                &nbsp;
-                            
-                                <a href="/tags/uart">uart</a>
-                                &nbsp;
-                            
-                                <a href="/tags/arduino">arduino</a>
-                                &nbsp;
-                            
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post-body-wrapper">
-                
-                <div class="post-body" v-pre>
-                
-                    <h2 id="前言">前言</h2>
+    <section class="article-content">
+    
+    
+    <h2 id="前言">前言</h2>
 <p>疫情原因, 机场已经冷清很久了. 但是项目都照常缓慢进行中, 趁这次机会我好好学习了一下STM32的一些基础知识和使用方法. 教程的话看的是正点原子的官网教程, 正点原子的资料应该算是国内STM32初学者入门必学的教程了吧, 听说还有野火的也不错, 网上很多例子都有他们家代码的影子.</p>
 <p>实际使用过程中, 我越来越能体会到Arduino的简便之处, 但是相对的对实现原理会不太在意, 在入门STM32的过程中, 我对一些单片机功能有了更深的了解, 就比如常用的串口功能.</p>
 <p>之前对Arduino的串口编程有过不少实践, 还整理过 [[2019-12-03-Arduino的主从机双向通信|Arduino之间的串口通信demo]], 本篇文章不对STM32单片机底层寄存器, 官方库文件进行过多解读, 只就Arduino与STM32的串口编程方面进行比较, 结合注释进行适当说明.</p>
@@ -420,147 +355,303 @@
 <h2 id="正文">正文</h2>
 <h3 id="arduino串口">Arduino串口</h3>
 <p>首先回顾一下Arduino的串口函数, 可以看以下demo:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>String inputString = <span style="color:#cd5555">&#34;&#34;</span>;         <span style="color:#228b22">// a String to hold incoming data
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">setup</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#228b22">// initialize serial:
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>  Serial.begin(<span style="color:#b452cd">9600</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">loop</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">while</span>(Serial.available()){
-</span></span><span style="display:flex;"><span>      inputString += <span style="color:#00688b;font-weight:bold">char</span>(Serial.read());
-</span></span><span style="display:flex;"><span>      delay(<span style="color:#b452cd">2</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22">// print the string when a newline arrives:
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#8b008b;font-weight:bold">if</span> (inputString.length() &gt; <span style="color:#b452cd">0</span>) {
-</span></span><span style="display:flex;"><span>      Serial.print(inputString);
-</span></span><span style="display:flex;"><span>      <span style="color:#228b22">// clear the string:
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>      inputString = <span style="color:#cd5555">&#34;&#34;</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Arduino语言中, 先对串口进行初始化, 然后只需要调用 <code>Serial.available()</code> 来判断串口是否接收到数据, 若串口有数据, 则<code>Serial.available()</code> 大于0且值为串口数据字节数. 接着, 通过循环, 使用 <code>Serial.read()</code> 将串口缓存的数据一字节一字节的存取到实现定义好的空字符串中, 如此便可得到Arduino串口接收到的完整数据.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">inputString</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>         <span class="c1">// a String to hold incoming data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// initialize serial:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">inputString</span> <span class="o">+=</span> <span class="kt">char</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">      <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// print the string when a newline arrives:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">inputString</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">inputString</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// clear the string:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">inputString</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Arduino语言中, 先对串口进行初始化, 然后只需要调用 <code>Serial.available()</code> 来判断串口是否接收到数据, 若串口有数据, 则<code>Serial.available()</code> 大于0且值为串口数据字节数. 接着, 通过循环, 使用 <code>Serial.read()</code> 将串口缓存的数据一字节一字节的存取到实现定义好的空字符串中, 如此便可得到Arduino串口接收到的完整数据.</p>
 <h3 id="stm32串口">STM32串口</h3>
 <p>接着结合正点原子的串口demo讲一下STM32的串口初始化以及接收数据, 打印数据的功能.</p>
 <h4 id="串口初始化">串口初始化</h4>
 <p>STM32RCT6一共有3个硬串口, 以串口3为例, 在项目中导入 <code>usart3.h</code>, <code>usart3.c</code>.</p>
 <p>在 <code>usart3.h</code> 中, 我们定义了接收和发送数据长度, 定义了空字符串, 接收数据状态变量, 数据长度以及串口发送, 清空的函数.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#1e889b">#ifndef __USART3_H
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b">#define __USART3_H	 
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&#34;sys.h&#34;     </span><span style="color:#1e889b">
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b"></span>
-</span></span><span style="display:flex;"><span><span style="color:#1e889b">#define USART3_MAX_RECV_LEN		600		</span><span style="color:#228b22">//最大接收缓存字节数
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#1e889b">#define USART3_MAX_SEND_LEN		600		</span><span style="color:#228b22">//最大发送缓存字节数
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#1e889b">#define USART3_RX_EN 			1		</span><span style="color:#228b22">//0,不接收;1,接收.
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">extern</span> <span style="color:#00688b;font-weight:bold">char</span> USART3_RX_BUF[USART3_MAX_RECV_LEN]; 	<span style="color:#228b22">//接收缓冲,最大USART3_MAX_RECV_LEN字节
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#8b008b;font-weight:bold">extern</span> <span style="color:#00688b;font-weight:bold">char</span> USART3_TX_BUF[USART3_MAX_SEND_LEN]; 	<span style="color:#228b22">//发送缓冲,最大USART3_MAX_SEND_LEN字节
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#8b008b;font-weight:bold">extern</span> vu16 USART3_RX_STA;   						<span style="color:#228b22">//接收数据状态
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#8b008b;font-weight:bold">extern</span> <span style="color:#00688b;font-weight:bold">int</span> USART3_RX_BUF_LEN;           <span style="color:#228b22">//用于存放接收数据长度
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">usart3_init</span>(u32 bound);			<span style="color:#228b22">//串口2初始化 
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">u3_printf</span>(<span style="color:#00688b;font-weight:bold">char</span>* fmt,...);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">USART3_SendChar</span>(<span style="color:#00688b;font-weight:bold">char</span> c);
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">USART3_SendString</span>(<span style="color:#00688b;font-weight:bold">char</span> *s);
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">USART3_SendArray</span>(u8 array[], <span style="color:#00688b;font-weight:bold">int</span> num);
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">USART3_ClearBuf</span>(); <span style="color:#228b22">//清空接收的串口数据
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span><span style="color:#1e889b">#endif
-</span></span></span></code></pre></div><p>在 <code>usart3.c</code> 中, 我们对串口3进行初始化:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">usart3_init</span>(u32 bound)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    NVIC_InitTypeDef NVIC_InitStructure;
-</span></span><span style="display:flex;"><span>    GPIO_InitTypeDef GPIO_InitStructure;
-</span></span><span style="display:flex;"><span>    USART_InitTypeDef USART_InitStructure;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">RCC_APB2PeriphClockCmd</span>(RCC_APB2Periph_GPIOB, ENABLE); <span style="color:#228b22">// GPIOB时钟
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">RCC_APB1PeriphClockCmd</span>(RCC_APB1Periph_USART3,ENABLE); <span style="color:#228b22">//串口3时钟使能
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">USART_DeInit</span>(USART3); <span style="color:#228b22">//复位串口3
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#228b22">//USART3_TX   PB10
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10; <span style="color:#228b22">//PB10
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-</span></span><span style="display:flex;"><span>    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;	<span style="color:#228b22">//复用推挽输出
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">GPIO_Init</span>(GPIOB, &amp;GPIO_InitStructure); <span style="color:#228b22">//初始化PB10
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22">//USART3_RX	  PB11
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
-</span></span><span style="display:flex;"><span>    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; <span style="color:#228b22">//浮空输入
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">GPIO_Init</span>(GPIOB, &amp;GPIO_InitStructure); <span style="color:#228b22">//初始化PB11
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    USART_InitStructure.USART_BaudRate = bound; <span style="color:#228b22">//波特率一般设置为9600;
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART_InitStructure.USART_WordLength = USART_WordLength_8b; <span style="color:#228b22">//字长为8位数据格式
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART_InitStructure.USART_StopBits = USART_StopBits_1; <span style="color:#228b22">//一个停止位
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART_InitStructure.USART_Parity = USART_Parity_No; <span style="color:#228b22">//无奇偶校验位
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; <span style="color:#228b22">//无硬件数据流控制
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	<span style="color:#228b22">//收发模式
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">USART_Init</span>(USART3, &amp;USART_InitStructure); <span style="color:#228b22">//初始化串口	3
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">USART_Cmd</span>(USART3, ENABLE); <span style="color:#228b22">//使能串口
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22">//使能接收中断
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">USART_ITConfig</span>(USART3, USART_IT_RXNE, ENABLE); <span style="color:#228b22">//开启中断
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22">//设置中断优先级
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
-</span></span><span style="display:flex;"><span>    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=<span style="color:#b452cd">2</span> ; <span style="color:#228b22">//抢占优先级3
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span style="color:#b452cd">3</span>; <span style="color:#228b22">//子优先级3
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; <span style="color:#228b22">//IRQ通道使能
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">NVIC_Init</span>(&amp;NVIC_InitStructure);	<span style="color:#228b22">//根据指定的参数初始化VIC寄存器
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">TIM4_Int_Init</span>(<span style="color:#b452cd">1000</span>-<span style="color:#b452cd">1</span>,<span style="color:#b452cd">7200</span>-<span style="color:#b452cd">1</span>); <span style="color:#228b22">//10ms中断
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    USART3_RX_STA=<span style="color:#b452cd">0</span>; <span style="color:#228b22">//清零
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">TIM_Cmd</span>(TIM4,DISABLE); <span style="color:#228b22">//关闭定时器4
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>以上代码是对串口3的初始化, 这里不再赘述, 唯一有区别的地方是最后3句, 这里采用了定时器4设置的10ms定时, 在串口3接收到数据后开启定时器4, 每10ms读取一字节串口数据, 若10ms内没有收到数据, 则判定数据接收完毕, 此时将串口状态位置0, 表示串口3已经接受完数据, 并关闭定时器4.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cp">#ifndef __USART3_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define __USART3_H	 
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;sys.h&#34;     </span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define USART3_MAX_RECV_LEN		600		</span><span class="c1">//最大接收缓存字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define USART3_MAX_SEND_LEN		600		</span><span class="c1">//最大发送缓存字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define USART3_RX_EN 			1		</span><span class="c1">//0,不接收;1,接收.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">char</span> <span class="n">USART3_RX_BUF</span><span class="p">[</span><span class="n">USART3_MAX_RECV_LEN</span><span class="p">];</span> 	<span class="c1">//接收缓冲,最大USART3_MAX_RECV_LEN字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">extern</span> <span class="kt">char</span> <span class="n">USART3_TX_BUF</span><span class="p">[</span><span class="n">USART3_MAX_SEND_LEN</span><span class="p">];</span> 	<span class="c1">//发送缓冲,最大USART3_MAX_SEND_LEN字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">extern</span> <span class="n">vu16</span> <span class="n">USART3_RX_STA</span><span class="p">;</span>   						<span class="c1">//接收数据状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">extern</span> <span class="kt">int</span> <span class="n">USART3_RX_BUF_LEN</span><span class="p">;</span>           <span class="c1">//用于存放接收数据长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">usart3_init</span><span class="p">(</span><span class="n">u32</span> <span class="n">bound</span><span class="p">);</span>			<span class="c1">//串口2初始化 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">u3_printf</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">fmt</span><span class="p">,...);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">USART3_SendChar</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">USART3_SendString</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">USART3_SendArray</span><span class="p">(</span><span class="n">u8</span> <span class="n">array</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">num</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">USART3_ClearBuf</span><span class="p">();</span> <span class="c1">//清空接收的串口数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>usart3.c</code> 中, 我们对串口3进行初始化:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">usart3_init</span><span class="p">(</span><span class="n">u32</span> <span class="n">bound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NVIC_InitTypeDef</span> <span class="n">NVIC_InitStructure</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GPIO_InitTypeDef</span> <span class="n">GPIO_InitStructure</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">USART_InitTypeDef</span> <span class="n">USART_InitStructure</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">RCC_APB2PeriphClockCmd</span><span class="p">(</span><span class="n">RCC_APB2Periph_GPIOB</span><span class="p">,</span> <span class="n">ENABLE</span><span class="p">);</span> <span class="c1">// GPIOB时钟
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">RCC_APB1PeriphClockCmd</span><span class="p">(</span><span class="n">RCC_APB1Periph_USART3</span><span class="p">,</span><span class="n">ENABLE</span><span class="p">);</span> <span class="c1">//串口3时钟使能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">USART_DeInit</span><span class="p">(</span><span class="n">USART3</span><span class="p">);</span> <span class="c1">//复位串口3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//USART3_TX   PB10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">GPIO_InitStructure</span><span class="p">.</span><span class="n">GPIO_Pin</span> <span class="o">=</span> <span class="n">GPIO_Pin_10</span><span class="p">;</span> <span class="c1">//PB10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">GPIO_InitStructure</span><span class="p">.</span><span class="n">GPIO_Speed</span> <span class="o">=</span> <span class="n">GPIO_Speed_50MHz</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GPIO_InitStructure</span><span class="p">.</span><span class="n">GPIO_Mode</span> <span class="o">=</span> <span class="n">GPIO_Mode_AF_PP</span><span class="p">;</span>	<span class="c1">//复用推挽输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">GPIO_Init</span><span class="p">(</span><span class="n">GPIOB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStructure</span><span class="p">);</span> <span class="c1">//初始化PB10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//USART3_RX	  PB11
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">GPIO_InitStructure</span><span class="p">.</span><span class="n">GPIO_Pin</span> <span class="o">=</span> <span class="n">GPIO_Pin_11</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GPIO_InitStructure</span><span class="p">.</span><span class="n">GPIO_Mode</span> <span class="o">=</span> <span class="n">GPIO_Mode_IN_FLOATING</span><span class="p">;</span> <span class="c1">//浮空输入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">GPIO_Init</span><span class="p">(</span><span class="n">GPIOB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStructure</span><span class="p">);</span> <span class="c1">//初始化PB11
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_BaudRate</span> <span class="o">=</span> <span class="n">bound</span><span class="p">;</span> <span class="c1">//波特率一般设置为9600;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_WordLength</span> <span class="o">=</span> <span class="n">USART_WordLength_8b</span><span class="p">;</span> <span class="c1">//字长为8位数据格式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_StopBits</span> <span class="o">=</span> <span class="n">USART_StopBits_1</span><span class="p">;</span> <span class="c1">//一个停止位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_Parity</span> <span class="o">=</span> <span class="n">USART_Parity_No</span><span class="p">;</span> <span class="c1">//无奇偶校验位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_HardwareFlowControl</span> <span class="o">=</span> <span class="n">USART_HardwareFlowControl_None</span><span class="p">;</span> <span class="c1">//无硬件数据流控制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART_InitStructure</span><span class="p">.</span><span class="n">USART_Mode</span> <span class="o">=</span> <span class="n">USART_Mode_Rx</span> <span class="o">|</span> <span class="n">USART_Mode_Tx</span><span class="p">;</span>	<span class="c1">//收发模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">USART_Init</span><span class="p">(</span><span class="n">USART3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">USART_InitStructure</span><span class="p">);</span> <span class="c1">//初始化串口	3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">USART_Cmd</span><span class="p">(</span><span class="n">USART3</span><span class="p">,</span> <span class="n">ENABLE</span><span class="p">);</span> <span class="c1">//使能串口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//使能接收中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">USART_ITConfig</span><span class="p">(</span><span class="n">USART3</span><span class="p">,</span> <span class="n">USART_IT_RXNE</span><span class="p">,</span> <span class="n">ENABLE</span><span class="p">);</span> <span class="c1">//开启中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//设置中断优先级
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">NVIC_InitStructure</span><span class="p">.</span><span class="n">NVIC_IRQChannel</span> <span class="o">=</span> <span class="n">USART3_IRQn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NVIC_InitStructure</span><span class="p">.</span><span class="n">NVIC_IRQChannelPreemptionPriority</span><span class="o">=</span><span class="mi">2</span> <span class="p">;</span> <span class="c1">//抢占优先级3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">NVIC_InitStructure</span><span class="p">.</span><span class="n">NVIC_IRQChannelSubPriority</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//子优先级3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">NVIC_InitStructure</span><span class="p">.</span><span class="n">NVIC_IRQChannelCmd</span> <span class="o">=</span> <span class="n">ENABLE</span><span class="p">;</span> <span class="c1">//IRQ通道使能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">NVIC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">NVIC_InitStructure</span><span class="p">);</span>	<span class="c1">//根据指定的参数初始化VIC寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">TIM4_Int_Init</span><span class="p">(</span><span class="mi">1000</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">7200</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//10ms中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">USART3_RX_STA</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="c1">//清零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">TIM_Cmd</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span><span class="n">DISABLE</span><span class="p">);</span> <span class="c1">//关闭定时器4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上代码是对串口3的初始化, 这里不再赘述, 唯一有区别的地方是最后3句, 这里采用了定时器4设置的10ms定时, 在串口3接收到数据后开启定时器4, 每10ms读取一字节串口数据, 若10ms内没有收到数据, 则判定数据接收完毕, 此时将串口状态位置0, 表示串口3已经接受完数据, 并关闭定时器4.</p>
 <h4 id="串口中断函数">串口中断函数</h4>
 <p>在初始化中, 可以看到开启了串口中断, 接下来在 <code>usart3.c</code> 中对串口3中断函数进行编写, 代码如下:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">USART3_IRQHandler</span>(<span style="color:#00688b;font-weight:bold">void</span>)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    u8 res;
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">if</span>(<span style="color:#008b45">USART_GetITStatus</span>(USART3, USART_IT_RXNE) != RESET) <span style="color:#228b22">//接收到数据
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    {
-</span></span><span style="display:flex;"><span>        res =<span style="color:#008b45">USART_ReceiveData</span>(USART3);
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span>((USART3_RX_STA&amp;(<span style="color:#b452cd">1</span>&lt;&lt;<span style="color:#b452cd">15</span>))==<span style="color:#b452cd">0</span>) <span style="color:#228b22">//接受未完成
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">if</span>(USART3_RX_STA&lt;USART3_MAX_RECV_LEN-<span style="color:#b452cd">1</span>) <span style="color:#228b22">//判断长度, 小于设定长度则还可以接收数据
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>            {
-</span></span><span style="display:flex;"><span>                <span style="color:#008b45">TIM_SetCounter</span>(TIM4,<span style="color:#b452cd">0</span>); <span style="color:#228b22">//计数器清空
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>                <span style="color:#8b008b;font-weight:bold">if</span>(USART3_RX_STA==<span style="color:#b452cd">0</span>) <span style="color:#228b22">//使能定时器4的中断
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>                {
-</span></span><span style="display:flex;"><span>                    <span style="color:#008b45">TIM_Cmd</span>(TIM4,ENABLE);<span style="color:#228b22">//使能定时器4, 每10ms接受一帧串口数据
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>                }
-</span></span><span style="display:flex;"><span>                USART3_RX_BUF[USART3_RX_STA++]=res;	<span style="color:#228b22">//记录接收到的值, 同时更新数据长度
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>				USART3_RX_BUF_LEN = USART3_RX_STA;
-</span></span><span style="display:flex;"><span>			} <span style="color:#8b008b;font-weight:bold">else</span> <span style="color:#228b22">// 若数据长度超出定义长度则强行将STA最后一位置1
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>            {
-</span></span><span style="display:flex;"><span>                USART3_RX_STA|=<span style="color:#b452cd">1</span>&lt;&lt;<span style="color:#b452cd">15</span>; <span style="color:#228b22">//强制标记接收完成
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//				USART3_ClearBuf();
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#228b22">//当串口3数据与定义字符串相同则执行以下代码
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>	<span style="color:#8b008b;font-weight:bold">if</span> (<span style="color:#008b45">strcmp</span>(USART3_RX_BUF, <span style="color:#cd5555">&#34;ping&#34;</span>) == <span style="color:#b452cd">0</span>){
-</span></span><span style="display:flex;"><span>		<span style="color:#008b45">u3_printf</span>(<span style="color:#cd5555">&#34;电机转速: %d</span><span style="color:#cd5555">\r\n</span><span style="color:#cd5555">温度: %.2f</span><span style="color:#cd5555">\r\n</span><span style="color:#cd5555">湿度: %.2f</span><span style="color:#cd5555">\r\n</span><span style="color:#cd5555">&#34;</span>, rate, temp, hum);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>其中关于 <code>USART3_RX_STA</code> 的运算和条件判断语句我研究了很久, 长时间没有接触C了, 很多位运算都忘了, 加上单片机的寄存器的相关基础掌握得不够熟练, 导致在这一块的理解很慢.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">USART3_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u8</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nf">USART_GetITStatus</span><span class="p">(</span><span class="n">USART3</span><span class="p">,</span> <span class="n">USART_IT_RXNE</span><span class="p">)</span> <span class="o">!=</span> <span class="n">RESET</span><span class="p">)</span> <span class="c1">//接收到数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span><span class="nf">USART_ReceiveData</span><span class="p">(</span><span class="n">USART3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">((</span><span class="n">USART3_RX_STA</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">15</span><span class="p">))</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//接受未完成
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">USART3_RX_STA</span><span class="o">&lt;</span><span class="n">USART3_MAX_RECV_LEN</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">//判断长度, 小于设定长度则还可以接收数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">TIM_SetCounter</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//计数器清空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span><span class="p">(</span><span class="n">USART3_RX_STA</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="c1">//使能定时器4的中断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">TIM_Cmd</span><span class="p">(</span><span class="n">TIM4</span><span class="p">,</span><span class="n">ENABLE</span><span class="p">);</span><span class="c1">//使能定时器4, 每10ms接受一帧串口数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="n">USART3_RX_BUF</span><span class="p">[</span><span class="n">USART3_RX_STA</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="p">;</span>	<span class="c1">//记录接收到的值, 同时更新数据长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">USART3_RX_BUF_LEN</span> <span class="o">=</span> <span class="n">USART3_RX_STA</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span> <span class="k">else</span> <span class="c1">// 若数据长度超出定义长度则强行将STA最后一位置1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">USART3_RX_STA</span><span class="o">|=</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">15</span><span class="p">;</span> <span class="c1">//强制标记接收完成
+</span></span></span><span class="line"><span class="cl"><span class="c1">//				USART3_ClearBuf();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1">//当串口3数据与定义字符串相同则执行以下代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">USART3_RX_BUF</span><span class="p">,</span> <span class="s">&#34;ping&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">u3_printf</span><span class="p">(</span><span class="s">&#34;电机转速: %d</span><span class="se">\r\n</span><span class="s">温度: %.2f</span><span class="se">\r\n</span><span class="s">湿度: %.2f</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">hum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中关于 <code>USART3_RX_STA</code> 的运算和条件判断语句我研究了很久, 长时间没有接触C了, 很多位运算都忘了, 加上单片机的寄存器的相关基础掌握得不够熟练, 导致在这一块的理解很慢.</p>
 <p>首先看一下在 <code>usart3.c</code> 中 <code>USART3_RX_STA</code> 的定义, 里面有正点原子和我额外加的注释:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#228b22">//通过判断接收连续2个字符之间的时间差不大于10ms来决定是不是一次连续的数据.
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//如果2个字符接收间隔超过10ms,则认为不是1次连续数据.也就是超过10ms没有接收到任何数据,则表示此次接收完毕.
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//接收到的数据状态 (USART3_RX_STA位数的值)
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//[15]:0,没有接收到数据;1,接收到了一批数据.
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//[14:0]:接收到的数据长度
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//u16为unsigned short是16位, 占2字节
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22">//该变量同时还记录接收到的数据长度
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>vu16 USART3_RX_STA=<span style="color:#b452cd">0</span>;
-</span></span></code></pre></div><p>引用正点原子在教程里的话: 这里我们设计了一个小小的接收协议：通过这个函数，配合一个数组
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">//通过判断接收连续2个字符之间的时间差不大于10ms来决定是不是一次连续的数据.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//如果2个字符接收间隔超过10ms,则认为不是1次连续数据.也就是超过10ms没有接收到任何数据,则表示此次接收完毕.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//接收到的数据状态 (USART3_RX_STA位数的值)
+</span></span></span><span class="line"><span class="cl"><span class="c1">//[15]:0,没有接收到数据;1,接收到了一批数据.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//[14:0]:接收到的数据长度
+</span></span></span><span class="line"><span class="cl"><span class="c1">//u16为unsigned short是16位, 占2字节
+</span></span></span><span class="line"><span class="cl"><span class="c1">//该变量同时还记录接收到的数据长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vu16</span> <span class="n">USART3_RX_STA</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>引用正点原子在教程里的话: 这里我们设计了一个小小的接收协议：通过这个函数，配合一个数组
 <code>USART_RX_BUF[]</code>, 一个接收状态寄存器 <code>USART_RX_STA</code> (此寄存器其实就是一个全局变量, 由作者自行添加. 由于它起到类似寄存器的功能, 这里暂且称之为寄存器) 实现对串口数据的接收管理. <code>USART_RX_BUF</code>的大小由 <code>USART_REC_LEN</code> 定义, 也就是一次接收的数据最大不能超过 <code>USART_REC_LEN</code> 个字节. <code>USART_RX_STA</code> 是一个接收状态寄存器其各的定义如下表所示：</p>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th style="text-align:center"></th>
@@ -580,388 +671,336 @@
 <td style="text-align:center">接收到的有效数据个数</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>我们可以知道这个STA变量只用作是否接收完成的标志变量, 第15位为0表示没有接收完, 为1表示接收完成, 因此我们可以在获取串口数据的代码中加入对STA的判断, 比如如下代码:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">void</span>)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    u8 t;
-</span></span><span style="display:flex;"><span>    u16 times=<span style="color:#b452cd">0</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008b45">delay_init</span>(); <span style="color:#228b22">//延时函数初始化
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#008b45">uart3_init</span>(<span style="color:#b452cd">115200</span>); <span style="color:#228b22">//串口初始化为115200
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">while</span>(<span style="color:#b452cd">1</span>)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span>(USART3_RX_STA&amp;<span style="color:#b452cd">0x8000</span>) <span style="color:#228b22">//用于判断第15位是否为1, 若为0则计算结果为0, 代码不会执行
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#008b45">u3_printf</span>(USART3_RX_BUF); <span style="color:#228b22">//打印字符串
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>            <span style="color:#008b45">u3_printf</span>(<span style="color:#cd5555">&#34;</span><span style="color:#cd5555">\r\n</span><span style="color:#cd5555">&#34;</span>); <span style="color:#228b22">//插入换行
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>            <span style="color:#008b45">USART3_ClearBuf</span>(); <span style="color:#228b22">//清空串口缓存数据
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
-</span></span><span style="display:flex;"><span>            USART_RX_STA=<span style="color:#b452cd">0</span>; <span style="color:#228b22">//调用完串口数据后对STA置0, 表示串口恢复接收状态
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>有些网上的demo是 <code>USART3_RX_STA &amp; (1&lt;&lt;15)</code>, 其实是一样的, 0x8000和1&laquo;15换算成二进制都是‭1000 0000 0000 0000, 本质上都是对STA最后一位进行判断, 而在代码中强行将STA最后一位置1可以使用 <code>USART3_RX_STA|=0x8000</code>, 道理是一样的. ‬</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u8</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u16</span> <span class="n">times</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">delay_init</span><span class="p">();</span> <span class="c1">//延时函数初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">uart3_init</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span> <span class="c1">//串口初始化为115200
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">USART3_RX_STA</span><span class="o">&amp;</span><span class="mh">0x8000</span><span class="p">)</span> <span class="c1">//用于判断第15位是否为1, 若为0则计算结果为0, 代码不会执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">u3_printf</span><span class="p">(</span><span class="n">USART3_RX_BUF</span><span class="p">);</span> <span class="c1">//打印字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">u3_printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span> <span class="c1">//插入换行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">USART3_ClearBuf</span><span class="p">();</span> <span class="c1">//清空串口缓存数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">            <span class="n">USART_RX_STA</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="c1">//调用完串口数据后对STA置0, 表示串口恢复接收状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有些网上的demo是 <code>USART3_RX_STA &amp; (1&lt;&lt;15)</code>, 其实是一样的, 0x8000和1&laquo;15换算成二进制都是‭1000 0000 0000 0000, 本质上都是对STA最后一位进行判断, 而在代码中强行将STA最后一位置1可以使用 <code>USART3_RX_STA|=0x8000</code>, 道理是一样的. ‬</p>
 <p>当然我们也可以对接收到的数据长度进行判断, 如果大于0则表示串口接收到数据, 将其打印出来即可, 至于串口是否已经接收完成, 在之前的初始化函数中可以看到事先定义并开启了定时器4, 它是用来判断规定时间内串口有没有接收到新数据的, 如果超出定义时间串口没有收到新数据, 则在代码中对状态位赋值表示已经接受完成, 这个方法是根据项目需求制定的, 对串口数据某几位进行校对来判断是否接收完成也完全是可以的.</p>
 <h2 id="总结">总结</h2>
 <p>通过对STM32的入门学习, 我对单片机的一些功能实现有了更深的了解, 不过这周进度也是慢下来了, 因为物资采购才刚刚上报, 要等模块来了我们才能继续下一步的调试, 接下来就暂时打算测试一下STM32通过TTL-RS485向串口服务器发送数据. 这篇东西居然断断续续写了几天, 今天放假第一天, 结果早上到下午两点多停电, 外面还有装修声, 这个假期体验真是一般&hellip;🤯</p>
 
-                    
-                    <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2020-06-03</p>
-                    
-                </div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/stm32/">stm32</a>
+        
+            <a href="/tags/uart/">uart</a>
+        
+            <a href="/tags/arduino/">arduino</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/2020/11/17/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DIY项目 -- 自制红外测温枪</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">我的第一个Arduino库</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2019/12/03/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arduino的主从机双向通信</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/%e6%95%b0%e6%8d%ae%e6%9b%b2%e7%ba%bf_2.png" loading="lazy" data-key="" data-hash="/数据曲线_2.png"/>
+                
             </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Arduino的自平衡车的调试总结</h2>
+        </div>
+    </a>
+</article>
+
             
+                
+<article class="">
+    <a href="/posts/2022/10/16/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PhotoPrism的部署以及GooglePhotos图片搬运</h2>
+        </div>
+    </a>
+</article>
+
             
-            <nav class="post-pagination">
+        </div>
+    </div>
+</aside>
 
-                
-                <a class="newer-posts" href="/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/">
-			Next<br>最近开的一个爬虫小坑
-                </a>
-                
-                
-                
-                <a class="older-posts" href="/posts/2020/05/07/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/">
-			Previous<br>一加7 OTA升级系统并保留root记录
-                </a>
-                
-            </nav>
-            <div class="post-comment-wrapper">
-                
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
 
-
-
-
-
-
-
-
-
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="username/repo"
-        data-repo-id="**************************"
-        data-category="General"
-        data-category-id="*********************"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
 </script>
 
-            </div>
-        </div>
-    </div>
-
-
-                    </div>
-            </div><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://cgcel.github.io/">
-    
-        <div class="nav-title">
-            烂杯的博客
-        </div>
-        
-        <div class="nav-subtitle">
-            我是小白, 随便写写.
-        </div>
-        
-    </a>
 
-    <div class="nav-link-list">
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
         
+            2020 - 
         
-            
-            
-            
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
                 
-            
-            
-            
-            <a class="a-block nav-link-item active" href="/posts">
-                Archive
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/categories">
-                Categories
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/tags">
-                Tags
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/index.xml">
-                RSS Feed
-            </a>
-            
-        
-    </div>
 
-    
+                <div class="pswp__counter"></div>
 
-    <div class="nav-footer">
-        
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-&copy;
-	
-	This is a customized copyright.
-	
+                <button class="pswp__button pswp__button--share" title="Share"></button>
 
-    </div>
-    
-</div><div id="extraContainer" class="extra-container">
-    <div class="toc-wrapper">
-        
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
-        
-        <div class="toc">
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%a1%ac%e4%bb%b6%e5%87%86%e5%a4%87" class="nav-硬件准备">
-									硬件准备
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%ad%a3%e6%96%87" class="nav-正文">
-									正文
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#arduino%e4%b8%b2%e5%8f%a3" class="nav-arduino串口">
-									Arduino串口
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#stm32%e4%b8%b2%e5%8f%a3" class="nav-stm32串口">
-									STM32串口
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e4%b8%b2%e5%8f%a3%e5%88%9d%e5%a7%8b%e5%8c%96" class="nav-串口初始化">
-									串口初始化
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%b8%b2%e5%8f%a3%e4%b8%ad%e6%96%ad%e5%87%bd%e6%95%b0" class="nav-串口中断函数">
-									串口中断函数
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
-									总结
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
-</div>
-        
-    </div>
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
-            :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-        
-        <a type="button" class="pagination-action" id="darkModeToggleButton">
-            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
-                dark_mode
-            </span>
-        </a>
-        
-        
-    </div>
-</div><div id="single-column-footer">
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
-
-&copy;
-	
-	This is a customized copyright.
-	
-</div>
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-    
-    <script src="/js/journal.js"></script></body>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

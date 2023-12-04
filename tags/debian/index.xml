@@ -1,23 +1,78 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>debian on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/debian/</link>
-    <description>Recent content in debian on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Tue, 17 Jul 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>树莓派系统安装以及ssh连接</title>
-      <link>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
-      <description>前期准备 在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.
-系统安装 系统下载 系统安装还不算太麻烦, 直接去 官网 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 Raspbian 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:
-Raspbian Stretch with desktop Raspbian Stretch Lite 前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.
-刷入 Raspbian 下载完毕后, 使用 SDFormatter 将 SD 卡格式化, 然后使用 Win32DiskImager 将系统写进 SD 卡, 类似工具有很多, 自己选用一个即可 (官网更新了官方工具 Raspberry Pi Imager, 使用起来更为方便), SD 卡容量方面, 很多教程都是选择了最低限度的 2GB 的 SD 卡, 然而这都已经是古董级别的卡了, 一般在街上只能买到最低 16GB 的. 使用 Win32DiskImager 写入系统成功后, 会弹窗询问是否格式化 SD 卡, 这时候点取消就行, 不然又要重新写一遍.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>debian on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/debian/</link>
+        <description>Recent content in debian on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Tue, 17 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>树莓派系统安装以及ssh连接</title>
+        <link>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+        <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+        <description>&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.&lt;/p&gt;
+&lt;h2 id=&#34;系统安装&#34;&gt;系统安装&lt;/h2&gt;
+&lt;h3 id=&#34;系统下载&#34;&gt;系统下载&lt;/h3&gt;
+&lt;p&gt;系统安装还不算太麻烦, 直接去 &lt;a class=&#34;link&#34; href=&#34;http://www.raspberrypi.org/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt; 下载镜像即可, 第一次装系统的话还是选官方提供的东西吧, 我们选择下载 &lt;code&gt;Raspbian&lt;/code&gt; 系统, 这是专门为树莓派提供的 Debian 系统, 有两个版本可供选择:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Raspbian Stretch with desktop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Raspbian Stretch Lite&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;前者是带图形界面的版本, 后者是只有命令行页面的轻量级版本, 为了轻便, 我选择了Lite版.&lt;/p&gt;
+&lt;h3 id=&#34;刷入-raspbian&#34;&gt;刷入 Raspbian&lt;/h3&gt;
+&lt;p&gt;下载完毕后, 使用 &lt;code&gt;SDFormatter&lt;/code&gt; 将 SD 卡格式化, 然后使用 &lt;code&gt;Win32DiskImager&lt;/code&gt; 将系统写进 SD 卡, 类似工具有很多, 自己选用一个即可 (官网更新了官方工具 &lt;code&gt;Raspberry Pi Imager&lt;/code&gt;, 使用起来更为方便), SD 卡容量方面, 很多教程都是选择了最低限度的 2GB 的 SD 卡, 然而这都已经是古董级别的卡了, 一般在街上只能买到最低 16GB 的. 使用 &lt;code&gt;Win32DiskImager&lt;/code&gt; 写入系统成功后, 会弹窗询问是否格式化 SD 卡, 这时候点取消就行, 不然又要重新写一遍.&lt;/p&gt;
+&lt;h4 id=&#34;注意事项&#34;&gt;注意事项&lt;/h4&gt;
+&lt;p&gt;据说新版本的 Raspbian 默认关闭了 ssh, 需要先在 SD 卡的 boot 分区新建一个 ssh 文件夹. 将 SD 插入树莓派后供电, 看到绿灯闪烁就是系统运行成功了.&lt;/p&gt;
+&lt;h2 id=&#34;ssh连接&#34;&gt;ssh连接&lt;/h2&gt;
+&lt;p&gt;树莓派有多种连接电脑的方式, 比如TTL转USB连接和网线连接, 用的比较多的是网线连接, 网上有很多教程, 放一个 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/u013151320/article/details/51059328&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;我参考的&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;用网线连接初次尝试可能会比较麻烦, 但试多几次就会熟练了, 一定要按照步骤一步一步来, 不然树莓派就分配不到 IP 地址了.&lt;/p&gt;
+&lt;h2 id=&#34;更新软件源&#34;&gt;更新软件源&lt;/h2&gt;
+&lt;p&gt;使用 ssh 连接上 Pi 的时候, 输入用户名密码就可以登录系统并进行操作了, 默认用户名: Pi, 默认密码: raspberry, 进入命令行页面后, 我们可以通过更换软件源来解决更新速度慢的问题, 我们采用清华源, 按照以下步骤操作:&lt;/p&gt;
+&lt;p&gt;使用管理员权限，编辑 &lt;code&gt;/etc/apt/sources.list&lt;/code&gt; 文件。参考命令行为：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudo nano /etc/apt/sources.list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用 # 注释掉原文件内容，用以下内容取代：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;使用管理员权限，编辑 &lt;code&gt;/etc/apt/sources.list.d/raspi.list&lt;/code&gt; 文件。参考命令行为：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudo nano /etc/apt/sources.list.d/raspi.list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用 # 注释掉原文件内容，用以下内容取代：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存并退出后, 执行以下命令即可:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt-get upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
 </rss>

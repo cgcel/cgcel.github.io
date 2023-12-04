@@ -1,28 +1,376 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>sketchup on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/sketchup/</link>
-    <description>Recent content in sketchup on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Tue, 07 Jun 2022 20:27:35 +0800</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/sketchup/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pi4TNTCase -- 我的树莓派机箱</title>
-      <link>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
-      <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
-      <guid>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
-      <description>写在开头 我的树莓派作为服务器使用已经有一段时间了, 之前安装了一个铝壳被动散热, 在还没进入夏天的5月份, 轻负载时可以突破50度, 这时候用手直接摸散热壳已经是很烫的了.
-由于pi放在了我房间的木桌上, 让我不太敢用力压榨它, 给它更换更好的散热已经是很早就有的想法.
-正巧最近618将至, 我在浏览散热器的时候发现了树莓派机箱的推荐, 大概是下面这种形状:
-其实这种样子的机箱我在咸鱼看过很多次, 不过我觉得外观上比较一般, 让我没有购买的欲望, 于是便萌生了自己设计一个机箱并打印的想法, 正好自己对3D打印建模挺感兴趣, 可以利用这次机会入坑一下, 顺便学习建模.
-网上冲浪之后, 我了解到3D打印主要使用 .stl 格式的模型, 而可以生成这种格式模型的软件也有很多, 比如 Solid Works, Zbrush, Sketchup 等等, 我很快就决定使用 Sketchup 进行建模, 因为我女友可以指导我, 让我更容易上手. 至于模型的打印, 则可以交给有3D打印机的朋友或者网店代工.
-建模部分 灵感来源 在做上述的功课时, 我了解到一个主流的3D打印模型分享站, 国内称之为 T站, 在上面我看到了一个比较感兴趣的 模型:
-看到这个正方体我马上联想到 MC 中 TNT 方块的样子:
-根据T站的马里奥问号箱, 我可以稍作修改, 将模型改成我想要的 TNT 形状, 对于入门学习 Sketchup 建模的我来说是比较好的一个方案.
-建模 在 Sketchup 中新建模型, 然后导入 .stl 文件 抹平原模型中的四边图案 推拉中间白条区域, 准备实现参照模型的凸起部分 连接突起白条, 并根据3D文字进行修改, 将 N 改成像素风格, 然后使用推拉, 在白条上刻字 初步上色看看效果 在上半部分加入凹槽, 使模型更贴近原 TNT 的样子 改造盖子, 还是一样操作先把原模型图案去除然后推拉成平面, 由于树莓派将会安装卧式散热, 盖子设计成了镂空形状, 方便透气 模型打印与加工 打印模型 在找店家打印的同时, 我了解到3D打印机主要分 SLA 和 FDM 这两种.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>sketchup on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/sketchup/</link>
+        <description>Recent content in sketchup on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Tue, 07 Jun 2022 20:27:35 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/sketchup/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Pi4TNTCase -- 我的树莓派机箱</title>
+        <link>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
+        <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
+        <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
+&lt;p&gt;我的树莓派作为服务器使用已经有一段时间了, 之前安装了一个铝壳被动散热, 在还没进入夏天的5月份, 轻负载时可以突破50度, 这时候用手直接摸散热壳已经是很烫的了.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/378776da6dd6a7747c4de0ce0265190.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;由于pi放在了我房间的木桌上, 让我不太敢用力压榨它, 给它更换更好的散热已经是很早就有的想法.&lt;/p&gt;
+&lt;p&gt;正巧最近618将至, 我在浏览散热器的时候发现了树莓派机箱的推荐, 大概是下面这种形状:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220607213801.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其实这种样子的机箱我在咸鱼看过很多次, 不过我觉得外观上比较一般, 让我没有购买的欲望, 于是便萌生了自己设计一个机箱并打印的想法, 正好自己对3D打印建模挺感兴趣, 可以利用这次机会入坑一下, 顺便学习建模.&lt;/p&gt;
+&lt;p&gt;网上冲浪之后, 我了解到3D打印主要使用 &lt;code&gt;.stl&lt;/code&gt; 格式的模型, 而可以生成这种格式模型的软件也有很多, 比如 Solid Works, Zbrush, Sketchup 等等, 我很快就决定使用 Sketchup 进行建模, 因为我女友可以指导我, 让我更容易上手. 至于模型的打印, 则可以交给有3D打印机的朋友或者网店代工.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;建模部分&#34;&gt;建模部分&lt;/h2&gt;
+&lt;h3 id=&#34;灵感来源&#34;&gt;灵感来源&lt;/h3&gt;
+&lt;p&gt;在做上述的功课时, 我了解到一个主流的3D打印模型分享站, 国内称之为 &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.thingiverse.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;T站&lt;/a&gt;&lt;/strong&gt;, 在上面我看到了一个比较感兴趣的 &lt;a class=&#34;link&#34; href=&#34;https://www.thingiverse.com/thing:4059929&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;模型&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220607215626.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;看到这个正方体我马上联想到 MC 中 TNT 方块的样子:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220607215858.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;根据T站的马里奥问号箱, 我可以稍作修改, 将模型改成我想要的 TNT 形状, 对于入门学习 Sketchup 建模的我来说是比较好的一个方案.&lt;/p&gt;
+&lt;h3 id=&#34;建模&#34;&gt;建模&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Sketchup 中新建模型, 然后导入 .stl 文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/17d65f48f7a51e634ff31eb836b3acc.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;抹平原模型中的四边图案&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/bac70e5f0d60f00f359798de82a587a.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/46697f737140bb6a325534675da46d5.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;推拉中间白条区域, 准备实现参照模型的凸起部分&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/ef4c0fa8a2a8d88d34b40e4b268dcd5.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;连接突起白条, 并根据3D文字进行修改, 将 N 改成像素风格, 然后使用推拉, 在白条上刻字&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/ce9e20aa735ef26c779561a1d285a20.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;初步上色看看效果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/fcdce8c79953acded37eb2fb34a3327.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;在上半部分加入凹槽, 使模型更贴近原 TNT 的样子&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/088b0ad6bce31ad74c5f9f9ca065153.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;改造盖子, 还是一样操作先把原模型图案去除然后推拉成平面, 由于树莓派将会安装卧式散热, 盖子设计成了镂空形状, 方便透气&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/93541d98f7176618e3a7ed9f43819b5.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;模型打印与加工&#34;&gt;模型打印与加工&lt;/h2&gt;
+&lt;h3 id=&#34;打印模型&#34;&gt;打印模型&lt;/h3&gt;
+&lt;p&gt;在找店家打印的同时, 我了解到3D打印机主要分 &lt;code&gt;SLA&lt;/code&gt; 和 &lt;code&gt;FDM&lt;/code&gt; 这两种.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;FDM是我印象比较深的有喷头的打印机, 通过熔融沉积技术将材料加热并按照轨迹打印模型, 入门打印机大多都是FDM打印机, 这种方法打印的模型表面比较粗糙, 精度较低.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SLA是最早出现的快速原型制造工艺, 通过光轴移动来打印. SLA工业机型是激光固化成型, 在精度上有FDM机型无法逾越的优势, 可制作各种结构复杂的精密零件和组装件.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最终, 和店家确定了方案, 采用 SLA 打印机打印, 材料为光敏树脂 (店家推荐用尼龙打印, 可以耐高温, 但出于成本考虑还是选择树脂, 毕竟是我的第一次尝试, 没必要杀鸡用牛刀), 打印费用150元 (原想着几十块解决, 没想到最便宜的也要上百)&lt;/p&gt;
+&lt;p&gt;几天后, 模型打印完成, 经过打磨后寄给了我.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2aca7b2923a46010ec87a582f34aa56_1.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;手涂模型&#34;&gt;手涂模型&lt;/h3&gt;
+&lt;p&gt;店家的上色费用要200, 比打印费还贵, 所以在同事大佬的建议下我买了水补土和消光, 准备后续上色, 漆料则使用同事友情赞助的水性漆和缓干剂. 不过由于临时行程有变, 一两天内要回东莞了, 喷雾不能带进公共交通, 所以我要赶工直接上色, 手涂完就给我的 pi 装上专属机箱.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找了两个冻干咖啡盖子用来装漆料, 准备开工&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/5197694a03461189df8e2a3d6600cff.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;手涂上色, 先找内壁上点红色试试水&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/6127b80760370692ccc0873ae3542fe.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/d95974074a2e90922c9d79e452ecf23.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;外壁简单上了一两层红漆&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/e8793d6c471fa4e2972bcadeb69ee5e.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;大佬建议先上白色部分, 避免红色部分修修补补&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/d59bac08f9987b187372f6a1803f656.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/f03be37065ffb5f43da418baf730c21.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;上完白色后继续补红色, 主体部分除了文字部分基本涂完&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/32fc75ef210d7df2d3174f128775734.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;盖子粗上色&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/e2a44e745340f30c06217e4464b2e10.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/b31877873b08818f9e8fa3cf8071288.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;回到东莞继续, 先把 pi 的散热壳拆了, 还有把散热器装上先看看效果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/7dd9e56012e5ba8edaaa2499f677f2d.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/853425c4a1a7e8d1ecb5efb064e9513.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;继续加深盖子颜色, 直到和主题相差无几&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/5bf4e0363101b28812c4224ab00e256.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;上色黑字部分, 以及最后的成品图&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/8721d6673691e1c743f15be24985454.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/0757ff0c97365c593b954804df8ecb8.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;组装成品&#34;&gt;组装成品&lt;/h2&gt;
+&lt;p&gt;将装好散热器的 pi 放入箱子, 由于螺丝买的不够长, 暂时无法很好的固定住, 这里先靠外接的线固定住, 后续回来再换螺丝.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/c923a7c956d6c846d77c0839af5388f.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将盖子盖上, 这里的螺丝依旧买小了, 因为我不想用自攻螺丝破坏箱体, 所以就先这样固定.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/8dad0b52b2e2931db7ae673f38c8425.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;插入SD卡, 连接上电源线, 网线以及移动硬盘, 组装工作基本完成&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/6f3749a92483885ad487231d6596404.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/f9e6810ea63b2be401d543e289c26b6.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;测试散热&#34;&gt;测试散热&lt;/h2&gt;
+&lt;p&gt;最后到了实战部分, 将cpu温度与之前的数据对比, 轻负载时温度在38-42度之间, 满载时温度在50度左右, 达到了我的预期, 今后也可以放心折腾了.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/1611fa9014c603b3e1aa882acf564ab.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/796af2d94730f2b6a1c274ad3260de5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;后续计划&#34;&gt;后续计划&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 散热贴更换为硅脂&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 更换合适尺寸的螺丝与铜柱&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 打磨重涂, 加上底漆 (水补土) 与保护漆 (消光)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

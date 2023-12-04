@@ -1,25 +1,161 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>perl on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/perl/</link>
-    <description>Recent content in perl on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/perl/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gcm-for-Mojo搭建总结</title>
-      <link>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
-      <description>开篇 最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 gcm-for-mojo , 这是一个获取网页端微信信息并通过 gcm 推送到客户端的 app, 同时他也支持 mipush, hwpush 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.
-服务器配置 本人常用微信, 于是就只做了微信的推送, QQ 配置方法类似, 基本上举一反三, 很容易学会. 首先我们在服务器上安装 perl, Ubuntu 16.04 操作如下:
-$ sudo apt-get install perl cpanminus git make screen libssl-dev libnet-ssleay-perl libio-socket-ssl-perl 完成后
-$ cpanm Mojo::Weixin 我们直接到 GitHub 上看配置步骤, 描述得很详细, 最多几分钟就可以搞定了.
-接下来我们新建一个 wx.pl 文件, 命名随意, 内容如下:
-use Mojo::Weixin; my $client = Mojo::Weixin-&amp;gt;new(log_encoding=&amp;gt;&amp;#34;utf-8&amp;#34;); $client-&amp;gt;load(&amp;#34;ShowMsg&amp;#34;); $client-&amp;gt;load(&amp;#34;GCM&amp;#34;,data=&amp;gt;{ api_url =&amp;gt; &amp;#39;https://gcm-http.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>perl on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/perl/</link>
+        <description>Recent content in perl on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/perl/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Gcm-for-Mojo搭建总结</title>
+        <link>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
+        <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 &lt;code&gt;gcm-for-mojo&lt;/code&gt; , 这是一个获取网页端微信信息并通过 &lt;code&gt;gcm&lt;/code&gt; 推送到客户端的 app, 同时他也支持 &lt;code&gt;mipush&lt;/code&gt;, &lt;code&gt;hwpush&lt;/code&gt; 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.&lt;/p&gt;
+&lt;h2 id=&#34;服务器配置&#34;&gt;服务器配置&lt;/h2&gt;
+&lt;p&gt;本人常用微信, 于是就只做了微信的推送, QQ 配置方法类似, 基本上举一反三, 很容易学会. 首先我们在服务器上安装 perl, Ubuntu 16.04 操作如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sudo apt-get install perl cpanminus git make screen libssl-dev libnet-ssleay-perl libio-socket-ssl-perl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;完成后&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ cpanm Mojo::Weixin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们直接到 &lt;a class=&#34;link&#34; href=&#34;https://github.com/sjdy521/Mojo-Weixin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub&lt;/a&gt; 上看配置步骤, 描述得很详细, 最多几分钟就可以搞定了.&lt;/p&gt;
+&lt;p&gt;接下来我们新建一个 &lt;code&gt;wx.pl&lt;/code&gt; 文件, 命名随意, 内容如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-perl&#34; data-lang=&#34;perl&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Mojo::Weixin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;my&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Mojo::Weixin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;log_encoding&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ShowMsg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GCM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;api_url&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;https://gcm-http.googleapis.com/gcm/send&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;api_key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;registration_ids&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;令牌, 客户端获取&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;allow_group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 群聊信息推送白名单&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ban_group&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;[]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;allow_discuss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;[]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ban_discuss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;[]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;is_ban_official&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 不接收公众号信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Openwx&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;host&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;服务器ip地址&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;140&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;#其中, 端口号自定义, 如140, 需要在客户端设置中填入ip:port格式的地址才能开通快速回复功能, 如下图&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将 &lt;code&gt;wx.pl&lt;/code&gt; 上传至服务器, 使用 &lt;code&gt;nohup perl wx.pl &amp;amp;&lt;/code&gt; 使其在后台运行. 这是个效果不太好的方法, 断开 ssh 连接时很容易把进程也关掉, 翻阅教程时我发现可以用另一个方法来实现后台运行:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;screen -S docker&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;perl wx.pl&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-07-07-03.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;设置截图&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-07-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;效果截图1&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://cgcel.github.io/2018-07-07-02.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;效果截图2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;此时断开 ssh 连接也不受任何干扰, 放置后台成功. 如果想回到 screen, 可以使用以下指令, 结束操作后挂起即可:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;screen -ls&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -r pid&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-07-07-01.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示意图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;附上一篇 screen &lt;a class=&#34;link&#34; href=&#34;https://www.ibm.com/developerworks/cn/linux/l-cn-screen/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;优势与不足&#34;&gt;优势与不足&lt;/h2&gt;
+&lt;h3 id=&#34;优势&#34;&gt;优势:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;gcm-for-mojo 配置起来比 EFB 要简单得多,毕竟依赖没有后者多&lt;/li&gt;
+&lt;li&gt;fcm 推送很及时&lt;/li&gt;
+&lt;li&gt;自定义设置比较丰富&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;不足&#34;&gt;不足:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;比起 EFB, gcm-for-mojo不能显示图片和表情包, 甚至 emoji 也不会显示&lt;/li&gt;
+&lt;li&gt;使用 nohup 指令让其在后台运行时, 与服务器断开连接后有一次会自动关闭后台进程&lt;/li&gt;
+&lt;li&gt;不够稳定, 一方面 WebWeixin 本身就是个神奇的东西, 诸如 ItChat, EFB, gcm-for-mojo 这些借助网页版微信获取信息的工具会导致账号被封(一段时间内将无法使用网页登录)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;之前用过 &lt;code&gt;EFB1.0&lt;/code&gt;, 没多久就弃了, 原因是连接很容易断开, 一旦断开连接就要再重新扫码登录, 而微信无法在本机上扫码登录, 于是就比如借助另一个设备显示二维码, 可以想象有多麻烦, 当然 gcm-for-mojo 也是如此, 正好借此机会对比一下两者的稳定性, 希望这次能用久一点吧🤷‍♀️&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

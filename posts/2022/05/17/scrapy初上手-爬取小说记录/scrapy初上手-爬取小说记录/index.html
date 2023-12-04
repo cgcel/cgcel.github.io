@@ -1,553 +1,370 @@
 <!DOCTYPE html>
-<html><head>
-<title>Scrapy初上手: 爬取小说记录</title>
-
-
-
-
-<meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<meta content="telephone=no" name="format-detection">
-<meta name="description" content="">
-<meta name="renderer" content="webkit">
-<meta name="theme-color" content="#ffffff">
-
-
-
-<meta property="og:title" content="Scrapy初上手: 爬取小说记录" />
-<meta property="og:description" content="开篇 由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='开篇 由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.
 准备 安装 现在的 Scrapy 安装简单了不少, 几年前在 Windows 端还不能直接用 pip 安装. 现在只需要一句 pip install scrapy 即可.
 编译环境 编译环境当然还是永远的 VS Code.
 实现 计划 大佬提供了一个塞满 URL 的 json 文件给我, 都是小说网站相关的, 既然要爬取小说网站, 就不可避免地要爬取同一本书的多个章节, 于是很容易联想到使用 Scrapy 来实现, 毕竟是一个成名已久的 Python 爬虫框架, 总比我简单粗暴用 requests 来爬好多了.
 那么接下来就是解决以下几个问题, 最后实现整个爬取的功能:
-根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://cgcel.github.io/posts/2022/05/17/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-17T14:13:36+00:00" />
-<meta property="article:modified_time" content="2022-05-17T14:13:36+00:00" /><meta property="og:site_name" content="烂杯的博客" />
+根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 .'>
+<title>Scrapy初上手: 爬取小说记录</title>
 
+<link rel='canonical' href='https://cgcel.github.io/posts/2022/05/17/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/'>
 
-
-
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Scrapy初上手: 爬取小说记录"/>
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='Scrapy初上手: 爬取小说记录'>
+<meta property='og:description' content='开篇 由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.
+准备 安装 现在的 Scrapy 安装简单了不少, 几年前在 Windows 端还不能直接用 pip 安装. 现在只需要一句 pip install scrapy 即可.
+编译环境 编译环境当然还是永远的 VS Code.
+实现 计划 大佬提供了一个塞满 URL 的 json 文件给我, 都是小说网站相关的, 既然要爬取小说网站, 就不可避免地要爬取同一本书的多个章节, 于是很容易联想到使用 Scrapy 来实现, 毕竟是一个成名已久的 Python 爬虫框架, 总比我简单粗暴用 requests 来爬好多了.
+那么接下来就是解决以下几个问题, 最后实现整个爬取的功能:
+根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 .'>
+<meta property='og:url' content='https://cgcel.github.io/posts/2022/05/17/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:tag' content='scrapy' /><meta property='article:published_time' content='2022-05-17T14:13:36&#43;00:00'/><meta property='article:modified_time' content='2022-05-17T14:13:36&#43;00:00'/>
+<meta name="twitter:title" content="Scrapy初上手: 爬取小说记录">
 <meta name="twitter:description" content="开篇 由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.
 准备 安装 现在的 Scrapy 安装简单了不少, 几年前在 Windows 端还不能直接用 pip 安装. 现在只需要一句 pip install scrapy 即可.
 编译环境 编译环境当然还是永远的 VS Code.
 实现 计划 大佬提供了一个塞满 URL 的 json 文件给我, 都是小说网站相关的, 既然要爬取小说网站, 就不可避免地要爬取同一本书的多个章节, 于是很容易联想到使用 Scrapy 来实现, 毕竟是一个成名已久的 Python 爬虫框架, 总比我简单粗暴用 requests 来爬好多了.
 那么接下来就是解决以下几个问题, 最后实现整个爬取的功能:
-根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 ."/>
+根据小说主页 URL 获取各章节标题以及 URL 根据章节 URL 爬取章节内容并保存 将 Scrapy 爬取到的内容按顺序排列后, 依次存入 .">
+    <link rel="shortcut icon" href="/img/avatar.png" />
 
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
-
-
-
-      <script src="/js/toc.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
-
-
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Material+Icons">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<body>
-    	<div id="app"><div class="single-column-drawer-container" id="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-    <div class="drawer-content">
-        <div class="drawer-menu">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
             
-            
-                
-                
+            <figure class="site-avatar">
+                <a href="/">
                 
                     
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                
-                
-                <a class="a-block drawer-menu-item active" href="/posts">
-                    Archive
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
+            </figure>
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    Categories
-                </a>
-                
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/tags">
-                    Tags
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/index.xml">
-                    RSS Feed
-                </a>
-                
-            
-            
-            <div class="toc">
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
-									开篇
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%87%86%e5%a4%87" class="nav-准备">
-									准备
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%ae%89%e8%a3%85" class="nav-安装">
-									安装
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83" class="nav-编译环境">
-									编译环境
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e5%ae%9e%e7%8e%b0" class="nav-实现">
-									实现
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e8%ae%a1%e5%88%92" class="nav-计划">
-									计划
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b" class="nav-开始">
-									开始
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e8%8e%b7%e5%8f%96%e5%b0%8f%e8%af%b4%e7%ab%a0%e8%8a%82-url" class="nav-获取小说章节-url">
-									获取小说章节 URL
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#items-%e7%9a%84%e4%bd%bf%e7%94%a8" class="nav-items-的使用">
-									Items 的使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#item-pipeline-%e7%9a%84%e4%bd%bf%e7%94%a8" class="nav-item-pipeline-的使用">
-									Item pipeline 的使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%bc%a0%e9%80%92%e7%ab%a0%e8%8a%82%e5%8f%82%e6%95%b0-%e5%ae%9e%e7%8e%b0%e6%8c%89%e9%a1%ba%e5%ba%8f%e4%bf%9d%e5%ad%98" class="nav-传递章节参数-实现按顺序保存">
-									传递章节参数, 实现按顺序保存
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#itemspy" class="nav-itemspy">
-									items.py
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#pipelinespy" class="nav-pipelinespy">
-									pipelines.py
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e8%bf%90%e8%a1%8c%e7%88%ac%e8%99%ab" class="nav-运行爬虫">
-									运行爬虫
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
-									总结
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
 
-</div>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
             
         </div>
-    </div>
-</div>
-<transition name="fade">
-    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
-</transition>
-<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
-    <div id="navBackground" class="nav-background"></div>
-    <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
-            <i class="material-icons">
-                menu
-            </i>
-        </button>
-        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
-            烂杯的博客
-        </a>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
         
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
-            <i class="material-icons" id="darkModeToggleIcon2">
-                dark_mode
-            </i>
-        </button>
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
         
-    </div>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#开篇">开篇</a></li>
+    <li><a href="#准备">准备</a>
+      <ol>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#编译环境">编译环境</a></li>
+      </ol>
+    </li>
+    <li><a href="#实现">实现</a>
+      <ol>
+        <li><a href="#计划">计划</a></li>
+        <li><a href="#开始">开始</a></li>
+        <li><a href="#获取小说章节-url">获取小说章节 URL</a></li>
+        <li><a href="#items-的使用">Items 的使用</a></li>
+        <li><a href="#item-pipeline-的使用">Item pipeline 的使用</a></li>
+        <li><a href="#传递章节参数-实现按顺序保存">传递章节参数, 实现按顺序保存</a>
+          <ol>
+            <li><a href="#itemspy">items.py</a></li>
+            <li><a href="#pipelinespy">pipelines.py</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#运行爬虫">运行爬虫</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
 </nav>
-<div class="single-column-header-container" id="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://cgcel.github.io/">
-        <div class="single-column-header-title">烂杯的博客</div>
+        </div>
+    </section>
+
+            
         
-        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/2022/05/17/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/">Scrapy初上手: 爬取小说记录</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 17, 2022</time>
+            </div>
         
 
-    </a>
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
 
-            <div id="content">
-                <div id="streamContainer" class="stream-container">
+</header>
 
-    <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            
-            
-            
-
-            <div class="post-head-wrapper-text-only"
-                
-            >
-                <div class="post-title">
-                    Scrapy初上手: 爬取小说记录
-                    
-                    <div class="post-meta">
-                        
-                        <time itemprop="datePublished">
-                            2022-05-17 14:13
-                        </time>
-                        
-
-                        
-                            <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[学习]</a>
-                                &nbsp;
-                        
-
-                        
-                            <i class="material-icons" style="">label</i>
-                            
-                                <a href="/tags/python">python</a>
-                                &nbsp;
-                            
-                                <a href="/tags/scrapy">scrapy</a>
-                                &nbsp;
-                            
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post-body-wrapper">
-                
-                <div class="post-body" v-pre>
-                
-                    <h2 id="开篇">开篇</h2>
+    <section class="article-content">
+    
+    
+    <h2 id="开篇">开篇</h2>
 <p>由于最近因为疫情居家健康监测, 还没复工, 我在家边学习边玩. 在家期间看了 ⌈86⌋ 第二季, 简单学了一下 Go, 还有捡回来 Scrapy 学习一下. 说到 Scrapy, 本科的时候就有学习过, 但是当时找的是B站上的中文教程, 感觉教的我一头雾水, 这次从官方文档开始下手, 结合 Google, 感觉一下子清晰明了了许多.</p>
 <hr>
 <h2 id="准备">准备</h2>
@@ -567,61 +384,130 @@
 </ul>
 <h3 id="开始">开始</h3>
 <p>首先, 安装完 Scrapy 后, 按照官方文档, 直接在目录启动命令行, 捅过命令行生成项目:</p>
-<pre tabindex="0"><code>$ scrapy startproject biquge_dl
-</code></pre><p>生成后, 在 <code>spiders/</code> 子文件夹中新建 <code>fiction_spider.py</code>, 用于编写爬虫代码.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ scrapy startproject biquge_dl
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成后, 在 <code>spiders/</code> 子文件夹中新建 <code>fiction_spider.py</code>, 用于编写爬虫代码.</p>
 <p>根据官方的 QuickStart 例程, 首先新建一个 class, 继承 <code>scrapy.Spider</code>, 后续只需要结合源码和文档, 就可以继续写下去了.</p>
 <h3 id="获取小说章节-url">获取小说章节 URL</h3>
 <p>首先在浏览器打开开发者工具对小说主页进行抓包, 可以看到该网站并没有用到一些 API, 于是准备采用 XPATH 来对章节 URL 进行爬取, 观察到无论多长篇幅的小说, 其章节都在一页中显示, 这无疑降低了部分难度, 拿来练手 scrapy 实在是再合适不过了.</p>
-<p><img src="Pasted_image_20220524212212.png" alt=""></p>
+<p><img src="/Pasted_image_20220524212212.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 <p>通过重写 <code>parse()</code>, 对小说主页 html 进行解析并抓取章节 URL.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">scrapy</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">FictionSpider</span>(scrapy.Spider):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">parse</span>(self, response, **kwargs):
-</span></span><span style="display:flex;"><span>        self.logger.info(<span style="color:#cd5555">&#39;Parse function called on </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">&#39;</span>, response.url)
-</span></span><span style="display:flex;"><span>        fiction_name = response.xpath(<span style="color:#cd5555">&#39;//*[@id=&#34;info&#34;]/h1/text()&#39;</span>).get()
-</span></span><span style="display:flex;"><span>        section_order = <span style="color:#b452cd">1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">for</span> episode_doc <span style="color:#8b008b">in</span> response.xpath(<span style="color:#cd5555">&#39;//*[@id=&#34;list&#34;]/dl/dd[*]/a&#39;</span>):
-</span></span><span style="display:flex;"><span>            section_title = episode_doc.xpath(<span style="color:#cd5555">&#39;.//text()&#39;</span>).get()            
-</span></span><span style="display:flex;"><span>            url = episode_doc.xpath(<span style="color:#cd5555">&#39;.//@href&#39;</span>).get()            
-</span></span><span style="display:flex;"><span>            section_url = self.base_url + url            
-</span></span><span style="display:flex;"><span>            request = scrapy.Request(
-</span></span><span style="display:flex;"><span>                url=section_url, callback=self.parse_content, cb_kwargs=<span style="color:#658b00">dict</span>())
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            request.cb_kwargs[<span style="color:#cd5555">&#39;fiction_name&#39;</span>] = fiction_name            
-</span></span><span style="display:flex;"><span>            request.cb_kwargs[<span style="color:#cd5555">&#39;section_order&#39;</span>] = section_order            
-</span></span><span style="display:flex;"><span>            request.cb_kwargs[<span style="color:#cd5555">&#39;section_title&#39;</span>] = section_title            
-</span></span><span style="display:flex;"><span>            section_order += <span style="color:#b452cd">1</span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">yield</span> request
-</span></span></code></pre></div><p>获取成功后, 将小说名, 章节序号, 章节名作为参数传给 <code>parse_content()</code> 函数, 继而对章节进行爬取.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">bs4</span> <span style="color:#8b008b;font-weight:bold">import</span> BeautifulSoup <span style="color:#8b008b;font-weight:bold">as</span> bs
-</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">biquge_dl.items</span> <span style="color:#8b008b;font-weight:bold">import</span> BiqugeDlItem
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">FictionSpider</span>(scrapy.Spider):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">parse_content</span>(self, response, fiction_name, section_order, section_title):   
-</span></span><span style="display:flex;"><span>        self.logger.info(<span style="color:#cd5555">&#39;Parse content function called on </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">&#39;</span>, response.url)       
-</span></span><span style="display:flex;"><span>        contents = response.xpath(<span style="color:#cd5555">&#39;//*[@id=&#34;content&#34;]/text()&#39;</span>).getall()
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> <span style="color:#658b00">len</span>(contents) &lt;= <span style="color:#b452cd">1</span>:       
-</span></span><span style="display:flex;"><span>            soup = bs(response.body, <span style="color:#cd5555">&#39;html.parser&#39;</span>)           
-</span></span><span style="display:flex;"><span>            contents = soup.find_all(<span style="color:#cd5555">&#34;div&#34;</span>, {<span style="color:#cd5555">&#34;class&#34;</span>: <span style="color:#cd5555">&#34;box_con&#34;</span>}).get_text()
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>        item = BiqugeDlItem()        
-</span></span><span style="display:flex;"><span>        item[<span style="color:#cd5555">&#39;name&#39;</span>] = fiction_name        
-</span></span><span style="display:flex;"><span>        item[<span style="color:#cd5555">&#39;order&#39;</span>] = section_order        
-</span></span><span style="display:flex;"><span>        item[<span style="color:#cd5555">&#39;title&#39;</span>] = section_title
-</span></span><span style="display:flex;"><span>        item[<span style="color:#cd5555">&#39;content&#39;</span>] = contents
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> item
-</span></span></code></pre></div><h3 id="items-的使用">Items 的使用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">scrapy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fiction_name</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;info&#34;]/h1/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">section_order</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">episode_doc</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;list&#34;]/dl/dd[*]/a&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">section_title</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">url</span> <span class="o">=</span> <span class="n">episode_doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//@href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">section_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">url</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">url</span><span class="o">=</span><span class="n">section_url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_content</span><span class="p">,</span> <span class="n">cb_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;fiction_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">request</span><span class="o">.</span><span class="n">cb_kwargs</span><span class="p">[</span><span class="s1">&#39;section_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>            
+</span></span><span class="line"><span class="cl">            <span class="n">section_order</span> <span class="o">+=</span> <span class="mi">1</span>            
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="n">request</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>获取成功后, 将小说名, 章节序号, 章节名作为参数传给 <code>parse_content()</code> 函数, 继而对章节进行爬取.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">biquge_dl.items</span> <span class="kn">import</span> <span class="n">BiqugeDlItem</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FictionSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">fiction_name</span><span class="p">,</span> <span class="n">section_order</span><span class="p">,</span> <span class="n">section_title</span><span class="p">):</span>   
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parse content function called on </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>       
+</span></span><span class="line"><span class="cl">        <span class="n">contents</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&#34;content&#34;]/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>       
+</span></span><span class="line"><span class="cl">            <span class="n">soup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>           
+</span></span><span class="line"><span class="cl">            <span class="n">contents</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;class&#34;</span><span class="p">:</span> <span class="s2">&#34;box_con&#34;</span><span class="p">})</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="n">BiqugeDlItem</span><span class="p">()</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fiction_name</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_order</span>        
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">section_title</span>
+</span></span><span class="line"><span class="cl">        <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contents</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">item</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="items-的使用">Items 的使用</h3>
 <p>写上述  <code>parse_content()</code> 时发现, 直接使用 scrapy 对小说进行章节爬取, 并按章节名每章下载是很简单的, 只需要直接跑爬虫就可以, 各个章节会乱序下载下来, 但如果想要只下载一份文件, 按顺序存储章节, 那么就需要使用 scrapy 的 <code>items</code> 和 <code>pipelines</code> 了, 这两个 .py 文件会随着一开始命令行创建项目时一并创建, 所以可以很轻易地在 <code>biquge_dl/</code> 文件夹内找到, 只需要对这两个文件进行重写, 并在 <code>parse_content()</code> 中将内容写进 item 中, 就能实现参数的传递.</p>
-<p>查阅 <a href="%5Bhttps://docs.scrapy.org/en/latest/topics/items.html%5D(https://docs.scrapy.org/en/latest/topics/items.html#module-scrapy.item)">官方文档</a>, 对 Items 的描述如下:</p>
-<p><em>The main goal in scraping is to extract structured data from unstructured sources, typically, web pages. <a href="https://docs.scrapy.org/en/latest/topics/spiders.html#topics-spiders">Spiders</a> may return the extracted data as items, Python objects that define key-value pairs.</em></p>
-<p><em>Scrapy supports <a href="https://docs.scrapy.org/en/latest/topics/items.html#item-types">multiple types of items</a>. When you create an item, you may use whichever type of item you want. When you write code that receives an item, your code should <a href="https://docs.scrapy.org/en/latest/topics/items.html#supporting-item-types">work for any item type</a>.</em></p>
+<p>查阅 <a class="link" href="[https://docs.scrapy.org/en/latest/topics/items.html]%28https://docs.scrapy.org/en/latest/topics/items.html#module-scrapy.item%29" >官方文档</a>, 对 Items 的描述如下:</p>
+<p><em>The main goal in scraping is to extract structured data from unstructured sources, typically, web pages. <a class="link" href="https://docs.scrapy.org/en/latest/topics/spiders.html#topics-spiders"  target="_blank" rel="noopener"
+    >Spiders</a> may return the extracted data as items, Python objects that define key-value pairs.</em></p>
+<p><em>Scrapy supports <a class="link" href="https://docs.scrapy.org/en/latest/topics/items.html#item-types"  target="_blank" rel="noopener"
+    >multiple types of items</a>. When you create an item, you may use whichever type of item you want. When you write code that receives an item, your code should <a class="link" href="https://docs.scrapy.org/en/latest/topics/items.html#supporting-item-types"  target="_blank" rel="noopener"
+    >work for any item type</a>.</em></p>
 <p>可见 item 可以将提取的数据按一定格式返回, 只需要规划好传入参数, 就可以利用 item 实现排序的操作.</p>
 <h3 id="item-pipeline-的使用">Item pipeline 的使用</h3>
-<p><a href="https://docs.scrapy.org/en/latest/topics/item-pipeline.html">官方文档</a> 这样介绍:</p>
+<p><a class="link" href="https://docs.scrapy.org/en/latest/topics/item-pipeline.html"  target="_blank" rel="noopener"
+    >官方文档</a> 这样介绍:</p>
 <p><em>After an item has been scraped by a spider, it is sent to the Item Pipeline which processes it through several components that are executed sequentially.</em></p>
 <p><em>Each item pipeline component (sometimes referred as just “Item Pipeline”) is a Python class that implements a simple method. They receive an item and perform an action over it, also deciding if the item should continue through the pipeline or be dropped and no longer processed.</em></p>
 <p><em>Typical uses of item pipelines are:</em></p>
@@ -640,15 +526,29 @@
 </ol>
 <h4 id="itemspy">items.py</h4>
 <p>打开 items.py, 按照例子创建一个继承 <code>scrapy.Item</code> 的 <code>BiqugeDlItem</code> 类, 对类进行参数的定义:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">BiqugeDlItem</span>(scrapy.Item):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22"># define the fields for your item here like:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22"># name = scrapy.Field()</span>
-</span></span><span style="display:flex;"><span>    name = scrapy.Field()
-</span></span><span style="display:flex;"><span>    order = scrapy.Field()
-</span></span><span style="display:flex;"><span>    title = scrapy.Field()
-</span></span><span style="display:flex;"><span>    content = scrapy.Field()
-</span></span></code></pre></div><p>可见, 这里定义了几个参数, 分别是:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BiqugeDlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># define the fields for your item here like:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># name = scrapy.Field()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">order</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可见, 这里定义了几个参数, 分别是:</p>
 <ul>
 <li>name: 小说名</li>
 <li>order: 章节序号</li>
@@ -664,524 +564,345 @@
 <li><code>close_spider(self, spider)</code> 函数在爬虫运行结束后调用</li>
 </ul>
 <p>结合以上特点, 我们可以在 pipielines.py 中实现对包含小说名, 章节序号, 章节标题, 章节内容的 item 的处理, 代码如下:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">BiqugeDlPipeline</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">open_spider</span>(self, spider):
-</span></span><span style="display:flex;"><span>        self.items = []
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">process_item</span>(self, item, spider):
-</span></span><span style="display:flex;"><span>        self.items.append(item)
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> item
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">close_spider</span>(self, spider):
-</span></span><span style="display:flex;"><span>        self.items.sort(key=<span style="color:#8b008b;font-weight:bold">lambda</span> i: i[<span style="color:#cd5555">&#39;order&#39;</span>])
-</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">for</span> item <span style="color:#8b008b">in</span> self.items:
-</span></span><span style="display:flex;"><span>            <span style="color:#228b22"># print(item[&#39;title&#39;])</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">with</span> <span style="color:#658b00">open</span>(<span style="color:#cd5555">&#39;downloads/</span><span style="color:#cd5555">{}</span><span style="color:#cd5555">.txt&#39;</span>.format(item[<span style="color:#cd5555">&#39;name&#39;</span>]), <span style="color:#cd5555">&#39;a&#39;</span>, encoding=<span style="color:#cd5555">&#39;utf-8&#39;</span>) <span style="color:#8b008b;font-weight:bold">as</span> f:
-</span></span><span style="display:flex;"><span>                f.write(<span style="color:#cd5555">&#39;</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">{}</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#39;</span>.format(item[<span style="color:#cd5555">&#39;title&#39;</span>]))
-</span></span><span style="display:flex;"><span>                <span style="color:#8b008b;font-weight:bold">for</span> content <span style="color:#8b008b">in</span> item[<span style="color:#cd5555">&#39;content&#39;</span>]:
-</span></span><span style="display:flex;"><span>                    f.write(content.strip())
-</span></span></code></pre></div><p>在 <code>open_spider()</code> 中, 先定义一个空列表, 用于存储各个 item, 在 <code>process_item()</code> 中, 将传入的 item 添加至 items 列表中, 在 <code>close_spider()</code> 中, 对 items 列表进行排序操作, 然后将列表中内容写入最终文件, 实现了小说的按序存储. 至此, 整个爬取流程结束.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BiqugeDlPipeline</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">open_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">item</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">close_spider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># print(item[&#39;title&#39;])</span>
+</span></span><span class="line"><span class="cl">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;downloads/</span><span class="si">{}</span><span class="s1">.txt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>open_spider()</code> 中, 先定义一个空列表, 用于存储各个 item, 在 <code>process_item()</code> 中, 将传入的 item 添加至 items 列表中, 在 <code>close_spider()</code> 中, 对 items 列表进行排序操作, 然后将列表中内容写入最终文件, 实现了小说的按序存储. 至此, 整个爬取流程结束.</p>
 <hr>
 <h2 id="运行爬虫">运行爬虫</h2>
 <p>调试完成后, 在命令行启动爬虫, 测试爬取效果:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ scrapy crawl fiction_spider -a <span style="color:#00688b">url</span>=https://www.biduoxs.com/biquge/79_79244/
-</span></span></code></pre></div><p><img src="Pasted_image_20220525175633.png" alt=""></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ scrapy crawl fiction_spider -a <span class="nv">url</span><span class="o">=</span>https://www.biduoxs.com/biquge/79_79244/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/Pasted_image_20220525175633.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 <hr>
 <h2 id="总结">总结</h2>
 <p>由于疫情管控在家荒废了一段时间, 不过好在还算有一点残存的自制力, 努力学习了一点东西, 这篇博客应该算是手敲的最长的一篇了, 虽然花的时间长了一点, 但是总归是学到了一些, 特别是结合源码和文档来边总结边学习, 能够领会到一些新知识. 这是对着例程敲代码所比较难学到的.</p>
 
-                    
-                    <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2022-05-17</p>
-                    
-                </div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">python</a>
+        
+            <a href="/tags/scrapy/">scrapy</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/2021/05/13/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">我的 ZeroTier Network 管理 bot</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">爬取洪灾期间长江沿岸水位并绘图</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">最近开的一个爬虫小坑</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/2018-6-23-1.png" loading="lazy" data-key="" data-hash="/2018-6-23-1.png"/>
+                
             </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">六维空间自动登录脚本</h2>
+        </div>
+    </a>
+</article>
+
             
+                
+<article class="">
+    <a href="/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">flask踩坑和排坑记录</h2>
+        </div>
+    </a>
+</article>
+
             
-            <nav class="post-pagination">
+        </div>
+    </div>
+</aside>
 
-                
-                <a class="newer-posts" href="/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/">
-			Next<br>Pi4TNTCase -- 我的树莓派机箱
-                </a>
-                
-                
-                
-                <a class="older-posts" href="/posts/2022/04/13/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/">
-			Previous<br>一加8T刷Nameless AOSP记录
-                </a>
-                
-            </nav>
-            <div class="post-comment-wrapper">
-                
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
 
-
-
-
-
-
-
-
-
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="username/repo"
-        data-repo-id="**************************"
-        data-category="General"
-        data-category-id="*********************"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
 </script>
 
-            </div>
-        </div>
-    </div>
-
-
-                    </div>
-            </div><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://cgcel.github.io/">
-    
-        <div class="nav-title">
-            烂杯的博客
-        </div>
-        
-        <div class="nav-subtitle">
-            我是小白, 随便写写.
-        </div>
-        
-    </a>
 
-    <div class="nav-link-list">
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
         
+            2020 - 
         
-            
-            
-            
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
                 
-            
-            
-            
-            <a class="a-block nav-link-item active" href="/posts">
-                Archive
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/categories">
-                Categories
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/tags">
-                Tags
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/index.xml">
-                RSS Feed
-            </a>
-            
-        
-    </div>
 
-    
+                <div class="pswp__counter"></div>
 
-    <div class="nav-footer">
-        
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-&copy;
-	
-	This is a customized copyright.
-	
+                <button class="pswp__button pswp__button--share" title="Share"></button>
 
-    </div>
-    
-</div><div id="extraContainer" class="extra-container">
-    <div class="toc-wrapper">
-        
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
-        
-        <div class="toc">
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
-									开篇
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%87%86%e5%a4%87" class="nav-准备">
-									准备
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%ae%89%e8%a3%85" class="nav-安装">
-									安装
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83" class="nav-编译环境">
-									编译环境
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e5%ae%9e%e7%8e%b0" class="nav-实现">
-									实现
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e8%ae%a1%e5%88%92" class="nav-计划">
-									计划
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b" class="nav-开始">
-									开始
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e8%8e%b7%e5%8f%96%e5%b0%8f%e8%af%b4%e7%ab%a0%e8%8a%82-url" class="nav-获取小说章节-url">
-									获取小说章节 URL
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#items-%e7%9a%84%e4%bd%bf%e7%94%a8" class="nav-items-的使用">
-									Items 的使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#item-pipeline-%e7%9a%84%e4%bd%bf%e7%94%a8" class="nav-item-pipeline-的使用">
-									Item pipeline 的使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%bc%a0%e9%80%92%e7%ab%a0%e8%8a%82%e5%8f%82%e6%95%b0-%e5%ae%9e%e7%8e%b0%e6%8c%89%e9%a1%ba%e5%ba%8f%e4%bf%9d%e5%ad%98" class="nav-传递章节参数-实现按顺序保存">
-									传递章节参数, 实现按顺序保存
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#itemspy" class="nav-itemspy">
-									items.py
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#pipelinespy" class="nav-pipelinespy">
-									pipelines.py
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e8%bf%90%e8%a1%8c%e7%88%ac%e8%99%ab" class="nav-运行爬虫">
-									运行爬虫
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
-									总结
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
-</div>
-        
-    </div>
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
-            :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-        
-        <a type="button" class="pagination-action" id="darkModeToggleButton">
-            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
-                dark_mode
-            </span>
-        </a>
-        
-        
-    </div>
-</div><div id="single-column-footer">
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
-
-&copy;
-	
-	This is a customized copyright.
-	
-</div>
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-    
-    <script src="/js/journal.js"></script></body>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

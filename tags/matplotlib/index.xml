@@ -1,26 +1,317 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>matplotlib on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/matplotlib/</link>
-    <description>Recent content in matplotlib on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Sat, 18 Jul 2020 15:28:01 +0800</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>爬取洪灾期间长江沿岸水位并绘图</title>
-      <link>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
-      <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
-      <guid>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
-      <description>前言 最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 大佬的指引 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.
-爬取数据 首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:
-这是一个不设防的网站, 所有实时水位数据都能在 http://www.cjh.com.cn/sqindex.html 请求到, 如图所示:
-可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.
-使用requests直接请求网页, 并对网页源码进行格式化以及截取:
-import requests url = &amp;#39;http://www.cjh.com.cn/sqindex.html&amp;#39; class CjhData(object): def __init__(self): pass def get_data(self): r = requests.get(url) result = r.text.split()[66][:-1] # 去除字符串最后的分号 return result 此时我们可以得到json字符串:
-&amp;#39;[{&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;39500&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;长江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60105400&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;寸滩&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;179.06&amp;#39;}, {&amp;#39;oq&amp;#39;: &amp;#39;0&amp;#39;, &amp;#39;q&amp;#39;: &amp;#39;11600&amp;#39;, &amp;#39;rvnm&amp;#39;: &amp;#39;乌 江&amp;#39;, &amp;#39;stcd&amp;#39;: &amp;#39;60803000&amp;#39;, &amp;#39;stnm&amp;#39;: &amp;#39;武隆&amp;#39;, &amp;#39;tm&amp;#39;: 1595059200000, &amp;#39;wptn&amp;#39;: &amp;#39;4&amp;#39;, &amp;#39;z&amp;#39;: &amp;#39;191.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>matplotlib on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/matplotlib/</link>
+        <description>Recent content in matplotlib on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Sat, 18 Jul 2020 15:28:01 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>爬取洪灾期间长江沿岸水位并绘图</title>
+        <link>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
+        <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 &lt;a class=&#34;link&#34; href=&#34;https://xirtam.cxumol.com/long-river-station-data-get-plot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大佬的指引&lt;/a&gt; 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.&lt;/p&gt;
+&lt;h2 id=&#34;爬取数据&#34;&gt;爬取数据&lt;/h2&gt;
+&lt;p&gt;首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-07-18-16-13-02.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这是一个不设防的网站, 所有实时水位数据都能在 &lt;code&gt;http://www.cjh.com.cn/sqindex.html&lt;/code&gt; 请求到, 如图所示:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-07-18-16-14-12.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.&lt;/p&gt;
+&lt;p&gt;使用requests直接请求网页, 并对网页源码进行格式化以及截取:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;requests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://www.cjh.com.cn/sqindex.html&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;CjhData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;requests&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;66&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 去除字符串最后的分号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时我们可以得到json字符串:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;39500&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60105400&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;寸滩&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;179.06&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;11600&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;乌&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60803000&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;武隆&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;191.71&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;36300&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60107300&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;宜昌&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;5&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;50.41&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;33400&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60108300&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;沙市&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;6&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;41.88&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60111200&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;城陵矶(莲)&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;33.87&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;53100&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60112200&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;汉口&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;28.31&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;59700&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60113400&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;九江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;22.17&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;76400&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60115000&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;大通&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;5&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;16.01&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;22800&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;洞庭湖&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;61512000&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;城陵矶(七)&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;4&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;33.99&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;13500&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;鄱阳湖&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;62601600&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;湖口&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;5&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;21.79&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60107000&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;茅坪(二)&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;5&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;161.36&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;34600&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;61000&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;长江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;60106980&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;三峡水库&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;5&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;161.36&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;汉江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;61802500&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;龙王庙&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;6&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;160.78&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;oq&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;1870&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;q&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;0&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;rvnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;汉江&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stcd&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;61802700&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;stnm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;丹江口水库&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;tm&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;1595059200000,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;wptn&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;6&amp;#39;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;z&amp;#39;:&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#39;160.78&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}]&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;通过json库, 将其转成json对象就可以取其中的数据了.&lt;/p&gt;
+&lt;h2 id=&#34;存储数据&#34;&gt;存储数据&lt;/h2&gt;
+&lt;p&gt;爬取到实时数据后, 我们将数据存储在 mysql 中, 因为脚本会部署到树莓派4上, 所以树莓派上安装的是 mariadb, 这里先说明一下.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pymysql&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;con&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pymysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;connect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;host&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                   &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;database&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;yangtze_river_water_level&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;con&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;insert_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oq&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rvnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stcd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wptn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# 检查某站某时间的数据是否已存储过, 避免重复存储数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;select * from water_level where stnm=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; and tm=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;insert into water_level(oq, q, rvnm, stcd, stnm, tm, wptn, z) values (&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;oq&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rvnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stcd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wptn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;con&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_list_stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;select distinct stnm from water_level&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fetchall&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;selectByStation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;station&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;select * from water_level where stnm=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;station&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fetchall&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;delete_duplicate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__del__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;con&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在主函数调用函数后, 将爬取到的数据存入数据库中:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;get_cjh_data&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CjhData&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;database&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CjhData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 实例化爬虫类&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;json_str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 得到json字符串&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;json_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 将json字符串转成json对象&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# print(json_data)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 实例化数据库操作类&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;json_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# 将json对象中的数据遍历存入数据库中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;insert_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;oq&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;q&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;rvnm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;stcd&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;stnm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;tm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;wptn&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;运行成功后, 打开数据库检查结果:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-07-18-16-28-16.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;绘图&#34;&gt;绘图&lt;/h2&gt;
+&lt;p&gt;第一次使用python画图, 我简单学了一下网上的 &lt;code&gt;matplotlib&lt;/code&gt; 的 demo, 修改一些参数就得到了自己想要的图 (这个折线图算是最基础的图形), 有一些小配置要写好, 比如更换字体来让中文得以显示等等:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;plt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pylab&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mpl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;numpy&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;np&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;datetime&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;database&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DrawData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;draw&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;list_stnm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_list_stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# 修改字体实现中文显示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;mpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rcParams&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;font.sans-serif&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Microsoft Yahei&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;fig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;subplots&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;时间&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;水位&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;长江沿岸水位统计&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;station&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;list_stnm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;selectByStation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;station&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# print(data)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;list_tm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;list_z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;timedata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;datetime&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;datetime&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fromtimestamp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;list_tm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;timedata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;list_z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;float&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;list_tm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;list_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;station&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;fig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;autofmt_xdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;运行脚本, 可以得到我们想要的折线图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2020-07-18-16-44-15.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2020-07-24-更新&#34;&gt;2020-07-24 更新:&lt;/h3&gt;
+&lt;p&gt;截至到编辑时间已经爬取到2666条数据😎, 波形图如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/photo_2020-07-24_19-53-27.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;部署&#34;&gt;部署&lt;/h2&gt;
+&lt;p&gt;在树莓派上安装好所需依赖, 这里将mysql改为mariadb, 操作方法和mysql几乎一样, 因此建好database以及导入table后, 代码也能完美运行. 测试完毕后, 通过 &lt;code&gt;crontab -e&lt;/code&gt; 添加定时任务就算基本完成了.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

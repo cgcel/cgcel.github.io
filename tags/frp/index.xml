@@ -1,30 +1,394 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>frp on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/frp/</link>
-    <description>Recent content in frp on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/frp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Termux 安装并使用 Frpc</title>
-      <link>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
-      <guid>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
-      <description>Android 12 的 Termux 安装并使用 Frpc 记录</description>
-    </item>
-    <item>
-      <title>树莓派使用Frp实现内网穿透记录</title>
-      <link>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
-      <guid>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
-      <description>前言 在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
-准备 首先准备好以下物品:
-树莓派3B PC 一台 VPS 一台 显示器 (用于树莓派初始化, 根据自己的情况可以使用别的方式) 配置过程 1. 初始化树莓派 首先在树莓派上安装系统, 我安装的是 Raspbian Buster with desktop, 将系统镜像刷写进SD卡后, 通过接入显示器的方式控制树莓派联网, 开启 SSH 以及 VNC , 这里详细过程就不记录, 算是玩树莓派的基本操作了. 然后我们找到树莓派的 IP, 然后使用 xshell 连接树莓派, 初始化树莓派的过程到此结束.
-2. 准备VPS 这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>frp on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/frp/</link>
+        <description>Recent content in frp on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/frp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Termux 安装并使用 Frpc</title>
+        <link>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
+&lt;p&gt;本篇是上一篇 [[通过ZeroTier和Scrcpy远程操控安卓机]] 的续篇, 上篇的方案存在几个缺点:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;由于手机的无线调试不稳定 (网络断开就会关闭, 需要手动重新开启),&lt;/li&gt;
+&lt;li&gt;由于使用了免费服务 &lt;code&gt;ZeroTier&lt;/code&gt; 进行内网穿透, 连接环境在墙内时好时坏, 不稳定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综上的因素导致这个方案总体不稳定, 参考了 &lt;a class=&#34;link&#34; href=&#34;https://github.com/acgpiano/Android-Remote&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github 上的一篇文章&lt;/a&gt;, 本篇记录一个&lt;strong&gt;基于 Android 12&lt;/strong&gt; 和 &lt;strong&gt;新版本 Termux&lt;/strong&gt; 的, 更加稳健的方案, 通过在已 Root 的手机上安装 &lt;code&gt;Termux&lt;/code&gt;, 然后在 &lt;code&gt;Termux&lt;/code&gt; 中配置 &lt;code&gt;ssh&lt;/code&gt; (远程 &lt;code&gt;ssh&lt;/code&gt; 操控) 和  &lt;code&gt;frpc&lt;/code&gt; (通过私有服务器的 IP 进行反向代理), 实现远程 &lt;code&gt;adb&lt;/code&gt; 配对设备并通过 &lt;code&gt;Scrcpy&lt;/code&gt; 对手机进行操作.&lt;/p&gt;
+&lt;h2 id=&#34;硬件准备&#34;&gt;硬件准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;有 &lt;strong&gt;公网 IP&lt;/strong&gt;, 并装有 &lt;strong&gt;Frps&lt;/strong&gt; 的服务器 1台&lt;/li&gt;
+&lt;li&gt;已 &lt;strong&gt;Root&lt;/strong&gt; 的安卓手机&lt;/li&gt;
+&lt;li&gt;装有 &lt;strong&gt;adb&lt;/strong&gt; 和 &lt;strong&gt;scrcpy&lt;/strong&gt; 的电脑一台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;方案使用手机机型为 &lt;code&gt;Oneplus 8T,&lt;/code&gt; 运行基于 &lt;code&gt;Android 12.1&lt;/code&gt; 的 LineageOS 19.1, 使用 &lt;code&gt;Magisk 25.2&lt;/code&gt; 获取 Root 权限.&lt;/p&gt;
+&lt;h2 id=&#34;配置过程&#34;&gt;配置过程&lt;/h2&gt;
+&lt;h3 id=&#34;termux-安装与配置&#34;&gt;Termux 安装与配置&lt;/h3&gt;
+&lt;h4 id=&#34;1-安装-f-droid&#34;&gt;1. 安装 F-Droid&lt;/h4&gt;
+&lt;p&gt;首先在手机端下载并安装应用商店 F-Droid, 从中安装最新版 Termux (Google Play 版本落后很多)&lt;/p&gt;
+&lt;h4 id=&#34;2-获取存储权限&#34;&gt;2. 获取存储权限&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;termux-setup-storage
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;3-获取-root-权限与设置-root-账号密码&#34;&gt;3. 获取 Root 权限与设置 root 账号密码&lt;/h4&gt;
+&lt;p&gt;在 Termux 命令行中获取 Root 权限, 输入:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;su
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在弹窗中同意 Termux 获取 Root 权限, 进入 su 后, 键入 &lt;code&gt;passwd&lt;/code&gt; 设置 root 账号的密码.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后重启 Termux 以便于后续的操作.&lt;/p&gt;
+&lt;h4 id=&#34;4-更换清华源httpsmirrorstunatsinghuaeducnhelptermux&#34;&gt;4. &lt;a class=&#34;link&#34; href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/termux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;更换清华源&lt;/a&gt;&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;termux-change-repo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;根据 Termux 的 GUI 提示进行操作, 使用空格和回车选择国内源, 这里因为个人习惯选择清华源.&lt;/p&gt;
+&lt;h4 id=&#34;5-安装必要包&#34;&gt;5. 安装必要包&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt upgrade -y --force-yes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pkg install openssh tsu cronie -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;6-optional-开启-ssh&#34;&gt;6. (Optional) 开启 SSH&lt;/h4&gt;
+&lt;p&gt;为了方便后续命令行操作, 可以选择先在 Termux 开启 SSH, 便于后续操作. 在 Termux 命令行中输入:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sshd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;开启后, 获取手机的局域网 IP, 在桌面端命令行输入以下指令尝试远程连接 (openssh 默认端口为 8022):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh root@&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;局域网IP&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; -p &lt;span class=&#34;m&#34;&gt;8022&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果成功, 将会提示输入接受密钥以及输入密码.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;参考链接&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/freeking101/article/details/122725389&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/freeking101/article/details/122725389&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.termux.com/wiki/Main_Page&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.termux.com/wiki/Main_Page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;部署-frpc-并测试连接&#34;&gt;部署 Frpc 并测试连接&lt;/h3&gt;
+&lt;h4 id=&#34;1-服务器端-frps-部署&#34;&gt;1. 服务器端 Frps 部署&lt;/h4&gt;
+&lt;p&gt;在服务器命令行输入 &lt;code&gt;name -a&lt;/code&gt; 查看服务器系统架构. 根据服务器系统架构下载对应的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Frp&lt;/a&gt; 版本, 在服务器端解压缩并根据实际情况在 &lt;code&gt;frps.ini&lt;/code&gt; 配置 Frps 端口, token. dashboard 等. 配置完成后, 在解压缩的目录命令行输入 &lt;code&gt;./frps -c ./frps.ini&lt;/code&gt;, 查看服务是否正常运行.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220929161426.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-移动端-frpc-部署&#34;&gt;2. 移动端 Frpc 部署&lt;/h4&gt;
+&lt;p&gt;首先在 Termux 中开启手机 adb 调试端口, 默认为 5555:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /system/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./setprop service.adb.tcp.port &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./stop adbd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./start adbd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;下载 &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Frp&lt;/a&gt; linux arm64 版 (现在的安卓机一般都是arm64位的了) 至电脑, 按照 &lt;a class=&#34;link&#34; href=&#34;https://gofrp.org/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt; 以及服务器实际情况配置好 &lt;code&gt;frpc.ini&lt;/code&gt;, 将手机通过 USB 连接电脑, 然后将 &lt;code&gt;frpc.ini&lt;/code&gt; 和 &lt;code&gt;frpc&lt;/code&gt; 复制至 &lt;code&gt;storage/emulated/0/Download&lt;/code&gt; 中.&lt;/p&gt;
+&lt;p&gt;在 Termux 的解压目录中, 输入 &lt;code&gt;./frpc -c ./frpc.ini&lt;/code&gt;, 观察连接情况.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220929160549.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;实际操作中, 在手机端开启 Frpc 服务时报错: &lt;code&gt;[W] [service.go:82] login to server failed: dial tcp: lookup xx.xx.com on [::1]:53: read udp [::1]:37354-&amp;gt;[::1]:53: read: connection refused&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp/issues/1175&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;作者答复&lt;/a&gt;, 调整 &lt;code&gt;frpc.ini&lt;/code&gt; 配置文件可解决.&lt;/p&gt;
+&lt;h4 id=&#34;3-电脑端远程连接并操控手机&#34;&gt;3. 电脑端远程连接并操控手机&lt;/h4&gt;
+&lt;p&gt;连接正常后, 在电脑命令行中配对手机:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;adb connect &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;服务器 IP&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;:&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;frpc.ini 中配置的 &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt; 映射端口&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;配对成功后, 输入以下指令连接手机, 可根据网络情况自行设置分辨率和比特率等, 参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/Genymobile/scrcpy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scrcpy -m &lt;span class=&#34;m&#34;&gt;720&lt;/span&gt; -b 2M
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220929160653.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220929160716.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/Pasted_image_20220929160831.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;4-配置-frps-service&#34;&gt;4. 配置 Frps service&lt;/h4&gt;
+&lt;p&gt;在服务器中配置 Frps service, 使其更方便操控. 根据 &lt;a class=&#34;link&#34; href=&#34;https://gofrp.org/docs/setup/systemd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt; 完成设置.&lt;/p&gt;
+&lt;h3 id=&#34;配置定时任务&#34;&gt;配置定时任务&lt;/h3&gt;
+&lt;p&gt;将文件复制至 Termux 根目录:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp storage/downloads/frpc ~/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp storage/downloads/frpc.ini ~/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x ./frpc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在根目录, 键入 &lt;code&gt;nano start_adb_frpc&lt;/code&gt; 编辑启动脚本:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/data/data/com.termux/files/usr/bin/sh
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;termux-wake-lock
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# open adb port, ssh&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /system/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./setprop service.adb.tcp.port &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./stop adbd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./start adbd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo sshd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# open frp&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo killall frpc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nohup sudo ./frpc -c ./frpc-pi.ini &amp;gt; ./log.txt 2&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;killall crond
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crond
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;赋予可执行权限:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x ./start_adb_frpc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在根目录中, 键入 &lt;code&gt;./start_adb_frpc&lt;/code&gt; 即可启动服务.&lt;/p&gt;
+&lt;p&gt;最后, 进入 crontab 配置定时任务, 确保服务后台存活:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 进入 crontab&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -e
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 crontab 中配置定时任务:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 每半个小时重启脚本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*/30 * * * * ~/start_adb_frpc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;至此, 所有配置已经完成.&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;配置完成后, 已经使用这个方案进行了两次远程操作, 全程稳定流畅, 已经能够完美满足我个人的使用要求, 后续准备将服务移植至我的 &lt;strong&gt;一加6&lt;/strong&gt; 中, 一加 8T 就继续作为备机用来刷机玩.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>树莓派使用Frp实现内网穿透记录</title>
+        <link>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
+        <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp/blob/master/README_zh.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;frp&lt;/a&gt; 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。&lt;/p&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;首先准备好以下物品:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;树莓派3B&lt;/li&gt;
+&lt;li&gt;PC 一台&lt;/li&gt;
+&lt;li&gt;VPS 一台&lt;/li&gt;
+&lt;li&gt;显示器 (用于树莓派初始化, 根据自己的情况可以使用别的方式)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;配置过程&#34;&gt;配置过程&lt;/h2&gt;
+&lt;h3 id=&#34;1-初始化树莓派&#34;&gt;1. 初始化树莓派&lt;/h3&gt;
+&lt;p&gt;首先在树莓派上安装系统, 我安装的是 &lt;a class=&#34;link&#34; href=&#34;https://downloads.raspberrypi.org/raspbian_latest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Raspbian Buster with desktop&lt;/a&gt;, 将系统镜像刷写进SD卡后, 通过接入显示器的方式控制树莓派联网, 开启 SSH 以及 VNC , 这里详细过程就不记录, 算是玩树莓派的基本操作了. 然后我们找到树莓派的 IP, 然后使用 xshell 连接树莓派, 初始化树莓派的过程到此结束.&lt;/p&gt;
+&lt;h3 id=&#34;2-准备vps&#34;&gt;2. 准备VPS&lt;/h3&gt;
+&lt;p&gt;这次我租了 VirMach 的服务器, 最低配的 VPS 只需1.25刀/月, 应该是我用过的最便宜的 VPS 了, 不过 IP 处于被半 ban 的状态, 挂上代理才能在xshell上稳定连接.&lt;/p&gt;
+&lt;h3 id=&#34;3-配置frp&#34;&gt;3. 配置frp&lt;/h3&gt;
+&lt;p&gt;frp 是 GitHub 上的开源项目, 可以直接到 &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/fatedier/frp/releases&lt;/a&gt; 中下载, 这里, 根据 VPS 选择 frp_0.31.2_linux_amd64.tar.gz, 而树莓派则选择下载 frp_0.31.2_linux_arm.tar.gz. 根据对应的操作系统及架构, 从 Release 页面下载最新版本的程序, 将 frps 及 frps.ini 放到具有公网 IP 的机器上, 将 frpc 及 frpc.ini 放到处于内网环境的机器上. 而实际上每一个压缩包内都包含了这两个文件, 只需要根据机器的类型来进行配置并运行即可 (Server或者Client端).&lt;/p&gt;
+&lt;p&gt;在VPS中, 解压压缩包, 编辑frps.ini文件, 按照配置说明, 可以简单进行编辑:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# frps.ini
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[common]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bind_port = 7000
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动frps.ini:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./frps -c ./frps.ini
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在树莓派中, 解压压缩包, 假设 frps 所在服务器的公网 IP 为 x.x.x.x:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# frpc.ini
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[common]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;server_addr = x.x.x.x
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;server_port = 7000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[ssh]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;type = tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;local_ip = 127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;local_port = 22
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;remote_port = 6000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[VNC]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;type = tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;local_ip = 127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;local_port = 5900
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;remote_port = 6500
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动frpc.ini:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./frpc -c ./frpc.ini
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动后, 内网穿透已经完成, 可以看见, 在树莓派中已经配置了ssh以及VNC访问, 其中5900是树莓派VNC的端口. 至此, 配置已经完成, 我们可以在ssh客户端通过x.x.x.x:6000以及在VNC客户端通过x.x.x.x:6500访问树莓派了!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

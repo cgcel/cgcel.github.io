@@ -1,24 +1,178 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>android9 on 烂杯的博客</title>
-    <link>https://cgcel.github.io/tags/android9/</link>
-    <description>Recent content in android9 on 烂杯的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>This is a customized copyright.</copyright>
-    <lastBuildDate>Sun, 28 Oct 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cgcel.github.io/tags/android9/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>一加6 Pixel Experience Android Pie 刷机体验</title>
-      <link>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
-      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
-      <description>开篇 前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:
-优点: 指纹支付很方便, 这在氢氧两个 ROM 均有适配 类原生 UI 风格讨喜 后台清除方式分两种模式可调节, 方便不同用户群体 全面屏显示功能调节方便, 充分利用屏幕显示 Dash 闪充充电效率很高 缺点: 系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式 动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片 后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用 室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花) 总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.
-前期准备 这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&amp;hellip;😂
-查询相关评测
-这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>android9 on 烂杯的博客</title>
+        <link>https://cgcel.github.io/tags/android9/</link>
+        <description>Recent content in android9 on 烂杯的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>GC Chen</copyright>
+        <lastBuildDate>Sun, 28 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/android9/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>一加6 Pixel Experience Android Pie 刷机体验</title>
+        <link>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</link>
+        <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/10/28/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/</guid>
+        <description>&lt;img src="https://cgcel.github.io/2018-10-28-02.jpg" alt="Featured image of post 一加6 Pixel Experience Android Pie 刷机体验" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:&lt;/p&gt;
+&lt;h3 id=&#34;优点&#34;&gt;优点:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;指纹支付很方便, 这在氢氧两个 ROM 均有适配&lt;/li&gt;
+&lt;li&gt;类原生 UI 风格讨喜&lt;/li&gt;
+&lt;li&gt;后台清除方式分两种模式可调节, 方便不同用户群体&lt;/li&gt;
+&lt;li&gt;全面屏显示功能调节方便, 充分利用屏幕显示&lt;/li&gt;
+&lt;li&gt;Dash 闪充充电效率很高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缺点&#34;&gt;缺点:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式&lt;/li&gt;
+&lt;li&gt;动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片&lt;/li&gt;
+&lt;li&gt;后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用&lt;/li&gt;
+&lt;li&gt;室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.&lt;/p&gt;
+&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&amp;hellip;😂&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;查询相关评测&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM. 我分别在 &lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/oneplus-6/development/rom-pixel-experience-t3856643&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;xda&lt;/a&gt; 和 &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=_g36I37rP5o&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;youtube&lt;/a&gt; 上查阅, 观看了相关信息, 总结下来刷机顺序如下:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install blue_spark twrp.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clear system, cache, dalvik cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flash rom and then twrp. Use the latest blu spark recovery.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let the rom boot first. First boot might take 10-15 mins cause.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Boot into recovery and then flash magisk if you want to root, then boot into system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;环境及刷机包准备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.oneplusbbs.com/thread-4161221-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;解锁bootloader教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;adb (不懂的请自行解决)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://download.pixelexperience.org/enchilada/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ROM&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/redirect?q=https%3A%2F%2Fforum.xda-developers.com%2Fdevdb%2Fproject%2F%3Fid%3D27466%23downloads&amp;amp;v=_g36I37rP5o&amp;amp;redir_token=jd_HaWv_zFe6Fn8LNk9UaJxf38d8MTU0MDgyMDQzNEAxNTQwNzM0MDM0&amp;amp;event=video_description&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TWRP(img&amp;amp;zip)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Magisk (自选)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;开刷&#34;&gt;开刷&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;从开机状态开始操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;adb&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reboot&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bootloader&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fastboot&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boot&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name_of_twrp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;如顺利, 将进入twrp.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刷入&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;wipe → clear system, cache, dalvik cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → name_of_rom.zip&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → name_of_twrp.zip&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install → magisk.zip →reboot system&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经过以上流程, 此ROM就算刷完了, ok可以开始体验啦:)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;使用感受&#34;&gt;使用感受&lt;/h2&gt;
+&lt;p&gt;系统保留了一些一加的功能:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;一些截图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-02.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-03.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;闪充依然见效:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/2018-10-28-04.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图4&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;PS: ingress室内秒定位, 嗯真香&amp;hellip;&lt;/p&gt;
+&lt;p&gt;以上.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

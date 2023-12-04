@@ -1,503 +1,354 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='基于Arduino的, 简单的, 读取RFID数据的库'>
 <title>我的第一个Arduino库</title>
 
+<link rel='canonical' href='https://cgcel.github.io/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/'>
 
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='我的第一个Arduino库'>
+<meta property='og:description' content='基于Arduino的, 简单的, 读取RFID数据的库'>
+<meta property='og:url' content='https://cgcel.github.io/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='arduino' /><meta property='article:tag' content='rfid' /><meta property='article:published_time' content='2020-04-26T19:37:43&#43;08:00'/><meta property='article:modified_time' content='2020-04-26T19:37:43&#43;08:00'/>
+<meta name="twitter:title" content="我的第一个Arduino库">
+<meta name="twitter:description" content="基于Arduino的, 简单的, 读取RFID数据的库">
+    <link rel="shortcut icon" href="/img/avatar.png" />
 
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-<meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<meta content="telephone=no" name="format-detection">
-<meta name="description" content="基于Arduino的, 简单的, 读取RFID数据的库">
-<meta name="renderer" content="webkit">
-<meta name="theme-color" content="#ffffff">
-
-
-
-<meta property="og:title" content="我的第一个Arduino库" />
-<meta property="og:description" content="基于Arduino的, 简单的, 读取RFID数据的库" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://cgcel.github.io/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-26T19:37:43+08:00" />
-<meta property="article:modified_time" content="2020-04-26T19:37:43+08:00" /><meta property="og:site_name" content="烂杯的博客" />
-
-
-
-
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="我的第一个Arduino库"/>
-<meta name="twitter:description" content="基于Arduino的, 简单的, 读取RFID数据的库"/>
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
-
-
-
-      <script src="/js/toc.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
-
-
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Material+Icons">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<body>
-    	<div id="app"><div class="single-column-drawer-container" id="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-    <div class="drawer-content">
-        <div class="drawer-menu">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
             
-            
-                
-                
+            <figure class="site-avatar">
+                <a href="/">
                 
                     
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                
-                
-                <a class="a-block drawer-menu-item active" href="/posts">
-                    Archive
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
+            </figure>
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    Categories
-                </a>
-                
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
             
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/tags">
-                    Tags
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/index.xml">
-                    RSS Feed
-                </a>
-                
-            
-            
-            <div class="toc">
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%bb%80%e4%b9%88%e6%98%afrfid" class="nav-什么是rfid">
-									什么是RFID?
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e7%ae%80%e4%bb%8b" class="nav-简介">
-									简介
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86" class="nav-工作原理">
-									工作原理
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%b5%8b%e8%af%95%e6%a8%a1%e5%9d%97" class="nav-测试模块">
-									测试模块
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e7%bc%96%e5%86%99arduino%e5%ba%93" class="nav-开始编写arduino库">
-									开始编写Arduino库
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84" class="nav-基本结构">
-									基本结构
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83" class="nav-编译环境">
-									编译环境
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%a4%b4%e6%96%87%e4%bb%b6%e4%b8%8e%e6%ba%90%e6%96%87%e4%bb%b6" class="nav-头文件与源文件">
-									头文件与源文件
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%8a%a0%e8%bd%bd%e5%ba%93%e5%b9%b6%e4%bd%bf%e7%94%a8" class="nav-加载库并使用">
-									加载库并使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e5%90%8e%e7%bb%ad%e8%ae%a1%e5%88%92" class="nav-后续计划">
-									后续计划
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83%e7%9a%84%e6%91%b8%e7%b4%a2" class="nav-编译环境的摸索">
-									编译环境的摸索
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bb%93%e5%b0%be" class="nav-结尾">
-									结尾
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
 
-</div>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
             
         </div>
-    </div>
-</div>
-<transition name="fade">
-    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
-</transition>
-<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
-    <div id="navBackground" class="nav-background"></div>
-    <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
-            <i class="material-icons">
-                menu
-            </i>
-        </button>
-        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
-            烂杯的博客
-        </a>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
         
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
-            <i class="material-icons" id="darkModeToggleIcon2">
-                dark_mode
-            </i>
-        </button>
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
         
-    </div>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#什么是rfid">什么是RFID?</a>
+      <ol>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#工作原理">工作原理</a></li>
+      </ol>
+    </li>
+    <li><a href="#测试模块">测试模块</a></li>
+    <li><a href="#开始编写arduino库">开始编写Arduino库</a>
+      <ol>
+        <li><a href="#基本结构">基本结构</a></li>
+        <li><a href="#编译环境">编译环境</a></li>
+        <li><a href="#头文件与源文件">头文件与源文件</a></li>
+        <li><a href="#加载库并使用">加载库并使用</a></li>
+      </ol>
+    </li>
+    <li><a href="#后续计划">后续计划</a></li>
+    <li><a href="#编译环境的摸索">编译环境的摸索</a></li>
+    <li><a href="#结尾">结尾</a></li>
+  </ol>
 </nav>
-<div class="single-column-header-container" id="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://cgcel.github.io/">
-        <div class="single-column-header-title">烂杯的博客</div>
+        </div>
+    </section>
+
+            
         
-        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/2020/04/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/">我的第一个Arduino库</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            基于Arduino的, 简单的, 读取RFID数据的库
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 26, 2020</time>
+            </div>
         
 
-    </a>
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
 
-            <div id="content">
-                <div id="streamContainer" class="stream-container">
+</header>
 
-    <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            
-            
-            
-
-            <div class="post-head-wrapper-text-only"
-                
-            >
-                <div class="post-title">
-                    我的第一个Arduino库
-                    
-                    <div class="post-subtitle">
-                        基于Arduino的, 简单的, 读取RFID数据的库
-                    </div>
-                    
-                    <div class="post-meta">
-                        
-                        <time itemprop="datePublished">
-                            2020-04-26 19:37
-                        </time>
-                        
-
-                        
-                            <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[学习]</a>
-                                &nbsp;
-                        
-
-                        
-                            <i class="material-icons" style="">label</i>
-                            
-                                <a href="/tags/arduino">arduino</a>
-                                &nbsp;
-                            
-                                <a href="/tags/rfid">rfid</a>
-                                &nbsp;
-                            
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post-body-wrapper">
-                
-                <div class="post-body" v-pre>
-                
-                    <h2 id="前言">前言</h2>
+    <section class="article-content">
+    
+    
+    <h2 id="前言">前言</h2>
 <p>前一阵大佬给了块 RFID 读写模块让我们研究, 正好别人没有板子, 我就先一步拿着我的 nano 和 esp8266 去办公室玩玩了.</p>
 <h2 id="什么是rfid">什么是RFID?</h2>
 <h3 id="简介">简介</h3>
@@ -511,97 +362,211 @@
 <h2 id="开始编写arduino库">开始编写Arduino库</h2>
 <h3 id="基本结构">基本结构</h3>
 <p>Arduino 的库文件其实就是 C++ 的一个类, 其中必须要引入 Arduino 核心类 <code>Arduino.h</code>, 否则无法在 Arduino 上使用. 其实在之前的使用过程中对 Arduino 库的结构已经有所了解, 基本上都是以下结构:</p>
-<pre tabindex="0"><code>-- JrdReader
-    -- example
-        -- xxx
-            xxx.ino
-    JrdReader.h
-    rdReader.cpp
-</code></pre><h3 id="编译环境">编译环境</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-- JrdReader
+</span></span><span class="line"><span class="cl">    -- example
+</span></span><span class="line"><span class="cl">        -- xxx
+</span></span><span class="line"><span class="cl">            xxx.ino
+</span></span><span class="line"><span class="cl">    JrdReader.h
+</span></span><span class="line"><span class="cl">    rdReader.cpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="编译环境">编译环境</h3>
 <p>在 Arduino IDE 中编写自定义库操作比较简单, 在新建好的 Arduino 项目中新建Tab并命名为 <code>.h</code> 以及 <code>.cpp</code> 文件即可, 如下图所示:</p>
-<p><img src="2020-04-26-21-25-41.png" alt=""></p>
+<p><img src="/2020-04-26-21-25-41.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 <p>建好之后的界面如下图所示, 然后就可以开始敲代码编译了.</p>
-<p><img src="2020-04-26-21-26-26.png" alt=""></p>
+<p><img src="/2020-04-26-21-26-26.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 <h3 id="头文件与源文件">头文件与源文件</h3>
 <p>按照 C++ 语法创建头文件:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&#34;Arduino.h&#34;</span><span style="color:#1e889b">
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b"></span>
-</span></span><span style="display:flex;"><span><span style="color:#1e889b">#ifndef _JRDREADER_H__
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b">#define _JRDREADER_H__
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b"></span>
-</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">JrdReader</span> {
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">private</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">public</span>:
-</span></span><span style="display:flex;"><span>    JrdReader();
-</span></span><span style="display:flex;"><span>    String <span style="color:#008b45">readOnce</span>();  
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#1e889b">#endif
-</span></span></span></code></pre></div><p>在源文件中实现头文件的自定义方法:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&#34;Arduino.h&#34;</span><span style="color:#1e889b">
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&#34;JrdReader.h&#34;</span><span style="color:#1e889b">
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&#34;HardwareSerial.h&#34;</span><span style="color:#1e889b">
-</span></span></span><span style="display:flex;"><span><span style="color:#1e889b"></span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"> * read once HEX command
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#00688b;font-weight:bold">char</span> read_once_cmd[<span style="color:#b452cd">7</span>] = {<span style="color:#b452cd">0xBB</span>, <span style="color:#b452cd">0x00</span>, <span style="color:#b452cd">0x22</span>, <span style="color:#b452cd">0x00</span>, <span style="color:#b452cd">0x00</span>, <span style="color:#b452cd">0x22</span>, <span style="color:#b452cd">0x7E</span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>String comdata = <span style="color:#cd5555">&#34;&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>JrdReader::JrdReader() {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>String JrdReader::readOnce() {
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  String baggageCode = <span style="color:#cd5555">&#34;&#34;</span>;
-</span></span><span style="display:flex;"><span>  String comstr = <span style="color:#cd5555">&#34;&#34;</span>;
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  <span style="color:#228b22">// send read_once command
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>  Serial.write(read_once_cmd, <span style="color:#b452cd">7</span>);
-</span></span><span style="display:flex;"><span>  delay(<span style="color:#b452cd">50</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">while</span> (Serial.available() &gt; <span style="color:#b452cd">0</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#00688b;font-weight:bold">char</span> data = Serial.read();
-</span></span><span style="display:flex;"><span>    comdata += String(data, HEX);
-</span></span><span style="display:flex;"><span>    delay(<span style="color:#b452cd">50</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">if</span> (comdata.length() &gt; <span style="color:#b452cd">0</span>) {
-</span></span><span style="display:flex;"><span>    Serial.print(<span style="color:#cd5555">&#34;comdata: &#34;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">for</span> (<span style="color:#00688b;font-weight:bold">int</span> i = <span style="color:#b452cd">0</span>; i &lt; comdata.length(); i++) {
-</span></span><span style="display:flex;"><span>      comstr += String(comdata[i]);
-</span></span><span style="display:flex;"><span>      Serial.print(comdata[i]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    Serial.println();
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#228b22">// clear comdata in order to accept another one.
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>  comdata = <span style="color:#cd5555">&#34;&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#228b22">// format comstr
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>  comstr.replace(<span style="color:#cd5555">&#34;ffff&#34;</span>, <span style="color:#cd5555">&#34;ss&#34;</span>);
-</span></span><span style="display:flex;"><span>  comstr.replace(<span style="color:#cd5555">&#34;ff&#34;</span>, <span style="color:#cd5555">&#34;&#34;</span>);
-</span></span><span style="display:flex;"><span>  comstr.replace(<span style="color:#cd5555">&#34;ss&#34;</span>, <span style="color:#cd5555">&#34;ff&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Serial.println(<span style="color:#cd5555">&#34;comstr: &#34;</span> + comstr);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">if</span> (comstr.length() &gt; <span style="color:#b452cd">13</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#228b22">// read RFID code
-</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    <span style="color:#8b008b;font-weight:bold">for</span> (<span style="color:#00688b;font-weight:bold">int</span> i = <span style="color:#b452cd">18</span>; i &lt; <span style="color:#b452cd">28</span>; i++) {
-</span></span><span style="display:flex;"><span>      baggageCode += comstr[i];
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">else</span> {
-</span></span><span style="display:flex;"><span>    baggageCode = <span style="color:#cd5555">&#34;读取错误 (Unable to read)&#34;</span>;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">return</span> baggageCode;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>由于手头上还有别的任务所以先实现了最简单的单次读码功能, 原理则是将说明书中提供的十六进制串口指令通过 Arduino 的 Serial 函数发送给 JRD-100 模块, 模块处理完毕后会将数据通过串口返回给 Arduino, 此时只需要通过串口接收新信息并按照一定规律格式化, 解析就可以得到想要的数据, 其中因为导入了 <code>Arduino.h</code> 这个核心库文件, 所以我们在开发 Arduino 库文件的时候可以调用一些 Arduino 的编程方法, 比如上方代码中的 <code>Serial.write()</code>, <code>Serial.print()</code> 等函数.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifndef _JRDREADER_H__
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define _JRDREADER_H__
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">JrdReader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JrdReader</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="nf">readOnce</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在源文件中实现头文件的自定义方法:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Arduino.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;JrdReader.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;HardwareSerial.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * read once HEX command
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">read_once_cmd</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x7E</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">JrdReader</span><span class="o">::</span><span class="n">JrdReader</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">JrdReader</span><span class="o">::</span><span class="n">readOnce</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">comstr</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">// send read_once command
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">read_once_cmd</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">comdata</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">HEX</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&#34;comdata: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">comdata</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">comstr</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">comdata</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// clear comdata in order to accept another one.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">comdata</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// format comstr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ffff&#34;</span><span class="p">,</span> <span class="s">&#34;ss&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ff&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">comstr</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#34;ss&#34;</span><span class="p">,</span> <span class="s">&#34;ff&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;comstr: &#34;</span> <span class="o">+</span> <span class="n">comstr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">comstr</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// read RFID code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">baggageCode</span> <span class="o">+=</span> <span class="n">comstr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">baggageCode</span> <span class="o">=</span> <span class="s">&#34;读取错误 (Unable to read)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">baggageCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于手头上还有别的任务所以先实现了最简单的单次读码功能, 原理则是将说明书中提供的十六进制串口指令通过 Arduino 的 Serial 函数发送给 JRD-100 模块, 模块处理完毕后会将数据通过串口返回给 Arduino, 此时只需要通过串口接收新信息并按照一定规律格式化, 解析就可以得到想要的数据, 其中因为导入了 <code>Arduino.h</code> 这个核心库文件, 所以我们在开发 Arduino 库文件的时候可以调用一些 Arduino 的编程方法, 比如上方代码中的 <code>Serial.write()</code>, <code>Serial.print()</code> 等函数.</p>
 <h3 id="加载库并使用">加载库并使用</h3>
 <p>按照上述 <code>基本结构</code> 中的项目结构保存文件后, 将文件夹复制到 Arduino 的 libraries 文件夹中, 或者将文件夹打包成 .zip 格式, 然后在 Arduino IDE 中它通过 <code>项目-加载库-添加.ZIP库</code> 的方法添加, 然后最好重启一下 Arduino IDE, 此时就可以直接在新建的 .ino 文件中引入自定义的库文件了.</p>
 <h2 id="后续计划">后续计划</h2>
@@ -611,458 +576,289 @@
 <h2 id="结尾">结尾</h2>
 <p>可能这是博客创建到现在最长的一篇了, 毕竟前面复制了一大段介绍🤓, 那么就先到此为止吧, 下面附上一些参考网址:</p>
 <ul>
-<li><a href="https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249">https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249</a></li>
-<li><a href="https://www.arduino.cc/en/Hacking/libraryTutorial">https://www.arduino.cc/en/Hacking/libraryTutorial</a></li>
-<li><a href="https://www.arduino.cc/en/Reference/APIStyleGuide">https://www.arduino.cc/en/Reference/APIStyleGuide</a></li>
+<li><a class="link" href="https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&amp;fromid=497249"  target="_blank" rel="noopener"
+    >https://baike.baidu.com/item/%E5%B0%84%E9%A2%91%E8%AF%86%E5%88%AB%E6%8A%80%E6%9C%AF/9524139?fromtitle=RFID&fromid=497249</a></li>
+<li><a class="link" href="https://www.arduino.cc/en/Hacking/libraryTutorial"  target="_blank" rel="noopener"
+    >https://www.arduino.cc/en/Hacking/libraryTutorial</a></li>
+<li><a class="link" href="https://www.arduino.cc/en/Reference/APIStyleGuide"  target="_blank" rel="noopener"
+    >https://www.arduino.cc/en/Reference/APIStyleGuide</a></li>
 </ul>
 
-                    
-                    <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2020-04-26</p>
-                    
-                </div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/arduino/">arduino</a>
+        
+            <a href="/tags/rfid/">rfid</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/2020/11/17/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">DIY项目 -- 自制红外测温枪</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">STM32的串口学习总结</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/2019/12/03/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arduino的主从机双向通信</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/%e6%95%b0%e6%8d%ae%e6%9b%b2%e7%ba%bf_2.png" loading="lazy" data-key="" data-hash="/数据曲线_2.png"/>
+                
             </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Arduino的自平衡车的调试总结</h2>
+        </div>
+    </a>
+</article>
+
             
+                
+<article class="">
+    <a href="/posts/2022/10/16/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PhotoPrism的部署以及GooglePhotos图片搬运</h2>
+        </div>
+    </a>
+</article>
+
             
-            <nav class="post-pagination">
+        </div>
+    </div>
+</aside>
 
-                
-                <a class="newer-posts" href="/posts/2020/05/07/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A07-ota%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E5%B9%B6%E4%BF%9D%E7%95%99root%E8%AE%B0%E5%BD%95/">
-			Next<br>一加7 OTA升级系统并保留root记录
-                </a>
-                
-                
-                
-                <a class="older-posts" href="/posts/2020/03/11/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/">
-			Previous<br>树莓派使用Frp实现内网穿透记录
-                </a>
-                
-            </nav>
-            <div class="post-comment-wrapper">
-                
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
 
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
 
-
-
-
-
-
-
-
-
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="username/repo"
-        data-repo-id="**************************"
-        data-category="General"
-        data-category-id="*********************"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
 </script>
 
-            </div>
-        </div>
-    </div>
-
-
-                    </div>
-            </div><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://cgcel.github.io/">
-    
-        <div class="nav-title">
-            烂杯的博客
-        </div>
-        
-        <div class="nav-subtitle">
-            我是小白, 随便写写.
-        </div>
-        
-    </a>
 
-    <div class="nav-link-list">
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
         
+            2020 - 
         
-            
-            
-            
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
                 
-            
-            
-            
-            <a class="a-block nav-link-item active" href="/posts">
-                Archive
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/categories">
-                Categories
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/tags">
-                Tags
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/index.xml">
-                RSS Feed
-            </a>
-            
-        
-    </div>
 
-    
+                <div class="pswp__counter"></div>
 
-    <div class="nav-footer">
-        
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-&copy;
-	
-	This is a customized copyright.
-	
+                <button class="pswp__button pswp__button--share" title="Share"></button>
 
-    </div>
-    
-</div><div id="extraContainer" class="extra-container">
-    <div class="toc-wrapper">
-        
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
-        
-        <div class="toc">
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%bb%80%e4%b9%88%e6%98%afrfid" class="nav-什么是rfid">
-									什么是RFID?
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e7%ae%80%e4%bb%8b" class="nav-简介">
-									简介
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86" class="nav-工作原理">
-									工作原理
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e6%b5%8b%e8%af%95%e6%a8%a1%e5%9d%97" class="nav-测试模块">
-									测试模块
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e7%bc%96%e5%86%99arduino%e5%ba%93" class="nav-开始编写arduino库">
-									开始编写Arduino库
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84" class="nav-基本结构">
-									基本结构
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83" class="nav-编译环境">
-									编译环境
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%a4%b4%e6%96%87%e4%bb%b6%e4%b8%8e%e6%ba%90%e6%96%87%e4%bb%b6" class="nav-头文件与源文件">
-									头文件与源文件
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%8a%a0%e8%bd%bd%e5%ba%93%e5%b9%b6%e4%bd%bf%e7%94%a8" class="nav-加载库并使用">
-									加载库并使用
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e5%90%8e%e7%bb%ad%e8%ae%a1%e5%88%92" class="nav-后续计划">
-									后续计划
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83%e7%9a%84%e6%91%b8%e7%b4%a2" class="nav-编译环境的摸索">
-									编译环境的摸索
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bb%93%e5%b0%be" class="nav-结尾">
-									结尾
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
-</div>
-        
-    </div>
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
-            :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-        
-        <a type="button" class="pagination-action" id="darkModeToggleButton">
-            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
-                dark_mode
-            </span>
-        </a>
-        
-        
-    </div>
-</div><div id="single-column-footer">
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
-
-&copy;
-	
-	This is a customized copyright.
-	
-</div>
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-    
-    <script src="/js/journal.js"></script></body>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

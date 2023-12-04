@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html><head>
+<title>爬取洪灾期间长江沿岸水位并绘图</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="偶然发起的小项目">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="爬取洪灾期间长江沿岸水位并绘图" />
+<meta property="og:description" content="偶然发起的小项目" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-18T15:28:01+08:00" />
+<meta property="article:modified_time" content="2020-07-18T15:28:01+08:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="爬取洪灾期间长江沿岸水位并绘图"/>
+<meta name="twitter:description" content="偶然发起的小项目"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%88%ac%e5%8f%96%e6%95%b0%e6%8d%ae" class="nav-爬取数据">
+									爬取数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e5%82%a8%e6%95%b0%e6%8d%ae" class="nav-存储数据">
+									存储数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bb%98%e5%9b%be" class="nav-绘图">
+									绘图
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#2020-07-24-%e6%9b%b4%e6%96%b0" class="nav-2020-07-24-更新">
+									2020-07-24 更新:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2" class="nav-部署">
+									部署
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    爬取洪灾期间长江沿岸水位并绘图
+                    
+                    <div class="post-subtitle">
+                        偶然发起的小项目
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2020-07-18 15:28
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[学习]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/python">python</a>
+                                &nbsp;
+                            
+                                <a href="/tags/matplotlib">matplotlib</a>
+                                &nbsp;
+                            
+                                <a href="/tags/requests">requests</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="前言">前言</h2>
+<p>最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 <a href="https://xirtam.cxumol.com/long-river-station-data-get-plot/">大佬的指引</a> 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.</p>
+<h2 id="爬取数据">爬取数据</h2>
+<p>首先看一下长江水文网的首页, 我们能看到各站水位在一个显眼地方显示:</p>
+<p><img src="2020-07-18-16-13-02.png" alt=""></p>
+<p>这是一个不设防的网站, 所有实时水位数据都能在 <code>http://www.cjh.com.cn/sqindex.html</code> 请求到, 如图所示:</p>
+<p><img src="2020-07-18-16-14-12.png" alt=""></p>
+<p>可以看到json数据就在网页源码中, 我们只需要获取这部分字符串就可以得到所有实时数据.</p>
+<p>使用requests直接请求网页, 并对网页源码进行格式化以及截取:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">requests</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url = <span style="color:#cd5555">&#39;http://www.cjh.com.cn/sqindex.html&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">CjhData</span>(<span style="color:#658b00">object</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">get_data</span>(self):
+</span></span><span style="display:flex;"><span>        r = requests.get(url)
+</span></span><span style="display:flex;"><span>        result = r.text.split()[<span style="color:#b452cd">66</span>][:-<span style="color:#b452cd">1</span>] <span style="color:#228b22"># 去除字符串最后的分号</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> result
+</span></span></code></pre></div><p>此时我们可以得到json字符串:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">&#39;</span>[{<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;39500&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60105400&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;寸滩&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;179.06&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;11600&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;乌</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60803000&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;武隆&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;191.71&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;36300&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60107300&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;宜昌&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;5&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;50.41&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;33400&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60108300&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;沙市&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;6&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;41.88&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60111200&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;城陵矶(莲)&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;33.87&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;53100&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60112200&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;汉口&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;28.31&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;59700&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60113400&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;九江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;22.17&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;76400&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60115000&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;大通&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">&#39;5&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;16.01&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;22800&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;洞庭湖&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;61512000&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;城陵矶(七)&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;4&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;33.99&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;13500&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;鄱阳湖&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;62601600&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;湖口&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;5&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;21.79&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60107000&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;茅坪(二)&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;5&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;161.36&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;34600&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;61000&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;长江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;60106980&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;三峡水库&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;5&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;161.36&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;汉江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;61802500&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;龙王庙&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;6&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;160.78&#39;</span>}, {<span style="color:#a61717;background-color:#e3d2d2">&#39;oq&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;1870&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;q&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;0&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;rvnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;汉江&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stcd&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;61802700&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;stnm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;丹江口水库&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;tm&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">1595059200000,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;wptn&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;6&#39;,</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;z&#39;:</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;160.78&#39;</span>}]<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>
+</span></span></code></pre></div><p>通过json库, 将其转成json对象就可以取其中的数据了.</p>
+<h2 id="存储数据">存储数据</h2>
+<p>爬取到实时数据后, 我们将数据存储在 mysql 中, 因为脚本会部署到树莓派4上, 所以树莓派上安装的是 mariadb, 这里先说明一下.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">pymysql</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">DB</span>(<span style="color:#658b00">object</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self.con = pymysql.connect(host=<span style="color:#cd5555">&#39;localhost&#39;</span>, user=<span style="color:#cd5555">&#39;root&#39;</span>,
+</span></span><span style="display:flex;"><span>                                   password=<span style="color:#cd5555">&#39;password&#39;</span>, database=<span style="color:#cd5555">&#39;yangtze_river_water_level&#39;</span>)
+</span></span><span style="display:flex;"><span>        self.cur = self.con.cursor()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">insert_data</span>(self, oq, q, rvnm, stcd, stnm, tm, wptn, z):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 检查某站某时间的数据是否已存储过, 避免重复存储数据</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> self.cur.execute(<span style="color:#cd5555">&#34;select * from water_level where stnm=</span><span style="color:#cd5555">%s</span><span style="color:#cd5555"> and tm=</span><span style="color:#cd5555">%s</span><span style="color:#cd5555">&#34;</span>, (stnm, tm)) == <span style="color:#b452cd">0</span>:
+</span></span><span style="display:flex;"><span>            self.cur.execute(<span style="color:#cd5555">&#34;insert into water_level(oq, q, rvnm, stcd, stnm, tm, wptn, z) values (</span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">, </span><span style="color:#cd5555">%s</span><span style="color:#cd5555">)&#34;</span>,
+</span></span><span style="display:flex;"><span>                             (oq, q, rvnm, stcd, stnm, tm, wptn, z))
+</span></span><span style="display:flex;"><span>            self.con.commit()
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">get_list_stnm</span>(self):
+</span></span><span style="display:flex;"><span>        self.cur.execute(<span style="color:#cd5555">&#34;select distinct stnm from water_level&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> self.cur.fetchall()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">selectByStation</span>(self, station):
+</span></span><span style="display:flex;"><span>        self.cur.execute(<span style="color:#cd5555">&#34;select * from water_level where stnm=</span><span style="color:#cd5555">%s</span><span style="color:#cd5555">&#34;</span>, (station))
+</span></span><span style="display:flex;"><span>        data = self.cur.fetchall()
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">delete_duplicate</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> __del__(self):
+</span></span><span style="display:flex;"><span>        self.cur.close()
+</span></span><span style="display:flex;"><span>        self.con.close()
+</span></span></code></pre></div><p>在主函数调用函数后, 将爬取到的数据存入数据库中:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">json</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">get_cjh_data</span> <span style="color:#8b008b;font-weight:bold">import</span> CjhData
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">database</span> <span style="color:#8b008b;font-weight:bold">import</span> DB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">main</span>():
+</span></span><span style="display:flex;"><span>    cd = CjhData() <span style="color:#228b22"># 实例化爬虫类</span>
+</span></span><span style="display:flex;"><span>    json_str = cd.get_data() <span style="color:#228b22"># 得到json字符串</span>
+</span></span><span style="display:flex;"><span>    json_data = json.loads(json_str) <span style="color:#228b22"># 将json字符串转成json对象</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#228b22"># print(json_data)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    db = DB() <span style="color:#228b22"># 实例化数据库操作类</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">for</span> item <span style="color:#8b008b">in</span> json_data:
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 将json对象中的数据遍历存入数据库中</span>
+</span></span><span style="display:flex;"><span>        db.insert_data(item[<span style="color:#cd5555">&#39;oq&#39;</span>], item[<span style="color:#cd5555">&#39;q&#39;</span>], item[<span style="color:#cd5555">&#39;rvnm&#39;</span>], item[<span style="color:#cd5555">&#39;stcd&#39;</span>], item[<span style="color:#cd5555">&#39;stnm&#39;</span>], item[<span style="color:#cd5555">&#39;tm&#39;</span>]/<span style="color:#b452cd">1000</span>, item[<span style="color:#cd5555">&#39;wptn&#39;</span>], item[<span style="color:#cd5555">&#39;z&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">if</span> __name__ == <span style="color:#cd5555">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>运行成功后, 打开数据库检查结果:</p>
+<p><img src="2020-07-18-16-28-16.png" alt=""></p>
+<h2 id="绘图">绘图</h2>
+<p>第一次使用python画图, 我简单学了一下网上的 <code>matplotlib</code> 的 demo, 修改一些参数就得到了自己想要的图 (这个折线图算是最基础的图形), 有一些小配置要写好, 比如更换字体来让中文得以显示等等:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">matplotlib.pyplot</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45;text-decoration:underline">plt</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">pylab</span> <span style="color:#8b008b;font-weight:bold">import</span> mpl
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">numpy</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45;text-decoration:underline">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">datetime</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">database</span> <span style="color:#8b008b;font-weight:bold">import</span> DB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">DrawData</span>(<span style="color:#658b00">object</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self.db = DB()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">draw</span>(self):
+</span></span><span style="display:flex;"><span>        list_stnm = self.db.get_list_stnm()
+</span></span><span style="display:flex;"><span>        <span style="color:#228b22"># 修改字体实现中文显示</span>
+</span></span><span style="display:flex;"><span>        mpl.rcParams[<span style="color:#cd5555">&#39;font.sans-serif&#39;</span>] = [<span style="color:#cd5555">&#39;Microsoft Yahei&#39;</span>]
+</span></span><span style="display:flex;"><span>        fig, ax = plt.subplots()
+</span></span><span style="display:flex;"><span>        ax.set_xlabel(<span style="color:#cd5555">&#34;时间&#34;</span>)
+</span></span><span style="display:flex;"><span>        ax.set_ylabel(<span style="color:#cd5555">&#34;水位&#34;</span>)
+</span></span><span style="display:flex;"><span>        ax.set_title(<span style="color:#cd5555">&#34;长江沿岸水位统计&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">for</span> station <span style="color:#8b008b">in</span> list_stnm:
+</span></span><span style="display:flex;"><span>            data = self.db.selectByStation(station)
+</span></span><span style="display:flex;"><span>            <span style="color:#228b22"># print(data)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            list_tm = []
+</span></span><span style="display:flex;"><span>            list_z =[]
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">for</span> item <span style="color:#8b008b">in</span> data:
+</span></span><span style="display:flex;"><span>                timedata = datetime.datetime.fromtimestamp(item[<span style="color:#b452cd">6</span>])
+</span></span><span style="display:flex;"><span>                list_tm.append(timedata)
+</span></span><span style="display:flex;"><span>                list_z.append(<span style="color:#658b00">float</span>(item[<span style="color:#b452cd">8</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            ax.plot(list_tm, list_z, label=station)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ax.legend()
+</span></span><span style="display:flex;"><span>        fig.autofmt_xdate()
+</span></span><span style="display:flex;"><span>        plt.show()
+</span></span></code></pre></div><p>运行脚本, 可以得到我们想要的折线图:</p>
+<p><img src="2020-07-18-16-44-15.png" alt=""></p>
+<h3 id="2020-07-24-更新">2020-07-24 更新:</h3>
+<p>截至到编辑时间已经爬取到2666条数据😎, 波形图如下:</p>
+<p><img src="photo_2020-07-24_19-53-27.jpg" alt=""></p>
+<h2 id="部署">部署</h2>
+<p>在树莓派上安装好所需依赖, 这里将mysql改为mariadb, 操作方法和mysql几乎一样, 因此建好database以及导入table后, 代码也能完美运行. 测试完毕后, 通过 <code>crontab -e</code> 添加定时任务就算基本完成了.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2020-07-18</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2020/10/03/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">
+			Next<br>Syberia OS (R) for OnePlus 6 刷机体验
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2020/07/06/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/">
+			Previous<br>最近开的一个爬虫小坑
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%88%ac%e5%8f%96%e6%95%b0%e6%8d%ae" class="nav-爬取数据">
+									爬取数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e5%82%a8%e6%95%b0%e6%8d%ae" class="nav-存储数据">
+									存储数据
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bb%98%e5%9b%be" class="nav-绘图">
+									绘图
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#2020-07-24-%e6%9b%b4%e6%96%b0" class="nav-2020-07-24-更新">
+									2020-07-24 更新:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2" class="nav-部署">
+									部署
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

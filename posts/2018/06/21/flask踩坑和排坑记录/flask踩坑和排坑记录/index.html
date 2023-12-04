@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html><head>
+<title>flask踩坑和排坑记录</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="flask踩坑和排坑记录" />
+<meta property="og:description" content="开篇 最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P
+项目依赖 虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp; python3.6 测试通过):
+Flask_SQLAlchemy==2.1 Flask==1.0.2 Markdown==2.6.11 Flask_Bootstrap==3.3.7.1 数据库 数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:
+路径: MySQL: mysql&#43;pymysql://username:password@hostname/database Postgres: postgresql://username:password@hostname/database SQLite(Unix): sqlite:////absolute/path/to/database SQLite(Windows): sqlite:///c:/absolute/path/to/database 初始化: app = Flask(__name__)&lt;br&gt; app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;] = &#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&#39; app.config[&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;] = False db = SQLAlchemy(app) 操作语句: User." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-06-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-21T00:00:00+00:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="flask踩坑和排坑记录"/>
+<meta name="twitter:description" content="开篇 最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P
+项目依赖 虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp; python3.6 测试通过):
+Flask_SQLAlchemy==2.1 Flask==1.0.2 Markdown==2.6.11 Flask_Bootstrap==3.3.7.1 数据库 数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:
+路径: MySQL: mysql&#43;pymysql://username:password@hostname/database Postgres: postgresql://username:password@hostname/database SQLite(Unix): sqlite:////absolute/path/to/database SQLite(Windows): sqlite:///c:/absolute/path/to/database 初始化: app = Flask(__name__)&lt;br&gt; app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;] = &#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&#39; app.config[&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;] = False db = SQLAlchemy(app) 操作语句: User."/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%a1%b9%e7%9b%ae%e4%be%9d%e8%b5%96" class="nav-项目依赖">
+									项目依赖
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93" class="nav-数据库">
+									数据库
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e8%bf%87%e6%bb%a4%e5%99%a8" class="nav-自定义过滤器">
+									自定义过滤器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8%e6%88%b7%e7%99%bb%e5%bd%95%e4%b8%8e%e7%99%bb%e5%87%ba" class="nav-用户登录与登出">
+									用户登录与登出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    flask踩坑和排坑记录
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-06-21 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[学习]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/python">python</a>
+                                &nbsp;
+                            
+                                <a href="/tags/flask">flask</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="开篇">开篇</h1>
+<p>最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P</p>
+<h2 id="项目依赖">项目依赖</h2>
+<p>虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp; python3.6 测试通过):</p>
+<pre tabindex="0"><code>Flask_SQLAlchemy==2.1
+Flask==1.0.2
+Markdown==2.6.11
+Flask_Bootstrap==3.3.7.1
+</code></pre><h2 id="数据库">数据库</h2>
+<p>数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:</p>
+<ul>
+<li>路径:</li>
+</ul>
+<pre tabindex="0"><code>MySQL: mysql+pymysql://username:password@hostname/database
+Postgres: postgresql://username:password@hostname/database
+SQLite(Unix): sqlite:////absolute/path/to/database
+SQLite(Windows): sqlite:///c:/absolute/path/to/database
+</code></pre><ul>
+<li>初始化:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>app = Flask(__name__)&lt;br&gt;
+</span></span><span style="display:flex;"><span>app.config[<span style="color:#cd5555">&#39;SQLALCHEMY_DATABASE_URI&#39;</span>] = <span style="color:#cd5555">&#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&#39;</span>
+</span></span><span style="display:flex;"><span>app.config[<span style="color:#cd5555">&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span>] = <span style="color:#8b008b;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>db = SQLAlchemy(app)
+</span></span></code></pre></div><ul>
+<li>操作语句:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>User.query.all() <span style="color:#228b22"># 搜索所有信息</span>
+</span></span><span style="display:flex;"><span>User.query.get(<span style="color:#658b00">id</span>) <span style="color:#228b22"># 搜索对应主键信息</span>
+</span></span><span style="display:flex;"><span>User.query.filter_by(username=<span style="color:#cd5555">&#39;&#39;</span>).all()
+</span></span><span style="display:flex;"><span>User.query.filter_by(username=<span style="color:#cd5555">&#39;&#39;</span>).first()
+</span></span><span style="display:flex;"><span>db.session.add(User(username,password))
+</span></span><span style="display:flex;"><span>db.session.commit()
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改信息</span>
+</span></span><span style="display:flex;"><span>User.query.filter_by(<span style="color:#658b00">id</span>=<span style="color:#658b00">id</span>).first().username=<span style="color:#cd5555">&#39;newusername&#39;</span>
+</span></span><span style="display:flex;"><span>db.session.commit()
+</span></span></code></pre></div><h2 id="自定义过滤器">自定义过滤器</h2>
+<p>我希望能将 markdown 格式的内容转化并直接显示, 这就需要用到 flask 的过滤器功能, 阅读了相关文章, 只需要自定义一个过滤器, 代码如下:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">flask</span> <span style="color:#8b008b;font-weight:bold">import</span> Markup
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">markdown</span>
+</span></span><span style="display:flex;"><span><span style="color:#707a7c">@app.template_filter</span>(<span style="color:#cd5555">&#39;toMarkdown&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">def</span> <span style="color:#008b45">toMarkdown</span>(content):
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">return</span> Markup(markdown.markdown(content))
+</span></span></code></pre></div><p>通过 jinja2 调用时, 只需要 <code>{ { content|toMartdown } }</code> 即可.</p>
+<h2 id="用户登录与登出">用户登录与登出</h2>
+<p>通过 MD5 加密密码并保存在数据库, 使用 flask 的 session, 登录成功后, 代码添加 <code>session['username'] = username</code> , 同理, 在进入一些诸如管理页面的页面时, 只需要添加 <code>if 'username' in session:</code> 加以判断即可.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2018-06-21</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+			Next<br>使用hugo创建博客
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+			Previous<br>github.io博客搭建
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e9%a1%b9%e7%9b%ae%e4%be%9d%e8%b5%96" class="nav-项目依赖">
+									项目依赖
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%95%b0%e6%8d%ae%e5%ba%93" class="nav-数据库">
+									数据库
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e8%bf%87%e6%bb%a4%e5%99%a8" class="nav-自定义过滤器">
+									自定义过滤器
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8%e6%88%b7%e7%99%bb%e5%bd%95%e4%b8%8e%e7%99%bb%e5%87%ba" class="nav-用户登录与登出">
+									用户登录与登出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

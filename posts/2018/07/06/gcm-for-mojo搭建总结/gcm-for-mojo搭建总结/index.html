@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html><head>
+<title>Gcm-for-Mojo搭建总结</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="使用Gcm-for-Mojo接收微信消息">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Gcm-for-Mojo搭建总结" />
+<meta property="og:description" content="使用Gcm-for-Mojo接收微信消息" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-06T00:00:00+00:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gcm-for-Mojo搭建总结"/>
+<meta name="twitter:description" content="使用Gcm-for-Mojo接收微信消息"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae" class="nav-服务器配置">
+									服务器配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8a%bf%e4%b8%8e%e4%b8%8d%e8%b6%b3" class="nav-优势与不足">
+									优势与不足
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8a%bf" class="nav-优势">
+									优势:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e8%b6%b3" class="nav-不足">
+									不足:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
+									总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Gcm-for-Mojo搭建总结
+                    
+                    <div class="post-subtitle">
+                        使用Gcm-for-Mojo接收微信消息
+                    </div>
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-07-06 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[学习]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/perl">perl</a>
+                                &nbsp;
+                            
+                                <a href="/tags/android">android</a>
+                                &nbsp;
+                            
+                                <a href="/tags/wechat">wechat</a>
+                                &nbsp;
+                            
+                                <a href="/tags/fcm">fcm</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="开篇">开篇</h2>
+<p>最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 <code>gcm-for-mojo</code> , 这是一个获取网页端微信信息并通过 <code>gcm</code> 推送到客户端的 app, 同时他也支持 <code>mipush</code>, <code>hwpush</code> 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.</p>
+<h2 id="服务器配置">服务器配置</h2>
+<p>本人常用微信, 于是就只做了微信的推送, QQ 配置方法类似, 基本上举一反三, 很容易学会. 首先我们在服务器上安装 perl, Ubuntu 16.04 操作如下:</p>
+<pre tabindex="0"><code>$ sudo apt-get install perl cpanminus git make screen libssl-dev libnet-ssleay-perl libio-socket-ssl-perl
+</code></pre><p>完成后</p>
+<pre tabindex="0"><code>$ cpanm Mojo::Weixin
+</code></pre><p>我们直接到 <a href="https://github.com/sjdy521/Mojo-Weixin">GitHub</a> 上看配置步骤, 描述得很详细, 最多几分钟就可以搞定了.</p>
+<p>接下来我们新建一个 <code>wx.pl</code> 文件, 命名随意, 内容如下:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> <span style="color:#008b45;text-decoration:underline">Mojo::Weixin</span>;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">my</span> <span style="color:#00688b">$client</span> = <span style="color:#008b45;text-decoration:underline">Mojo::Weixin</span>-&gt;<span style="color:#8b008b;font-weight:bold">new</span>(log_encoding=&gt;<span style="color:#cd5555">&#34;utf-8&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">$client</span>-&gt;load(<span style="color:#cd5555">&#34;ShowMsg&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">$client</span>-&gt;load(<span style="color:#cd5555">&#34;GCM&#34;</span>,data=&gt;{
+</span></span><span style="display:flex;"><span>    api_url =&gt; <span style="color:#cd5555">&#39;https://gcm-http.googleapis.com/gcm/send&#39;</span>,
+</span></span><span style="display:flex;"><span>    api_key=&gt;<span style="color:#cd5555">&#39;AIzaSyB18io0hduB_3uHxKD3XaebPCecug27ht8&#39;</span>,
+</span></span><span style="display:flex;"><span>    registration_ids=&gt;[<span style="color:#cd5555">&#34;令牌, 客户端获取&#34;</span>],
+</span></span><span style="display:flex;"><span>    allow_group=&gt;[<span style="color:#cd5555">&#34;&#34;</span>,<span style="color:#cd5555">&#34;&#34;</span>,<span style="color:#cd5555">&#34;&#34;</span>], <span style="color:#228b22"># 群聊信息推送白名单</span>
+</span></span><span style="display:flex;"><span>    ban_group=&gt;[],
+</span></span><span style="display:flex;"><span>    allow_discuss=&gt;[],
+</span></span><span style="display:flex;"><span>    ban_discuss=&gt;[],
+</span></span><span style="display:flex;"><span>    is_ban_official =&gt;<span style="color:#b452cd">1</span>, <span style="color:#228b22"># 不接收公众号信息</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">$client</span>-&gt;load(<span style="color:#cd5555">&#34;Openwx&#34;</span>,data=&gt;{
+</span></span><span style="display:flex;"><span>    <span style="color:#658b00">listen</span> =&gt; [ {host=&gt;<span style="color:#cd5555">&#34;服务器ip地址&#34;</span>,port=&gt;<span style="color:#b452cd">140</span>}, ] ,
+</span></span><span style="display:flex;"><span>    <span style="color:#228b22">#其中, 端口号自定义, 如140, 需要在客户端设置中填入ip:port格式的地址才能开通快速回复功能, 如下图</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">$client</span>-&gt;run();
+</span></span></code></pre></div><p>将 <code>wx.pl</code> 上传至服务器, 使用 <code>nohup perl wx.pl &amp;</code> 使其在后台运行. 这是个效果不太好的方法, 断开 ssh 连接时很容易把进程也关掉, 翻阅教程时我发现可以用另一个方法来实现后台运行:</p>
+<ul>
+<li><code>screen -S docker</code></li>
+<li><code>perl wx.pl</code></li>
+</ul>
+<p><img src="2018-07-07-03.jpg" alt="设置截图">
+<img src="2018-07-07-01.jpg" alt="效果截图1">
+<img src="2018-07-07-02.jpg" alt="效果截图2"></p>
+<p>此时断开 ssh 连接也不受任何干扰, 放置后台成功. 如果想回到 screen, 可以使用以下指令, 结束操作后挂起即可:</p>
+<ul>
+<li><code>screen -ls</code></li>
+<li><code>screen -r pid</code></li>
+</ul>
+<p><img src="2018-07-07-01.png" alt="示意图"></p>
+<p>附上一篇 screen <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/">使用教程</a></p>
+<h2 id="优势与不足">优势与不足</h2>
+<h3 id="优势">优势:</h3>
+<ul>
+<li>gcm-for-mojo 配置起来比 EFB 要简单得多,毕竟依赖没有后者多</li>
+<li>fcm 推送很及时</li>
+<li>自定义设置比较丰富</li>
+</ul>
+<h3 id="不足">不足:</h3>
+<ul>
+<li>比起 EFB, gcm-for-mojo不能显示图片和表情包, 甚至 emoji 也不会显示</li>
+<li>使用 nohup 指令让其在后台运行时, 与服务器断开连接后有一次会自动关闭后台进程</li>
+<li>不够稳定, 一方面 WebWeixin 本身就是个神奇的东西, 诸如 ItChat, EFB, gcm-for-mojo 这些借助网页版微信获取信息的工具会导致账号被封(一段时间内将无法使用网页登录)</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>之前用过 <code>EFB1.0</code>, 没多久就弃了, 原因是连接很容易断开, 一旦断开连接就要再重新扫码登录, 而微信无法在本机上扫码登录, 于是就比如借助另一个设备显示二维码, 可以想象有多麻烦, 当然 gcm-for-mojo 也是如此, 正好借此机会对比一下两者的稳定性, 希望这次能用久一点吧🤷‍♀️</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2018-07-06</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2018/07/17/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/">
+			Next<br>树莓派系统安装以及ssh连接
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/">
+			Previous<br>一加1卡刷lineage15.1
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e7%af%87" class="nav-开篇">
+									开篇
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae" class="nav-服务器配置">
+									服务器配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8a%bf%e4%b8%8e%e4%b8%8d%e8%b6%b3" class="nav-优势与不足">
+									优势与不足
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%bc%98%e5%8a%bf" class="nav-优势">
+									优势:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e8%b6%b3" class="nav-不足">
+									不足:
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%80%bb%e7%bb%93" class="nav-总结">
+									总结
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

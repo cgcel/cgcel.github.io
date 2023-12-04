@@ -1,0 +1,287 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>烂杯的博客</title>
+    <link>https://cgcel.github.io/</link>
+    <description>Recent content on 烂杯的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    <lastBuildDate>Sun, 16 Oct 2022 00:16:55 +0800</lastBuildDate>
+    
+        <atom:link href="https://cgcel.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>一加1卡刷lineage15.1</title>
+        <link>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+        <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
+        <description>烂杯的博客 https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/ -&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.&lt;/p&gt;
+&lt;h2 id=&#34;突如其来的更新&#34;&gt;突如其来的更新&lt;/h2&gt;
+&lt;p&gt;之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.&lt;/p&gt;
+&lt;h2 id=&#34;踩坑&#34;&gt;踩坑&lt;/h2&gt;
+&lt;p&gt;备份后进入 twrp 四清手机, 然后开始卡刷, 然而报错了:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;This package is for &amp;quot;OnePlus&amp;quot; devices: this is a &amp;quot;A0001&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;经查询, 发现是 twrp 版本太低了, 换了最新的 twrp 一试, 果然成功了, 随后就是刷 gapps, magisk, 常规操作就不说了.&lt;/p&gt;
+&lt;h2 id=&#34;开机&#34;&gt;开机&lt;/h2&gt;
+&lt;p&gt;开机初始化后进入系统, 还是和以往版本一样流畅, 附上一些截图, 短暂使用后只发现了一个奇怪的bug: 刺激战场开伞后就闪退, 进游戏无法返回正在进行的游戏&amp;hellip;&lt;!-- raw HTML omitted --&gt;
+下面附上一些截图:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-07-04-01.jpg&#34; alt=&#34;图1&#34;&gt;
+&lt;img src=&#34;2018-07-04-02.jpg&#34; alt=&#34;图2&#34;&gt;
+&lt;img src=&#34;2018-07-04-03.jpg&#34; alt=&#34;图3&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;升级&#34;&gt;升级&lt;/h2&gt;
+&lt;p&gt;今天系统迎来了一次更新, 只有300M左右, 于是就直接用流量下载了, 重启后发现保留了 root 效果, 之前 14.1 时候用 superSU, 每次更新之后就要重新刷一遍才有 root 效果. 顺带一提, 更新之后舍友拿去吃鸡不闪退了 (印度人很喜欢吃鸡, 很多ROM更新之后如果玩不了都会有人在评论反馈😂)&lt;/p&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;终于如愿以偿让备机吃上了 oreo, 体验也很好, 不过这应该是一加1能刷到的最新的版本了吧, 感觉 9.0 希望不大, 不过也很难得了, 毕竟这么老的机型了, 到现在还是很流畅, 刺激战场什么的也压力不大. 改天试一试 rr 好了, 其实 rr 给一加1适配 andoid 8.1 比 lineage 要早, 之前下下来一直刷不上就放弃了. 最后贴一下链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://download.lineageos.org/&#34;&gt;lineageos下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://adbshell.com/downloads/&#34;&gt;adb下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opengapps.org/&#34;&gt;gapps下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twrp.me/Devices/&#34;&gt;twrp下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://cgcel.github.io/posts/2018/07/04/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/ - This is a customized copyright.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>六维空间自动登录脚本</title>
+        <link>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+        <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
+        <description>烂杯的博客 https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/ -&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;5.20前后几天, 六维空间开放注册, 于是久仰大名的我也跑去注册了一个账号, 因为六维空间每日登录都会送5浮云, 因此就有了写一个模拟登录拿每日奖励的脚本的想法, 将其放在校园网登录脚本里面一起跑就美滋滋了.&lt;/p&gt;
+&lt;h2 id=&#34;代码&#34;&gt;代码&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# author: Chan&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#008b45;text-decoration:underline&#34;&gt;requests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#008b45;text-decoration:underline&#34;&gt;bs4&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;import&lt;/span&gt; BeautifulSoup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;url_start = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;http://bt.neu6.edu.cn/member.php?mod=logging&amp;amp;action=login&amp;amp;referer=http%3A&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;%2F%2F&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;bt.neu6.edu.cn&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;%2F&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;forum.php&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;url_login = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;http://bt.neu6.edu.cn/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;url_main = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;http://bt.neu6.edu.cn/forum.php&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;url_test = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;http://bt.neu6.edu.cn/home.php?mod=spacecp&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;neu6&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; __init__(self, username, password):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        headers = {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Accept&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;text/html, application/xhtml+xml, application/xml&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Accept-Encoding&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;gzip, deflate&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Accept-Language&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;zh-CN, zh&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Cache-Control&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;max-age = 0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Connection&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;keep-alive&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Host&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;bt.neu6.edu.cn&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Upgrade-Insecure-Requests&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;User-Agent&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Mozilla/5.0 (Windows NT 10.0Win64x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.session = requests.Session()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.session.headers.update(headers)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.username = username
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.password = password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        r = self.session.get(url_start)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        soup = BeautifulSoup(r.content, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;html.parser&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.formhash = soup.find(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;input&amp;#34;&lt;/span&gt;, {&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;formhash&amp;#34;&lt;/span&gt;})[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self.action = soup.find(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;form&amp;#34;&lt;/span&gt;)[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;action&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;login&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            formdata = {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;formhash&amp;#34;&lt;/span&gt;: self.formhash,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;referer&amp;#34;&lt;/span&gt;: url_main,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;: self.username,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;: self.password,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;questionid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;answer&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self.session.post(url_login+self.action+&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;&amp;amp;inajax=1&amp;#39;&lt;/span&gt;, data=formdata)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            r1 = self.session.get(url_main)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;except&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#658b00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;登录失败&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;info&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            r2 = self.session.get(url_main)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            soup = BeautifulSoup(r2.content, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;html.parser&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            name = soup.find_all(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;strong&amp;#34;&lt;/span&gt;, {&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;vwmy&amp;#34;&lt;/span&gt;})[&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;].get_text()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            points = soup.find_all(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;, {&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;showmenu&amp;#34;&lt;/span&gt;})[
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;].get_text().strip()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            level = soup.find_all(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;, {&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xi2&amp;#34;&lt;/span&gt;})[
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;].get_text().strip()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#658b00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;用户名:&amp;#34;&lt;/span&gt;, name)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#658b00&#34;&gt;print&lt;/span&gt;(points)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#658b00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;用户组:&amp;#34;&lt;/span&gt;, level)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;except&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#658b00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;获取信息失败&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;main&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    neu = neu6(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;username&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;passowrd&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    neu.login()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    neu.info()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; __name__ == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    main()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过看网页源码我们能发现, post 的数据不仅仅是用户名和密码, 他的完整数据如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;formdata = {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;formhash&amp;#34;&lt;/span&gt;: self.formhash,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;referer&amp;#34;&lt;/span&gt;: url_main,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;: self.username,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;: self.password,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;questionid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;answer&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;幸运的是,这些数据都可以在登录前的页面获取到, 具体做法见代码.
+将他放进一键登录程序中, 也可以写到 &lt;code&gt;.bat&lt;/code&gt; 文件什么的来轻松登录, 甚至还可以帮舍友, 朋友一起登录.&lt;/p&gt;
+&lt;p&gt;如图, 登录成功:P&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-6-23-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;结尾&lt;/h2&gt;
+&lt;p&gt;好吧, 其实我只是想玩玩我新建好的博客, 于是就随便拿点小东西发上来了, 有需要的话就拿走吧:P 如果有更好的方法也请告诉我一下, thx.&lt;/p&gt;
+- https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/ - This is a customized copyright.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>使用hugo创建博客</title>
+        <link>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+        <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <description>烂杯的博客 https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/ -&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
+&lt;p&gt;Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.&lt;/p&gt;
+&lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;
+&lt;p&gt;到 &lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;下载页面&lt;/a&gt; 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.&lt;/p&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, &lt;strong&gt;要先下载好主题&lt;/strong&gt;再在根目录使用 &lt;code&gt;hugo server -D&lt;/code&gt; 指令, 否则页面会一片空白.&lt;/p&gt;
+&lt;h2 id=&#34;基础知识学习go-templates&#34;&gt;基础知识学习(Go templates)&lt;/h2&gt;
+&lt;p&gt;列一下适合初学者学习的链接:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=ZYQ5k0RQzmo&amp;amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&#34;&gt;YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/functions&#34;&gt;函数以及变量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;模板选择&#34;&gt;模板选择&lt;/h2&gt;
+&lt;p&gt;不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;编写博客&#34;&gt;编写博客&lt;/h2&gt;
+&lt;p&gt;只需要在根目录命令行输入 &lt;code&gt;hugo new ***/***.md&lt;/code&gt; 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title= &amp;#34;使用hugo创建博客&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date= 2018-06-22T19:34:37+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;categories=[&amp;#39;tech&amp;#39;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.io&amp;#39;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;+++
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;填好以上格式, 就可以开始在下面写博客了, 和 jekyll 非常相似.&lt;/p&gt;
+&lt;p&gt;新版本的 hugo 自动生成的 &lt;code&gt;.md&lt;/code&gt; 文件格式有点变化, 如下所示:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: &amp;#34;换个主题&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date: 2019-12-01T23:50:09+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;categories: [&amp;#34;daily&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;部署到githubpage&#34;&gt;部署到github.page&lt;/h2&gt;
+&lt;p&gt;和 jekyll 相比, hugo 的部署/文章推送略微麻烦一点, 前者只需要修改并预览检查完毕后直接全部 push 即可, 而 hugo 按照官方文档的方法是先在根目录运行一道指令 &lt;code&gt;hugo --baseUrl=&amp;quot;https://username.github.io&amp;quot;&lt;/code&gt; , 在根目录生成 public 文件夹, 然后将 public 文件夹中的所有内容 push 至仓库中. 我查阅了一些其他的自动化方法, 如Travis. 最后嫌配置麻烦, 直接在根目录创建了一个 &lt;code&gt;.bat&lt;/code&gt; 文件,将几个指令写进去依次运行, 也算是实现了一键推送的功能, 也算是提供了另一种思路吧.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo --theme=pure --baseUrl=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://koonchung.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;cd&lt;/span&gt; public
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;auto-uploaded files&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;pause&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;暂告一段落&#34;&gt;暂告一段落&lt;/h3&gt;
+&lt;p&gt;emm&amp;hellip;写到这里已经半夜一点半了, 那就先告一段落吧, 最后总结一下, 不得不说 hugo 加载的速度比 jekyll 快了不少, 模板配置完成后体验很不错.&lt;/p&gt;
+- https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/ - This is a customized copyright.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>flask踩坑和排坑记录</title>
+        <link>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+        <description>烂杯的博客 https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/ -&lt;h1 id=&#34;开篇&#34;&gt;开篇&lt;/h1&gt;
+&lt;p&gt;最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P&lt;/p&gt;
+&lt;h2 id=&#34;项目依赖&#34;&gt;项目依赖&lt;/h2&gt;
+&lt;p&gt;虽然 flask 较 Django 更轻量, 版本间语法差别不大, 但还是会有一些小坑. 比如在使用 flask-sqlalchemy 时报错, 原因是版本过新或过旧, 另外 flask 的扩展包需要另外安装, 这里注意一下就行. 下面列出个人博客项目的安装依赖 ( python3.5 &amp;amp; python3.6 测试通过):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Flask_SQLAlchemy==2.1
+Flask==1.0.2
+Markdown==2.6.11
+Flask_Bootstrap==3.3.7.1
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;数据库&#34;&gt;数据库&lt;/h2&gt;
+&lt;p&gt;数据库的使用是网页编写的一个非常重要的部分, 基本上读取, 存入, 登录, 注销等等操作都和数据库相关, 本项目使用 sqlite3, 操作起来较为简单. 简单总结一下 flask-sqlalchemy 的使用技巧:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;路径:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;MySQL: mysql+pymysql://username:password@hostname/database
+Postgres: postgresql://username:password@hostname/database
+SQLite(Unix): sqlite:////absolute/path/to/database
+SQLite(Windows): sqlite:///c:/absolute/path/to/database
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;初始化:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app = Flask(__name__)&amp;lt;br&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app.config[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;SQLALCHEMY_DATABASE_URI&amp;#39;&lt;/span&gt;] = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sqlite:///E:/code/Python/flask/Elvin_Blog/schema.sql&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app.config[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;SQLALCHEMY_TRACK_MODIFICATIONS&amp;#39;&lt;/span&gt;] = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;db = SQLAlchemy(app)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;操作语句:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User.query.all() &lt;span style=&#34;color:#228b22&#34;&gt;# 搜索所有信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User.query.get(&lt;span style=&#34;color:#658b00&#34;&gt;id&lt;/span&gt;) &lt;span style=&#34;color:#228b22&#34;&gt;# 搜索对应主键信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User.query.filter_by(username=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;).all()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User.query.filter_by(username=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;).first()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;db.session.add(User(username,password))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;db.session.commit()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 修改信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;User.query.filter_by(&lt;span style=&#34;color:#658b00&#34;&gt;id&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;id&lt;/span&gt;).first().username=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;newusername&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;db.session.commit()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;自定义过滤器&#34;&gt;自定义过滤器&lt;/h2&gt;
+&lt;p&gt;我希望能将 markdown 格式的内容转化并直接显示, 这就需要用到 flask 的过滤器功能, 阅读了相关文章, 只需要自定义一个过滤器, 代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#008b45;text-decoration:underline&#34;&gt;flask&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;import&lt;/span&gt; Markup
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#008b45;text-decoration:underline&#34;&gt;markdown&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#707a7c&#34;&gt;@app.template_filter&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;toMarkdown&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;toMarkdown&lt;/span&gt;(content):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; Markup(markdown.markdown(content))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过 jinja2 调用时, 只需要 &lt;code&gt;{ { content|toMartdown } }&lt;/code&gt; 即可.&lt;/p&gt;
+&lt;h2 id=&#34;用户登录与登出&#34;&gt;用户登录与登出&lt;/h2&gt;
+&lt;p&gt;通过 MD5 加密密码并保存在数据库, 使用 flask 的 session, 登录成功后, 代码添加 &lt;code&gt;session[&#39;username&#39;] = username&lt;/code&gt; , 同理, 在进入一些诸如管理页面的页面时, 只需要添加 &lt;code&gt;if &#39;username&#39; in session:&lt;/code&gt; 加以判断即可.&lt;/p&gt;
+- https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/ - This is a customized copyright.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>github.io博客搭建</title>
+        <link>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <description>烂杯的博客 https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/ -&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+&lt;p&gt;看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.&lt;/p&gt;
+&lt;h2 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h2&gt;
+&lt;p&gt;在 github 新建项目, 命名格式为 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;, 最好先选 private, 因为可能会有很多误操作. 然后在本机 (Windows) 安装环境: &lt;code&gt;gem&lt;/code&gt;, &lt;code&gt;jekyll&lt;/code&gt; 等等, 安装这些是便于在本地修改网页并且预览,这样就不用每次都 push 到 github 来试了. 不过 Windows 安装起来挺麻烦的, 一定要按照教程一步一步来设置, 跟教程有一些出入的地方要自己判断.&lt;/p&gt;
+&lt;h2 id=&#34;选择主题&#34;&gt;选择主题&lt;/h2&gt;
+&lt;p&gt;jekyll 的主题有很多,我们可以在 github 和网页上挑选, 本来我想要选一个 md 格式的主题,奈何一时间找不到,于是从 github 上选择了一个纯白的极简主题.&lt;/p&gt;
+&lt;h2 id=&#34;自定义页面内容&#34;&gt;自定义页面内容&lt;/h2&gt;
+&lt;p&gt;选好主题之后, 通过 git 把代码 clone 到本地, 首先必须要编辑的是 &lt;code&gt;_config.yml&lt;/code&gt;,按照个人的信息和需求进行增减改动, 如果不知道该怎么改, 建议多找几个主题对比一下文件内容, 也可以到 YouTube 找一下相关视频教程. 设置完后, 就可以去自定义个人信息和网页显示内容了.&lt;/p&gt;
+&lt;h2 id=&#34;预览和推送测试&#34;&gt;预览和推送测试&lt;/h2&gt;
+&lt;p&gt;修改完文件后,在项目根目录打开 cmd, 输入 &lt;code&gt;jekyll s&lt;/code&gt;, 如果没有报错就表示在本地运行成功了, 此时可以打开浏览器, 进入 &lt;code&gt;127.0.0.1:4000&lt;/code&gt; 就可以预览页面. 按照格式命名文章, 如: &lt;code&gt;2018-6-21-title.md&lt;/code&gt;, 在文章开头加上以下内容就可以被识别并更新在主页上了, 非常方便:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;layout: post
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: &amp;#34;your title&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date: 2018-06-21
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;categories:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://cgcel.github.io/posts/2018/06/21/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/ - This is a customized copyright.</description>
+        </item>
+    
+    
+  </channel>
+</rss> 

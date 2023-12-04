@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html><head>
+<title>使用hugo创建博客</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="使用hugo创建博客" />
+<meta property="og:description" content="起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&rsquo;/&rsquo;) 本菜鸟找了快一个小时才找出来&hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
+&#43;&#43;&#43; title= &#34;使用hugo创建博客&#34; date= 2018-06-22T19:34:37&#43;08:00 categories=[&#39;tech&#39;] tags= [&#39;hugo&#39;,&#39;go&#39;,&#39;github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cgcel.github.io/posts/2018/06/22/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-22T00:00:00+00:00" /><meta property="og:site_name" content="烂杯的博客" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用hugo创建博客"/>
+<meta name="twitter:description" content="起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&rsquo;/&rsquo;) 本菜鸟找了快一个小时才找出来&hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
+&#43;&#43;&#43; title= &#34;使用hugo创建博客&#34; date= 2018-06-22T19:34:37&#43;08:00 categories=[&#39;tech&#39;] tags= [&#39;hugo&#39;,&#39;go&#39;,&#39;github."/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://cgcel.github.io/images/avatar.jpg">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%b5%b7%e5%9b%a0" class="nav-起因">
+									起因
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%90%ad%e5%bb%ba%e7%8e%af%e5%a2%83" class="nav-搭建环境">
+									搭建环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae" class="nav-配置">
+									配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%ad%a6%e4%b9%a0go-templates" class="nav-基础知识学习go-templates">
+									基础知识学习(Go templates)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e6%9d%bf%e9%80%89%e6%8b%a9" class="nav-模板选择">
+									模板选择
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bc%96%e5%86%99%e5%8d%9a%e5%ae%a2" class="nav-编写博客">
+									编写博客
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2%e5%88%b0githubpage" class="nav-部署到githubpage">
+									部署到github.page
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%9a%82%e5%91%8a%e4%b8%80%e6%ae%b5%e8%90%bd" class="nav-暂告一段落">
+									暂告一段落
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://cgcel.github.io/">
+            烂杯的博客
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://cgcel.github.io/">
+        <div class="single-column-header-title">烂杯的博客</div>
+        
+        <div class="single-column-header-subtitle">我是小白, 随便写写.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    使用hugo创建博客
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2018-06-22 00:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[学习]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/hugo">hugo</a>
+                                &nbsp;
+                            
+                                <a href="/tags/go">go</a>
+                                &nbsp;
+                            
+                                <a href="/tags/github.io">github.io</a>
+                                &nbsp;
+                            
+                                <a href="/tags/blog">blog</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="起因">起因</h2>
+<p>Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.</p>
+<h2 id="搭建环境">搭建环境</h2>
+<p>到 <a href="https://github.com/gohugoio/hugo/releases">下载页面</a> 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.</p>
+<h2 id="配置">配置</h2>
+<p>因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, <strong>要先下载好主题</strong>再在根目录使用 <code>hugo server -D</code> 指令, 否则页面会一片空白.</p>
+<h2 id="基础知识学习go-templates">基础知识学习(Go templates)</h2>
+<p>列一下适合初学者学习的链接:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ZYQ5k0RQzmo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">YouTube</a></li>
+<li><a href="http://www.gohugo.org/">官方文档</a></li>
+<li><a href="https://gohugo.io/functions">函数以及变量</a></li>
+</ul>
+<h2 id="模板选择">模板选择</h2>
+<p>不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&rsquo;/&rsquo;) 本菜鸟找了快一个小时才找出来&hellip;</p>
+<h2 id="编写博客">编写博客</h2>
+<p>只需要在根目录命令行输入 <code>hugo new ***/***.md</code> 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>title= &#34;使用hugo创建博客&#34;
+</span></span><span style="display:flex;"><span>date= 2018-06-22T19:34:37+08:00
+</span></span><span style="display:flex;"><span>categories=[&#39;tech&#39;]
+</span></span><span style="display:flex;"><span>tags= [&#39;hugo&#39;,&#39;go&#39;,&#39;github.io&#39;]
+</span></span><span style="display:flex;"><span>+++
+</span></span></code></pre></div><p>填好以上格式, 就可以开始在下面写博客了, 和 jekyll 非常相似.</p>
+<p>新版本的 hugo 自动生成的 <code>.md</code> 文件格式有点变化, 如下所示:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>title: &#34;换个主题&#34;
+</span></span><span style="display:flex;"><span>date: 2019-12-01T23:50:09+08:00
+</span></span><span style="display:flex;"><span>categories: [&#34;daily&#34;]
+</span></span></code></pre></div><h2 id="部署到githubpage">部署到github.page</h2>
+<p>和 jekyll 相比, hugo 的部署/文章推送略微麻烦一点, 前者只需要修改并预览检查完毕后直接全部 push 即可, 而 hugo 按照官方文档的方法是先在根目录运行一道指令 <code>hugo --baseUrl=&quot;https://username.github.io&quot;</code> , 在根目录生成 public 文件夹, 然后将 public 文件夹中的所有内容 push 至仓库中. 我查阅了一些其他的自动化方法, 如Travis. 最后嫌配置麻烦, 直接在根目录创建了一个 <code>.bat</code> 文件,将几个指令写进去依次运行, 也算是实现了一键推送的功能, 也算是提供了另一种思路吧.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>hugo --theme=pure --baseUrl=<span style="color:#cd5555">&#34;https://koonchung.github.io&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">cd</span> public
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#cd5555">&#34;auto-uploaded files&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin master
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">pause</span>
+</span></span></code></pre></div><h3 id="暂告一段落">暂告一段落</h3>
+<p>emm&hellip;写到这里已经半夜一点半了, 那就先告一段落吧, 最后总结一下, 不得不说 hugo 加载的速度比 jekyll 快了不少, 模板配置完成后体验很不错.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2018-06-22</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/">
+			Next<br>六维空间自动登录脚本
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/">
+			Previous<br>flask踩坑和排坑记录
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="username/repo"
+        data-repo-id="**************************"
+        data-category="General"
+        data-category-id="*********************"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://cgcel.github.io/">
+    
+        <div class="nav-title">
+            烂杯的博客
+        </div>
+        
+        <div class="nav-subtitle">
+            我是小白, 随便写写.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%b5%b7%e5%9b%a0" class="nav-起因">
+									起因
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%90%ad%e5%bb%ba%e7%8e%af%e5%a2%83" class="nav-搭建环境">
+									搭建环境
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%85%8d%e7%bd%ae" class="nav-配置">
+									配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%ad%a6%e4%b9%a0go-templates" class="nav-基础知识学习go-templates">
+									基础知识学习(Go templates)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e6%9d%bf%e9%80%89%e6%8b%a9" class="nav-模板选择">
+									模板选择
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bc%96%e5%86%99%e5%8d%9a%e5%ae%a2" class="nav-编写博客">
+									编写博客
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%83%a8%e7%bd%b2%e5%88%b0githubpage" class="nav-部署到githubpage">
+									部署到github.page
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e6%9a%82%e5%91%8a%e4%b8%80%e6%ae%b5%e8%90%bd" class="nav-暂告一段落">
+									暂告一段落
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	This is a customized copyright.
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

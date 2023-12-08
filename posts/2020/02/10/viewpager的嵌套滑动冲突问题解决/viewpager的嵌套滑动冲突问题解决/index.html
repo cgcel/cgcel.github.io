@@ -22,7 +22,7 @@
 从上图可以看到按照上一篇博客中重写子 Fragment 中的 ViewPager 的 OnInterceptTouchEvent() 和 onTouchEvent() 后, 于子 Fragment 中显示的 RecyclerView 上滑动将无法使用 Activity 的 ViewPager 切换, 只能在 RecyclerView 没有覆盖到的边框位置进行滑动, 这样的操作无疑非常不舒适, 于是我只能继续在网上搜索相关解决方案, 现总结如下.
 修改步骤 与上一篇博客思路一样, 只需要重写 ViewPager 的 canScrollHorizontally() 函数即可, 代码如下:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public class UnScrollableViewPager extends ViewPager { private boolean scrollable = false; public UnScrollableViewPager(Context context) { super(context); } public UnScrollableViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写该函数, 用于判断是否能水平滑动 public boolean canScrollHorizontally(int direction) { return scrollable; // false表示已经到最右 } } 修改完代码后重新运行, 效果如下, 可见已经实现了预期的效果.">
-    <link rel="shortcut icon" href="img/avatar.png" />
+    <link rel="shortcut icon" href="/img/site-icon.png" />
 
     </head>
     <body class="
@@ -63,13 +63,7 @@
             <figure class="site-avatar">
                 <a href="/">
                 
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
+                    <img src="/img/avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 
                 </a>
                 
@@ -478,6 +472,19 @@
             
                 
 <article class="">
+    <a href="/posts/2023/12/08/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">title部署 obsidian-livesync</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/posts/2022/10/16/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/">
         
         
@@ -497,19 +504,6 @@
 
         <div class="article-details">
             <h2 class="article-title">Termux 安装并使用 Frpc</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/posts/2022/09/25/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">通过 ZeroTier 和 Scrcpy 远程操控安卓机</h2>
         </div>
     </a>
 </article>

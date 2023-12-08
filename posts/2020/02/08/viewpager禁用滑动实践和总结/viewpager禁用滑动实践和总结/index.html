@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="开篇 接触 Android 有一段时间了, 起因是帮同事一起做项目, 顺便自己学习, 于是项目一直断断续续进行, 很多控件和功能都是参考《第一行代码》还有网上的例子慢慢探索的, 最近一直在钻 TabLayout 的点击切换, 也就是禁用 ViewPager 的左右滑动切换的牛角尖, 具体效果如下图所示. 网上的例子实在是太千篇一律了, 导致有些地方只要其中一篇阅读量很多的博客没有, 其他转载或者借鉴的博客就都不会写🤪, 下面就记录一下我在原有 TabLayout&amp;amp;ViewPager 基础上修改的示例.
 实现步骤 1. 重写ViewPager 如果要实现禁用滑动的效果, 那么就需要重写 ViewPager, 因为默认是开启滑动的, 具体代码如下:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 public class NoScrollingViewPager extends ViewPager { private boolean scrollable = false; public NoScrollingViewPager(Context context) { super(context); } public NoScrollingViewPager(Context context, AttributeSet attrs) { super(context, attrs); } @Override // 重写以下两个TouchEvent, 返回false以禁用滑动动作的监听 public boolean onInterceptTouchEvent(MotionEvent ev) { return scrollable; } @Override public boolean onTouchEvent(MotionEvent ev) { return scrollable; } } 以上重写代码都是千篇一律的, 只需要重写两个函数.">
-    <link rel="shortcut icon" href="/img/avatar.png" />
+    <link rel="shortcut icon" href="img/avatar.png" />
 
     </head>
     <body class="

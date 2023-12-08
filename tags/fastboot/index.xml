@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/fastboot/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>一加8T刷Nameless AOSP记录</title>
-        <link>https://cgcel.github.io/posts/2022/04/13/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2022/04/13/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;开头&#34;&gt;开头&lt;/h2&gt;
 &lt;p&gt;之前给8T刷了 Derpfest, 也是基于A12 AOSP的一个ROM, 但是开发者在群里说已经不再维护, 前几天休息在家无聊逛了一下xda, 发现这个包点击量挺高, 于是决定给8T换一个ROM.&lt;/p&gt;
 &lt;hr&gt;

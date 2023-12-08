@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Tue, 07 Jun 2022 20:27:35 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/model/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Pi4TNTCase -- 我的树莓派机箱</title>
-        <link>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
+        <link>https://cgcel.github.io/posts/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</link>
         <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2022/06/07/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
+        <guid>https://cgcel.github.io/posts/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</guid>
         <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
 &lt;p&gt;我的树莓派作为服务器使用已经有一段时间了, 之前安装了一个铝壳被动散热, 在还没进入夏天的5月份, 轻负载时可以突破50度, 这时候用手直接摸散热壳已经是很烫的了.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cgcel.github.io/378776da6dd6a7747c4de0ce0265190.png&#34;

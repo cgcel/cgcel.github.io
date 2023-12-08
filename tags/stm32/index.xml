@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 03 Jun 2020 16:47:33 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/stm32/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>STM32的串口学习总结</title>
-        <link>https://cgcel.github.io/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+        <link>https://cgcel.github.io/posts/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
         <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2020/06/03/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+        <guid>https://cgcel.github.io/posts/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;疫情原因, 机场已经冷清很久了. 但是项目都照常缓慢进行中, 趁这次机会我好好学习了一下STM32的一些基础知识和使用方法. 教程的话看的是正点原子的官网教程, 正点原子的资料应该算是国内STM32初学者入门必学的教程了吧, 听说还有野火的也不错, 网上很多例子都有他们家代码的影子.&lt;/p&gt;
 &lt;p&gt;实际使用过程中, 我越来越能体会到Arduino的简便之处, 但是相对的对实现原理会不太在意, 在入门STM32的过程中, 我对一些单片机功能有了更深的了解, 就比如常用的串口功能.&lt;/p&gt;

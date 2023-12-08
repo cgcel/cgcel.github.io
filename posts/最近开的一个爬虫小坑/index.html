@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='第一次全程使用selenium爬数据'>
+<title>最近开的一个爬虫小坑</title>
+
+<link rel='canonical' href='https://cgcel.github.io/posts/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='最近开的一个爬虫小坑'>
+<meta property='og:description' content='第一次全程使用selenium爬数据'>
+<meta property='og:url' content='https://cgcel.github.io/posts/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:tag' content='selenium' /><meta property='article:tag' content='requests' /><meta property='article:published_time' content='2020-07-06T21:43:54&#43;08:00'/><meta property='article:modified_time' content='2020-07-06T21:43:54&#43;08:00'/>
+<meta name="twitter:title" content="最近开的一个爬虫小坑">
+<meta name="twitter:description" content="第一次全程使用selenium爬数据">
+    <link rel="shortcut icon" href="/img/site-icon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/img/avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#起因">起因</a></li>
+    <li><a href="#尝试">尝试</a>
+      <ol>
+        <li><a href="#requests">requests</a></li>
+        <li><a href="#selenium">selenium</a></li>
+        <li><a href="#处理数据">处理数据</a></li>
+      </ol>
+    </li>
+    <li><a href="#运行环境">运行环境</a></li>
+    <li><a href="#工作原理">工作原理</a>
+      <ol>
+        <li><a href="#编译环境">编译环境:</a></li>
+        <li><a href="#安装依赖">安装依赖:</a></li>
+        <li><a href="#实现原理">实现原理:</a></li>
+      </ol>
+    </li>
+    <li><a href="#使用方法">使用方法</a></li>
+    <li><a href="#后续">后续</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/%E6%9C%80%E8%BF%91%E5%BC%80%E7%9A%84%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB%E5%B0%8F%E5%9D%91/">最近开的一个爬虫小坑</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            第一次全程使用selenium爬数据
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 06, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="起因">起因</h2>
+<p>去年年底开始, 部门里统计每月运维分队保障情况的任务就落到了我们头上, 大家都不是很愿意去做, 毕竟是重复劳动, 没有什么意义, 在信息系统里查起来还比较麻烦, 数据要一个一个地对, 然后根据当月分队的排班情况算到每个分队的统计里, 并按照规则排名以及打分, 一般都是每个月23或者24号开始统计, 正好这个月我 21-24 号放假加调休, 心想终于躲过一劫的我居然在回到公司上班的第一天被通知由我来统计! 无奈之下我只好以最快的速度做完, 但是这样下去什么时候才是个头啊, 于是就萌生了自己造轮子的想法, 正好复习一下自学的 python 爬虫.</p>
+<h2 id="尝试">尝试</h2>
+<h3 id="requests">requests</h3>
+<p>写些小爬虫的时候, 用 requests 是最方便的. 一般来说模拟登录成功的话也就成功了一半, 后续数据可以轻松获得. 但是信息系统的一些前端渲染的数据无法通过 requests 获得, 比如下面使用 BeautifulSoup 解析后没有数据:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;lblCount&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color:#C00000;font-weight:bold;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="selenium">selenium</h3>
+<p>于是我只能用 selenium 来写, 这也是我第一次全程用 selenium 实现功能的爬虫. selenium 的使用也非常简单, 思路就是使用 <code>find_element_by_id()</code> 和 <code>find_element_by_xpath()</code> 来操作浏览器点击或者输入信息, 将响应后的网页源码通过 BeautifulSoup 解析, 得到想要的数据, 如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;lblCount&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color:#C00000;font-weight:bold;&#34;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="处理数据">处理数据</h3>
+<p>有了数据之后还要解决一个问题, 也就是推出各个分队的排班, 以便将爬到的数据算到对应责任分队处, 我是用了建 dict 和 list 的方式, 将4天一周期的分队排班和时间段结合, 得出正确的排班, 同时也新建各种dict用于存放分队运行数据, 如延误行李数, 事前维修次数, 责任分区维修次数, 值班日志以及根据这些数据排序得到的分数等等.</p>
+<h2 id="运行环境">运行环境</h2>
+<ul>
+<li>
+<p>Windows 7-10</p>
+</li>
+<li>
+<p>与本机 Chrome 版本对应的 <code>chromedriver</code> (项目中版本为 <code>Chrome version 89</code>)</p>
+<ul>
+<li><a class="link" href="https://sites.google.com/a/chromium.org/chromedriver/downloads"  target="_blank" rel="noopener"
+    >下载链接1</a></li>
+<li><a class="link" href="http://chromedriver.storage.googleapis.com/index.html"  target="_blank" rel="noopener"
+    >下载链接2</a></li>
+<li><a class="link" href="http://npm.taobao.org/mirrors/chromedriver"  target="_blank" rel="noopener"
+    >下载链接3</a></li>
+</ul>
+</li>
+<li>
+<p>Microsoft Office 或其他</p>
+</li>
+</ul>
+<h2 id="工作原理">工作原理</h2>
+<h3 id="编译环境">编译环境:</h3>
+<ul>
+<li>Python 3.8.6 (64-bit)</li>
+<li>Visual Studio Code</li>
+</ul>
+<h3 id="安装依赖">安装依赖:</h3>
+<ul>
+<li>selenium</li>
+<li>openpyxl</li>
+<li>bs4</li>
+<li>pyyaml</li>
+<li>tqdm</li>
+<li>lxml</li>
+</ul>
+<h3 id="实现原理">实现原理:</h3>
+<ol>
+<li>通过 <code>selenium</code> 调用 <code>chromedriver</code> 打开 chrome, 打开信息系统登录页面并模拟登录</li>
+<li>登录成功后请求对应延误行李, 值班日志等页面, 使用 <code>BeautifulSoup</code>, <code>re</code> 爬取数据</li>
+<li>对数据进行处理后, 使用 <code>openpyxl</code> 将数据写入 Excel 中</li>
+<li>功能调试完成后将 chrome 设置为 headless browser, 优化使用体验</li>
+</ol>
+<h2 id="使用方法">使用方法</h2>
+<ol>
+<li>打开 <code>config.yaml</code>, 按照指引修改 <code>账号</code>, <code>密码</code>, <code>起始日期</code>, <code>结束日期</code>, <code>刷新间隔</code>, <code>航站楼</code>, <code>内外网访问模式</code>, <code>运行模式</code>, 其中 <code>刷新间隔</code> 可按需修改, 修改完保存配置</li>
+<li>运行 <code>main.exe</code> 或 <code>main.py</code></li>
+<li>程序窗口将显示爬取进度, 运行完毕后, <code>统计结果</code> 以及 <code>分队排班表</code> 以 Excel 格式保存在 <code>\output</code> 目录中</li>
+</ol>
+<h2 id="后续">后续</h2>
+<p>脚本我从 <code>v1.0</code> 开始记录, 在使用过程中一直有遇到新的bug, 导致统计数字有问题, 期间也是一直有维护, 修了几个bug, 直到最近更新到了 <code>v2.6.3</code>, 相信统计功能已经接近完美 (flag)</p>
+<p>不过也是多亏了同事一直有帮忙检验表格准确性, 这些 bug 才得以被修复, 如果是我自己用估计也不会发现.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">python</a>
+        
+            <a href="/tags/selenium/">selenium</a>
+        
+            <a href="/tags/requests/">requests</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/%E6%88%91%E7%9A%84-zerotier-network-%E7%AE%A1%E7%90%86-bot/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">我的 ZeroTier Network 管理 bot</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">爬取洪灾期间长江沿岸水位并绘图</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/posts/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/2018-6-23-1.png" loading="lazy" data-key="" data-hash="/2018-6-23-1.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">六维空间自动登录脚本</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/scrapy%E5%88%9D%E4%B8%8A%E6%89%8B-%E7%88%AC%E5%8F%96%E5%B0%8F%E8%AF%B4%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Scrapy初上手: 爬取小说记录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">flask踩坑和排坑记录</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

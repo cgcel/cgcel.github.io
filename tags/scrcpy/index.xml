@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/scrcpy/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Termux 安装并使用 Frpc</title>
-        <link>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
 &lt;p&gt;本篇是上一篇 [[通过ZeroTier和Scrcpy远程操控安卓机]] 的续篇, 上篇的方案存在几个缺点:&lt;/p&gt;
 &lt;ol&gt;
@@ -292,10 +292,10 @@
         </item>
         <item>
         <title>通过 ZeroTier 和 Scrcpy 远程操控安卓机</title>
-        <link>https://cgcel.github.io/posts/2022/09/25/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/</link>
+        <link>https://cgcel.github.io/posts/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/</link>
         <pubDate>Sun, 25 Sep 2022 11:24:55 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2022/09/25/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/</guid>
+        <guid>https://cgcel.github.io/posts/%E9%80%9A%E8%BF%87zerotier%E5%92%8Cscrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/</guid>
         <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
 &lt;p&gt;最近由于有需要远程操控手机的需求, 目前我所知道的第三方服务 TeamViewer, AirDroid, ToDesk 等均可支持远程操控安卓设备, 但是也存在一些缺点, 比如墙内连接不稳定延时高, 需要注册账号, 需要付费, 需要 Root 等, 作为折腾党, 也趁着8t刚刷上 LineageOS19.1 的这段时间重新试了一下通过安装, 配置 &lt;code&gt;ZeroTier&lt;/code&gt; 和 &lt;code&gt;Scrcpy&lt;/code&gt; 完成对手机的操控, 其实去年就做了这样的尝试, 但是没有做记录, 这次就趁热打铁水一篇博客吧.&lt;/p&gt;
 &lt;h2 id=&#34;软件安装&#34;&gt;软件安装&lt;/h2&gt;

@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/fcm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Gcm-for-Mojo搭建总结</title>
-        <link>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
+        <link>https://cgcel.github.io/posts/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</link>
         <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2018/07/06/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
+        <guid>https://cgcel.github.io/posts/gcm-for-mojo%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93/</guid>
         <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;最近一直对手机的 3.1GB/3.8GB 的内存占用感到不爽, 想要压缩到 2.8GB 左右, 于是开始填坑 &lt;code&gt;gcm-for-mojo&lt;/code&gt; , 这是一个获取网页端微信信息并通过 &lt;code&gt;gcm&lt;/code&gt; 推送到客户端的 app, 同时他也支持 &lt;code&gt;mipush&lt;/code&gt;, &lt;code&gt;hwpush&lt;/code&gt; 等等国内平台的推送, 由于手机是 Pixel 2 XL, 原生系统自然用 gcm 就 ok 了, 微信客户端现在内存占用是越来越大了, 把后台关了也有接近300M, 而使用一些工具替代微信的后台接收信息工作, 自然就达到了省电省内存的效果了.&lt;/p&gt;
 &lt;h2 id=&#34;服务器配置&#34;&gt;服务器配置&lt;/h2&gt;

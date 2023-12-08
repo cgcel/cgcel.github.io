@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Sat, 18 Jul 2020 15:28:01 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>爬取洪灾期间长江沿岸水位并绘图</title>
-        <link>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
+        <link>https://cgcel.github.io/posts/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</link>
         <pubDate>Sat, 18 Jul 2020 15:28:01 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2020/07/18/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
+        <guid>https://cgcel.github.io/posts/%E7%88%AC%E5%8F%96%E6%B4%AA%E7%81%BE%E6%9C%9F%E9%97%B4%E9%95%BF%E6%B1%9F%E6%B2%BF%E5%B2%B8%E6%B0%B4%E4%BD%8D%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;最近长江沿岸发生了洪灾, 很多城市街道都被淹了, 在 &lt;a class=&#34;link&#34; href=&#34;https://xirtam.cxumol.com/long-river-station-data-get-plot/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;大佬的指引&lt;/a&gt; 下, 我写了个脚本爬取长江水文网各个观测站的水位状况, 并绘图观察水位情况, 因为长江水文网 web 只提供实时数据, 没找到历史数据, 因此需要在服务器定时跑脚本爬数据并自己存起来.&lt;/p&gt;

@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/balancecar/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>基于Arduino的自平衡车的调试总结</title>
-        <link>https://cgcel.github.io/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
+        <link>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
         <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2018/12/21/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
+        <guid>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
         <description>&lt;img src="https://cgcel.github.io/%E6%95%B0%E6%8D%AE%E6%9B%B2%E7%BA%BF_2.png" alt="Featured image of post 基于Arduino的自平衡车的调试总结" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;翻阅网上的平衡车资料，大概有两个大方向，分别为卡尔曼滤波型和直接的 PID 调节型，前期我参照了卡尔曼滤波型平衡小车的代码，效果不是很好，小车最后连直立也无法做到，也可能是我的调试方法不对，再加上卡尔曼滤波型的代码相对比较复杂，于是我全部推倒重建，尝试后者。&lt;/p&gt;
 &lt;p&gt;模块清单:&lt;/p&gt;

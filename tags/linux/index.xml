@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Termux 安装并使用 Frpc</title>
-        <link>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2022/09/28/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
 &lt;p&gt;本篇是上一篇 [[通过ZeroTier和Scrcpy远程操控安卓机]] 的续篇, 上篇的方案存在几个缺点:&lt;/p&gt;
 &lt;ol&gt;

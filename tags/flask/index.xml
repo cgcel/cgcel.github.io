@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Thu, 21 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/flask/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>flask踩坑和排坑记录</title>
-        <link>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2018/06/21/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/flask%E8%B8%A9%E5%9D%91%E5%92%8C%E6%8E%92%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h1 id=&#34;开篇&#34;&gt;开篇&lt;/h1&gt;
 &lt;p&gt;最近学习 Django 开发网页, 后来由于 Django 开发比较繁琐以及可迁移性较差, 于是转学 flask, 从而有了这一篇文章, 顺便测试一下我的博客发文功能:P&lt;/p&gt;
 &lt;h2 id=&#34;项目依赖&#34;&gt;项目依赖&lt;/h2&gt;

@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Fri, 08 Dec 2023 09:21:04 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/live-sync/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>title部署 obsidian-livesync</title>
-        <link>https://cgcel.github.io/posts/2023/12/08/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Fri, 08 Dec 2023 09:21:04 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2023/12/08/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;在部署 #obsidian-livesync 之前, 我使用的是 #remotely-save 插件, 也常试了 #obsidian-git 插件, 非插件同步方案尝试过坚果云整个文件夹同步, 这三个方法各有优劣:&lt;/p&gt;
 &lt;hr&gt;

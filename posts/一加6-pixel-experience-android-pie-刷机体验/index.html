@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一加6的刷机记录'>
+<title>一加6 Pixel Experience Android Pie 刷机体验</title>
+
+<link rel='canonical' href='https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='一加6 Pixel Experience Android Pie 刷机体验'>
+<meta property='og:description' content='一加6的刷机记录'>
+<meta property='og:url' content='https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='android9' /><meta property='article:tag' content='pixelexperience' /><meta property='article:tag' content='oneplus' /><meta property='article:tag' content='oneplus6' /><meta property='article:tag' content='flashing' /><meta property='article:tag' content='twrp' /><meta property='article:published_time' content='2018-10-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-10-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://cgcel.github.io/2018-10-28-02.jpg' />
+<meta name="twitter:title" content="一加6 Pixel Experience Android Pie 刷机体验">
+<meta name="twitter:description" content="一加6的刷机记录"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cgcel.github.io/2018-10-28-02.jpg' />
+    <link rel="shortcut icon" href="/img/site-icon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/img/avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#开篇">开篇</a>
+      <ol>
+        <li><a href="#优点">优点:</a></li>
+        <li><a href="#缺点">缺点:</a></li>
+      </ol>
+    </li>
+    <li><a href="#前期准备">前期准备</a></li>
+    <li><a href="#开刷">开刷</a></li>
+    <li><a href="#使用感受">使用感受</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">
+                
+                    <img src="/2018-10-28-02.jpg" loading="lazy" alt="Featured image of post 一加6 Pixel Experience Android Pie 刷机体验" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%88%B7%E6%9C%BA/" >
+                刷机
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/%E4%B8%80%E5%8A%A06-pixel-experience-android-pie-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">一加6 Pixel Experience Android Pie 刷机体验</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            一加6的刷机记录
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 28, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="开篇">开篇</h2>
+<p>前不久入了一加6, 入手第二天就升到了官方的 OxygenOS 9.0 Beta4, 吃到了官方的 pie, 体验下来, 总体感觉如下:</p>
+<h3 id="优点">优点:</h3>
+<ul>
+<li>指纹支付很方便, 这在氢氧两个 ROM 均有适配</li>
+<li>类原生 UI 风格讨喜</li>
+<li>后台清除方式分两种模式可调节, 方便不同用户群体</li>
+<li>全面屏显示功能调节方便, 充分利用屏幕显示</li>
+<li>Dash 闪充充电效率很高</li>
+</ul>
+<h3 id="缺点">缺点:</h3>
+<ul>
+<li>系统功能未完善, 比如岛 Island (炼妖壶)等相关 app 无法创建工作模式</li>
+<li>动画粗糙, 比如切换最近任务栏时可以明显看见缩略图由原生的棱角突变为一加的圆角卡片</li>
+<li>后台限制管理太分散: 一加将自家的后台省电与原生的 AI 省电混合使用, 用户难以分清楚两者相关作用</li>
+<li>室内定位体验差, 一加的定位一直以来都受到诟病 (比如 ingress 室内一直在雪花)</li>
+</ul>
+<p>总体来说一加的产品在国内算是非常不错的安卓旗舰机了, 今天无聊打开 xda 逛了一下一加6论坛, 发现 Pixel Experience 适配了一加6, 于是在一番准备后, 我开始了刷机.</p>
+<h2 id="前期准备">前期准备</h2>
+<p>这是我第三次刷 AB 分区的手机, 上一次操作是用米3和Pixel 2 XL的时候, 因此要做足准备, 不然刷成砖岂不是&hellip;😂</p>
+<ol>
+<li>
+<p>查询相关评测</p>
+<ul>
+<li>
+<p>这一步其实是必不可少的, 任何 ROM 都会有或多或少的 bug, 要确认该 ROM 在本机上能正常使用我们才能放心去刷, 另外我习惯找比较出名的第三方 ROM, 一是有口碑有质量保证, 二是刷的人多可以借鉴他们的方法和经验, 而 Pixel Experience 是近来大家讨论比较多的 ROM. 我分别在 <a class="link" href="https://forum.xda-developers.com/oneplus-6/development/rom-pixel-experience-t3856643"  target="_blank" rel="noopener"
+    >xda</a> 和 <a class="link" href="https://www.youtube.com/watch?v=_g36I37rP5o"  target="_blank" rel="noopener"
+    >youtube</a> 上查阅, 观看了相关信息, 总结下来刷机顺序如下:</p>
+</li>
+<li>
+<p>Install blue_spark twrp.</p>
+</li>
+<li>
+<p>Clear system, cache, dalvik cache</p>
+</li>
+<li>
+<p>Flash rom and then twrp. Use the latest blu spark recovery.</p>
+</li>
+<li>
+<p>Let the rom boot first. First boot might take 10-15 mins cause.</p>
+</li>
+<li>
+<p>Boot into recovery and then flash magisk if you want to root, then boot into system.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>环境及刷机包准备</p>
+<ul>
+<li>
+<p><a class="link" href="http://www.oneplusbbs.com/thread-4161221-1-1.html"  target="_blank" rel="noopener"
+    >解锁bootloader教程</a></p>
+</li>
+<li>
+<p>adb (不懂的请自行解决)</p>
+</li>
+<li>
+<p><a class="link" href="https://download.pixelexperience.org/enchilada/"  target="_blank" rel="noopener"
+    >ROM</a></p>
+</li>
+<li>
+<p><a class="link" href="https://www.youtube.com/redirect?q=https%3A%2F%2Fforum.xda-developers.com%2Fdevdb%2Fproject%2F%3Fid%3D27466%23downloads&amp;v=_g36I37rP5o&amp;redir_token=jd_HaWv_zFe6Fn8LNk9UaJxf38d8MTU0MDgyMDQzNEAxNTQwNzM0MDM0&amp;event=video_description"  target="_blank" rel="noopener"
+    >TWRP(img&amp;zip)</a></p>
+</li>
+<li>
+<p>Magisk (自选)</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="开刷">开刷</h2>
+<ol>
+<li>
+<p>从开机状态开始操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">$</span> <span class="n">adb</span> <span class="n">reboot</span> <span class="n">bootloader</span>
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">fastboot</span> <span class="n">boot</span> <span class="n">name_of_twrp</span><span class="o">.</span><span class="n">img</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>如顺利, 将进入twrp.</li>
+</ul>
+</li>
+<li>
+<p>刷入</p>
+<ol>
+<li>
+<p>wipe → clear system, cache, dalvik cache</p>
+</li>
+<li>
+<p>install → name_of_rom.zip</p>
+</li>
+<li>
+<p>install → name_of_twrp.zip</p>
+</li>
+<li>
+<p>install → magisk.zip →reboot system</p>
+</li>
+</ol>
+</li>
+<li>
+<p>初始化</p>
+<ul>
+<li>经过以上流程, 此ROM就算刷完了, ok可以开始体验啦:)</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用感受">使用感受</h2>
+<p>系统保留了一些一加的功能:</p>
+<p><img src="/2018-10-28-01.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图1"
+	
+	
+></p>
+<p>一些截图:</p>
+<p><img src="/2018-10-28-02.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2"
+	
+	
+></p>
+<p><img src="/2018-10-28-03.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图3"
+	
+	
+></p>
+<p>闪充依然见效:</p>
+<p><img src="/2018-10-28-04.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图4"
+	
+	
+></p>
+<p>PS: ingress室内秒定位, 嗯真香&hellip;</p>
+<p>以上.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/android9/">android9</a>
+        
+            <a href="/tags/pixelexperience/">pixelexperience</a>
+        
+            <a href="/tags/oneplus/">oneplus</a>
+        
+            <a href="/tags/oneplus6/">oneplus6</a>
+        
+            <a href="/tags/flashing/">flashing</a>
+        
+            <a href="/tags/twrp/">twrp</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/syberia-os-r-for-oneplus-6-%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Syberia OS (R) for OnePlus 6 刷机体验</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一加8T刷Nameless AOSP记录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">从OOS到LOS -- 一加8T的刷机记录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/pixel-2xl-root%E6%96%B9%E6%A1%88%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pixel 2XL root方案记录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/posts/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/2018-07-04-01.jpg" loading="lazy" data-key="" data-hash="/2018-07-04-01.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一加1卡刷lineage15.1</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

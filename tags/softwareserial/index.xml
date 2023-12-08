@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Tue, 03 Dec 2019 01:19:09 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/softwareserial/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Arduino的主从机双向通信</title>
-        <link>https://cgcel.github.io/posts/2019/12/03/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</link>
+        <link>https://cgcel.github.io/posts/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</link>
         <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2019/12/03/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</guid>
+        <guid>https://cgcel.github.io/posts/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;网上有不少关于 Arduino 串口通信的教程和示例, 但大多是单向通信的或者是照搬 Arduino 官方示例的. 正好我的自动投食机第二版考虑加物联网功能, 需要对两块板子建立串口通信, 于是整理了网上例子和实践写一篇记录.&lt;/p&gt;
 &lt;h2 id=&#34;硬件准备&#34;&gt;硬件准备&lt;/h2&gt;

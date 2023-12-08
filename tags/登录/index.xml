@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Sat, 23 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/%E7%99%BB%E5%BD%95/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>六维空间自动登录脚本</title>
-        <link>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
+        <link>https://cgcel.github.io/posts/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</link>
         <pubDate>Sat, 23 Jun 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/2018/06/23/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
+        <guid>https://cgcel.github.io/posts/%E5%85%AD%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</guid>
         <description>&lt;img src="https://cgcel.github.io/2018-6-23-1.png" alt="Featured image of post 六维空间自动登录脚本" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;5.20前后几天, 六维空间开放注册, 于是久仰大名的我也跑去注册了一个账号, 因为六维空间每日登录都会送5浮云, 因此就有了写一个模拟登录拿每日奖励的脚本的想法, 将其放在校园网登录脚本里面一起跑就美滋滋了.&lt;/p&gt;
 &lt;h2 id=&#34;代码&#34;&gt;代码&lt;/h2&gt;

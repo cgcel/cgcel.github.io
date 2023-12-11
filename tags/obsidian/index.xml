@@ -8,13 +8,13 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Fri, 08 Dec 2023 09:21:04 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/obsidian/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>title部署 obsidian-livesync</title>
+        <title>部署 obsidian-livesync</title>
         <link>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Fri, 08 Dec 2023 09:21:04 +0800</pubDate>
         
         <guid>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;在部署 #obsidian-livesync 之前, 我使用的是 #remotely-save 插件, 也常试了 #obsidian-git 插件, 非插件同步方案尝试过坚果云整个文件夹同步, 这三个方法各有优劣:&lt;/p&gt;
+&lt;p&gt;在部署 #obsidian-livesync 之前, 我使用的是 #remotely-save 插件, 也尝试了 #obsidian-git 插件, 非插件同步方案尝试过坚果云整个文件夹同步, 这三个方法各有优劣:&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;remotely-save&#34;&gt;remotely-save&lt;/h2&gt;
 &lt;p&gt;优点:&lt;/p&gt;

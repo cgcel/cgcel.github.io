@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Fri, 22 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>使用hugo创建博客</title>
-        <link>https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+        <title>使用 hugo 创建博客</title>
+        <link>https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8-hugo-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
         <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8-hugo-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
         <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
 &lt;p&gt;Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.&lt;/p&gt;
 &lt;h2 id=&#34;搭建环境&#34;&gt;搭建环境&lt;/h2&gt;
@@ -93,11 +93,11 @@
 </description>
         </item>
         <item>
-        <title>github.io博客搭建</title>
-        <link>https://cgcel.github.io/posts/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <title>github.io 博客搭建</title>
+        <link>https://cgcel.github.io/posts/github.io-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <guid>https://cgcel.github.io/posts/github.io-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
         <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.&lt;/p&gt;
 &lt;h2 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h2&gt;

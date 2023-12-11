@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Tue, 17 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>树莓派系统安装以及ssh连接</title>
-        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+        <title>树莓派系统安装以及 ssh 连接</title>
+        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A-ssh-%E8%BF%9E%E6%8E%A5/</link>
         <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A-ssh-%E8%BF%9E%E6%8E%A5/</guid>
         <description>&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
 &lt;p&gt;在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.&lt;/p&gt;
 &lt;h2 id=&#34;系统安装&#34;&gt;系统安装&lt;/h2&gt;

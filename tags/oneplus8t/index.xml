@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 13 Apr 2022 16:32:51 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/oneplus8t/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>一加8T刷Nameless AOSP记录</title>
-        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</link>
+        <title>一加 8T 刷 Nameless AOSP 记录</title>
+        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-8t-%E5%88%B7-nameless-aosp-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 13 Apr 2022 16:32:51 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%88%B7nameless-aosp%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-8t-%E5%88%B7-nameless-aosp-%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;开头&#34;&gt;开头&lt;/h2&gt;
 &lt;p&gt;之前给8T刷了 Derpfest, 也是基于A12 AOSP的一个ROM, 但是开发者在群里说已经不再维护, 前几天休息在家无聊逛了一下xda, 发现这个包点击量挺高, 于是决定给8T换一个ROM.&lt;/p&gt;
 &lt;hr&gt;
@@ -122,11 +122,11 @@ You can also patch boot.img and flash via fastboot.&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>一加8T全量包升级并保留ROOT</title>
-        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</link>
+        <title>一加 8T 全量包升级并保留 ROOT</title>
+        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-8t-%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99-root/</link>
         <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A08t%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99root/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-8t-%E5%85%A8%E9%87%8F%E5%8C%85%E5%8D%87%E7%BA%A7%E5%B9%B6%E4%BF%9D%E7%95%99-root/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;在试用了一天多 ColorOS 之后, 鉴于其后台管理过于严格, 我又趁午休时间刷回了 OOS, 之前已经有了用 TWRP 保留 root 的全量包更新经验和文章, 本篇只想快速记录一下.&lt;/p&gt;
 &lt;hr&gt;
@@ -307,11 +307,11 @@ You can also patch boot.img and flash via fastboot.&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>从OOS到LOS -- 一加8T的刷机记录</title>
-        <link>https://cgcel.github.io/posts/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+        <title>从 OOS 到 LOS -- 一加 8T 的刷机记录</title>
+        <link>https://cgcel.github.io/posts/%E4%BB%8E-oos-%E5%88%B0-los--%E4%B8%80%E5%8A%A0-8t-%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%BB%8E-oos-%E5%88%B0-los--%E4%B8%80%E5%8A%A0-8t-%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 &lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/c/oneplus-8t.11579/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;xda 论坛&lt;/a&gt; 挺活跃的, 已经有不少的 ROM 可以刷了:&lt;/p&gt;

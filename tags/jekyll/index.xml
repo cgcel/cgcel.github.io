@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Thu, 21 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/jekyll/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>github.io博客搭建</title>
-        <link>https://cgcel.github.io/posts/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+        <title>github.io 博客搭建</title>
+        <link>https://cgcel.github.io/posts/github.io-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/github.io%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+        <guid>https://cgcel.github.io/posts/github.io-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
         <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;看到过不少用 github page 搭建的个人博客, 感觉非常方便. 加上前不久刚学了 flask, 对搭建个人博客挺感兴趣, 于是在网上找了一些教程, 开始创建博客, 这里做一下简单的总结.&lt;/p&gt;
 &lt;h2 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h2&gt;

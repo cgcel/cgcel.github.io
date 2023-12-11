@@ -9,10 +9,10 @@
         <copyright>GC Chen</copyright>
         <lastBuildDate>Wed, 28 Sep 2022 09:59:57 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/frp/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Termux 安装并使用 Frpc</title>
-        <link>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</link>
+        <link>https://cgcel.github.io/posts/android-12-%E7%9A%84-termux-%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8-frpc-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 28 Sep 2022 09:59:57 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/android12%E7%9A%84termux%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8frpc%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/android-12-%E7%9A%84-termux-%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8-frpc-%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;写在开头&#34;&gt;写在开头&lt;/h2&gt;
 &lt;p&gt;本篇是上一篇 [[通过ZeroTier和Scrcpy远程操控安卓机]] 的续篇, 上篇的方案存在几个缺点:&lt;/p&gt;
 &lt;ol&gt;
@@ -291,11 +291,11 @@
 </description>
         </item>
         <item>
-        <title>树莓派使用Frp实现内网穿透记录</title>
-        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+        <title>树莓派使用 Frp 实现内网穿透记录</title>
+        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp/blob/master/README_zh.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;frp&lt;/a&gt; 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。&lt;/p&gt;

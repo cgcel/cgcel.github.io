@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
+1 2 3 4 5 6 &#43;&#43;&#43; title= &amp;#34;使用hugo创建博客&amp;#34; date= 2018-06-22T19:34:37&#43;08:00 categories=[&amp;#39;tech&amp;#39;] tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.'>
+<title>使用 hugo 创建博客</title>
+
+<link rel='canonical' href='https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8-hugo-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/'>
+
+<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='使用 hugo 创建博客'>
+<meta property='og:description' content='起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
+1 2 3 4 5 6 &#43;&#43;&#43; title= &amp;#34;使用hugo创建博客&amp;#34; date= 2018-06-22T19:34:37&#43;08:00 categories=[&amp;#39;tech&amp;#39;] tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.'>
+<meta property='og:url' content='https://cgcel.github.io/posts/%E4%BD%BF%E7%94%A8-hugo-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/'>
+<meta property='og:site_name' content='烂杯的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='hugo' /><meta property='article:tag' content='go' /><meta property='article:tag' content='github.io' /><meta property='article:tag' content='blog' /><meta property='article:published_time' content='2018-06-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2018-06-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="使用 hugo 创建博客">
+<meta name="twitter:description" content="起因 Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.
+搭建环境 到 下载页面 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.
+配置 因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, 要先下载好主题再在根目录使用 hugo server -D 指令, 否则页面会一片空白.
+基础知识学习(Go templates) 列一下适合初学者学习的链接:
+YouTube 官方文档 函数以及变量 模板选择 不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&amp;hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&amp;rsquo;/&amp;rsquo;) 本菜鸟找了快一个小时才找出来&amp;hellip;
+编写博客 只需要在根目录命令行输入 hugo new ***/***.md 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.
+1 2 3 4 5 6 &#43;&#43;&#43; title= &amp;#34;使用hugo创建博客&amp;#34; date= 2018-06-22T19:34:37&#43;08:00 categories=[&amp;#39;tech&amp;#39;] tags= [&amp;#39;hugo&amp;#39;,&amp;#39;go&amp;#39;,&amp;#39;github.">
+    <link rel="shortcut icon" href="/img/site-icon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/img/avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">烂杯的博客</a></h1>
+            <h2 class="site-description">日常小记.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/cgcel'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#起因">起因</a></li>
+    <li><a href="#搭建环境">搭建环境</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#基础知识学习go-templates">基础知识学习(Go templates)</a></li>
+    <li><a href="#模板选择">模板选择</a></li>
+    <li><a href="#编写博客">编写博客</a></li>
+    <li><a href="#部署到githubpage">部署到github.page</a>
+      <ol>
+        <li><a href="#暂告一段落">暂告一段落</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/%E4%BD%BF%E7%94%A8-hugo-%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用 hugo 创建博客</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 22, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="起因">起因</h2>
+<p>Jekyll 的加载速度实在是有点慢, 在刚上线不久后, 我又得知了一个页面加载更快的方法: 使用 Hugo 搭建博客.</p>
+<h2 id="搭建环境">搭建环境</h2>
+<p>到 <a class="link" href="https://github.com/gohugoio/hugo/releases"  target="_blank" rel="noopener"
+    >下载页面</a> 下载 Windows 版本的 hugo, 遇到了坑, 最新版本无法在本地预览页面(v0.42.1)于是我下载了和教程一样的老版本, 以确保能够顺利调试.</p>
+<h2 id="配置">配置</h2>
+<p>因为才折腾过 jekyll, 加上 hugo 比前者的配置要简单, 所以我很快就改好了 config 文件, 这里要注意的一点是, <strong>要先下载好主题</strong>再在根目录使用 <code>hugo server -D</code> 指令, 否则页面会一片空白.</p>
+<h2 id="基础知识学习go-templates">基础知识学习(Go templates)</h2>
+<p>列一下适合初学者学习的链接:</p>
+<ul>
+<li><a class="link" href="https://www.youtube.com/watch?v=ZYQ5k0RQzmo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3"  target="_blank" rel="noopener"
+    >YouTube</a></li>
+<li><a class="link" href="http://www.gohugo.org/"  target="_blank" rel="noopener"
+    >官方文档</a></li>
+<li><a class="link" href="https://gohugo.io/functions"  target="_blank" rel="noopener"
+    >函数以及变量</a></li>
+</ul>
+<h2 id="模板选择">模板选择</h2>
+<p>不得不说模板的选择真是一道难题, 就算是在 hugo 官方提供的模板页面中下载的模板也还是要会有一些 bug&hellip;因为想要 Tags 功能,自己照葫芦画瓢写也有点丑, 所以在上一个模板刚配置完的时候我又换了一个模板, 这个模板刚好有 bug ( baseurl 和 css 等链接之间少了&rsquo;/&rsquo;) 本菜鸟找了快一个小时才找出来&hellip;</p>
+<h2 id="编写博客">编写博客</h2>
+<p>只需要在根目录命令行输入 <code>hugo new ***/***.md</code> 就可以自动创建新文章, 并且hugo会帮忙自动生成标题等信息.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">+++
+</span></span><span class="line"><span class="cl">title= &#34;使用hugo创建博客&#34;
+</span></span><span class="line"><span class="cl">date= 2018-06-22T19:34:37+08:00
+</span></span><span class="line"><span class="cl">categories=[&#39;tech&#39;]
+</span></span><span class="line"><span class="cl">tags= [&#39;hugo&#39;,&#39;go&#39;,&#39;github.io&#39;]
+</span></span><span class="line"><span class="cl">+++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>填好以上格式, 就可以开始在下面写博客了, 和 jekyll 非常相似.</p>
+<p>新版本的 hugo 自动生成的 <code>.md</code> 文件格式有点变化, 如下所示:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">title: &#34;换个主题&#34;
+</span></span><span class="line"><span class="cl">date: 2019-12-01T23:50:09+08:00
+</span></span><span class="line"><span class="cl">categories: [&#34;daily&#34;]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="部署到githubpage">部署到github.page</h2>
+<p>和 jekyll 相比, hugo 的部署/文章推送略微麻烦一点, 前者只需要修改并预览检查完毕后直接全部 push 即可, 而 hugo 按照官方文档的方法是先在根目录运行一道指令 <code>hugo --baseUrl=&quot;https://username.github.io&quot;</code> , 在根目录生成 public 文件夹, 然后将 public 文件夹中的所有内容 push 至仓库中. 我查阅了一些其他的自动化方法, 如Travis. 最后嫌配置麻烦, 直接在根目录创建了一个 <code>.bat</code> 文件,将几个指令写进去依次运行, 也算是实现了一键推送的功能, 也算是提供了另一种思路吧.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">hugo --theme=pure --baseUrl=<span class="s2">&#34;https://koonchung.github.io&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> public
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;auto-uploaded files&#34;</span>
+</span></span><span class="line"><span class="cl">git push -u origin master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">pause</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="暂告一段落">暂告一段落</h3>
+<p>emm&hellip;写到这里已经半夜一点半了, 那就先告一段落吧, 最后总结一下, 不得不说 hugo 加载的速度比 jekyll 快了不少, 模板配置完成后体验很不错.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">hugo</a>
+        
+            <a href="/tags/go/">go</a>
+        
+            <a href="/tags/github.io/">github.io</a>
+        
+            <a href="/tags/blog/">blog</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/github.io-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">github.io 博客搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">部署 obsidian-livesync</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PhotoPrism 的部署以及 GooglePhotos 图片搬运</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/android-12-%E7%9A%84-termux-%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8-frpc-%E8%AE%B0%E5%BD%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Termux 安装并使用 Frpc</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/%E9%80%9A%E8%BF%87-zerotier-%E5%92%8C-scrcpy-%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7%E5%AE%89%E5%8D%93%E6%9C%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">通过 ZeroTier 和 Scrcpy 远程操控安卓机</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 GC Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

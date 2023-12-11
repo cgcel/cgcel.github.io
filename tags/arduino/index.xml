@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://cgcel.github.io/tags/arduino/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>DIY项目 -- 自制红外测温枪</title>
-        <link>https://cgcel.github.io/posts/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</link>
+        <title>DIY 项目 -- 自制红外测温枪</title>
+        <link>https://cgcel.github.io/posts/diy-%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</link>
         <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/diy%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</guid>
+        <guid>https://cgcel.github.io/posts/diy-%E9%A1%B9%E7%9B%AE--%E8%87%AA%E5%88%B6%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%9E%AA/</guid>
         <description>&lt;h2 id=&#34;开头&#34;&gt;开头&lt;/h2&gt;
 &lt;p&gt;年初新冠疫情在武汉爆发, 感染者随着春运人流迅速扩散到全国各地, 彼时人人抢口罩, 甚至连药店的水银体温计都被洗劫一空. 那时每天都很关注自己的身体状况, 每天都需要健康上报以确保能正常回到工作岗位, 因此在淘宝下单了一个红外测温模块 MLX90614ESF-BAA, 用来自制一把测温枪, 及时量出体温. 但由于当时口罩, 测温枪等物资紧缺, 下单后过了很久客服通知说没货并给我退款, 这件事就不了了之.&lt;/p&gt;
 &lt;p&gt;直到最近双十一没想到要买些什么东西的时候想起了这个未完成的小项目, 我在淘宝下单并顺利拿到了模块, 经过一番测试后将体温枪组装完毕.&lt;/p&gt;
@@ -278,11 +278,11 @@
 </description>
         </item>
         <item>
-        <title>STM32的串口学习总结</title>
-        <link>https://cgcel.github.io/posts/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+        <title>STM32 的串口学习总结</title>
+        <link>https://cgcel.github.io/posts/stm32-%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
         <pubDate>Wed, 03 Jun 2020 16:47:33 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/stm32%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+        <guid>https://cgcel.github.io/posts/stm32-%E7%9A%84%E4%B8%B2%E5%8F%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;疫情原因, 机场已经冷清很久了. 但是项目都照常缓慢进行中, 趁这次机会我好好学习了一下STM32的一些基础知识和使用方法. 教程的话看的是正点原子的官网教程, 正点原子的资料应该算是国内STM32初学者入门必学的教程了吧, 听说还有野火的也不错, 网上很多例子都有他们家代码的影子.&lt;/p&gt;
 &lt;p&gt;实际使用过程中, 我越来越能体会到Arduino的简便之处, 但是相对的对实现原理会不太在意, 在入门STM32的过程中, 我对一些单片机功能有了更深的了解, 就比如常用的串口功能.&lt;/p&gt;
@@ -666,11 +666,11 @@
 </description>
         </item>
         <item>
-        <title>我的第一个Arduino库</title>
-        <link>https://cgcel.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/</link>
+        <title>我的第一个 Arduino 库</title>
+        <link>https://cgcel.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-arduino-%E5%BA%93/</link>
         <pubDate>Sun, 26 Apr 2020 19:37:43 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAarduino%E5%BA%93/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA-arduino-%E5%BA%93/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;前一阵大佬给了块 RFID 读写模块让我们研究, 正好别人没有板子, 我就先一步拿着我的 nano 和 esp8266 去办公室玩玩了.&lt;/p&gt;
 &lt;h2 id=&#34;什么是rfid&#34;&gt;什么是RFID?&lt;/h2&gt;
@@ -909,11 +909,11 @@
 </description>
         </item>
         <item>
-        <title>Arduino的主从机双向通信</title>
-        <link>https://cgcel.github.io/posts/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</link>
+        <title>Arduino 的主从机双向通信</title>
+        <link>https://cgcel.github.io/posts/arduino-%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</link>
         <pubDate>Tue, 03 Dec 2019 01:19:09 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/arduino%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</guid>
+        <guid>https://cgcel.github.io/posts/arduino-%E7%9A%84%E4%B8%BB%E4%BB%8E%E6%9C%BA%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;网上有不少关于 Arduino 串口通信的教程和示例, 但大多是单向通信的或者是照搬 Arduino 官方示例的. 正好我的自动投食机第二版考虑加物联网功能, 需要对两块板子建立串口通信, 于是整理了网上例子和实践写一篇记录.&lt;/p&gt;
 &lt;h2 id=&#34;硬件准备&#34;&gt;硬件准备&lt;/h2&gt;
@@ -1011,12 +1011,12 @@
 </description>
         </item>
         <item>
-        <title>基于Arduino的自平衡车的调试总结</title>
-        <link>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
+        <title>基于 Arduino 的自平衡车的调试总结</title>
+        <link>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8E-arduino-%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</link>
         <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
-        <description>&lt;img src="https://cgcel.github.io/%E6%95%B0%E6%8D%AE%E6%9B%B2%E7%BA%BF_2.png" alt="Featured image of post 基于Arduino的自平衡车的调试总结" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+        <guid>https://cgcel.github.io/posts/%E5%9F%BA%E4%BA%8E-arduino-%E7%9A%84%E8%87%AA%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://cgcel.github.io/%E6%95%B0%E6%8D%AE%E6%9B%B2%E7%BA%BF_2.png" alt="Featured image of post 基于 Arduino 的自平衡车的调试总结" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;翻阅网上的平衡车资料，大概有两个大方向，分别为卡尔曼滤波型和直接的 PID 调节型，前期我参照了卡尔曼滤波型平衡小车的代码，效果不是很好，小车最后连直立也无法做到，也可能是我的调试方法不对，再加上卡尔曼滤波型的代码相对比较复杂，于是我全部推倒重建，尝试后者。&lt;/p&gt;
 &lt;p&gt;模块清单:&lt;/p&gt;
 &lt;ul&gt;

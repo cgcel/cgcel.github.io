@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Sun, 16 Oct 2022 00:16:55 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>PhotoPrism的部署以及GooglePhotos图片搬运</title>
-        <link>https://cgcel.github.io/posts/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</link>
+        <title>PhotoPrism 的部署以及 GooglePhotos 图片搬运</title>
+        <link>https://cgcel.github.io/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</link>
         <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/photoprism%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Agooglephotos%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</guid>
+        <guid>https://cgcel.github.io/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://gitee.com/cgcel/image/raw/master/archive/Pasted%20image%2020221016001933.png&#34;
 	
 	
@@ -388,11 +388,11 @@
 </description>
         </item>
         <item>
-        <title>树莓派4安装nextcloud记录 (非docker安装法)</title>
-        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</link>
+        <title>树莓派 4 安装 nextcloud 记录 (非docker安装法)</title>
+        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE-4-%E5%AE%89%E8%A3%85-nextcloud-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE4%E5%AE%89%E8%A3%85nextcloud%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE-4-%E5%AE%89%E8%A3%85-nextcloud-%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
 &lt;p&gt;由于前一段时间换了 iPhone, 导致原本把音乐文件存在本地听歌的白嫖习惯中断了, 使用 iTunes 实在是不方便 (需要固定一台 pc 管理本地音乐文件), 加之不想用 iCloud 服务, 因此我在 tg 上用缓存听了一个多月的歌&amp;hellip;&lt;/p&gt;
 &lt;p&gt;树莓派放在东莞家里, 一直跑着 qbittorrent-nox 以及 frps 服务, 这两个都是日常使用很频繁的服务, 树莓派跑起来也是绰绰有余. 最近由于东莞疫情, 已经很久没有回去, 于是正好在休息日折腾一下很久没管的树莓派, 给树莓派装上 nextcloud, 用来当作自己的网盘, 把音乐文件存入, 方便手机同步.&lt;/p&gt;
@@ -707,11 +707,11 @@
 </description>
         </item>
         <item>
-        <title>树莓派使用Frp实现内网穿透记录</title>
-        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
+        <title>树莓派使用 Frp 实现内网穿透记录</title>
+        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Wed, 11 Mar 2020 21:00:15 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;在家中闲来无事, 想起了积灰已久的树莓派3B, 决定来捣鼓一番, 此前试过使用花生壳的免费内网穿透服务, 体验一般, 从舍友那听说可以用 frp 来实现, 于是准备试一试. &lt;a class=&#34;link&#34; href=&#34;https://github.com/fatedier/frp/blob/master/README_zh.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;frp&lt;/a&gt; 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。&lt;/p&gt;
@@ -806,11 +806,11 @@
 </description>
         </item>
         <item>
-        <title>树莓派系统安装以及ssh连接</title>
-        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</link>
+        <title>树莓派系统安装以及 ssh 连接</title>
+        <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A-ssh-%E8%BF%9E%E6%8E%A5/</link>
         <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Assh%E8%BF%9E%E6%8E%A5/</guid>
+        <guid>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A-ssh-%E8%BF%9E%E6%8E%A5/</guid>
         <description>&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
 &lt;p&gt;在我接触单片机的时候就已经知道树莓派的厉害, 这是一台低功率计算机, 同时还可以当作一台高性能的单片机使用. 3月的时候入了一台树莓派3b, 一直积灰到现在, 终于在考试, 课设全部结束之后有空玩一玩了.&lt;/p&gt;
 &lt;h2 id=&#34;系统安装&#34;&gt;系统安装&lt;/h2&gt;

@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Thu, 06 Feb 2020 14:28:09 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/proxy/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>V2RayN局域网共享</title>
-        <link>https://cgcel.github.io/posts/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+        <title>V2RayN 局域网共享</title>
+        <link>https://cgcel.github.io/posts/v2rayn-%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
         <pubDate>Thu, 06 Feb 2020 14:28:09 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/v2rayn%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+        <guid>https://cgcel.github.io/posts/v2rayn-%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
         <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;最近肺炎爆发, 虽然上班了但是因为公司要节省口罩, 所以大部分时间都在家里待岗, 正好电脑上已经不再用 ss, ssr 也准备不用了 (越来越不稳定了) 于是尝试了一下共享 V2Ray 的局域网连接, 很快就成功了, 闲得无事写篇博客记录一下.&lt;/p&gt;
 &lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
@@ -73,11 +73,11 @@
 </description>
         </item>
         <item>
-        <title>Shadowsocks局域网共享</title>
-        <link>https://cgcel.github.io/posts/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
+        <title>Shadowsocks 局域网共享</title>
+        <link>https://cgcel.github.io/posts/shadowsocks-%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</link>
         <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/shadowsocks%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
+        <guid>https://cgcel.github.io/posts/shadowsocks-%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/</guid>
         <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;好久没有更新博客, 正好熟悉了一下 ss 通过局域网共享到手机, 于是写一篇博客记录下来.&lt;/p&gt;
 &lt;h2 id=&#34;详细步骤&#34;&gt;详细步骤&lt;/h2&gt;

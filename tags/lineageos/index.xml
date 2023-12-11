@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
         <lastBuildDate>Mon, 17 May 2021 13:45:02 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/lineageos/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>从OOS到LOS -- 一加8T的刷机记录</title>
-        <link>https://cgcel.github.io/posts/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
+        <title>从 OOS 到 LOS -- 一加 8T 的刷机记录</title>
+        <link>https://cgcel.github.io/posts/%E4%BB%8E-oos-%E5%88%B0-los--%E4%B8%80%E5%8A%A0-8t-%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Mon, 17 May 2021 13:45:02 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%BB%8Eoos%E5%88%B0los--%E4%B8%80%E5%8A%A08t%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
+        <guid>https://cgcel.github.io/posts/%E4%BB%8E-oos-%E5%88%B0-los--%E4%B8%80%E5%8A%A0-8t-%E7%9A%84%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid>
         <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;距离一加 8T 的发布已经过去了大半年, 据说一加 8T 的 ColorOS 会在6月底释出, 大家都说大氢亡了🥴, 但是我不用氢啊🤡, 加上氧最近也用的有些腻了, 正好前一段时间关注到 8T 的 &lt;a class=&#34;link&#34; href=&#34;https://forum.xda-developers.com/c/oneplus-8t.11579/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;xda 论坛&lt;/a&gt; 挺活跃的, 已经有不少的 ROM 可以刷了:&lt;/p&gt;
@@ -321,12 +321,12 @@
 </description>
         </item>
         <item>
-        <title>一加1卡刷lineage15.1</title>
-        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</link>
+        <title>一加 1 卡刷 lineage15.1</title>
+        <link>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-1-%E5%8D%A1%E5%88%B7-lineage15.1/</link>
         <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
         
-        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A01%E5%8D%A1%E5%88%B7lineage15.1/</guid>
-        <description>&lt;img src="https://cgcel.github.io/2018-07-04-01.jpg" alt="Featured image of post 一加1卡刷lineage15.1" /&gt;&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
+        <guid>https://cgcel.github.io/posts/%E4%B8%80%E5%8A%A0-1-%E5%8D%A1%E5%88%B7-lineage15.1/</guid>
+        <description>&lt;h2 id=&#34;开篇&#34;&gt;开篇&lt;/h2&gt;
 &lt;p&gt;终于结束了好几门考试, 有时间更新一下博客了, 就记录一下几天前给一加1卡刷 lineage15.1 吧.&lt;/p&gt;
 &lt;h2 id=&#34;突如其来的更新&#34;&gt;突如其来的更新&lt;/h2&gt;
 &lt;p&gt;之前有一段时间一直在等官方更新一加1的 lineage15.1, 有空就刷新一下官网, 但始终没有发布, 于是就先把 lineage14.1 刷了. 直到几天前检测更新, 发现有无法 ota 更新的更新, 仔细一看原来是 lineage15.1, 而且已经更新了两版, 于是我迫不及待下载了安装包.&lt;/p&gt;

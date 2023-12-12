@@ -3,52 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cgcel.github.io/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/categories/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/tags/live-sync/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/tags/obsidian/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/posts/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/tags/sync/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/tags/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2023-12-08T09:21:04+08:00</lastmod>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/docker/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/tags/googlephotos/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/tags/docker-compose/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/tags/nextcloud/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/tags/immich/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/tags/photoprism/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/posts/immich-docker-compose-%E5%A2%99%E5%86%85%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/tags/photos-server/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/tags/raspberrypi/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/posts/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/tags/rclone/</loc>
-    <lastmod>2022-10-16T00:16:55+08:00</lastmod>
+    <loc>https://cgcel.github.io/tags/self-hosted/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/live-sync/</loc>
+    <lastmod>2023-07-25T09:21:04+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/obsidian/</loc>
+    <lastmod>2023-07-25T09:21:04+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/sync/</loc>
+    <lastmod>2023-07-25T09:21:04+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/posts/%E9%83%A8%E7%BD%B2-obsidian-livesync-%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-07-25T09:21:04+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/rime/</loc>
+    <lastmod>2022-10-22T11:55:38+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/posts/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB-%E8%BE%93%E5%85%A5%E6%B3%95%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2022-10-22T11:55:38+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/rime-ice/</loc>
+    <lastmod>2022-10-22T11:55:38+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/android12/</loc>
     <lastmod>2022-09-28T09:59:57+08:00</lastmod>
@@ -95,6 +101,9 @@
     <loc>https://cgcel.github.io/posts/pi4tntcase--%E6%88%91%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%BA%E7%AE%B1/</loc>
     <lastmod>2022-06-07T20:27:35+08:00</lastmod>
   </url><url>
+    <loc>https://cgcel.github.io/tags/raspberrypi/</loc>
+    <lastmod>2022-06-07T20:27:35+08:00</lastmod>
+  </url><url>
     <loc>https://cgcel.github.io/tags/sketchup/</loc>
     <lastmod>2022-06-07T20:27:35+08:00</lastmod>
   </url><url>
@@ -129,6 +138,9 @@
     <lastmod>2022-03-21T21:54:49+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/mount/</loc>
+    <lastmod>2022-03-21T21:54:49+08:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/nextcloud/</loc>
     <lastmod>2022-03-21T21:54:49+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/ubuntu/</loc>

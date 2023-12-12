@@ -7,23 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
-        <lastBuildDate>Sun, 16 Oct 2022 00:16:55 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>PhotoPrism 的部署以及 GooglePhotos 图片搬运</title>
-        <link>https://cgcel.github.io/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
-        
-        <guid>https://cgcel.github.io/posts/photoprism-%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8A-googlephotos-%E5%9B%BE%E7%89%87%E6%90%AC%E8%BF%90/</guid>
-        <description>&lt;p&gt;&lt;img src=&#34;https://gitee.com/cgcel/image/raw/master/archive/Pasted%20image%2020221016001933.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Mon, 21 Mar 2022 21:54:49 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>树莓派 4 安装 nextcloud 记录 (非docker安装法)</title>
         <link>https://cgcel.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE-4-%E5%AE%89%E8%A3%85-nextcloud-%E8%AE%B0%E5%BD%95/</link>
         <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>

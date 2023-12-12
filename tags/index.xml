@@ -7,10 +7,50 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>GC Chen</copyright>
-        <lastBuildDate>Fri, 08 Dec 2023 09:21:04 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 22 Nov 2023 14:45:22 +0800</lastBuildDate><atom:link href="https://cgcel.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>docker</title>
+        <link>https://cgcel.github.io/tags/docker/</link>
+        <pubDate>Wed, 22 Nov 2023 14:45:22 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/docker/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>docker-compose</title>
+        <link>https://cgcel.github.io/tags/docker-compose/</link>
+        <pubDate>Wed, 22 Nov 2023 14:45:22 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/docker-compose/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>immich</title>
+        <link>https://cgcel.github.io/tags/immich/</link>
+        <pubDate>Wed, 22 Nov 2023 14:45:22 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/immich/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>photos-server</title>
+        <link>https://cgcel.github.io/tags/photos-server/</link>
+        <pubDate>Wed, 22 Nov 2023 14:45:22 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/photos-server/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>self-hosted</title>
+        <link>https://cgcel.github.io/tags/self-hosted/</link>
+        <pubDate>Wed, 22 Nov 2023 14:45:22 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/self-hosted/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>live-sync</title>
         <link>https://cgcel.github.io/tags/live-sync/</link>
-        <pubDate>Fri, 08 Dec 2023 09:21:04 +0800</pubDate>
+        <pubDate>Tue, 25 Jul 2023 09:21:04 +0800</pubDate>
         
         <guid>https://cgcel.github.io/tags/live-sync/</guid>
         <description></description>
@@ -18,7 +58,7 @@
         <item>
         <title>obsidian</title>
         <link>https://cgcel.github.io/tags/obsidian/</link>
-        <pubDate>Fri, 08 Dec 2023 09:21:04 +0800</pubDate>
+        <pubDate>Tue, 25 Jul 2023 09:21:04 +0800</pubDate>
         
         <guid>https://cgcel.github.io/tags/obsidian/</guid>
         <description></description>
@@ -26,57 +66,25 @@
         <item>
         <title>sync</title>
         <link>https://cgcel.github.io/tags/sync/</link>
-        <pubDate>Fri, 08 Dec 2023 09:21:04 +0800</pubDate>
+        <pubDate>Tue, 25 Jul 2023 09:21:04 +0800</pubDate>
         
         <guid>https://cgcel.github.io/tags/sync/</guid>
         <description></description>
         </item>
         <item>
-        <title>docker</title>
-        <link>https://cgcel.github.io/tags/docker/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
+        <title>Rime</title>
+        <link>https://cgcel.github.io/tags/rime/</link>
+        <pubDate>Sat, 22 Oct 2022 11:55:38 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/tags/docker/</guid>
+        <guid>https://cgcel.github.io/tags/rime/</guid>
         <description></description>
         </item>
         <item>
-        <title>googlephotos</title>
-        <link>https://cgcel.github.io/tags/googlephotos/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
+        <title>rime-ice</title>
+        <link>https://cgcel.github.io/tags/rime-ice/</link>
+        <pubDate>Sat, 22 Oct 2022 11:55:38 +0800</pubDate>
         
-        <guid>https://cgcel.github.io/tags/googlephotos/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>nextcloud</title>
-        <link>https://cgcel.github.io/tags/nextcloud/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
-        
-        <guid>https://cgcel.github.io/tags/nextcloud/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>photoprism</title>
-        <link>https://cgcel.github.io/tags/photoprism/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
-        
-        <guid>https://cgcel.github.io/tags/photoprism/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>raspberrypi</title>
-        <link>https://cgcel.github.io/tags/raspberrypi/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
-        
-        <guid>https://cgcel.github.io/tags/raspberrypi/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>rclone</title>
-        <link>https://cgcel.github.io/tags/rclone/</link>
-        <pubDate>Sun, 16 Oct 2022 00:16:55 +0800</pubDate>
-        
-        <guid>https://cgcel.github.io/tags/rclone/</guid>
+        <guid>https://cgcel.github.io/tags/rime-ice/</guid>
         <description></description>
         </item>
         <item>
@@ -176,6 +184,14 @@
         <description></description>
         </item>
         <item>
+        <title>raspberrypi</title>
+        <link>https://cgcel.github.io/tags/raspberrypi/</link>
+        <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/raspberrypi/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>sketchup</title>
         <link>https://cgcel.github.io/tags/sketchup/</link>
         <pubDate>Tue, 07 Jun 2022 20:27:35 +0800</pubDate>
@@ -245,6 +261,14 @@
         <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
         
         <guid>https://cgcel.github.io/tags/mount/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>nextcloud</title>
+        <link>https://cgcel.github.io/tags/nextcloud/</link>
+        <pubDate>Mon, 21 Mar 2022 21:54:49 +0800</pubDate>
+        
+        <guid>https://cgcel.github.io/tags/nextcloud/</guid>
         <description></description>
         </item>
         <item>

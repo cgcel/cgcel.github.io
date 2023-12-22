@@ -3,10 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cgcel.github.io/</loc>
-    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/#autofac/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/#oracle/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/#%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/#%E8%BF%9E%E6%8E%A5%E6%B3%84%E6%BC%8F/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/categories/</loc>
-    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/posts/oracle-db-%E5%9C%A8-.net-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E5%8D%95%E4%BE%8B%E6%B3%A8%E5%85%A5%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/posts/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/tags/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
+  </url><url>
+    <loc>https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-12-22T02:03:15+00:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/docker/</loc>
     <lastmod>2023-11-22T14:45:22+08:00</lastmod>
@@ -23,16 +47,7 @@
     <loc>https://cgcel.github.io/tags/photos-server/</loc>
     <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
-    <loc>https://cgcel.github.io/posts/</loc>
-    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
-  </url><url>
     <loc>https://cgcel.github.io/tags/self-hosted/</loc>
-    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/tags/</loc>
-    <lastmod>2023-11-22T14:45:22+08:00</lastmod>
-  </url><url>
-    <loc>https://cgcel.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-11-22T14:45:22+08:00</lastmod>
   </url><url>
     <loc>https://cgcel.github.io/tags/live-sync/</loc>
